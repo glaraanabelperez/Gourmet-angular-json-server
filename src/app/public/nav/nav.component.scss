@@ -1,0 +1,36 @@
+@import '../../general_styles.scss';
+
+.nav_general{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 2% 0% 5% 0%;
+    padding: 1% 10% 1% 10%;
+    border-radius: 15px;
+    button{
+        background-color: white;
+        border: none;
+        cursor: pointer;
+        img{
+            width: 45px;
+        }
+        h5{
+            margin: 1%;
+        }
+    }
+}
+.targ_route{
+    width: 10%;
+    float: right;
+    margin:2% 5% 2% 2%;
+    background-color: $yellow_gou;
+    border-radius: 10px;
+    p{
+        text-align: center;
+        margin: auto;
+        padding:5%;
+    }
+}
