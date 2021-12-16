@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Session } from '../models/session.model';
-import { User } from '../models/user.model';
 
 
 
@@ -22,7 +21,7 @@ export class StorageService{
   }
 
 
-  public loadSessionData(): Session{
+  private loadSessionData(): Session{
     var sessionStr = this.localStorageService.getItem('session');
     return (sessionStr) ? <Session> JSON.parse(sessionStr) : null;
   }
