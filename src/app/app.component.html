@@ -1,3 +1,5 @@
 
 <app-nav></app-nav>
 <router-outlet></router-outlet>
+<app-navAuth *ngIf="sessionAdmin"></app-navAuth>
+<app-navCliente *ngIf="session" ></app-navCliente>

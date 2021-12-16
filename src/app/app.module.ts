@@ -3,30 +3,34 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { PublicModule } from './public/public.module';
 
-import { AuthService } from './service/auth.service';
-
 import { AppComponent } from './app.component';
-import { NavClientDirective } from './directive/nav-client.directive';
+import { ToastrModule } from 'ngx-toastr';
+import { NavClientDirective } from './directiveNavClient/nav-client.directive';
+import { StorageService } from './public/components/login/service/storage.service';
 
 const routes: Routes = [
   // {path: 'home', component:AppComponent},
 ];
 
-
 @NgModule({
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    PublicModule
+    ToastrModule.forRoot(),
+    PublicModule,
   ],
   declarations: [
     AppComponent,
     NavClientDirective,
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

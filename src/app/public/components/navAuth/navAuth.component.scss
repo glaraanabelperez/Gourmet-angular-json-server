@@ -1,0 +1,57 @@
+@import '../../../styles/general_styles.scss';
+
+.nav_general_lateral{
+    box-sizing: border-box;
+    width: 12%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 20px;
+    position: absolute;
+    bottom: 0px;
+    button{
+        background-color: white;
+        border: none;
+        width: 100%;
+        padding: 20px;     
+        cursor: pointer;
+        img{
+            width: 40px;
+            margin-left: 10px;
+        }
+        h5{
+            margin: auto;
+            font-size: 1rem;
+            color: rgb(26, 25, 25);
+        }
+    }
+}
+
+
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 768px) { 
+    .nav_general_lateral{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin: 0.5% 0% 0.5% 0%;
+        padding: 0.5% 5% 0.5% 5%;
+        button{
+            img{
+                width: 30px;
+            }
+            h5{
+                display: none;
+            }
+        }
+    }
+
+  }
+
+  // Para iPad
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  {}

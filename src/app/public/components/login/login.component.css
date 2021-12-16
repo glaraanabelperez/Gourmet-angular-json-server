@@ -1,0 +1,66 @@
+@charset "UTF-8";
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap");
+.padding {
+  padding: 2%;
+}
+
+.contenedor_login {
+  background-color: white;
+  width: 60%;
+  margin: auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.contenedor_login .card {
+  border: 0px;
+}
+
+.contenedor_login .card .card-text {
+  width: 40%;
+  margin: auto;
+}
+
+.contenedor_login .card .card-text h2 {
+  text-align: center;
+}
+
+.contenedor_login .card .card-text .user_imagen {
+  text-align: center;
+  margin-bottom: 10%;
+}
+
+.contenedor_login .card .card-text .user_imagen img {
+  width: 60%;
+}
+
+.contenedor_login .card .card-text form .getIn {
+  margin: 4%;
+  background-color: #83E8B5;
+}
+
+.contenedor_login .card .card-text .getOut {
+  margin: 4%;
+  background-color: gainsboro;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  .contenedor_login {
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 4%;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Aquí van los estilos */
+}
+/*# sourceMappingURL=login.component.css.map */

@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { User } from '../models/user.model';
+import { LoginObject } from '../models/loginObject.model';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService{
+
+  endpoint: string='users';
+
+  constructor(private http: HttpClient) {
+  
+  }
+  
+  login(user:LoginObject): Observable<User> {
+    let data:string="?email=" + user.getEmail();
+    let url=environment.apiUrl + this.endpoint + data;
+    return this.http.get<User>(url);
+  }
+
+  logout(){
+    // this.dataPerson=null;
+    // this.auth=false;
+  }
+
+ 
+  
+
+}

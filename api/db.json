@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "userName": "adminGourmet",
+      "secondName": "admin",
+      "email": "glaraanabelperez@gmail.com",
+      "password": "The best football team in the world!",
+      "telephone": 458965232145,
+      "direction": "The best football team in the world!",
+      "state": "activo",
+      "company": [
+        {
+          "id": 1,
+          "name": "Gourmet",
+          "direction": "Bs As",
+          "telephone": 4521362589
+        }
+      ]
+    }
+  ]
+}

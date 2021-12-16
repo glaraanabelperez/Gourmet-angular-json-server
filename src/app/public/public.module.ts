@@ -1,26 +1,43 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
-import { LoginComponent } from './login/login-components/login.component';
-import { NavComponent } from './nav/nav.component';
-import { MenuComponent } from './list-menu/menu.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+import { LoginModule } from './components/login/login.module';
+
+import { NavComponent } from './components/nav/nav.component';
+import { MenuComponent } from './components/list-menu/menu.component';
+import { NavAuthComponent } from './components/navAuth/navAuth.component';
+import { NavClientComponent } from './components/navClient/navClient.component';
 
 
 const routes: Routes = [
   {path: 'menu', component:MenuComponent},
-  {path: 'login', component:LoginComponent},
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
+    LoginModule
   ],
-  declarations: [LoginComponent, NavComponent, MenuComponent],
+  declarations: [
+    NavComponent, 
+    MenuComponent,
+    NavAuthComponent,
+    NavClientComponent
+  ],
   exports: [
     RouterModule,
-    NavComponent
+    NavComponent,
+    NavAuthComponent,
+    NavClientComponent
   ],
   providers: [],
 

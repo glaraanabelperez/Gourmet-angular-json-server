@@ -1,14 +1,12 @@
-import { Company } from "./company.model";
 
-export class Person{
+export class User{
 
     id:number;
     userName:string;
     secondName:string;
     email:string;
-    // password:string;
+    password:string;
     telephone:number;
     direction:string;
     estado: string;
-    company:Company;
 }
