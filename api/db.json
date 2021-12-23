@@ -2,10 +2,10 @@
   "users": [
     {
       "id": 0,
-      "userName": "adminGourmet",
+      "name": "adminGourmet",
       "secondName": "admin",
       "email": "glaraanabelperez@gmail.com",
-      "password": "The best football team in the world!",
+      "password": "123",
       "telephone": 458965232145,
       "direction": "The best football team in the world!",
       "state": "activo",
@@ -15,6 +15,19 @@
           "name": "Gourmet",
           "direction": "Bs As",
           "telephone": 4521362589
+        }
+      ]
+    }
+  ],
+  "menus": [
+    {
+      "date": "15-12-2021",
+      "state": "activo",
+      "meal": [
+        {
+          "type": "vegetariana",
+          "tiitle": "Verduras Grilladas",
+          "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada."
         }
       ]
     }

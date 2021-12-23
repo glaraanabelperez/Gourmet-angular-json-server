@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginModule } from './components/login/login.module';
 
 import { NavComponent } from './components/nav/nav.component';
-import { MenuComponent } from './components/list-menu/menu.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { NavAuthComponent } from './components/navAuth/navAuth.component';
 import { NavClientComponent } from './components/navClient/navClient.component';
 
