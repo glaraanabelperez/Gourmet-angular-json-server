@@ -21,10 +21,12 @@
   ],
   "menus": [
     {
-      "date": "15-12-2021",
+      "id":0,
+      "date": "2021-12-15",
       "state": "activo",
       "meal": [
         {
+          "id":0,
           "type": "vegetariana",
           "tiitle": "Verduras Grilladas",
           "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada."

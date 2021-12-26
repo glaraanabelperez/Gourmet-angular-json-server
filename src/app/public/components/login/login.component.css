@@ -5,6 +5,13 @@
   padding: 2%;
 }
 
+.tarjeta_seccion {
+  background-color: white;
+  margin: 2%;
+  border-radius: 20px;
+  padding: 5%;
+}
+
 .contenedor_login {
   background-color: white;
   width: 60%;

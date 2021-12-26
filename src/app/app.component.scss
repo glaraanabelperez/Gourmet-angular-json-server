@@ -1,0 +1,20 @@
+@import './styles/general_styles.scss';
+
+.root{
+    width:90% ;
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) { 
+    .root{
+        width:100% ;
+        float: none;
+    }
+}
+
+// Para iPad
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  { /* Aquí van los estilos */}
+

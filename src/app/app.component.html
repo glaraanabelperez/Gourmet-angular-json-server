@@ -1,5 +1,7 @@
 
 <app-nav></app-nav>
-<router-outlet></router-outlet>
+<div class="root padding">
+    <router-outlet></router-outlet>
+</div>
 <app-navAuth *ngIf="sessionAdmin"></app-navAuth>
-<app-navCliente *ngIf="session" ></app-navCliente>
+<app-navCliente *ngIf="sessionUser" ></app-navCliente>

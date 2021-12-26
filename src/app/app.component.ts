@@ -10,19 +10,16 @@ import { StorageService } from './public/components/login/service/storage.servic
 })
 export class AppComponent {
   title = 'app-gourmet';
-  session: boolean;
+  sessionUser: boolean;
   sessionAdmin:boolean;
 
   constructor(public _storageSession:StorageService) {}
 
   ngOnInit(): void {
     this._storageSession.permissions$.subscribe(result => {
-      this.session=result.isUser;
+      this.sessionUser=result.isUser;
       this.sessionAdmin=result.isAdmin;
-      console.log(this.sessionAdmin, this.session)
-
-      }
-    )
+      })
   }
 
 }

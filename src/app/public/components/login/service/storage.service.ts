@@ -20,7 +20,6 @@ export class StorageService{
     this.setPermissions();
   }
 
-
   private loadSessionData(): Session{
     var sessionStr = this.localStorageService.getItem('session');
     return (sessionStr) ? <Session> JSON.parse(sessionStr) : null;
@@ -40,16 +39,12 @@ export class StorageService{
   }
 
   private setPermissions(){
-    let per={
-      isUser: false,
-      isAdmin:false
+    let user=JSON.parse(this.localStorageService.getItem('session'));
+    let permision={
+      isUser: user.user,
+      isAdmin:user.authAdmin
     }
-    if(this.localStorageService.getItem('session')){
-      let user=JSON.parse(this.localStorageService.getItem('session'));
-      per.isUser= user.user,
-      per.isAdmin=user.authAdmin
-    }    
-    this.permissions.next(per);    
+    this.permissions.next(permision);    
   }
 
 

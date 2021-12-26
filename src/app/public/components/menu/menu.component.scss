@@ -1,0 +1,37 @@
+@import '../../../styles/general_styles.scss';
+
+.menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  .tarjeta_seccion{
+    width: 100%;
+    margin: 0% 5% 0% 5%;
+  }
+  .input_menus{
+    display: flex;
+    flex-direction: row;
+  }
+}
+.toast-custom {
+  bottom: 0px;  
+}
+
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px) { 
+    .menu{
+      display: flex;
+      flex-direction: column;
+      justify-content: none;
+      .tarjeta_seccion{
+        width: 100%;
+        margin: 0%;
+      }
+    }
+  }
+
+  // Para iPad
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  { /* Aquí van los estilos */}

@@ -8,9 +8,9 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 20px;
-    margin: 20px;
     position: absolute;
-    bottom: 20%;
+    top: 125px;
+    right: 0%;
     button{
         background-color: white;
         border: none;
@@ -23,7 +23,6 @@
         }
         h5{
             margin: auto;
-            font-size: 1rem;
             color: rgb(26, 25, 25);
         }
     }
@@ -39,6 +38,7 @@
         flex-direction: row;
         margin: 0.5% 0% 0.5% 0%;
         padding: 0.5% 5% 0.5% 5%;
+        bottom: 0%;
         button{
             img{
                 width: 30px;

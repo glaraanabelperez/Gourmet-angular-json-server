@@ -9,27 +9,24 @@ import { FormsModule } from '@angular/forms';
 import { LoginModule } from './components/login/login.module';
 
 import { NavComponent } from './components/nav/nav.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { NavAuthComponent } from './components/navAuth/navAuth.component';
 import { NavClientComponent } from './components/navClient/navClient.component';
+import { MenusModule } from './components/menu/menu.module';
+import { ShoppingCarModule } from './components/shoping-cart/module/shoppingCar.module';
 
-
-const routes: Routes = [
-  {path: 'menu', component:MenuComponent},
-];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
     HttpClientModule,
-    LoginModule
+    LoginModule,
+    MenusModule,
+    ShoppingCarModule
   ],
   declarations: [
     NavComponent, 
-    MenuComponent,
     NavAuthComponent,
     NavClientComponent
   ],
@@ -37,7 +34,7 @@ const routes: Routes = [
     RouterModule,
     NavComponent,
     NavAuthComponent,
-    NavClientComponent
+    NavClientComponent,
   ],
   providers: [],
 

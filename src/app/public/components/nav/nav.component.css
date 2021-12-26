@@ -5,6 +5,13 @@
   padding: 2%;
 }
 
+.tarjeta_seccion {
+  background-color: white;
+  margin: 2%;
+  border-radius: 5px;
+  padding: 5%;
+}
+
 .nav_general {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -81,6 +88,8 @@
   .targ_route {
     width: 80%;
     margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
   }
   .targ_route p {
     padding: 2%;

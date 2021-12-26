@@ -1,9 +1,6 @@
 import { User } from "./user.model";
 
 export class Session{
-    static getAuthAdmin() {
-      throw new Error('Method not implemented.');
-    }
 
     // private token: string;
     private user: User;

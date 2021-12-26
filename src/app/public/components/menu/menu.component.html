@@ -1,2 +1,27 @@
-<p>menu works!</p>
+<div class="menu">
+  <app-date ></app-date>
+  <div class="tarjeta_seccion">
+    <div *ngIf="menus!=null else withoutMenus">
+      <h3>Menus disponibles para la fecha</h3>
+      <h4>Haga su seleccion para agregar al carrito</h4>
+    </div>
+    <ng-template #withoutMenus>
+      <h3>Seleccione una fecha</h3>
+      <h4>para ver las comidas diponibles del dia</h4>
+    </ng-template> 
+    <br>
+    <div class="input_menus" *ngFor="let m of menus" >
+      <p>Estado: {{m.state}}</p>
+      <div *ngFor="let meal of m.meal">
+        <h5>Comida {{meal.type}}</h5>
+        <h6>{{meal.tittle}}</h6>
+        <h7>Descripcion:<br>{{meal.description}}</h7>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+        <label class="form-check-label" for="flexCheckChecked"></label>
+      </div>
+    </div>
+  </div>
+</div>
 

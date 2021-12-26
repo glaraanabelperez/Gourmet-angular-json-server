@@ -3,4 +3,11 @@
 .padding {
   padding: 2%;
 }
+
+.tarjeta_seccion {
+  background-color: white;
+  margin: 2%;
+  border-radius: 5px;
+  padding: 5%;
+}
 /*# sourceMappingURL=general_styles.css.map */

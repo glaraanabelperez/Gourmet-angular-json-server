@@ -9,8 +9,8 @@ import { PublicModule } from './public/public.module';
 
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
-import { NavClientDirective } from './directiveNavClient/nav-client.directive';
-import { StorageService } from './public/components/login/service/storage.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HelperConvertService } from './helpers/helperConvert.service';
 
 const routes: Routes = [
   // {path: 'home', component:AppComponent},
@@ -24,12 +24,12 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ToastrModule.forRoot(),
     PublicModule,
+    NgbModule,
   ],
   declarations: [
     AppComponent,
-    NavClientDirective,
   ],
-  providers: [],
+  providers: [HelperConvertService],
   bootstrap: [AppComponent]
 })
 

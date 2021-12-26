@@ -5,6 +5,13 @@
   padding: 2%;
 }
 
+.tarjeta_seccion {
+  background-color: white;
+  margin: 2%;
+  border-radius: 20px;
+  padding: 5%;
+}
+
 .nav_general_lateral {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
