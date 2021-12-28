@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuService } from './service/menus.service';
 import { MenuComponent } from './menu.component';
 import { DateModule } from '../date/date.module';
+import { MenuListComponent } from './menuList/menuList.component';
 
 
 
@@ -24,10 +25,10 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     DateModule,
-
   ],
   declarations: [
-    MenuComponent
+    MenuComponent,
+    MenuListComponent
   ],
   exports: [
     // RouterModule,

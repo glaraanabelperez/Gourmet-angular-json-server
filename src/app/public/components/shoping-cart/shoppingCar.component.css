@@ -29,13 +29,14 @@
   margin: 0% 5% 0% 5%;
 }
 
-.menu .table li {
-  list-style: none;
-}
-
-.menu .table button {
-  background: none;
-  border: none;
+.menu .input_menus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .toast-custom {
@@ -64,4 +65,4 @@
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Aquí van los estilos */
 }
-/*# sourceMappingURL=menu.component.css.map */
+/*# sourceMappingURL=shoppingCar.component.css.map */

@@ -7,14 +7,15 @@ import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { DateModule } from '../../date/date.module';
-import { ShoppingCarService } from '../service/shoppingCar.service';
+import { DateModule } from '../date/date.module';
+import { ShoppingCarService } from './service/shoppingCar.service';
+import { ShoppingCar } from './shoppingCar.component';
 
 
 
 const routes: Routes = [
+  {path: 'shopping', component:ShoppingCar},
 ];
-
 @NgModule({
   imports: [
     CommonModule,
@@ -22,10 +23,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DateModule,
-
   ],
   declarations: [
+    ShoppingCar
   ],
   exports: [
     // RouterModule,

@@ -12,7 +12,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NavAuthComponent } from './components/navAuth/navAuth.component';
 import { NavClientComponent } from './components/navClient/navClient.component';
 import { MenusModule } from './components/menu/menu.module';
-import { ShoppingCarModule } from './components/shoping-cart/module/shoppingCar.module';
+import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
 
 
 @NgModule({

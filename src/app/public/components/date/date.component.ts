@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgbDateStruct, NgbCalendar, NgbDatepicker} from '@ng-bootstrap/ng-bootstrap';
-import { DateService } from './service/date.service';
+import { DateOrdersService } from './service/dateOrders.service';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class DateComponent implements OnInit {
 
   model: NgbDateStruct;
 
-  constructor(private calendar: NgbCalendar, private _serviceDate:DateService) {
+  constructor(private calendar: NgbCalendar, private _serviceDate:DateOrdersService) {
     this.model = this.calendar.getToday();
     this.emitDate(this.model)
    }

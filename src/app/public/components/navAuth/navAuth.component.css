@@ -26,9 +26,8 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   padding: 20px;
-  margin: 20px;
   position: absolute;
-  bottom: 2%;
+  top: 125px;
   right: 0%;
 }
 

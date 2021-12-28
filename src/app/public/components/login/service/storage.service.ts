@@ -40,11 +40,11 @@ export class StorageService{
 
   private setPermissions(){
     let user=JSON.parse(this.localStorageService.getItem('session'));
-    let permision={
+    let newPermision={
       isUser: user.user,
       isAdmin:user.authAdmin
     }
-    this.permissions.next(permision);    
+    this.permissions.next(newPermision);    
   }
 
 

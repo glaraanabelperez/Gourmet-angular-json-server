@@ -10,7 +10,6 @@ import { PublicModule } from './public/public.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HelperConvertService } from './helpers/helperConvert.service';
 
 const routes: Routes = [
   // {path: 'home', component:AppComponent},
@@ -29,7 +28,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
   ],
-  providers: [HelperConvertService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 

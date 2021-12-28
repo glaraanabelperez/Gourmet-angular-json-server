@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import {FormsModule} from '@angular/forms';
-import { DateService } from './service/date.service';
+import { DateOrdersService } from './service/dateOrders.service';
 import { DateComponent } from './date.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +24,7 @@ import { BrowserModule } from '@angular/platform-browser';
   exports: [
     DateComponent
   ],
-  providers: [DateService],
+  providers: [DateOrdersService],
 
 })
 export class DateModule { }

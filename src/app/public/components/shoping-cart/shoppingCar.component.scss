@@ -8,18 +8,10 @@
     width: 100%;
     margin: 0% 5% 0% 5%;
   }
-  .table{
-      li{
-        list-style: none;
-      }
-      button{
-        background: none;
-        border: none;
-       }
-    
+  .input_menus{
+    display: flex;
+    flex-direction: row;
   }
-  
-  
 }
 .toast-custom {
   bottom: 0px;  

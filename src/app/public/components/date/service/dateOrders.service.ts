@@ -10,7 +10,7 @@ import { StorageService } from '../../login/service/storage.service';
   providedIn: 'root'
 })
 
-export class DateService{
+export class DateOrdersService{
   
   private date: any = new BehaviorSubject<any>(null);
   public date$ = this.date.asObservable();
@@ -25,17 +25,17 @@ export class DateService{
   setDate(dateSelected){
     let date=this.convertToDate(dateSelected)
     if(this.verifyingPastDateToString(new Date(),date)){
-      if(this.sessionAdmin){
+      this.toastr.warning('Los pedidos solo se pueden realizar con un dia de anticipacion', 'Seleccione otra fecha!')
+    }else{
         this.date.next(date);
-      }else{
-        this.toastr.warning("Seleccione una fecha que no haya pasado!")
       }
     }
 
-  }
-
   verifyingPastDateToString(today:Date, dateSelected:any):boolean{
-    return today > dateSelected;
+    if(today > dateSelected){
+      return true;
+    }
+    return false;
   }
 
 
