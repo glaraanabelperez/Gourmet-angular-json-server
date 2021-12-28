@@ -13,6 +13,7 @@ import { NavAuthComponent } from './components/navAuth/navAuth.component';
 import { NavClientComponent } from './components/navClient/navClient.component';
 import { MenusModule } from './components/menu/menu.module';
 import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
+import { MealsComponent } from './components/meals/meals/meals.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module'
   declarations: [
     NavComponent, 
     NavAuthComponent,
-    NavClientComponent
+    NavClientComponent,
+    MealsComponent
   ],
   exports: [
     RouterModule,

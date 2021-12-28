@@ -6,7 +6,7 @@ import { MenuService } from '../service/menus.service';
 
 @Component({
   selector: 'app-menuList',
-  templateUrl: './menuList.component.html',
+  templateUrl: './menu-list.component.html',
   styleUrls: ['./menuList.component.scss']
 })
 export class MenuListComponent implements OnInit {
@@ -27,8 +27,7 @@ export class MenuListComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getMenus(date:any){
     this._menusService.getMenus(date).subscribe(res=>{
