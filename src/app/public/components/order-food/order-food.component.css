@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap");
+.padding {
+  padding: 2%;
+}
+
+.tarjeta_seccion {
+  background-color: white;
+  margin: 2%;
+  border-radius: 5px;
+  padding: 5%;
+}
+
+.titulo_seccion {
+  font-size: 22px;
+  background-color: #83E8B5;
+  color: white;
+  font-weight: 600;
+}
+/*# sourceMappingURL=menu.component.css.map */

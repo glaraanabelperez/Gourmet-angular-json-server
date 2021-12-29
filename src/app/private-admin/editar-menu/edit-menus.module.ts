@@ -4,17 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
-
-import { ShoppingCarService } from './service/shoppingCar.service';
-import { ShoppingCar } from './shoppingCar.component';
-
+import { EditMenusComponent } from './edit-menus.component';
+import { MenuListModule } from 'src/app/shared/menu/menu-list.module';
+// import { MenusModule } from 'src/app/shared/menu/menu-list.module';
 
 
 const routes: Routes = [
-  {path: 'shopping', component:ShoppingCar},
+   {path: 'edit-menus', component:EditMenusComponent},
 ];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,14 +21,15 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MenuListModule
   ],
   declarations: [
-    ShoppingCar
+    EditMenusComponent
   ],
   exports: [
     // RouterModule,
   ],
-  providers: [ShoppingCarService],
+  providers: [],
 
 })
-export class ShoppingCarModule { }
+export class EditMenuModule { }

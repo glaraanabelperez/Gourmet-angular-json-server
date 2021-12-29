@@ -89,27 +89,105 @@
   }
 }
 
-.root {
-  width: 80%;
-  margin: auto;
+.nav_general {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  margin: 0.5% 0% 0.5% 0%;
+  padding: 0.5% 0.5% 0.5% 9%;
 }
 
-.espacio_bottom {
-  display: none;
+.nav_general button {
+  background-color: white;
+  border: none;
+  width: 10%;
+  cursor: pointer;
+}
+
+.nav_general button sub {
+  color: #fffbfb;
+  font-weight: 600;
+  background-color: crimson;
+  padding: 3px;
+  border-radius: 3px;
+  margin: 3px;
+}
+
+.nav_general button .logo {
+  width: 80px;
+}
+
+.nav_general button img {
+  width: 40px;
+}
+
+.nav_general button h5 {
+  margin: 2% 1% 1% 1%;
+  font-size: 1.1rem;
+  color: grey;
+}
+
+.nav_general button:focus h5 {
+  text-decoration: underline;
+}
+
+.targ_route {
+  width: 10%;
+  margin: 2% 5% 2% 2%;
+  background-color: #23B0C3;
+  border-radius: 3px;
+}
+
+.targ_route p {
+  text-align: center;
+  margin: auto;
+  padding: 5%;
+  color: white;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-  .root {
-    width: 100%;
-    float: none;
+  .nav_general {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin: 0.5% 0% 0.5% 0%;
+    padding: 0.5% 0.5% 0.5% 0.5%;
   }
-  .espacio_bottom {
-    display: block;
-    height: 120px;
+  .nav_general button {
+    width: 15%;
+  }
+  .nav_general button .logo {
+    width: 40px;
+  }
+  .nav_general button img {
+    width: 30px;
+  }
+  .nav_general button h5 {
+    display: none;
+  }
+  .targ_route {
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  .targ_route p {
+    padding: 2%;
   }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Aquí van los estilos */
 }
-/*# sourceMappingURL=app.component.css.map */
+/*# sourceMappingURL=nav.component.css.map */

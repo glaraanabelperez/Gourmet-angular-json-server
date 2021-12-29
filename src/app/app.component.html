@@ -1,7 +1,7 @@
-
 <app-nav></app-nav>
 <div class="root padding">
     <router-outlet></router-outlet>
 </div>
+<div class="espacio_bottom"></div>
 <app-navAuth *ngIf="sessionAdmin"></app-navAuth>
 <app-navCliente *ngIf="sessionUser" ></app-navCliente>

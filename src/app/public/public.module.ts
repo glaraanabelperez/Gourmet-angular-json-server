@@ -8,12 +8,13 @@ import { FormsModule } from '@angular/forms';
 
 import { LoginModule } from './components/login/login.module';
 
-import { NavComponent } from './components/nav/nav.component';
-import { NavAuthComponent } from './components/navAuth/navAuth.component';
-import { NavClientComponent } from './components/navClient/navClient.component';
-import { MenusModule } from './components/menu/menu.module';
-import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
-import { MealsComponent } from './components/meals/meals/meals.component';
+import { NavComponent } from './components/navs/nav/nav.component';
+import { NavAuthComponent } from './components/navs/navAuth/navAuth.component';
+import { NavClientComponent } from './components/navs/navClient/navClient.component';
+import { OrderFoodModule } from './components/order-food/order-food.module';
+// import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
+// import { MenusModule } from '../shared/menu/menu.module';
+// import { MealModule } from '../shared/meals/meal.module';
 
 
 @NgModule({
@@ -23,14 +24,14 @@ import { MealsComponent } from './components/meals/meals/meals.component';
     ReactiveFormsModule,
     HttpClientModule,
     LoginModule,
-    MenusModule,
-    ShoppingCarModule
+    OrderFoodModule
+    // ShoppingCarModule,
+    // MealModule
   ],
   declarations: [
     NavComponent, 
     NavAuthComponent,
-    NavClientComponent,
-    MealsComponent
+    NavClientComponent
   ],
   exports: [
     RouterModule,

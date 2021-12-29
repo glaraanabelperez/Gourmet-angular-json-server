@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { Menu } from '../../menu/models/menus.model';
+import { Menu } from '../../../../shared/menu/models/menus.model';
 import UtilsShoppingCart from '../helpers/utilsShoppingCart';
 import { OrdersDto } from '../model/ordersDto.module';
 

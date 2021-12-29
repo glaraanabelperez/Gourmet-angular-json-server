@@ -1,0 +1,28 @@
+<nav class="nav_general">
+    <button>
+        <img src="assets/icons/casa.png" alt="">
+        <h5>Home</h5>
+    </button>
+    <button [routerLink]="['/order-food']">
+        <img src="assets/icons/men.png" alt="">
+        <h5>Ordenar</h5>
+    </button>
+    <button [routerLink]="['/meals']">
+        <img  src="assets/icons/comidas.png" alt="">
+        <h5>La cocina</h5>
+    </button>
+    <button>
+        <sub>{{total}}</sub>
+        <img src="assets/icons/car.png" alt="">
+        <h5>Carrito </h5>
+    </button>
+    <button [routerLink]="['/login']">
+        <img src="assets/icons/login.png" alt="">
+        <h5>Login</h5>
+    </button>
+    <button>
+        <img class="logo" src="assets/icons/logo.png" alt="">
+    </button>
+</nav>
+
+

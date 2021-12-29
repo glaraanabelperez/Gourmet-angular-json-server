@@ -11,16 +11,18 @@
 }
 
 .titulo_seccion {
-  width: 95%;
-  background-color: white;
+  text-align: right;
+  width: 20%;
+  background-color: #83E8B5;
   padding: 1%;
   border-radius: 2px;
   margin-bottom: 3%;
 }
 
 .titulo_seccion h3 {
+  text-align: center;
   font-size: 22px;
-  color: black;
+  color: white;
   font-weight: 600;
 }
 
@@ -61,10 +63,6 @@
   color: #1a1919;
 }
 
-.nav_general_lateral button:focus h5 {
-  text-decoration: underline;
-}
-
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .nav_general_lateral {
     width: 100%;
@@ -85,8 +83,5 @@
   .nav_general_lateral button h5 {
     display: none;
   }
-  .titulo_seccion {
-    width: 100%;
-  }
 }
-/*# sourceMappingURL=general_styles.css.map */
+/*# sourceMappingURL=navClient.component.css.map */

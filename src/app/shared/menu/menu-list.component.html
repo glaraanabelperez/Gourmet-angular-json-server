@@ -1,0 +1,35 @@
+<div class="menu">
+  <app-date ></app-date>
+  <div class="tarjeta_seccion">
+    <div *ngIf="menus!=null else withoutMenus">
+      <p>{{date}}</p>
+      <h4>Para la fecha tenemos:</h4>
+    </div>
+    <ng-template #withoutMenus>
+      <h3>Seleccione una fecha</h3>
+      <h4>para ver el menu del dia</h4>
+    </ng-template> 
+    <br>
+    <table class="table table-striped">
+      <tbody>
+        <tr *ngFor="let m of menus">
+          <td scope="row">
+            <button (click)="sendShoppingCart(m)"><i class="bi bi-plus-square"></i></button>
+          </td>
+          <td>
+            <li *ngFor="let meal of m.meal">
+              <h5>Comida {{meal.type}}</h5>
+              <h6>{{meal.tittle}}</h6>
+              <h7>{{meal.description}}</h7>
+              <p>Estado: {{m.state}}</p>
+            </li>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+</div>
+

@@ -10,12 +10,88 @@ $carmin_ou:#FF4F44;
 $ligthBlueGreen:#78E5D8;
 $blue:#23B0C3;
 .padding{
-    padding: 2%;
+    padding: 1%;
 }
 .tarjeta_seccion{
     background-color: white;
-    margin: 2%;
     border-radius: 5px;
     padding: 5%;
 }
+.titulo_seccion{
+    width: 95%;
+    background-color: white;
+    padding: 1%;
+    border-radius: 2px;
+    margin-bottom:3%;
+    h3{
+        font-size: 22px;
+        color: black;
+        font-weight: 600;
+    }
+    
+}
+
+.nav_general_lateral{
+    box-sizing: border-box;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10x;
+    position: fixed;
+    bottom: 0px;
+    button{
+        background-color: white;
+        border: none;
+        width: 100%;
+        padding: 20px;     
+        cursor: pointer;
+        img{
+            width: 30px;
+            margin-left: 10px;
+        }
+        h5{
+            margin: auto;
+            color: rgb(26, 25, 25);
+        }
+    }
+    button:focus{
+        h5{
+          text-decoration: underline;
+        }
+    }
+}
+
+
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 768px) { 
+    .nav_general_lateral{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin: 0.5% 0% 0.5% 0%;
+        padding: 0.5% 5% 0.5% 5%;
+        bottom: 0%;
+        button{
+            img{
+                width: 30px;
+            }
+            h5{
+                display: none;
+            }
+        }
+       
+    }
+    .titulo_seccion{
+        width: 100%;
+    }
+
+  }
+
+  // Para iPad
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  {}
 

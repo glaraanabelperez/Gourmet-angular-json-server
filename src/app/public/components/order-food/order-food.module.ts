@@ -6,15 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
-
-import { ShoppingCarService } from './service/shoppingCar.service';
-import { ShoppingCar } from './shoppingCar.component';
+import { OrderFoodComponent } from './order-food.component';
+import { MenuListModule } from 'src/app/shared/menu/menu-list.module';
 
 
 
 const routes: Routes = [
-  {path: 'shopping', component:ShoppingCar},
+   {path: 'order-food', component:OrderFoodComponent},
 ];
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,14 +22,15 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MenuListModule
   ],
   declarations: [
-    ShoppingCar
+    OrderFoodComponent,
   ],
   exports: [
-    // RouterModule,
+    OrderFoodComponent,
   ],
-  providers: [ShoppingCarService],
+  providers: [],
 
 })
-export class ShoppingCarModule { }
+export class OrderFoodModule { }

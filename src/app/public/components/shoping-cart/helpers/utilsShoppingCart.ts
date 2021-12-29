@@ -1,4 +1,4 @@
-import { Menu } from "../../menu/models/menus.model";
+import { Menu } from "../../../../shared/menu/models/menus.model";
 import { OrdersDto } from "../model/ordersDto.module";
 
 export default  class UtilsShoppingCart{

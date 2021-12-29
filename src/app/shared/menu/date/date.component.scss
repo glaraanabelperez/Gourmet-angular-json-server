@@ -1,0 +1,23 @@
+@import '../../../styles/general_styles.scss';
+
+.calendar{
+  margin-bottom: 5%;
+  background-color: white;
+  margin-left: 0%;
+}
+
+
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px) { 
+    .calendar{
+      margin-bottom: 5%;
+      background-color: white;
+      margin-left: 20%;
+    }
+  }
+
+  // Para iPad
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  { /* Aquí van los estilos */}

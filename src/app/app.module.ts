@@ -10,6 +10,7 @@ import { PublicModule } from './public/public.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PrivateAdminModul } from './private-admin/private-admin.modul';
 
 const routes: Routes = [
   // {path: 'home', component:AppComponent},
@@ -23,11 +24,13 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ToastrModule.forRoot(),
     PublicModule,
+    PrivateAdminModul,
     NgbModule,
   ],
   declarations: [
     AppComponent,
   ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

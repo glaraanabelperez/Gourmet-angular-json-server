@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "list-meals.component.scss"
+    ],
+    "names": [],
+    "file": "list-meals.component.css"
+}
