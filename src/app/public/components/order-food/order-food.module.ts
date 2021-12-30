@@ -30,7 +30,6 @@ const routes: Routes = [
     OrderFoodComponent,
   ],
   exports: [
-    OrderFoodComponent,
   ],
   providers: [],
 

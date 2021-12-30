@@ -4,5 +4,5 @@ export class Menu{
     id:number
     date:Date;
     state:string; 
-    meals: Meals;
+    meal: Meals;
 }

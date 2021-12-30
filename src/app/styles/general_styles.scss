@@ -9,6 +9,22 @@ $verde_gou:#83E8B5;
 $carmin_ou:#FF4F44;
 $ligthBlueGreen:#78E5D8;
 $blue:#23B0C3;
+p{
+    text-align: left;
+}
+h3{
+    font-size: 1.8rem;
+    text-align: left;
+}
+h4{
+    font-size: 1.5rem;
+    color: gray;
+    text-align: left;
+}
+h5{
+    font-size: 1.2rem;
+}
+
 .padding{
     padding: 1%;
 }
@@ -20,7 +36,7 @@ $blue:#23B0C3;
 .titulo_seccion{
     width: 100%;
     background-color: white;
-    padding: 1%;
+    padding: 2%;
     border-radius: 2px;
     margin-bottom:3%;
     h3{
@@ -63,10 +79,28 @@ $blue:#23B0C3;
     }
 }
 
+.date-menu{
+    display:flex;
+    flex-direction:row;
+    margin: auto;
+    app-menuList{
+        width: 100%;
+    }
+}
+
 
 @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 768px) { 
+    p{
+        text-align: center;
+    }
+    h3{
+        text-align: center;
+    }
+    h4{
+        text-align: center;
+    }
     .nav_general_lateral{
         width: 100%;
         display: flex;
@@ -88,7 +122,17 @@ $blue:#23B0C3;
         width: 100%;
     }
 
+    .date-menu{
+        display:flex;
+        flex-direction:column;
+        margin: auto;
+        app-menuList{
+            width: 100%;
+        }
+    }
+
   }
+
 
   // Para iPad
 @media only screen

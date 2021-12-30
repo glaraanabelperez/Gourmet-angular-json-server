@@ -24,7 +24,6 @@ export class MenuListComponent implements OnInit {
   }
 
   ngOnChanges(){
-    console.log("date input", this.date)
     if(this.date!=null){
       this.getMenus(this.date);
     }
@@ -42,7 +41,7 @@ export class MenuListComponent implements OnInit {
     });
   }
 
-  public sendShoppingCart(menu){
+  public sendShoppingCart(menu :Menu){
     this.menu.emit(menu);
   }
 

@@ -17,15 +17,20 @@ endpoint: string='menus';
   constructor(private http: HttpClient) {
   }
   
-  getMenus(dateSelected:Date): Observable<Array<Menu>> {
+  public getMenus(dateSelected:Date): Observable<Array<Menu>> {
     let date:string = "?date=" + this.setDateString(dateSelected);
     let url=environment.apiUrl + this.endpoint + date;
     return this.http.get<Array<Menu>>(url);
   }
 
-  setDateString(date:Date):string{
+  public setDateString(date:Date):string{
     let d=date.getUTCFullYear() + "-" + (date.getUTCMonth()+1) + "-" + (date.getUTCDate());
     return  d;
   }
 
+  public desactivarMenu(menu){
+    let id:string = "/" + (menu.id).toString();
+    let url=environment.apiUrl + this.endpoint + id;
+    return this.http.put(url, menu);
+  }
 }
