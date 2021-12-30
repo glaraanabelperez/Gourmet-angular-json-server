@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuListComponent } from './menu-list.component';
 import { MenuService } from './service/menus.service';
-import { DateModule } from './date/date.module';
+import { DateModule } from '../date/date.module';
 
 
 
@@ -17,7 +17,7 @@ import { DateModule } from './date/date.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DateModule
+    // DateModule
   ],
   declarations: [
     MenuListComponent

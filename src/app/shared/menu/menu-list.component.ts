@@ -1,7 +1,6 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { DateOrdersService } from './date/service/dateOrders.service';
+import { DateOrdersService } from '../date/service/dateOrders.service';
 import { Menu } from './models/menus.model';
 import { MenuService } from './service/menus.service';
 
@@ -12,40 +11,39 @@ import { MenuService } from './service/menus.service';
 })
 export class MenuListComponent implements OnInit {
 
-  @Output() sendMenu: EventEmitter<Menu> = new EventEmitter();
+  @Input() date: Date;
+  @Output() menu: EventEmitter<Menu> = new EventEmitter();
+  
   public menus:Menu[]=null;
   public menusOk=false;
-  public date:any;
+    
+  constructor( private _menusService:MenuService, private toastr: ToastrService) {}
 
-  constructor(
-    private _menusService:MenuService, 
-    private _serviceDate:DateOrdersService, 
-    private toastr: ToastrService
-    ) {
-    this._serviceDate.date$.subscribe(result => {
-      if(result){
-        this.date=result;
-        this.getMenus(result);
-      }
-    })
+  ngOnInit(): void {
+    this.date=null;
   }
 
-  ngOnInit(): void {}
+  ngOnChanges(){
+    console.log("date input", this.date)
+    if(this.date!=null){
+      this.getMenus(this.date);
+    }
+  }
 
-  getMenus(date:any){
+  public getMenus(date:Date){
     this._menusService.getMenus(date).subscribe(res=>{
       if(res.length>0){
         this.menus=res.slice();
+        console.log("menu", res)
       }else{
         this.menus=null;
-        const options= { positionClass:'toast-custom' };
-        this.toastr.warning('No hay menus disponibles', 'Seleccione otra fecha!', options);
+        this.toastr.warning('NO HAY MENUS DISPONIBLES', 'SELECCIONE OTRA FECHA!');
       }
     });
   }
 
-  sendShoppingCart(menu){
-    this.sendMenu.emit(menu);
+  public sendShoppingCart(menu){
+    this.menu.emit(menu);
   }
 
 }

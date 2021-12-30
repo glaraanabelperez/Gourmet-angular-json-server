@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditMenusComponent } from './edit-menus.component';
 import { MenuListModule } from 'src/app/shared/menu/menu-list.module';
-// import { MenusModule } from 'src/app/shared/menu/menu-list.module';
 
 
 const routes: Routes = [

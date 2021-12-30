@@ -1,8 +1,7 @@
 <div class="menu">
-  <app-date ></app-date>
+  <!-- <app-date (click)="sendShoppingCart(m)" ></app-date> -->
   <div class="tarjeta_seccion">
     <div *ngIf="menus!=null else withoutMenus">
-      <p>{{date}}</p>
       <h4>Para la fecha tenemos:</h4>
     </div>
     <ng-template #withoutMenus>

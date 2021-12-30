@@ -16,14 +16,13 @@ export class ShoppingCarService{
   public ordersInProgress:Array<OrdersDto>=[];
 
 
-  constructor(private toastr: ToastrService) {
-
-  }
+  constructor(private toastr: ToastrService) {}
 
   public contador(n:number){
     this.total+=n;
     this.totalSubject.next(this.total);
   }
+  
   public checkItemInOrder(id):boolean{
     for(let i=0; i<this.ordersInProgress.length; i++){
       if(this.ordersInProgress[i].menu.id==id){
@@ -55,7 +54,7 @@ export class ShoppingCarService{
 
   public setItemShoppingCart(menu:Menu){
     if(this.checkItemInOrder(menu.id)){
-      this.toastr.warning('Vaya a la seccion del carrito para administrar el pedido!');
+      this.toastr.warning('PARA ADMINISTRAR EL PEDIDO VAYA A LA SECCION DEL CARRITO!');
     }else{
       let order:OrdersDto = UtilsShoppingCart.mapMenuToOrdersDto(menu, new OrdersDto())
       order.count=1;

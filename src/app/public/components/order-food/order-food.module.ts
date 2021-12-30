@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrderFoodComponent } from './order-food.component';
 import { MenuListModule } from 'src/app/shared/menu/menu-list.module';
+import { DateModule } from 'src/app/shared/date/date.module';
 
 
 
@@ -22,7 +23,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MenuListModule
+    MenuListModule,
+    DateModule
   ],
   declarations: [
     OrderFoodComponent,

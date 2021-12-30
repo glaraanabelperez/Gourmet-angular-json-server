@@ -24,8 +24,7 @@ import { OrderFoodModule } from './components/order-food/order-food.module';
     ReactiveFormsModule,
     HttpClientModule,
     LoginModule,
-    OrderFoodModule
-    // ShoppingCarModule,
+    OrderFoodModule,
     // MealModule
   ],
   declarations: [

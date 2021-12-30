@@ -1,1 +1,9 @@
 @import '../../../styles/general_styles.scss';
+.order{
+    display:flex;
+    flex-direction:row;
+    margin: auto;
+    app-menuList{
+        width: 100%;
+    }
+}

@@ -1,4 +1,8 @@
 <div class="titulo_seccion">
-    <h3>Hacer pedido</h3>
+    <h3>Haga su pedido</h3>
 </div>
-<app-menuList (sendMenu)="onClickMenu($event)"></app-menuList>
+<div class="order">
+    <app-date (dateSelected)="setDate($event)"></app-date>
+    <app-menuList [date]="date" (menu)="onClickMenu($event)"></app-menuList>
+</div>
+
