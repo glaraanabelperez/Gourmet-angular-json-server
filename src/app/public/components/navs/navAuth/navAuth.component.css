@@ -1,5 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap");
+p {
+  text-align: left;
+}
+
+h3 {
+  font-size: 1.8rem;
+  text-align: left;
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: gray;
+  text-align: left;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
 .padding {
   padding: 1%;
 }
@@ -7,22 +26,21 @@
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
-  padding: 5%;
+  padding: 3%;
+  width: 95% !important;
+  margin: auto;
 }
 
 .titulo_seccion {
-  text-align: right;
-  width: 20%;
-  background-color: #83E8B5;
-  padding: 1%;
-  border-radius: 2px;
+  width: 100%;
+  background-color: white;
+  padding: 2% 2% 1% 2%;
+  border-radius: 5px;
   margin-bottom: 3%;
 }
 
 .titulo_seccion h3 {
-  text-align: center;
-  font-size: 22px;
-  color: white;
+  color: black;
   font-weight: 600;
 }
 
@@ -63,7 +81,35 @@
   color: #1a1919;
 }
 
+.nav_general_lateral button:focus h5 {
+  text-decoration: underline;
+}
+
+.date-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: auto;
+}
+
+.date-menu app-menuList {
+  width: 100%;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  p {
+    text-align: center;
+  }
+  h3 {
+    text-align: center;
+  }
+  h4 {
+    text-align: center;
+  }
   .nav_general_lateral {
     width: 100%;
     display: -webkit-box;
@@ -82,6 +128,22 @@
   }
   .nav_general_lateral button h5 {
     display: none;
+  }
+  .titulo_seccion {
+    width: 100%;
+  }
+  .date-menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: auto;
+  }
+  .date-menu app-menuList {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=navAuth.component.css.map */

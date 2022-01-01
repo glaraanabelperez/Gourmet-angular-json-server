@@ -12,9 +12,8 @@ import { NavComponent } from './components/navs/nav/nav.component';
 import { NavAuthComponent } from './components/navs/navAuth/navAuth.component';
 import { NavClientComponent } from './components/navs/navClient/navClient.component';
 import { OrderFoodModule } from './components/order-food/order-food.module';
-// import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
-// import { MenusModule } from '../shared/menu/menu.module';
-// import { MealModule } from '../shared/meals/meal.module';
+import { MealModule } from './components/meals/meal.module';
+
 
 
 @NgModule({
@@ -25,7 +24,7 @@ import { OrderFoodModule } from './components/order-food/order-food.module';
     HttpClientModule,
     LoginModule,
     OrderFoodModule,
-    // MealModule
+    MealModule
   ],
   declarations: [
     NavComponent, 

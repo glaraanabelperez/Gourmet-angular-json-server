@@ -1,15 +1,14 @@
-<div class="menu">
-  <!-- <app-date (click)="sendShoppingCart(m)" ></app-date> -->
-  <div class="tarjeta_seccion">
-    <div *ngIf="menus!=null else withoutMenus">
-      <h4>Para la fecha tenemos:</h4>
-    </div>
-    <ng-template #withoutMenus>
-      <h3>Seleccione una fecha</h3>
-      <h4>para ver el menu del dia</h4>
-    </ng-template> 
-    <br>
-    <table class="table table-striped">
+<div class="tarjeta_seccion">
+  <div *ngIf="menus!=null else withoutMenus">
+    <h4>Para esta fecha</h4>
+    <h5>tenemos los siguientes menus</h5>
+  </div>
+  <ng-template #withoutMenus>
+    <h3>Seleccione una fecha</h3>
+    <h4>para ver el menu del dia</h4>
+  </ng-template> 
+  <br>
+  <table class="table table-striped">
       <tbody>
         <tr *ngFor="let m of menus">
           <td scope="row">
@@ -25,7 +24,6 @@
           </td>
         </tr>
       </tbody>
-    </table>
-  </div>
+  </table>
 </div>
 

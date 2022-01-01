@@ -1,0 +1,40 @@
+<div class="titulo_seccion">
+    <h3>Editar menu</h3>
+    <P style="color:#5e9e7d; font-weight: 600;">En esta seccion podra elimiar y agregar  menus.</P>
+</div>
+<button  class="btn btn-outline-primary" type="button" (click)="showMeals()">Nuevo Menu</button><br><br>
+<!--deberia ser un componente-->
+<div *ngIf="menu!=null">
+  <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td  style="padding:3%;">
+            <li style="list-style: none;" *ngFor="let meal of menu.meal">
+              <h5>Comida {{meal.type}}</h5>
+              <h6>{{meal.tittle}}</h6>
+              <h7>{{meal.description}}</h7>
+              <p>Estado: {{menu.state}}</p>
+              <button style="float: right;" type="button"  (click)="cancel()" class="btn btn-dark">Cancelar</button>
+              <button style="float: right; margin-right: 10px;" type="button"  (click)="desactive(menu)" class="btn btn-danger">Eliminar</button>
+            </li>  
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="date-menu">
+  <app-date (dateSelected)="setDate($event)"></app-date>
+  <div class="tarjeta_seccion" style="margin-left: 20px;" *ngIf="_showMeals; else editMenus" >
+    <div class="target_meals" *ngIf="meals.length>0">
+      <div class="meals_tar" style="margin-bottom: 5%;">
+        <button *ngFor="let m of meals; let i = index" type="button" class="btn btn-outline-success" (click)="deleteIndex(i)">{{m.tittle}}</button>
+      </div>
+      <button style="margin-bottom: 5%; margin-right: 3%;" type="button" class="btn btn-info" (click)="insertMenu()">Guardar</button>
+      <button style="margin-bottom: 5%;" type="button" class="btn btn-dark" (click)="cancelMenu()">Cancel</button>
+    </div>
+    <app-list-meals (meal)="pushMeals($event)"></app-list-meals>
+  </div>
+  <ng-template #editMenus>
+    <app-menuList [date]="date" (menu)="editMenu($event)"></app-menuList>
+  </ng-template>
+</div>

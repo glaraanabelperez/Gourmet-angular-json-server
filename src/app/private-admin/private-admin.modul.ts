@@ -4,7 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { EditMenuModule } from './editar-menu/edit-menus.module';
+import { EditMenuModule } from './menu/menus.module';
+import { OrdersModule } from './orders/orders.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { EditMenuModule } from './editar-menu/edit-menus.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    EditMenuModule
+    EditMenuModule,
+    OrdersModule
   ],
   declarations: [],
   exports: [],

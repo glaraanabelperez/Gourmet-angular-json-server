@@ -6,9 +6,10 @@ $font_btn:12px;
 $grey_gou:gainsboro;
 $yellow_gou:#FFDA80;
 $verde_gou:#83E8B5;
+$verde_gou_dark:#4a8f6c;
 $carmin_ou:#FF4F44;
 $ligthBlueGreen:#78E5D8;
-$blue:#23B0C3;
+$blue:#0d6efd;;
 p{
     text-align: left;
 }
@@ -31,16 +32,17 @@ h5{
 .tarjeta_seccion{
     background-color: white;
     border-radius: 5px;
-    padding: 5%;
+    padding: 3%;
+    width: 95% !important;
+    margin: auto;
 }
 .titulo_seccion{
     width: 100%;
     background-color: white;
-    padding: 2%;
-    border-radius: 2px;
+    padding: 2% 2% 1% 2%;
+    border-radius: 5px;
     margin-bottom:3%;
     h3{
-        font-size: 22px;
         color: black;
         font-weight: 600;
     }

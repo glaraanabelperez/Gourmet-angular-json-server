@@ -19,7 +19,6 @@ export class DateComponent implements OnInit {
   ngOnInit(): void {
     this.model = this.calendar.getToday();
     this.emitDate(this.model)
-    console.log("aca")
   }
 
   emitDate(d){

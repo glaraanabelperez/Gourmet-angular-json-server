@@ -1,0 +1,29 @@
+<div class="image_meals">
+    <img src="assets/imagenes-meals/1.jpg" alt="">
+     <img src="assets/imagenes-meals/2.jpg" alt="">
+      <img src="assets/imagenes-meals/3.jpg" alt="">
+      <img src="assets/imagenes-meals/4.jpg" alt="">
+     <img src="assets/imagenes-meals/5.jpg" alt="">
+    <img src="assets/imagenes-meals/6.jpg" alt="">
+</div>
+<div class="tarjeta_seccion">
+    <table class="table table-striped">
+        <tbody>
+          <tr *ngFor="let m of meals">
+            <td>
+              <li>
+                 <h5>Comida {{m.type}}</h5>
+                 <h6>{{m.tittle}}</h6>
+                 <h7>{{m.description}}</h7>
+                 <p>Estado: {{m.state}}</p>
+                 <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
+                  <a (click)="edit(m)"><i class="bi bi-pencil-fill"></i></a>
+                  <a (click)="delete(m)"><i class="bi bi-trash-fill"></i></a>
+                  <a (click)="send(m)"><i class="bi bi-file-plus-fill"></i> Agregar comida al menu</a>
+                 </div>
+              </li>  
+            </td>            
+          </tr>
+        </tbody>
+    </table>
+</div>

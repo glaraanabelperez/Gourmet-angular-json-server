@@ -1,22 +1,13 @@
 @import '../../styles/general_styles.scss';
 
-.menu{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  .tarjeta_seccion{
-    width: 100% !important;
-    margin: 0% 0% 0% 5%;
+.table{
+  li{
+    list-style: none;
   }
-  .table{
-      li{
-        list-style: none;
-      }
-      button{
-        background: none;
-        border: none;
-       }
-    }
+  button{
+    background: none;
+    border: none;
+   }
 }
 .toast-custom {
   bottom: 0px;  

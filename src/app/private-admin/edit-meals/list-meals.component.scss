@@ -1,0 +1,31 @@
+@import '../../styles/general_styles.scss';
+
+.image_meals{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+    img{
+        width: 15%;
+        margin-right: 2%;
+        border-radius: 5px;
+    }
+}
+
+.table{
+    a{
+        cursor: pointer;
+        .bi{
+            font-size: 20px;
+            margin: 1%;
+        }
+        .bi-file-plus-fill{
+            color: $blue;
+        }
+        .bi-trash-fill{
+            color: crimson;
+        }
+    }
+    li{
+        list-style: none;
+    }
+}

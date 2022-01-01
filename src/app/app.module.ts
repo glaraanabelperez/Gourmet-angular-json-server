@@ -23,9 +23,9 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     ToastrModule.forRoot(),
+    NgbModule,
     PublicModule,
     PrivateAdminModul,
-    NgbModule,
   ],
   declarations: [
     AppComponent,
