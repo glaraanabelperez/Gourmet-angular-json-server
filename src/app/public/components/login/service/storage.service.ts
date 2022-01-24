@@ -20,13 +20,16 @@ export class StorageService{
     this.setPermissions();
   }
 
+  public getPermissions(){
+    return this.currentSession;
+  }
+
   private loadSessionData(): Session{
     var sessionStr = this.localStorageService.getItem('session');
     return (sessionStr) ? <Session> JSON.parse(sessionStr) : null;
   }
 
   public logout(){
-    //desuscribir
     this.currentSession = null;
     this.localStorageService.clear();
     this.setPermissions();

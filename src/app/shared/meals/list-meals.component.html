@@ -17,9 +17,11 @@
                  <h7>{{m.description}}</h7>
                  <p>Estado: {{m.state}}</p>
                  <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
-                  <a (click)="edit(m)"><i class="bi bi-pencil-fill"></i></a>
-                  <a (click)="delete(m)"><i class="bi bi-trash-fill"></i></a>
-                  <a (click)="send(m)"><i class="bi bi-file-plus-fill"></i> Agregar comida al menu</a>
+                  <div *ngIf="action=='edit'">
+                    <a (click)="edit(m)"><i class="bi bi-pencil-fill"></i></a>
+                    <a (click)="delete(m)"><i class="bi bi-trash-fill"></i></a>
+                  </div>
+                  <a class="btn btn-outline-primary" (click)="send(m)" *ngIf="action=='new'">Agregar comida al menu</a>
                  </div>
               </li>  
             </td>            

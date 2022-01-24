@@ -22,13 +22,6 @@ export class AuthService{
     let url=environment.apiUrl + this.endpoint + data;
     return this.http.get<User>(url);
   }
-
-  logout(){
-    // this.dataPerson=null;
-    // this.auth=false;
-  }
-
  
-  
 
 }

@@ -12,7 +12,7 @@ import { MenuService } from './service/menus.service';
 export class MenuListComponent implements OnInit {
 
   @Input() date: Date;
-  @Output() menu: EventEmitter<Menu> = new EventEmitter();
+  @Output() _editMenu: EventEmitter<Menu> = new EventEmitter();
   
   public menus:Menu[]=null;
   public menusOk=false;
@@ -42,7 +42,7 @@ export class MenuListComponent implements OnInit {
   }
 
   public sendShoppingCart(menu :Menu){
-    this.menu.emit(menu);
+    this._editMenu.emit(menu);
   }
 
 }

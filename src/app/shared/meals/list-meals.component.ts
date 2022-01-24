@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { Meal } from './models/meals.model';
 import { ListMealService } from './service/meal.service';
@@ -10,7 +10,9 @@ import { ListMealService } from './service/meal.service';
 })
 export class ListMealsComponent implements OnInit {
   
+  @Input() action:string;
   @Output() meal: EventEmitter<Meal> = new EventEmitter();
+  
   public meals:Meal[]=[];
   public session: any=null;
 

@@ -19,6 +19,49 @@
       ]
     }
   ],
+  "orders": [
+    {
+      "id": 0,
+      "users": [
+        {
+          "id": 0,
+          "name": "adminGourmet",
+          "secondName": "admin",
+          "email": "glaraanabelperez@gmail.com",
+          "password": "123",
+          "telephone": 458965232145,
+          "direction": "The best football team in the world!",
+          "state": "activo",
+          "company": [
+            {
+              "id": 1,
+              "name": "Gourmet",
+              "direction": "Bs As",
+              "telephone": 4521362589
+            }
+          ]
+        }
+      ],
+      "menus": [
+        {
+          "id": 9,
+          "date": "2021-12-15",
+          "state": "activo",
+          "meal": [
+            {
+              "id": 0,
+              "type": "vegetariana",
+              "tittle": "Verduras Grilladas",
+              "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada."
+            }
+          ]
+        }
+      ],
+      "stateOrder": "pendiente",
+      "deliveryAdress": "La pampa 245",
+      "count": "1"
+    }
+  ],
   "meals": [
     {
       "id": 0,
@@ -46,7 +89,7 @@
     {
       "id": 9,
       "date": "2021-12-15",
-      "state": "activo",
+      "state": "inactivo",
       "meal": [
         {
           "id": 0,
@@ -136,7 +179,7 @@
     },
     {
       "id": 7,
-      "date": "2022-01-01",
+      "date": "2022-1-1",
       "state": "activo",
       "meal": [
         {
@@ -144,6 +187,13 @@
           "type": "vegetariana",
           "tittle": "Verduras Grilladas",
           "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada."
+        },
+        {
+          "id": 1,
+          "type": "vegetariana",
+          "tittle": "Verduras Grilladas",
+          "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada.",
+          "state": "activo"
         }
       ]
     }
