@@ -3,6 +3,6 @@
 </div>
 <div class="date-menu">
     <app-date (dateSelected)="setDate($event)"></app-date>
-    <app-menuList [date]="date" (menu)="onClickMenu($event)"></app-menuList>
+    <app-menuList [admin]="admin" [date]="date" (menu)="onClickMenu($event)"></app-menuList>
 </div>
 

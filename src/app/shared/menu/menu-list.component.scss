@@ -3,11 +3,12 @@
 .table{
   li{
     list-style: none;
+    .btn-warning{
+      border-radius: 20px;
+      margin: 2%;
+    }
   }
-  button{
-    background: none;
-    border: none;
-   }
+
 }
 .toast-custom {
   bottom: 0px;  
@@ -23,6 +24,15 @@
       .tarjeta_seccion{
         width: 100%;
         margin: 0%;
+        .titulo_fecha_menu{
+          h4{
+            text-align: center;
+          }
+          h5{
+            text-align: center;
+
+          }
+        }
       }
     }
   }

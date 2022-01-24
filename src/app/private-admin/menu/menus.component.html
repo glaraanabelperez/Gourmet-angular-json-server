@@ -1,8 +1,8 @@
 <div class="titulo_seccion">
-    <h3>Editar menu</h3>
-    <P style="color:#5e9e7d; font-weight: 600;">En esta seccion podra elimiar y agregar  menus.</P>
+    <h3>Editar Menu</h3>
+    <h4 style="font-weight: 600;">En esta seccion podra armar y eliminar el menu del dia.</h4>
 </div>
-<button  class="btn btn-outline-primary" type="button" (click)="new()">Nuevo Menu</button><br><br>
+<button  class="btn btn-primary" type="button" (click)="new()">Nuevo Menu</button><br><br>
 <div *ngIf="_editMenu!=null">
   <table class="table table-striped">
       <tbody>
@@ -35,6 +35,6 @@
     <app-list-meals [action]="action" (meal)="pushMeals($event)"></app-list-meals>
   </div>
   <ng-template #editMenus>
-    <app-menuList [date]="date" (_editMenu)="edit($event)"></app-menuList>
+    <app-menuList [admin]="admin" [date]="date" (_editMenu)="edit($event)"></app-menuList>
   </ng-template>
 </div>

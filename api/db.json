@@ -196,6 +196,19 @@
           "state": "activo"
         }
       ]
+    },
+    {
+      "id": 8,
+      "date": "2022-1-26",
+      "state": "activo",
+      "meal": [
+        {
+          "id": 0,
+          "type": "vegetariana",
+          "tittle": "Verduras Grilladas",
+          "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada."
+        }
+      ]
     }
   ]
 }

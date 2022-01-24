@@ -13,6 +13,11 @@ export class ListMealService {
 
   constructor(private http: HttpClient) {
   }
+
+  public deleteMeal(m){
+    let url=environment.apiUrl + this.endpoint ;
+    return this.http.delete(url, m);
+  }
   
   public getMelas(): Observable<Array<Meal>> {
     let url=environment.apiUrl + this.endpoint ;
@@ -22,5 +27,10 @@ export class ListMealService {
   public insert(m){
     let url=environment.apiUrl + this.endpoint ;
     return this.http.put(url, m);
+  }
+
+  public editMeals(m){
+    let url=environment.apiUrl + this.endpoint ;
+    return this.http.post(url, m);
   }
 }

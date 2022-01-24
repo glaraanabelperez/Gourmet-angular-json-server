@@ -11,8 +11,9 @@ import { ListMealService } from './service/meal.service';
 export class ListMealsComponent implements OnInit {
   
   @Input() action:string;
+  @Input() _reload: boolean;
   @Output() meal: EventEmitter<Meal> = new EventEmitter();
-  
+
   public meals:Meal[]=[];
   public session: any=null;
 
@@ -26,12 +27,20 @@ export class ListMealsComponent implements OnInit {
     this.get();
   }
 
-  public delete(){
-    console.log("OKBORRAR");
+  ngOnChanges(): void {
+    if(this._reload){
+      this.get();
+    }
   }
 
-  public edit(m){
-    // this.editMeal.emit(m);
+  public delete(m:Meal){
+    this._mealsService.deleteMeal(m).subscribe(res=>{
+      if(res){
+        console.log(res)
+      }else{
+        this.meals=null;
+      }
+    });  
   }
 
   public get(){

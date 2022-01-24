@@ -1,0 +1,29 @@
+<form class="col-sm" [formGroup]="formMeals" (ngSubmit)="Insert()">
+
+    <div class=" form-group mb-3">
+      <label for="type" class="form-label">Tipo Comida</label>
+      <input type="text" formControlName="type" class="form-control" id="type" [ngClass]="{ 'is-invalid':f.type.touched && f.type.errors }">
+      <div *ngIf="f.type.touched && f.type.errors" class="invalid-feedback"  >
+        <div *ngIf="f.type.errors.required">El Typo es Requerido</div>
+        <div *ngIf="f.type.errors.maxlength">Solo puede ingresar 40 caracteres</div>
+      </div>
+    </div>
+    <div class=" form-group mb-3">
+      <label for="title" class="form-label">Titulo</label>
+      <input type="text" formControlName="title" class="form-control" id="title" [ngClass]="{ 'is-invalid':f.title.touched && f.title.errors }">
+      <div *ngIf="f.title.touched && f.title.errors" class="invalid-feedback"  >
+        <div *ngIf="f.title.errors.required">El titulo es Requerido</div>
+        <div *ngIf="f.title.errors.maxlength">Solo puede ingresar 24 caracteres</div>
+      </div>
+    </div>
+    <div class=" form-group mb-3">
+        <label for="description" class="form-label">Descripcion</label>
+        <input type="text" formControlName="description" class="form-control" id="description" 
+          [ngClass]="{ 'is-invalid':f.description.touched && f.description.errors }">
+        <div *ngIf="f.description.touched && f.title.errors" class="invalid-feedback"  >
+          <div *ngIf="f.description.errors.required">La Descripcion es Requerido</div>
+          <div *ngIf="f.description.errors.maxlength">Solo puede ingresar 24 caracteres</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary"  [disabled]="formMeals.invalid">Guardar</button>
+  </form>

@@ -35,6 +35,12 @@ h5{
     padding: 3%;
     width: 95% !important;
     margin: auto;
+    h4{
+        color: black;
+    }
+    h5{
+        color: gray;
+    }
 }
 .titulo_seccion{
     width: 100%;
@@ -45,6 +51,10 @@ h5{
     h3{
         color: black;
         font-weight: 600;
+        text-align: center;
+    }
+    h4{
+        text-align: center;
     }
     
 }

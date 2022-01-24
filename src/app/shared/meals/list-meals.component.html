@@ -5,7 +5,7 @@
       <img src="assets/imagenes-meals/4.jpg" alt="">
      <img src="assets/imagenes-meals/5.jpg" alt="">
     <img src="assets/imagenes-meals/6.jpg" alt="">
-</div>
+</div><br>
 <div class="tarjeta_seccion">
     <table class="table table-striped">
         <tbody>
@@ -18,7 +18,7 @@
                  <p>Estado: {{m.state}}</p>
                  <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
                   <div *ngIf="action=='edit'">
-                    <a (click)="edit(m)"><i class="bi bi-pencil-fill"></i></a>
+                    <a (click)="send(m)"><i class="bi bi-pencil-fill"></i></a>
                     <a (click)="delete(m)"><i class="bi bi-trash-fill"></i></a>
                   </div>
                   <a class="btn btn-outline-primary" (click)="send(m)" *ngIf="action=='new'">Agregar comida al menu</a>

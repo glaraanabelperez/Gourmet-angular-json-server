@@ -12,9 +12,12 @@ import { ShoppingCarService } from '../shoping-cart/service/shoppingCar.service'
 export class OrderFoodComponent implements OnInit {  
 
   public date:Date;
+  public admin:boolean;
 
   constructor( private _servicioShopingCar:ShoppingCarService, private _serviceDate:DateOrdersService, private toastr: ToastrService
-    ) {}
+    ) {
+      this.admin=false;
+    }
 
   ngOnInit(): void {
     console.log("aca")

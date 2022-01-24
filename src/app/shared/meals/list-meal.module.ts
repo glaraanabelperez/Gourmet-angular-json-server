@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListMealsComponent } from '../meals/list-meals.component';
 import { ListMealService } from '../meals/service/meal.service';
+import { ListMealsComponent } from './list-meals.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,  
   ],
   declarations: [
-    ListMealsComponent
+    ListMealsComponent,
   ],
   exports: [
-    ListMealsComponent
+    ListMealsComponent,
+
   ],
   providers:[
-    ListMealService
+    ListMealService,
   ]
 })
 

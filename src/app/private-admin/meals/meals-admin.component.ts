@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meal } from 'src/app/shared/meals/models/meals.model';
 
 @Component({
   selector: 'app-meals-admin',
@@ -7,13 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MealsAdminComponent implements OnInit {
 
+  _reload: boolean;
   public action:string;
+  public elementToEdit: Meal;
 
   constructor() { 
     this.action="edit";
   }
 
   ngOnInit(): void {
+  }
+  
+  public editMeal(meal:Meal){
+    this.elementToEdit=meal;
+  }
+
+  public reload(r){
+    this._reload=r;
   }
 
 }
