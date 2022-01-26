@@ -1,6 +1,6 @@
 import { User } from "./user.model";
 
-export class Session{
+export  class Session{
 
     // private token: string;
     public user: User;

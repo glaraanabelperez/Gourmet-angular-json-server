@@ -23,7 +23,7 @@ const routes: Routes = [
     HttpClientModule,
   ],
   declarations: [
-    ShoppingCar
+    ShoppingCar,
   ],
   exports: [
     // RouterModule,

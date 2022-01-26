@@ -1,0 +1,56 @@
+<div class="titulo_seccion">
+  <h3>Su Pedido</h3>
+  <h4>Confirme su pedido.</h4>
+</div>
+<div class="conteiner_pedido">
+  <div class="titulo_seccion2">
+    <h5>Estas a un paso de finalizar!</h5>
+  </div>
+  <div class="shipper">
+    <div *ngIf="_delivery">
+      <h4>Confirme la Direccion</h4><br>
+      <div>
+        <input type="radio" id="casa" name="casa" [value]="user.company[0].direction" (change)="onItemChange($event.target.value)"><br>
+        <label for="casa">{{user.company[0].direction}}</label><br><br>
+        <input type="radio" id="casa" name="casa" [value]="user.direction"  (change)="onItemChange($event.target.value)" checked><br>
+        <label for="casa">{{user.direction}}</label><br><br>
+        <input type="radio" id="casa" name="casa" [value]='null'  (change)="onItemChange($event.target.value)"><br>
+        <label for="casa">Nueva Direccion</label><br>
+      </div>
+      <form class="col-sm" [formGroup]="formDirection" #form>
+        <div class=" form-group mb-3">
+          <input type="text" formControlName="direction" class="form-control" id="direction" [ngClass]="{ 'is-invalid':f.direction.touched && f.direction.errors }">
+          <div *ngIf="f.direction.touched && f.direction.errors" class="invalid-feedback">
+            <div *ngIf="f.direction.errors.required">La direccion no quedar vacio</div>
+            <div *ngIf="f.direction.errors.minLength">Debe ingresar 10 caracteres minimo</div>
+            <div *ngIf="f.direction.errors.maxlength">Solo puede ingresar 40 caracteres</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="this.formDirection.invalid"  (click)="onSubmit()" style="margin-right: 3%;">Guardar</button>
+      <button type="button" class="btn btn-warning" (click)="cleanForm()">Cancelar</button>
+      </form><br>
+    </div>
+    <div class="icon" *ngIf="!_delivery">
+      <h4>Confirme la Forma de Entrega</h4><br>
+      <img class="imagen-order1"  src="assets/moto.png">
+      <button class="btn btn-outline-primary boton" (click)="delivery()">Delivery</button><br>
+      <img class="imagen-order1"  src="assets/pickUp.jpg">
+        <button class="btn btn-outline-primary boton"  (click)="pickUp()">Retiro en Local</button>
+    </div>
+  </div>
+  <div class="rigth">
+    <img class="imagen-order2"  src="assets/car.jpg"><br>
+    <h5 *ngIf="direction_delivery">Direccion<br>{{direction_delivery}}</h5><br>
+    <div class="list-card info-derecha" class="list-card" *ngFor="let p of _service.getOrderInProgress()" >
+      <div class="info">
+          <h5 style="font-weight: 600; text-align: left;">Fecha de entrega: {{p.menu.date}}</h5><br>
+          <p style="font-weight: 600;">Tipo: {{p.menu.meal[0].type}}</p>
+          <p style="font-weight: 600;">{{p.menu.meal[0].tittle}}</p>
+          <h6 style="font-weight: 600; text-align: left;">CANTIDAD: {{p.count}}</h6>
+          <br><hr>  
+      </div>
+    </div> 
+    <h5 style="text-align: center;margin: 2%;">CANTIDAD {{_service.total}} PIEZAS</h5>
+    <button class="btn btn-primary boton" *ngIf="_service.total!=0" (click)="finishOrder()">CONTINUAR</button><br>
+  </div>
+</div>

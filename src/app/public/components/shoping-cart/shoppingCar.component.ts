@@ -32,15 +32,4 @@ export class ShoppingCar implements OnInit {
     this._service.removeItemShoppingCart(c);
   }
 
-  finishOrder(){
-    // this.okPedido=true;
-    // let p :any []=[];
-    // this._service.pe.forEach(element=>
-    //   p.push(element))
-    // this.pedido=JSON.stringify(p);
-    // this.pedido=this.pedido.replace(/["{}]+/g, " ");
-
-    // this._service.pe.clear();
-  }
-
 }

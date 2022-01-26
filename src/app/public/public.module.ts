@@ -31,7 +31,7 @@ import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module'
   declarations: [
     NavComponent, 
     NavAuthComponent,
-    NavClientComponent
+    NavClientComponent,
   ],
   exports: [
     RouterModule,

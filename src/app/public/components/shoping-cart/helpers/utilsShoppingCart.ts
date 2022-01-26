@@ -1,14 +1,20 @@
 import { Menu } from "../../../../shared/menu/models/menus.model";
-import { OrdersResponse } from "../model/orders-response.module";
+import { OrdersInProgress } from "../model/orders-in-progress.module";
+import { OrdersRequest } from "../model/orders-request.module";
 
 export default  class UtilsShoppingCart{
 
   constructor() {}
 
-  static mapMenuToOrdersResponse(menus:Menu, oderResponse:OrdersResponse):OrdersResponse{
-    oderResponse.menu=menus;
-    oderResponse.count=0;    
-    return oderResponse;
+  static mapToOrdersRequest(o:OrdersInProgress, order:OrdersRequest):OrdersRequest{
+    // order.id_menu 
+    return order;
+  }
+
+  static mapToOrdersInProgress(menus:Menu, order:OrdersInProgress):OrdersInProgress{
+    order.menu=menus;
+    order.count=0;    
+    return order;
   }
 
 

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PrivateAdminModul } from './private-admin/private-admin.modul';
+import { PrivateClientModul } from './private-clientes/private-client.modul';
 
 const routes: Routes = [
   // {path: 'home', component:AppComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
     NgbModule,
     PublicModule,
     PrivateAdminModul,
+    PrivateClientModul
   ],
   declarations: [
     AppComponent,

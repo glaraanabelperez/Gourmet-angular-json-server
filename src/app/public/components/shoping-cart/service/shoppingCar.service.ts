@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Menu } from '../../../../shared/menu/models/menus.model';
 import UtilsShoppingCart from '../helpers/utilsShoppingCart';
-import { OrdersResponse } from '../model/orders-response.module';
+import { OrdersInProgress } from '../model/orders-in-progress.module';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ShoppingCarService{
 
   total=0;
   totalSubject:Subject <any> = new  Subject <any>();
-  public ordersInProgress:Array<OrdersResponse>=[];
+  public ordersInProgress:Array<any>=[];
 
 
   constructor(private toastr: ToastrService) {}
@@ -56,7 +56,7 @@ export class ShoppingCarService{
     if(this.checkItemInOrder(menu.id)){
       this.toastr.show('ESTE PRODUCTO YA ESTA EN EL CARRITO!');
     }else{
-      let order:OrdersResponse = UtilsShoppingCart.mapMenuToOrdersResponse(menu, new OrdersResponse())
+      let order:OrdersInProgress = UtilsShoppingCart.mapToOrdersInProgress(menu, new OrdersInProgress())
       console.log(order)
       order.count=1;
       this.ordersInProgress.push(order)
