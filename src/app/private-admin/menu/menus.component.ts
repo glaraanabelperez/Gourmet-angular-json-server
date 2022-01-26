@@ -62,6 +62,7 @@ export class MenusComponent implements OnInit {
   public insert(){
     let m=new MenuRequest();
     m.state="activo";
+    m.meal=[];
     for(let i=0; i<this.meals.length; i++){
       m.meal.push(this.meals[i].id);
     }

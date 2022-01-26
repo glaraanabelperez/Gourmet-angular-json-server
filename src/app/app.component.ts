@@ -17,8 +17,10 @@ export class AppComponent {
 
   ngOnInit(): void {
     this._storageSession.permissions$.subscribe(result => {
-      this.sessionUser=result.isUser;
-      this.sessionAdmin=result.isAdmin;
+        if(result){
+          this.sessionUser=result.isUser;
+          this.sessionAdmin=result.isAdmin;
+        }
       })
   }
 

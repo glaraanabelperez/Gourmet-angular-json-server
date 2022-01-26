@@ -10,14 +10,10 @@ import { ShoppingCarService } from './service/shoppingCar.service';
 })
 export class ShoppingCar implements OnInit {
 
-  // pedidosTodos:Pedidos[];
   pedido:string;
-  okPedido;
+  okPedido=false;
   
-  constructor(public _service:ShoppingCarService,) {
-    console.log(this._service.getOrderInProgress())
-    this.okPedido=false;
-    window.scroll(0,0)
+  constructor(public _service:ShoppingCarService) {
   }
 
   ngOnInit(): void {}

@@ -25,7 +25,10 @@ export class LoginComponent implements OnInit {
   
   ngOnInit(): void {
     this.initForm();
-    this._storageService.permissions$.subscribe(result => this.session=result.isUser)
+    this._storageService.permissions$.subscribe(
+      result => {
+        this.session=result?result.isUser:null;
+      })
   }
 
 
@@ -43,6 +46,8 @@ export class LoginComponent implements OnInit {
       if(Object.entries(data).length != 0){
         this._storageService.setCurrentSession(new Session(data[0]));
         this.toastr.info("Bienvenido");
+      }else{
+        this.toastr.warning("Login incorrecto");
       }
     },
     error => {

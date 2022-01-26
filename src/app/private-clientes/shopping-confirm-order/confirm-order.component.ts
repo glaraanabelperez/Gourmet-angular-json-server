@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/public/components/login/models/user.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { ShoppingCarService } from 'src/app/public/components/shoping-cart/service/shoppingCar.service';
@@ -19,21 +20,21 @@ export class ConfirmOrder implements OnInit {
   public formDirection: any;
   public _delivery: boolean=false;
   public direction_delivery: string;
-  private _newDirection: boolean;
+  sessionUser: any;
 
   constructor(
     public _service:ShoppingCarService, 
-    private _serviceSession:StorageService,
-    private readonly formBuilder : FormBuilder ,
-    private router:Router
+    private _storageSession:StorageService,
+    private readonly formBuilder : FormBuilder,
+    private router:Router,
+    private toastr: ToastrService,
     ) {
-    
-    this.confirmUser();
     this.initForm();
-    console.log(this._service.getOrderInProgress())
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.confirmUser();
+  }
 
   get f(){return this.formDirection.controls;}
 
@@ -44,17 +45,25 @@ export class ConfirmOrder implements OnInit {
     // this.ordersInProgress.push(order)
   }
 
+  public back(){
+    this.router.navigate(['/shopping']);
+  }
+
   public delivery(){
     this._delivery=true;
     this.formDirection.controls['direction'].setValue(this.user.direction);
   }
 
   public confirmUser(){
-    this.user=this._serviceSession.getSession().user;
-    console.log(this.user.company[0].direction)
-    if(this.user==null){
-      this.router.navigate(['/login']);
-    }
+    this._storageSession.permissions$.subscribe(result => {
+      if(result){
+        this.sessionUser=result.isUser;
+        this.user=this._storageSession.getSession().user;
+      }else{
+        this.router.navigate(['/login']);
+        this.toastr.info("SE DEBE REGISTRAR PARA HACER EL PEDIDO")
+      }
+    })
   }
 
   public cleanForm(){

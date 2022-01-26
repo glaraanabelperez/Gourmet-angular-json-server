@@ -52,5 +52,6 @@
     </div> 
     <h5 style="text-align: center;margin: 2%;">CANTIDAD {{_service.total}} PIEZAS</h5>
     <button class="btn btn-primary boton" *ngIf="_service.total!=0" (click)="finishOrder()">CONTINUAR</button><br>
+    <button class="btn btn-outline-primary boton" *ngIf="_service.total!=0" (click)="back()">Volver</button><br>
   </div>
 </div>

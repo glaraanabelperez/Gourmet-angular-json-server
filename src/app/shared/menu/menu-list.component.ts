@@ -20,11 +20,14 @@ export class MenuListComponent implements OnInit {
   sessionAdmin:boolean;
     
   constructor( 
-    private _menusService:MenuService, private toastr: ToastrService,
-    public _storageSession:StorageService, private rutaActiva: ActivatedRoute,
+    private _menusService:MenuService, 
+    private toastr: ToastrService,
+    public _storageSession:StorageService
     ) {
         this._storageSession.permissions$.subscribe(result => {
-          this.sessionAdmin=result.isAdmin;
+          if(result){
+            this.sessionAdmin=result.isAdmin;
+          }
         })
     }
 

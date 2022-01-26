@@ -30,7 +30,7 @@
     <h5>Seleccione junto con la fecha las comidas para armar el menu del dia</h5>
     <div class="target_meals" *ngIf="meals.length>0">
       <button *ngFor="let m of meals; let i = index" class="btn btn-outline-danger" (click)="deleteIndex(i)">{{m.tittle}}</button><br>
-      <button style="margin-bottom: 5%; margin-right: 3%;"  class="btn btn-info boton" (click)="insert()">Guardar</button>
+      <button style="margin-bottom: 2%;"  class="btn btn-info boton" (click)="insert()">Guardar</button>
       <button style="margin-bottom: 5%;" class="btn btn-dark boton" (click)="cancelAssignment()">Cancel</button>
     </div>
     <app-list-meals [action]="action" (meal)="pushMeals($event)"></app-list-meals>

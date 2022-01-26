@@ -17,13 +17,12 @@ export class ListMealsComponent implements OnInit {
   public meals:Meal[]=[];
   public session: any=null;
 
-  constructor(
-    private _mealsService:ListMealService, 
-    private _storageService:StorageService,
-    ) { }
+  constructor(private _mealsService:ListMealService, private _storageService:StorageService) { }
 
   ngOnInit(): void {
-    this._storageService.permissions$.subscribe(result => this.session=result.isAdmin)
+    this._storageService.permissions$.subscribe(result => {
+      this.session=result?result.isAdmin:null;
+    })
     this.get();
   }
 
