@@ -11,6 +11,7 @@ import { Session } from './models/session.model';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
   public formLogin : FormGroup;
@@ -30,7 +31,6 @@ export class LoginComponent implements OnInit {
         this.session=result?result.isUser:null;
       })
   }
-
 
   initForm(){
     this.formLogin = this.formBuilder.group({

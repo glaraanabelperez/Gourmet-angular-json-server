@@ -16,7 +16,7 @@ export class MealsForm implements OnInit {
   
   public formMeals : FormGroup;
   public enableEditing: boolean=false;
-  submitted=false;
+  public submitted=false;
 
   constructor(
     private readonly formBuilder : FormBuilder ,  
@@ -39,12 +39,12 @@ export class MealsForm implements OnInit {
 
   get f(){return this.formMeals.controls;}
 
-  cleanForm(){
+  public cleanForm(){
     this.formMeals.reset();
     this.enableEditing=false;
   }
 
-  onSubmit(){
+  public onSubmit(){
     this.submitted=true;
     if(this.enableEditing){
          this.edit();            
@@ -55,7 +55,7 @@ export class MealsForm implements OnInit {
      this.cleanForm();
   }
 
-  initForm(){
+  public initForm(){
     this.formMeals = this.formBuilder.group({
       type : ["", [Validators.required, Validators.maxLength(40)]],
       title : ["", [Validators.required, Validators.maxLength(40)]],
@@ -63,7 +63,7 @@ export class MealsForm implements OnInit {
     });
   }
 
-  insert(){
+  public insert(){
     let meals:Meal={
           id: null,
           type : this.formMeals.get('type').value,

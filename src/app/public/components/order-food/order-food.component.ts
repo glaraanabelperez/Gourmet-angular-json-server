@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DateService } from 'src/app/shared/date/service/dateOrders.service';
-import { MenuService } from 'src/app/shared/menu/service/menus.service';
 import { ShoppingCarService } from '../shoping-cart/service/shoppingCar.service';
 
 @Component({
@@ -12,12 +11,13 @@ import { ShoppingCarService } from '../shoping-cart/service/shoppingCar.service'
 export class OrderFoodComponent implements OnInit {  
 
   public date:Date;
-  public takeOrder:boolean;
+  public takeOrder:boolean=true;
 
-  constructor( private _servicioShopingCar:ShoppingCarService, private _serviceDate:DateService, private toastr: ToastrService
-    ) {
-      this.takeOrder=true;
-    }
+  constructor( 
+    private _servicioShopingCar:ShoppingCarService, 
+    private _serviceDate:DateService, 
+    private toastr: ToastrService
+    ) {}
 
   ngOnInit(): void {
   }

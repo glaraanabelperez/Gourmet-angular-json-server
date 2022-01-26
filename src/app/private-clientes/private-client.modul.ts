@@ -6,7 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { OrdersClientComponent } from './orders/orders-client.component';
-import { OrdersClientService } from './orders/service/orders-client.service';
 import { ConfirmOrder } from './shopping-confirm-order/confirm-order.component';
 
 
@@ -31,7 +30,7 @@ const routes: Routes = [
     ConfirmOrder
   ],
   exports: [],
-  providers: [OrdersClientService],
+  providers: [],
 
 })
 export class PrivateClientModul { }

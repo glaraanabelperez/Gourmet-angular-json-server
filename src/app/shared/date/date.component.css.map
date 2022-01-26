@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": ";AACA,AAAA,SAAS,CAAA;EACP,aAAa,EAAE,EAAE;EACjB,gBAAgB,EAAE,KAAK;EACvB,WAAW,EAAE,EAAE;CAChB;;AAGD,MAAM,MAAM,MAAM,MAAM,gBAAgB,EAAE,KAAK,OAAO,gBAAgB,EAAE,KAAK;EAGzE,AAAA,SAAS,CAAA;IACP,aAAa,EAAE,EAAE;IACjB,gBAAgB,EAAE,KAAK;IACvB,WAAW,EAAE,GAAG;GACjB;;;AAIL,MAAM,MAAM,MAAM,MAAM,gBAAgB,EAAE,KAAK,OAAO,gBAAgB,EAAE,MAAM;EAE3C,0BAA0B",
-    "sources": [
-        "date.component.scss"
-    ],
-    "names": [],
-    "file": "date.component.css"
-}

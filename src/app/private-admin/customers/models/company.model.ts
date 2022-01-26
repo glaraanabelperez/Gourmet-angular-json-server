@@ -5,7 +5,5 @@ export class Company{
     name:string;
     telephone:number;
     direction:string;
-    constructor(){
-    }
-
+ 
 }

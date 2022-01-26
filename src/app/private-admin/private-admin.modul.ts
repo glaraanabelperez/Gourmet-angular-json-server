@@ -14,7 +14,7 @@ import { ListMealModule } from '../shared/meals/list-meal.module';
 import { MealsForm } from './meals/meals-form/meals-form.component';
 import { OrdersSharedModule } from '../shared/orders/orders-shared.module';
 import { CustomersComponent } from './customers/customers.component';
-import { CustomersService } from './customers/service/meal.service';
+import { CustomersService } from './customers/service/customers.service';
 
 const routes: Routes = [
   {path: 'edit-meals', component:MealsAdminComponent},

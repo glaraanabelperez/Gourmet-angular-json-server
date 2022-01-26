@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { ShoppingCarService } from './service/shoppingCar.service';
 
 

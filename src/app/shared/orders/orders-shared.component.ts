@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
-import { Orders } from './model/orders.model';
+import { OrdersResponse } from './model/orders-response.model';
 import { OrdersSharedService } from './service/orders.service';
 
 
@@ -12,9 +12,9 @@ import { OrdersSharedService } from './service/orders.service';
 export class OrdersSharedComponent implements OnInit {
   
   @Input() date: Date;
-  orders: Orders[]=[];
-  sessionUser: boolean;
-  sessionAdmin:boolean;
+  public orders: OrdersResponse[]=[];
+  public sessionUser: boolean;
+  public sessionAdmin:boolean;
 
 
   constructor(private _service_orders:OrdersSharedService, public _storageSession:StorageService) {

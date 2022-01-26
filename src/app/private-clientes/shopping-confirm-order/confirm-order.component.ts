@@ -16,11 +16,12 @@ import { ShoppingCarService } from 'src/app/public/components/shoping-cart/servi
 export class ConfirmOrder implements OnInit {
 
   public orderOk:boolean;
-  public user:User;
-  public formDirection: any;
   public _delivery: boolean=false;
   public direction_delivery: string;
-  sessionUser: any;
+  public sessionUser: boolean;
+  public formDirection: any;
+
+  public user:User;
 
   constructor(
     public _service:ShoppingCarService, 
@@ -28,12 +29,11 @@ export class ConfirmOrder implements OnInit {
     private readonly formBuilder : FormBuilder,
     private router:Router,
     private toastr: ToastrService,
-    ) {
-    this.initForm();
-  }
+    ) {}
 
   ngOnInit(): void {
     this.confirmUser();
+    this.initForm();
   }
 
   get f(){return this.formDirection.controls;}

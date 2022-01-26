@@ -14,20 +14,18 @@ import { MenuRequest } from 'src/app/shared/menu/models/menus-request.model';
 export class MenusComponent implements OnInit {
 
   public date:Date;
-  public admin:boolean;
-
+  public admin:boolean=true;
   public _newMenu:boolean=false;
+  public action:string=null;
+
   public _editMenu:Menu=null;
   public meals: Meal[]=[];
-  public action:string=null;
 
   constructor(
     private _serviceDate:DateService,
     private _service_menu:MenuService,
     private _toastr:ToastrService,
-    ) {
-      this.admin=true;
-    }
+    ) {}
 
   ngOnInit(): void {
   }

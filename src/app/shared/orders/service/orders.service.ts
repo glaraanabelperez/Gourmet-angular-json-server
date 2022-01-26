@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Orders } from '../model/orders.model';
+import { OrdersResponse } from '../model/orders-response.model';
 
 
 
@@ -23,17 +23,17 @@ endpoint: string='orders';
     return this.http.put(url, order);
   }
 
-  public getOrders(dateSelected:Date): Observable<Array<Orders>> {
+  public getOrders(dateSelected:Date): Observable<Array<OrdersResponse>> {
     let date:string = "?date=" + this.setDateString(dateSelected);
     let url=environment.apiUrl + this.endpoint + date;
-    return this.http.get<Array<Orders>>(url);
+    return this.http.get<Array<OrdersResponse>>(url);
   }
 
-  public getOrdersByIdUser(dateSelected:Date, id_user:number): Observable<Array<Orders>>{
+  public getOrdersByIdUser(dateSelected:Date, id_user:number): Observable<Array<OrdersResponse>>{
     let date:string = "?date=" + this.setDateString(dateSelected);
     let id:string = "?id=" + id_user;
     let url=environment.apiUrl + this.endpoint + date + "&" + id;
-    return this.http.get<Array<Orders>>(url);
+    return this.http.get<Array<OrdersResponse>>(url);
   }
 
   public setDateString(date:Date):string{

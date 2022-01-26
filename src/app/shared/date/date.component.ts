@@ -21,8 +21,7 @@ export class DateComponent implements OnInit {
     this.emitDate(this.model)
   }
 
-  emitDate(d){
-    // this._serviceDate.setDate(selectedDate);
+  public emitDate(d){
     this.dateSelected.emit(d);
   }
 }

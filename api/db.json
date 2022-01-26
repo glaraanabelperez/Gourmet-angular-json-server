@@ -142,6 +142,13 @@
       "tittle": "Verduras Grilladas",
       "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada.",
       "state": "activo"
+    },
+    {
+      "id": 3,
+      "type": "vegetariana",
+      "tittle": "Verduras Grilladas",
+      "description": "Pepinos, zanahorias, brocoli, berenjenas, con salsa de cebolla caramelizada.",
+      "state": "activo"
     }
   ],
   "menus": [

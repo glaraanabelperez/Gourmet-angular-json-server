@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersResponse } from './models/clients.model';
-import { CustomersService } from './service/meal.service';
+import { CustomersResponse } from './models/clients-response.model';
+import { CustomersService } from './service/customers.service';
 
 @Component({
   selector: 'app-customers',
@@ -15,7 +15,9 @@ export class CustomersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.get();
   }
+
   public get(){
     this._serviceCustomers.getCustomers().subscribe(res=>{
       if(res.length>0){
@@ -25,4 +27,5 @@ export class CustomersComponent implements OnInit {
         this.customers=null;
       }
     });
-  }}
+  }
+}
