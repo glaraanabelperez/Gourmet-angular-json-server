@@ -13,6 +13,7 @@ import { NavAuthComponent } from './components/navs/navAuth/navAuth.component';
 import { NavClientComponent } from './components/navs/navClient/navClient.component';
 import { OrderFoodModule } from './components/order-food/order-food.module';
 import { MealModule } from './components/meals/meal.module';
+import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
 
 
 
@@ -24,7 +25,8 @@ import { MealModule } from './components/meals/meal.module';
     HttpClientModule,
     LoginModule,
     OrderFoodModule,
-    MealModule
+    MealModule,
+    ShoppingCarModule
   ],
   declarations: [
     NavComponent, 

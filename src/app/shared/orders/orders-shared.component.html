@@ -1,0 +1,28 @@
+<div class="tarjeta_seccion">
+  <div *ngIf="orders!=null else withoutOrders">
+    <h4>Para esta fecha</h4>
+    <h5>tenemos los siguientes pedidos</h5>
+  </div>
+  <ng-template #withoutOrders>
+    <h4>Seleccione una fecha</h4>
+    <h5>para ver el pedido del dia</h5>
+  </ng-template> 
+  <br>
+  <table class="table table-striped">
+      <tbody>
+        <tr *ngFor="let or of orders">
+          <td>
+            <!-- <li *ngFor="let meal of m.meal">
+              <h5>Comida {{meal.type}}</h5>
+              <h6>{{meal.tittle}}</h6>
+              <h7>{{meal.description}}</h7>
+              <p>Estado: {{m.state}}</p>
+              <button class="btn btn-warning" *ngIf="admin" (click)="sendShoppingCart(m)">Editar</button>
+            </li>   -->
+          </td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+

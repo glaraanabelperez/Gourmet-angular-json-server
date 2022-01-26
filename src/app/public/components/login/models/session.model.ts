@@ -3,7 +3,7 @@ import { User } from "./user.model";
 export class Session{
 
     // private token: string;
-    private user: User;
+    public user: User;
     private authAdmin:boolean=false;
 
     constructor(user:User){

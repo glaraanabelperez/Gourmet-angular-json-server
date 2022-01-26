@@ -9,15 +9,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { DateModule } from '../shared/date/date.module';
 import { MenuListModule } from '../shared/menu/menu-list.module';
 import { MenusComponent } from './menu/menus.component';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdersService } from './orders/service/orders.service';
+import { OrdersAdminComponent } from './orders/orders-admin.component';
 import { ListMealModule } from '../shared/meals/list-meal.module';
 import { MealsForm } from './meals/meals-form/meals-form.component';
+import { OrdersSharedModule } from '../shared/orders/orders-shared.module';
+import { CustomersComponent } from './customers/customers.component';
+import { CustomersService } from './customers/service/meal.service';
 
 const routes: Routes = [
   {path: 'edit-meals', component:MealsAdminComponent},
   {path: 'edit-menus', component:MenusComponent},
-  {path: 'orders', component:OrdersComponent},
+  {path: 'orders', component:OrdersAdminComponent},
+  {path: 'clientes', component:CustomersComponent},
 
 ];
 
@@ -32,16 +35,18 @@ const routes: Routes = [
     MenuListModule,
     DateModule,
     ListMealModule,
+    OrdersSharedModule
   ],
 
   declarations: [
     MenusComponent,
     MealsAdminComponent,
     MealsForm,
-    OrdersComponent
+    OrdersAdminComponent,
+    CustomersComponent
   ],
   exports: [],
-  providers: [OrdersService],
+  providers: [CustomersService],
 
 })
 export class PrivateAdminModul { }

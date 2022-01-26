@@ -1,0 +1,38 @@
+<div class="titulo_seccion">
+  <h3>Su carrito</h3>
+  <h4>Ingrese su pedido y aguarde a recibirlo</h4>
+</div>
+<div class="conteiner_pedido">
+  <div class="titulo_seccion2">
+    <h5>Recuerde que los pedidos solo pueden realizarse con 24 hs de anticipacion, ya que todos nuestros productos son frescos y del dia.</h5>
+  </div>
+  <div class="info_pedido"><br>
+    <div style="display: block;text-align: center;" *ngIf="_service.total==0">
+      <img class="imagen-pedido"  src="assets/car.jpg">
+    </div>
+    <div class="list-card" class="list-card" *ngFor="let p of _service.getOrderInProgress(),let i = index" >
+            <div class="info-derecha">
+                <div class="info">
+                    <h5 style="font-weight: 600; text-align: left;">Fecha de entrega: {{p.menu.date}}</h5><br>
+                    <p style="font-weight: 600;">Tipo: {{p.menu.meal[0].type}}</p>
+                    <p style="font-weight: 600;">{{p.menu.meal[0].tittle}}</p>
+                    <h6 style="font-weight: 600; text-align: left;">CANTIDAD: {{p.count}}</h6>
+                    <br>
+                    <div class="list-card-botones" >
+                      <button class="boton-eliminar" (click)="removeItemShoppingCart(i)">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      </button>
+                      <button class="boton-eliminar" (click)="sumarCantidad(i)">
+                        <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+                      </button>
+                      <button class="boton-eliminar" (click)="disertCount(i)">
+                        <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                      </button>
+                    </div>   
+                </div>
+            </div>
+    </div> 
+      <h5 style="text-align: center;margin: 2%;">CANTIDAD {{_service.total}} PIEZAS</h5>
+      <button class="btn btn-primary boton" *ngIf="_service.total!=0" (click)="finishOrder()">CONTINUAR</button><br>
+  </div>
+</div>

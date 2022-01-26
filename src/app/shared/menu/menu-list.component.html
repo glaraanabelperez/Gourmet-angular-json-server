@@ -17,7 +17,8 @@
               <h6>{{meal.tittle}}</h6>
               <h7>{{meal.description}}</h7>
               <p>Estado: {{m.state}}</p>
-              <button class="btn btn-warning" *ngIf="admin" (click)="sendShoppingCart(m)">Editar</button>
+              <button class="btn btn-danger boton" *ngIf="sessionAdmin && !takeOrder" (click)="send(m)">Eliminar</button>
+              <button class="btn btn-primary boton" *ngIf="takeOrder"(click)="send(m)">Agregar</button>
             </li>  
           </td>
         </tr>

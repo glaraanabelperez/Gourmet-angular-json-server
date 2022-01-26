@@ -1,32 +1,32 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+// import { Injectable } from '@angular/core';
+// import { BehaviorSubject, Observable } from 'rxjs';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 
-export class DateOrdersService{
+// export class DateOrdersService{
   
-  private dateAdmin: any = new BehaviorSubject<any>(null);
-  public dateAdmin$ = this.dateAdmin.asObservable();
+//   private dateAdmin: any = new BehaviorSubject<any>(null);
+//   public dateAdmin$ = this.dateAdmin.asObservable();
 
-  constructor() {
-  }
+//   constructor() {
+//   }
   
-  convertToDate(dateSelected:any){
-    let date=new Date(dateSelected.year +"/"+ (dateSelected.month) +"/"+ dateSelected.day);
-    return date;
-  }
+//   convertToDate(dateSelected:any){
+//     let date=new Date(dateSelected.year +"/"+ (dateSelected.month) +"/"+ dateSelected.day);
+//     return date;
+//   }
 
-  setDate(dateSelected){
-    let date=this.convertToDate(dateSelected)
-    this.dateAdmin.next(date);
-  }
-
-
+//   setDate(dateSelected){
+//     let date=this.convertToDate(dateSelected)
+//     this.dateAdmin.next(date);
+//   }
 
 
 
-}
+
+
+// }

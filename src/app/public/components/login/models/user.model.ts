@@ -1,4 +1,4 @@
-import { Company } from "src/app/private-admin/models/company.model";
+import { Company } from "src/app/private-admin/customers/models/company.model";
 
 export class User{
 

@@ -3,13 +3,14 @@
 
 $font:  'Quicksand', sans-serif;
 $font_btn:12px;
-$grey_gou:gainsboro;
+$grey_gou:#eff0f1;
 $yellow_gou:#FFDA80;
 $verde_gou:#83E8B5;
 $verde_gou_dark:#4a8f6c;
 $carmin_ou:#FF4F44;
 $ligthBlueGreen:#78E5D8;
-$blue:#0d6efd;;
+$blue:#0d6efd;
+
 p{
     text-align: left;
 }
@@ -26,9 +27,18 @@ h5{
     font-size: 1.2rem;
 }
 
+.boton{
+    border-radius: 20px;
+    margin: auto;
+    width: 50%;
+    display: block;
+    text-align: center;
+}
+
 .padding{
     padding: 1%;
 }
+
 .tarjeta_seccion{
     background-color: white;
     border-radius: 5px;
@@ -42,12 +52,12 @@ h5{
         color: gray;
     }
 }
+
 .titulo_seccion{
-    width: 100%;
     background-color: white;
     padding: 2% 2% 1% 2%;
     border-radius: 5px;
-    margin-bottom:3%;
+    margin: 0% 2% 3% 0%;
     h3{
         color: black;
         font-weight: 600;
@@ -57,6 +67,18 @@ h5{
         text-align: center;
     }
     
+}
+
+.titulo_seccion2{
+    background-color: white;
+    padding: 2% 2% 1% 2%;
+    border-radius: 5px;
+    margin: 0% 2% 3% 0%;
+    width: 25%;
+    h5{
+        font-weight: 600;
+        text-align: center;
+    }
 }
 
 .nav_general_lateral{
@@ -132,8 +154,11 @@ h5{
     }
     .titulo_seccion{
         width: 100%;
+        height: auto !important;
     }
-
+    .titulo_seccion2{
+        display: none;
+    }
     .date-menu{
         display:flex;
         flex-direction:column;

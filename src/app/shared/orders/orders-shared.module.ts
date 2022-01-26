@@ -1,34 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { OrdersSharedComponent } from './orders-shared.component';
+import { OrdersSharedService } from './service/orders.service';
 
-import { ShoppingCarService } from './service/shoppingCar.service';
-import { ShoppingCar } from './shoppingCar.component';
 
-const routes: Routes = [
-  {path: 'shopping', component:ShoppingCar},
-];
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],
   declarations: [
-    ShoppingCar
+    OrdersSharedComponent
   ],
   exports: [
-    // RouterModule,
+    OrdersSharedComponent
   ],
-  providers: [ShoppingCarService],
+  providers: [OrdersSharedService],
 
 })
-export class ShoppingCarModule { }
+export class OrdersSharedModule { }

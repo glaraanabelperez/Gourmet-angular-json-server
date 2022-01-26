@@ -1,17 +1,14 @@
 import { Menu } from "../../../../shared/menu/models/menus.model";
-import { OrdersDto } from "../model/ordersDto.module";
+import { OrdersResponse } from "../model/orders-response.module";
 
 export default  class UtilsShoppingCart{
 
   constructor() {}
 
-  static mapMenuToOrdersDto(menus:Menu, ordersDto:OrdersDto):OrdersDto{
-
-      ordersDto.menu=menus;
-      ordersDto.count=0;
-      console.log(ordersDto)
-    
-    return ordersDto;
+  static mapMenuToOrdersResponse(menus:Menu, oderResponse:OrdersResponse):OrdersResponse{
+    oderResponse.menu=menus;
+    oderResponse.count=0;    
+    return oderResponse;
   }
 
 

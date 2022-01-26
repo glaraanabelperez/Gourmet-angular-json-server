@@ -20,7 +20,7 @@ export class StorageService{
     this.setPermissions();
   }
 
-  public getPermissions(){
+  public getSession(){
     return this.currentSession;
   }
 

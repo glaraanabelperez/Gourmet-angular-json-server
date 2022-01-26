@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MenuResponse } from '../../../private-admin/menu/models/menus-response.model';
+import { MenuRequest } from '../models/menus-request.model';
 import { Menu } from '../models/menus.model';
 
 
@@ -34,7 +34,7 @@ endpoint: string='menus';
     return this.http.get<Array<Menu>>(url);
   }
 
-  public insert(m:MenuResponse){
+  public insert(m:MenuRequest){
     let url=environment.apiUrl + this.endpoint ;
     return this.http.put(url, m);
   }

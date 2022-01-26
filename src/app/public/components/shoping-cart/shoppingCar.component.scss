@@ -1,37 +1,61 @@
 @import '../../../styles/general_styles.scss';
 
-.menu{
+ .conteiner_pedido{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  .tarjeta_seccion{
-    width: 100%;
-    margin: 0% 5% 0% 5%;
+	width: 100%;
+  height: auto;
+  .info_pedido{
+    .imagen-pedido{
+      height: 25%; width: 25%;border-radius: 40px;
+      margin: 0% 3% 3% 3%;
+    }
+    background-color: white;
+    width: 68%;
+    border-radius: 5px;
+    .list-card{
+      width: 70%;
+      margin: auto;
+			border-radius: 5px;
+			background-color: $grey_gou;
+			padding: 3%;
+      margin-bottom: 3%;
+      text-align: center;
+      .info-derecha{
+        width: 80%;
+        margin-left: 7%;
+        .boton-eliminar{
+          background: none;
+          border: 1px solid gray;
+          height: 40px;
+          width: 40px;
+          border-radius: 100%;
+        }
+      }
+    }
   }
-  .input_menus{
-    display: flex;
-    flex-direction: row;
-  }
-}
-.toast-custom {
-  bottom: 0px;  
 }
 
-@media only screen
+ @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 568px) { 
-    .menu{
-      display: flex;
-      flex-direction: column;
-      justify-content: none;
-      .tarjeta_seccion{
+    .conteiner_pedido{
+      .info_pedido{
+        background-color: white;
         width: 100%;
-        margin: 0%;
+        border-radius: 5px;
+        margin: auto;
+        .list-card{
+          width: 100%;
+        }
       }
     }
   }
 
-  // Para iPad
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)  { /* Aquí van los estilos */}
+@media only screen  
+and (min-width : 768)  
+and (max-width : 1200px) { 
+  .conteiner-pedido{
+    margin-top:60px;
+  }
+}

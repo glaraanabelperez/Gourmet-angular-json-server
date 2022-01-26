@@ -3,9 +3,12 @@
 .table{
   li{
     list-style: none;
-    .btn-warning{
+    .btn-primary{
       border-radius: 20px;
-      margin: 2%;
+      margin: auto;
+      width: 50%;
+      display: block;
+      text-align: center;
     }
   }
 

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
-import { DateOrdersService } from '../date/service/dateOrders.service';
 import { Menu } from './models/menus.model';
 import { MenuService } from './service/menus.service';
 
@@ -13,27 +13,23 @@ import { MenuService } from './service/menus.service';
 export class MenuListComponent implements OnInit {
 
   @Input() date: Date;
-  @Input() admin: boolean;
-
+  @Input() takeOrder: boolean;
   @Output() _editMenu: EventEmitter<Menu> = new EventEmitter();
   
   public menus:Menu[]=null;
-  public menusOk=false;
-  // sessionAdmin: boolean;
-  // sessionUser: any;
+  sessionAdmin:boolean;
     
   constructor( 
-    private _menusService:MenuService, 
-    private toastr: ToastrService,
-    public _storageSession:StorageService
-    ) {}
+    private _menusService:MenuService, private toastr: ToastrService,
+    public _storageSession:StorageService, private rutaActiva: ActivatedRoute,
+    ) {
+        this._storageSession.permissions$.subscribe(result => {
+          this.sessionAdmin=result.isAdmin;
+        })
+    }
 
   ngOnInit(): void {
     this.date=null;
-    // this._storageSession.permissions$.subscribe(result => {
-    //   this.sessionUser=result.isUser;
-    //   this.sessionAdmin=result.isAdmin;
-    //   })
   }
 
   ngOnChanges(){
@@ -46,7 +42,6 @@ export class MenuListComponent implements OnInit {
     this._menusService.getMenus(date).subscribe(res=>{
       if(res.length>0){
         this.menus=res.slice();
-        console.log("menu", res)
       }else{
         this.menus=null;
         this.toastr.warning('NO HAY MENUS DISPONIBLES', 'SELECCIONE OTRA FECHA!');
@@ -54,7 +49,8 @@ export class MenuListComponent implements OnInit {
     });
   }
 
-  public sendShoppingCart(menu :Menu){
+  public send(menu :Menu){
+    console.log(menu)
     this._editMenu.emit(menu);
   }
 

@@ -1,5 +1,5 @@
 
-export class Orders{
+export class OrdersRequest{
     id_menu:number
     id_user:number;
     state:string; 

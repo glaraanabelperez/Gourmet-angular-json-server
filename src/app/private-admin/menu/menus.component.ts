@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { DateOrdersService } from 'src/app/shared/date/service/dateOrders.service';
+import { DateService } from 'src/app/shared/date/service/dateOrders.service';
 import { Menu } from 'src/app/shared/menu/models/menus.model';
 import { MenuService } from 'src/app/shared/menu/service/menus.service';
-import { MenuResponse } from 'src/app/private-admin/menu/models/menus-response.model';
 import { Meal } from 'src/app/shared/meals/models/meals.model';
+import { MenuRequest } from 'src/app/shared/menu/models/menus-request.model';
 
 @Component({
   selector: 'app-editMenu',
@@ -22,7 +22,7 @@ export class MenusComponent implements OnInit {
   public action:string=null;
 
   constructor(
-    private _serviceDate:DateOrdersService,
+    private _serviceDate:DateService,
     private _service_menu:MenuService,
     private _toastr:ToastrService,
     ) {
@@ -60,7 +60,7 @@ export class MenusComponent implements OnInit {
   }
 
   public insert(){
-    let m=new MenuResponse();
+    let m=new MenuRequest();
     m.state="activo";
     for(let i=0; i<this.meals.length; i++){
       m.meal.push(this.meals[i].id);
