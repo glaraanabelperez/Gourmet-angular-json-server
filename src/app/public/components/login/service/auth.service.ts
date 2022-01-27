@@ -27,6 +27,12 @@ export class AuthService{
     let url = environment.apiUrl + this.endpoint;
     return this.http.post(url , user);
   }
+
+  public veryifyEmail(email:string):Observable<any>{
+    let data:string="?email=" + email;
+    let url=environment.apiUrl + this.endpoint + data;
+    return this.http.get<any>(url);
+  }
  
 
 }

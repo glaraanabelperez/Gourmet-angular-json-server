@@ -6,10 +6,10 @@
           <div class="user_imagen">
             <img src="assets/icons/user.png" alt="">
           </div>
-          <form [formGroup]="formNewUser" (ngSubmit)="login()" *ngIf="!sessionUser">
+          <form  [formGroup]="formNewUser" (ngSubmit)="insertUser()" *ngIf="!sessionUser">
 
             <label for="name" class="form-label">Nombre</label>
-            <input type="text" formControlName="email" class="form-control" id="name" 
+            <input type="text" formControlName="name" class="form-control" id="name" 
             [ngClass]="{ 'is-invalid':f.name.touched && f.name.errors }">
             <div *ngIf="f.name.touched && f.name.errors" class="invalid-feedback"  >
               <div *ngIf="f.name.errors.required">El nombre es Requerido</div>
@@ -54,34 +54,24 @@
             <div *ngIf="f.direction.touched && f.direction.errors" class="invalid-feedback"  >
               <div *ngIf="f.direction.errors.required">El telefono es Requerido</div>
               <div *ngIf="f.direction.errors.maxlength">Solo puede ingresar 20 caracteres</div>
-            </div>
-            <button (click)="insertCompany()"></button>
-            <div *ngIf="company">
-              <label for="comanyName" class="form-label">Nombre de la Empresa</label>
-              <input type="text" formControlName="comanyName" class="form-control" id="comanyName" 
-              [ngClass]="{ 'is-invalid':f.comanyName.touched && f.comanyName.errors }">
-              <div *ngIf="f.comanyName.touched && f.comanyName.errors" class="invalid-feedback"  >
-                <div *ngIf="f.email.errors.maxlength">Solo puede ingresar 20 caracteres</div>
-              </div>
+            </div><br>
+
+            <p>Optativo</p>
+            <p style="cursor: pointer;" (click)="insertCompany()">Ingresar Empresa ></p><br>
+            <div style="margin-bottom: 60px;" *ngIf="company">
+              <label for="companyName" class="form-label">Nombre de la Empresa</label>
+              <input type="text" formControlName="companyName" class="form-control" id="companyName">
               <label for="companyDirection" class="form-label">Direccion</label>
-              <input type="text" formControlName="companyDirection" class="form-control" id="companyDirection" 
-              [ngClass]="{ 'is-invalid':f.companyDirection.touched && f.companyDirection.errors }">
-              <div *ngIf="f.companyDirection.touched && f.companyDirection.errors" class="invalid-feedback"  >
-                <div *ngIf="f.email.errors.maxlength">Solo puede ingresar 20 caracteres</div>
-              </div>
+              <input type="text" formControlName="companyDirection" class="form-control" id="companyDirection">
               <label for="companyPhone" class="form-label">Telefono</label>
-              <input type="text" formControlName="companyPhone" class="form-control" id="companyPhone" 
-              [ngClass]="{ 'is-invalid':f.companyPhone.touched && f.companyPhone.errors }">
-              <div *ngIf="f.companyPhone.touched && f.companyPhone.errors" class="invalid-feedback"  >
-                <div *ngIf="f.email.errors.maxlength">Solo puede ingresar 20 caracteres</div>
-              </div>
+              <input type="text" formControlName="companyPhone" class="form-control" id="companyPhone">
             </div>
             <div style="text-align: center;">
-              <button class="btn getOut" (click)="insertUser()" >Guardar</button><br><br>
+              <button type="submit" class="btn getIn boton"  [disabled]="formNewUser.invalid">Guardar</button><br>
             </div>
           </form>
           <div style="text-align: center;">
-            <button class="btn getOut" (click)="cancel()" >Cancelar</button>
+            <button class="btn getOut boton" (click)="cancel()" >Cancelar</button>
           </div>
         </div>
       </div>
