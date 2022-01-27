@@ -5,6 +5,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { StorageService } from './service/storage.service';
 import { LoginObject } from './models/loginObject.model';
 import { Session } from './models/session.model';
+import { PermissionModel } from './models/permissions.model';
 
 @Component({
   selector: 'app-login',
@@ -15,21 +16,22 @@ import { Session } from './models/session.model';
 export class LoginComponent implements OnInit {
 
   public formLogin : FormGroup;
-  public session: boolean;
+  public session: PermissionModel;
 
   constructor( 
     private authService: AuthService, 
     private _storageService:StorageService, 
     private toastr: ToastrService, 
-    private readonly formBuilder : FormBuilder ) {  
+    private readonly formBuilder : FormBuilder 
+    ) {  
+      this._storageService.permissions$.subscribe(
+        result => {
+          this.session=result?result.isUser:null;
+        })
    }
   
   ngOnInit(): void {
     this.initForm();
-    this._storageService.permissions$.subscribe(
-      result => {
-        this.session=result?result.isUser:null;
-      })
   }
 
   initForm(){
@@ -58,8 +60,8 @@ export class LoginComponent implements OnInit {
 
   logOut(){
     this._storageService.logout();
-    this.toastr.warning("Te esperamos");
-    this.formLogin.reset();
+    this.session=null;
+    this.toastr.warning("GRACIAS POR VISITARNOS");
   }
 
 

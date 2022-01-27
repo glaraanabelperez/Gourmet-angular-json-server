@@ -6,7 +6,7 @@
           <div class="user_imagen">
             <img src="assets/icons/user.png" alt="">
           </div>
-          <form [formGroup]="formLogin" (ngSubmit)="login()" *ngIf="!session">
+          <form [formGroup]="formLogin" (ngSubmit)="login()" *ngIf="session==null">
             <label for="email" class="form-label">Email</label>
             <input type="text" formControlName="email" class="form-control" id="email" [ngClass]="{ 'is-invalid':f.email.touched && f.email.errors }">
             <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback"  >

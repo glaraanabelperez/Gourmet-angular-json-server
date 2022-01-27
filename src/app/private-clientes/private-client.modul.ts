@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { OrdersClientComponent } from './orders/orders-client.component';
 import { ConfirmOrder } from './shopping-confirm-order/confirm-order.component';
 import { GuardsClient } from '../guards/guards-client.guard';
+import { DateModule } from '../shared/date/date.module';
+import { OrdersSharedModule } from '../shared/orders/orders-shared.module';
 
 
 const routes: Routes = [
@@ -22,7 +24,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    DateModule,
+    OrdersSharedModule
   ],
 
   declarations: [

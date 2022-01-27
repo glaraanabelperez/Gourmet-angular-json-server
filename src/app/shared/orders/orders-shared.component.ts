@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { OrdersResponse } from './model/orders-response.model';
 import { OrdersSharedService } from './service/orders.service';
@@ -13,15 +14,16 @@ export class OrdersSharedComponent implements OnInit {
   
   @Input() date: Date;
   public orders: OrdersResponse[]=[];
-  public sessionUser: boolean;
-  public sessionAdmin:boolean;
+  public sessionUser: PermissionModel;
+  // public sessionAdmin:boolean;
 
 
   constructor(private _service_orders:OrdersSharedService, public _storageSession:StorageService) {
-
     this._storageSession.permissions$.subscribe(result => {
-      this.sessionUser=result.isUser;
-      this.sessionAdmin=result.isAdmin;
+      this.sessionUser=result;
+      console.log("aca", result)
+      console.log("aca", this.sessionUser.isUser.id)
+      // this.sessionAdmin=result.isAdmin;
       })
   }
 
@@ -30,13 +32,10 @@ export class OrdersSharedComponent implements OnInit {
 
   ngOnChanges(){
     if(this.date!=null){
-      if(this.sessionAdmin){
-        console.log(this._storageSession.getSession().user.id)
+      if(this.sessionUser.isAdmin){
         this.get(this.date);
       }else{
-        this.getByIdUser(this.date, this._storageSession.getSession().user.id)
-        console.log(this._storageSession.getSession().getUser().id)
-        this._storageSession.getSession().getUser().id
+        this.getByIdUser(this.date, this.sessionUser.isUser.id)
       }
     }
   }

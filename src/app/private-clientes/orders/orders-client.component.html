@@ -1,1 +1,8 @@
-<P>orders</P>
+<div class="titulo_seccion">
+    <h3>Pedidos</h3>
+    <h4 style="font-weight: 600;">En esta seccion podra ver los pedidos del dia.</h4>
+</div>
+<div class="base-order">
+  <app-date (dateSelected)="setDate($event)">ok</app-date>
+  <app-orders-shared  [date]="date" ></app-orders-shared>
+</div>

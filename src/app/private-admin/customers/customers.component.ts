@@ -12,10 +12,10 @@ export class CustomersComponent implements OnInit {
   public customers:CustomersResponse[]=[];
 
   constructor(private _serviceCustomers:CustomersService) { 
+    this.get();
   }
 
   ngOnInit(): void {
-    this.get();
   }
 
   public get(){

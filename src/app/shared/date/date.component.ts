@@ -14,12 +14,12 @@ export class DateComponent implements OnInit {
   
   public model: NgbDateStruct;
   
-  constructor(private calendar: NgbCalendar, private _serviceDate:DateService) {}
-
-  ngOnInit(): void {
+  constructor(private calendar: NgbCalendar, private _serviceDate:DateService) {
     this.model = this.calendar.getToday();
     this.emitDate(this.model)
   }
+
+  ngOnInit(): void {}
 
   public emitDate(d){
     this.dateSelected.emit(d);

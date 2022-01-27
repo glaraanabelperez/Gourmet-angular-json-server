@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { User } from 'src/app/public/components/login/models/user.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { ShoppingCarService } from 'src/app/public/components/shoping-cart/service/shoppingCar.service';
@@ -18,10 +19,8 @@ export class ConfirmOrder implements OnInit {
   public orderOk:boolean;
   public _delivery: boolean=false;
   public direction_delivery: string;
-  public sessionUser: boolean;
+  public sessionUser: PermissionModel;
   public formDirection: any;
-
-  public user:User;
 
   constructor(
     public _service:ShoppingCarService, 
@@ -29,10 +28,11 @@ export class ConfirmOrder implements OnInit {
     private readonly formBuilder : FormBuilder,
     private router:Router,
     private toastr: ToastrService,
-    ) {}
+    ) {
+      this.confirmUser();
+    }
 
   ngOnInit(): void {
-    this.confirmUser();
     this.initForm();
   }
 
@@ -51,14 +51,13 @@ export class ConfirmOrder implements OnInit {
 
   public delivery(){
     this._delivery=true;
-    this.formDirection.controls['direction'].setValue(this.user.direction);
+    this.formDirection.controls['direction'].setValue(this.sessionUser.isUser.direction);
   }
 
   public confirmUser(){
     this._storageSession.permissions$.subscribe(result => {
       if(result){
         this.sessionUser=result.isUser;
-        this.user=this._storageSession.getSession().user;
       }else{
         this.router.navigate(['/login']);
         this.toastr.info("SE DEBE REGISTRAR PARA HACER EL PEDIDO")
