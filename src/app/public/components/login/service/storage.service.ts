@@ -19,9 +19,13 @@ export class StorageService{
     this.currentSession = this.loadSessionData();
     this.setPermissions();
   }
-
+//
   public getSession(){
     return this.currentSession;
+  }
+
+  public getPersmissions(){
+    return this.permissions;
   }
 
   private loadSessionData(): Session{

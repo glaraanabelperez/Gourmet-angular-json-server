@@ -15,12 +15,13 @@ import { MealsForm } from './meals/meals-form/meals-form.component';
 import { OrdersSharedModule } from '../shared/orders/orders-shared.module';
 import { CustomersComponent } from './customers/customers.component';
 import { CustomersService } from './customers/service/customers.service';
+import { GuardsAdmin } from '../guards/guards-admin.guard';
 
 const routes: Routes = [
-  {path: 'edit-meals', component:MealsAdminComponent},
-  {path: 'edit-menus', component:MenusComponent},
-  {path: 'orders', component:OrdersAdminComponent},
-  {path: 'clientes', component:CustomersComponent},
+  {path: 'edit-meals', component:MealsAdminComponent, canActivate:[GuardsAdmin]},
+  {path: 'edit-menus', component:MenusComponent, canActivate:[GuardsAdmin]},
+  {path: 'orders', component:OrdersAdminComponent, canActivate:[GuardsAdmin]},
+  {path: 'clientes', component:CustomersComponent, canActivate:[GuardsAdmin]},
 
 ];
 

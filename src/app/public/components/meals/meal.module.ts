@@ -13,7 +13,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forRoot(routes),
     ListMealModule,
-
   ],
   declarations: [
     MealsComponent

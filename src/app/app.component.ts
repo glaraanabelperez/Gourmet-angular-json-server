@@ -10,7 +10,7 @@ import { StorageService } from './public/components/login/service/storage.servic
 })
 export class AppComponent {
   title = 'app-gourmet';
-  sessionUser: boolean;
+  sessionUser: any;
   sessionAdmin:boolean;
 
   constructor(public _storageSession:StorageService) {}
@@ -20,6 +20,7 @@ export class AppComponent {
         if(result){
           this.sessionUser=result.isUser;
           this.sessionAdmin=result.isAdmin;
+          console.log(this.sessionUser)
         }
       })
   }

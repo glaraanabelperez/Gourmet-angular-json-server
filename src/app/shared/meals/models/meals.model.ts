@@ -5,5 +5,4 @@ export interface Meal{
      tittle:string;
      description:string;
      state:string;
-
 }

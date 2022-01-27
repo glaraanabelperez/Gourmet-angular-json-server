@@ -7,12 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { OrdersClientComponent } from './orders/orders-client.component';
 import { ConfirmOrder } from './shopping-confirm-order/confirm-order.component';
+import { GuardsClient } from '../guards/guards-client.guard';
 
 
 const routes: Routes = [
   {path: 'orders-client', component:OrdersClientComponent},
-  {path: 'finish-order', component:ConfirmOrder},
-
+  {path: 'finish-order', component:ConfirmOrder, canActivate:[GuardsClient]},
 ];
 
 @NgModule({

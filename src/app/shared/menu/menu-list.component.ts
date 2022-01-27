@@ -23,16 +23,15 @@ export class MenuListComponent implements OnInit {
     private _menusService:MenuService, 
     private toastr: ToastrService,
     public _storageSession:StorageService
-    ) {
-        this._storageSession.permissions$.subscribe(result => {
-          if(result){
-            this.sessionAdmin=result.isAdmin;
-          }
-        })
-    }
+    ) {}
 
   ngOnInit(): void {
     this.date=null;
+    this._storageSession.permissions$.subscribe(result => {
+      if(result){
+        this.sessionAdmin=result.isAdmin;
+      }
+    })
   }
 
   ngOnChanges(){
