@@ -6,13 +6,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from './service/auth.service';
-import { LoginComponent } from './login.component';
-import { StorageService } from 'src/app/public/components/login/service/storage.service';
+import { NewUserComponent } from './new-user.component';
 
 
 const routes: Routes = [
-  {path: 'login', component:LoginComponent},
+  {path: 'new-user', component:NewUserComponent},
 ];
 
 @NgModule({
@@ -24,10 +22,10 @@ const routes: Routes = [
     HttpClientModule,
   ],
   declarations: [
-    LoginComponent
+    NewUserComponent
   ],
   exports: [],
-  providers: [AuthService, StorageService],
+  providers: [ ],
 
 })
-export class LoginModule { }
+export class NewUserModule { }

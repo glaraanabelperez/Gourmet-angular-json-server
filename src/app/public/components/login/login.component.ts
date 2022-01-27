@@ -16,7 +16,7 @@ import { PermissionModel } from './models/permissions.model';
 export class LoginComponent implements OnInit {
 
   public formLogin : FormGroup;
-  public session: PermissionModel;
+  public sessionUser: boolean;
 
   constructor( 
     private authService: AuthService, 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     ) {  
       this._storageService.permissions$.subscribe(
         result => {
-          this.session=result?result.isUser:null;
+          this.sessionUser=result?result.isUser:false;
         })
    }
   
@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
 
   initForm(){
     this.formLogin = this.formBuilder.group({
-      email : ["", [Validators.required, Validators.maxLength(40)]],
-      password : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]]
+      email : ["", [Validators.required, Validators.maxLength(40), Validators.email]],
+      password : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$'), Validators.email]]
       });
   }
 
@@ -53,14 +53,15 @@ export class LoginComponent implements OnInit {
       }
     },
     error => {
-      console.log(error);
       this.toastr.warning("Login incorrecto");
     });
+    
+
   }
 
   logOut(){
     this._storageService.logout();
-    this.session=null;
+    this.sessionUser=false;
     this.toastr.warning("GRACIAS POR VISITARNOS");
   }
 

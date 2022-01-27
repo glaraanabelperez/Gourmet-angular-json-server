@@ -19,7 +19,7 @@ export class ListMealsComponent implements OnInit {
 
   constructor(private _mealsService:ListMealService, private _storageService:StorageService) { 
     this._storageService.permissions$.subscribe(result => {
-      this.session=result?result.isAdmin:null;
+      this.session=result?result.isAdmin:false;
     })
     this.get();
   }
@@ -45,7 +45,6 @@ export class ListMealsComponent implements OnInit {
   public get(){
     this._mealsService.getMelas().subscribe(res=>{
       if(res.length>0){
-        console.log(res)
         this.meals=res.slice();
       }else{
         this.meals=null;

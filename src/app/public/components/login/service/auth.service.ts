@@ -17,10 +17,15 @@ export class AuthService{
   
   }
   
-  login(user:LoginObject): Observable<User> {
+  public login(user:LoginObject): Observable<User> {
     let data:string="?email=" + user.getEmail();
     let url=environment.apiUrl + this.endpoint + data;
     return this.http.get<User>(url);
+  }
+
+  public insertUser(user:User):Observable<any>{
+    let url = environment.apiUrl + this.endpoint;
+    return this.http.post(url , user);
   }
  
 

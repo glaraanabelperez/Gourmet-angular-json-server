@@ -10,7 +10,7 @@ import { StorageService } from './public/components/login/service/storage.servic
 })
 export class AppComponent {
   title = 'app-gourmet';
-  sessionUser: any;
+  sessionUser: boolean;
   sessionAdmin:boolean;
 
   constructor(public _storageSession:StorageService) {}
@@ -18,8 +18,9 @@ export class AppComponent {
   ngOnInit(): void {
     this._storageSession.permissions$.subscribe(result => {
         if(result){
-          this.sessionUser=result.isUser;
+          this.sessionUser=result.isUser && !result.isAdmin ? true : false;
           this.sessionAdmin=result.isAdmin;
+          console.log(this.sessionAdmin)
         }
       })
   }

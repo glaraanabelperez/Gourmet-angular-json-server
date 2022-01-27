@@ -10,13 +10,20 @@ import { StorageService } from '../public/components/login/service/storage.servi
 
 export class GuardsAdmin implements CanActivate {
 
-  constructor(private authService :StorageService, private toastr: ToastrService){}
+  constructor(private _serviceStorage :StorageService, private toastr: ToastrService){}
   
   canActivate( next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> |  boolean {
-    if(this.authService.getPersmissions().isUser){
-       return true;
+    if(this._serviceStorage.getCurrentSession()!=null){
+      if(this._serviceStorage.getCurrentSession().authAdmin){
+        return true;
+      }else{
+        console.log("aca")
+        this.toastr.error('DEBE TENER PERMISOS PARA ACCEDER A ESTA SECCION')
+        return false;
+      }
     }else{
-      this.toastr.error('DEBE RESGITRARSE PARA ACCEDER A ESTA SECCION')
+      this.toastr.error('ES NECESARIO REGISTRSE PARA ACCEDER')
+      return false;
     }
   }
   

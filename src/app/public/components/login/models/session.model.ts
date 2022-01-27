@@ -4,7 +4,7 @@ export  class Session{
 
     // private token: string;
     public user: User;
-    private authAdmin:boolean=false;
+    public authAdmin:boolean=false;
 
     constructor(user:User){
         this.user=user;

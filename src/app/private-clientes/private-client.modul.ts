@@ -14,7 +14,7 @@ import { OrdersSharedModule } from '../shared/orders/orders-shared.module';
 
 const routes: Routes = [
   {path: 'orders-client', component:OrdersClientComponent},
-  {path: 'finish-order', component:ConfirmOrder, canActivate:[GuardsClient]},
+  {path: 'confirmar-orden', component:ConfirmOrder, canActivate:[GuardsClient]},
 ];
 
 @NgModule({

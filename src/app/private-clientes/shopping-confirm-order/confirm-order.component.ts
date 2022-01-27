@@ -51,13 +51,14 @@ export class ConfirmOrder implements OnInit {
 
   public delivery(){
     this._delivery=true;
-    this.formDirection.controls['direction'].setValue(this.sessionUser.isUser.direction);
+    this.formDirection.controls['direction'].setValue(this._storageSession.getCurrentUser().direction);
   }
 
   public confirmUser(){
     this._storageSession.permissions$.subscribe(result => {
       if(result){
         this.sessionUser=result.isUser;
+        console.log(this.sessionUser)
       }else{
         this.router.navigate(['/login']);
         this.toastr.info("SE DEBE REGISTRAR PARA HACER EL PEDIDO")

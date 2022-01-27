@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { PermissionModel } from '../models/permissions.model';
 import { Session } from '../models/session.model';
+import { User } from '../models/user.model';
 
 
 
@@ -12,7 +13,7 @@ export class StorageService{
 
   private localStorageService;
   private currentSession : Session = null;
-  private permissions: any = new BehaviorSubject<PermissionModel>(null);
+  private permissions: any = new BehaviorSubject<any>(null);
   public permissions$ = this.permissions.asObservable();
 
   constructor() {
@@ -21,9 +22,13 @@ export class StorageService{
     this.setPermissions();
   }
 
-  //Guards
-  public getPersmissions(){
-    return this.permissions;
+  public getCurrentSession(): Session{
+    return this.currentSession;
+  }
+
+  public getCurrentUser(): User{
+    var session: Session = this.getCurrentSession();
+    return (session && session.user) ? session.user : null;
   }
 
   private loadSessionData(): Session{
@@ -46,15 +51,18 @@ export class StorageService{
   private setPermissions(){
     if(this.currentSession!=null){
       let user=JSON.parse(this.localStorageService.getItem('session'));
-      let newPermision:PermissionModel={
-       isUser:user.user,
-       isAdmin:user.authAdmin
-      }
-      this.permissions.next(newPermision);
+      this.permissions.next(this.setObjectPermission(true, user.authAdmin));
     }else{
-      this.permissions.next(null);
+      this.permissions.next(this.setObjectPermission(false, false ));
     }
+  }
 
+  private setObjectPermission(user:boolean, admin:boolean):any{
+    let newPermision:any={
+      isUser:user,
+      isAdmin:admin
+     }
+     return newPermision
   }
 
 

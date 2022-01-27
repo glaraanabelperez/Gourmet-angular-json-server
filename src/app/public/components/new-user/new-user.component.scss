@@ -1,0 +1,58 @@
+@import '../../../styles/general_styles.scss';
+
+.contenedor_login{
+    background-color: white;
+    width: 60%;
+    margin: auto;
+    justify-content: space-around;
+    padding: 2%;
+    border-radius: 10px;
+    .card{
+        border: 0px;
+        .card-text{
+            width: 40%;
+             margin: auto;
+             h2{
+                text-align: center ;
+             }
+             .user_imagen{
+                text-align: center ;
+                margin-bottom: 10%;
+                img{
+                    width: 60%;
+                }
+             }
+             form{
+                .getIn{
+                    margin: 4%;
+                    background-color: $verde_gou;
+                }
+             }
+             .getOut{
+                margin: 4%;
+                background-color: gainsboro;
+            }
+            
+        }
+    }
+}
+
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 568px) { 
+    .contenedor_login{
+        background-color: white;
+        width: 100%;
+        margin: auto;
+        justify-content: space-around;
+        padding: 2%;
+        border-radius: 10px;
+        margin-top: 4%;
+    }
+
+  }
+
+  // Para iPad
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)  { /* Aquí van los estilos */}

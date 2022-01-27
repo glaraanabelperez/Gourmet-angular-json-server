@@ -14,16 +14,12 @@ export class OrdersSharedComponent implements OnInit {
   
   @Input() date: Date;
   public orders: OrdersResponse[]=[];
-  public sessionUser: PermissionModel;
-  // public sessionAdmin:boolean;
+  public sessionPermissions: PermissionModel;
 
 
   constructor(private _service_orders:OrdersSharedService, public _storageSession:StorageService) {
     this._storageSession.permissions$.subscribe(result => {
-      this.sessionUser=result;
-      console.log("aca", result)
-      console.log("aca", this.sessionUser.isUser.id)
-      // this.sessionAdmin=result.isAdmin;
+      this.sessionPermissions=result;
       })
   }
 
@@ -32,10 +28,10 @@ export class OrdersSharedComponent implements OnInit {
 
   ngOnChanges(){
     if(this.date!=null){
-      if(this.sessionUser.isAdmin){
+      if(this.sessionPermissions.isAdmin){
         this.get(this.date);
       }else{
-        this.getByIdUser(this.date, this.sessionUser.isUser.id)
+        this.getByIdUser(this.date, this._storageSession.getCurrentUser().id)
       }
     }
   }

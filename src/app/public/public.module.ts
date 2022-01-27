@@ -14,6 +14,7 @@ import { NavClientComponent } from './components/navs/navClient/navClient.compon
 import { OrderFoodModule } from './components/order-food/order-food.module';
 import { MealModule } from './components/meals/meal.module';
 import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
+import { NewUserModule } from './components/new-user/new-user.module';
 
 
 
@@ -21,9 +22,11 @@ import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module'
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
     LoginModule,
+    NewUserModule,
     OrderFoodModule,
     MealModule,
     ShoppingCarModule

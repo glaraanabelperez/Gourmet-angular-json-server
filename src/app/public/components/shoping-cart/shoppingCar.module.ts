@@ -23,9 +23,7 @@ const routes: Routes = [
   declarations: [
     ShoppingCar,
   ],
-  exports: [
-    // RouterModule,
-  ],
+  exports: [],
   providers: [ShoppingCarService],
 
 })
