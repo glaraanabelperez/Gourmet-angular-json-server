@@ -28,6 +28,12 @@ export class AuthService{
     return this.http.post(url , user);
   }
 
+  public editUser(user:User):Observable<any>{
+    let data:string="?id=" + user.id;
+    let url=environment.apiUrl + this.endpoint + data;
+    return this.http.put(url , user);
+  }
+
   public veryifyEmail(email:string):Observable<any>{
     let data:string="?email=" + email;
     let url=environment.apiUrl + this.endpoint + data;

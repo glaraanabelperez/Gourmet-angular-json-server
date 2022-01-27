@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   public formLogin : FormGroup;
   public sessionUser: boolean;
+  public name: string;
 
   constructor( 
     private authService: AuthService, 
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
       this._storageService.permissions$.subscribe(
         result => {
           this.sessionUser=result?result.isUser:false;
+          this.name=this._storageService.getCurrentUser().name
         })
    }
   

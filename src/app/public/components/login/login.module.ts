@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './service/auth.service';
 import { LoginComponent } from './login.component';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
+import { DataUserComponent } from './data-user/data-user.component';
+import { EditUserComponent } from './data-user/edit-user/edit-user.component';
 
 
 const routes: Routes = [
@@ -24,7 +26,9 @@ const routes: Routes = [
     HttpClientModule,
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    DataUserComponent,
+    EditUserComponent,
   ],
   exports: [],
   providers: [AuthService, StorageService],

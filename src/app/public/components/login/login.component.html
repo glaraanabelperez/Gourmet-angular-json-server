@@ -2,7 +2,7 @@
     <div class="card">
       <div class="card-text">
         <div> 
-          <h2 style="margin-top: 20px; margin-bottom: 15px;">LogIn</h2>
+          <h2 style="margin-top: 20px; margin-bottom: 15px;">{{name}}</h2>
           <div class="user_imagen">
             <img src="assets/icons/user.png" alt="">
           </div>
@@ -29,6 +29,7 @@
             </div>
           </form>
           <div style="text-align: center;" *ngIf="sessionUser">
+            <app-data-user>ok</app-data-user>
             <button class="btn getOut" (click)="logOut()" >Salir</button>
           </div>
         </div>

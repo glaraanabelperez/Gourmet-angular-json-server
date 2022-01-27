@@ -24,7 +24,9 @@ const routes: Routes = [
   declarations: [
     NewUserComponent
   ],
-  exports: [],
+  exports: [    
+    NewUserComponent
+  ],
   providers: [ ],
 
 })
