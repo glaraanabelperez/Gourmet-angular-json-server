@@ -23,15 +23,11 @@
                 }
              }
              form{
-                .getIn{
-                    margin: 4%;
-                    background-color: $verde_gou;
-                }
+                 width: 50%;
+                 margin: auto;
+                 text-align: center;
+
              }
-             .getOut{
-                margin: 4%;
-                background-color: gainsboro;
-            }
             
         }
     }

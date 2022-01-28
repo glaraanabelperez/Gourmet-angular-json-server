@@ -46,18 +46,18 @@
             <div *ngIf="f.phone.touched && f.phone.errors" class="invalid-feedback"  >
               <div *ngIf="f.phone.errors.required">El telefono es Requerido</div>
               <div *ngIf="f.phone.errors.maxlength">Solo puede ingresar 20 caracteres</div>
+              <div *ngIf="f.phone.errors.pattern">Solo numeros</div>
             </div>
 
             <label for="direction" class="form-label">Direccion</label>
             <input type="text" formControlName="direction" class="form-control" id="direction" 
             [ngClass]="{ 'is-invalid':f.direction.touched && f.direction.errors }">
             <div *ngIf="f.direction.touched && f.direction.errors" class="invalid-feedback"  >
-              <div *ngIf="f.direction.errors.required">El telefono es Requerido</div>
+              <div *ngIf="f.direction.errors.required">La direccion es Requerido</div>
               <div *ngIf="f.direction.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div><br>
 
-            <p>Optativo</p>
-            <p style="cursor: pointer;" (click)="insertCompany()">Ingresar Empresa ></p><br>
+            <p style="color:crimson; font-weight: 600;cursor: pointer;" (click)="insertCompany()">Optativo, Ingresar Empresa ></p>
             <div style="margin-bottom: 60px;" *ngIf="company">
               <label for="companyName" class="form-label">Nombre de la Empresa</label>
               <input type="text" formControlName="companyName" class="form-control" id="companyName">

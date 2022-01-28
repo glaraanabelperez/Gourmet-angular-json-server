@@ -14,8 +14,7 @@
               <div *ngIf="f.email.errors.required">El email es Requerido</div>
               <div *ngIf="f.email.errors.maxlength">Solo puede ingresar 20 caracteres</div>
               <div *ngIf="f.email.errors.email">Email Invalido</div>
-
-            </div>
+            </div><br>
             <label for="password" class="form-label">Password</label>
             <input type="text" formControlName="password" class="form-control" id="password" [ngClass]="{ 'is-invalid':f.password.touched && f.password.errors }">
             <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback"  >
@@ -23,14 +22,16 @@
               <div *ngIf="f.password.errors.maxlength">Solo puede ingresar 10 caracteres</div>
               <div *ngIf="f.password.errors.pattern">El password solo puede contener numeros</div>
             </div>
+            <br>
             <div style="text-align: center;margin-top: 20px;">
-              <button class="btn getIn">Login</button><br><br>
+              <button class="btn btn-success">Login</button><br><br>
               <a [routerLink]="['/new-user']">Registrarse</a>
             </div>
           </form>
           <div style="text-align: center;" *ngIf="sessionUser">
-            <app-data-user>ok</app-data-user>
-            <button class="btn getOut" (click)="logOut()" >Salir</button>
+            <app-data-user></app-data-user>
+            <hr>
+            <button class="btn btn-danger" (click)="logOut()" >Salir</button>
           </div>
         </div>
       </div>

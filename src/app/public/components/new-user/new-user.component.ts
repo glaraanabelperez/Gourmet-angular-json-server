@@ -4,6 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../login/service/auth.service';
 import { User } from '../login/models/user.model';
 import { Company } from 'src/app/private-admin/customers/models/company.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class NewUserComponent implements OnInit {
   constructor( 
     private authService: AuthService, 
     private toastr: ToastrService, 
-    private readonly formBuilder : FormBuilder 
+    private readonly formBuilder : FormBuilder,
+    private router: Router
     ) {}
   
   ngOnInit(): void {
@@ -46,6 +48,7 @@ export class NewUserComponent implements OnInit {
 
   public cancel(){
     this.formNewUser.reset();
+    this.router.navigate(['/meals']);
   }
 
   public insertUser() {

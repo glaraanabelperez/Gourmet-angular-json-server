@@ -1,4 +1,3 @@
-<p>edit-user works!</p>
 <div class="contenedor_login ">
     <div class="card">
       <div class="card-text">
@@ -14,7 +13,7 @@
               <div *ngIf="f.name.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div>
 
-            <!-- <label for="secondName" class="form-label">Apellido</label>
+            <label for="secondName" class="form-label">Apellido</label>
             <input type="text" formControlName="secondName" class="form-control" id="secondName" 
             [ngClass]="{ 'is-invalid':f.secondName.touched && f.secondName.errors }">
             <div *ngIf="f.secondName.touched && f.secondName.errors" class="invalid-feedback"  >
@@ -22,21 +21,21 @@
               <div *ngIf="f.secondName.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div>
 
-            <label for="email" class="form-label">Email</label>
+            <!-- <label for="email" class="form-label">Email</label>
             <input type="text" formControlName="email" class="form-control" id="email" [ngClass]="{ 'is-invalid':f.email.touched && f.email.errors }">
             <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback"  >
               <div *ngIf="f.email.errors.required">El email es Requerido</div>
               <div *ngIf="f.email.errors.maxlength">Solo puede ingresar 20 caracteres</div>
               <div *ngIf="f.email.errors.email">Email invalido</div>
-            </div>
+            </div> -->
 
-            <label for="password" class="form-label">Password</label>
+            <!-- <label for="password" class="form-label">Password</label>
             <input type="text" formControlName="password" class="form-control" id="password" [ngClass]="{ 'is-invalid':f.password.touched && f.password.errors }">
             <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback"  >
               <div *ngIf="f.password.errors.required">El password es Requerido</div>
               <div *ngIf="f.password.errors.maxlength">Solo puede ingresar 10 caracteres</div>
               <div *ngIf="f.password.errors.pattern">El password solo puede contener numeros</div>
-            </div>
+            </div> -->
 
             <label for="phone" class="form-label">Telefono</label>
             <input type="text" formControlName="phone" class="form-control" id="phone" 
@@ -52,10 +51,9 @@
             <div *ngIf="f.direction.touched && f.direction.errors" class="invalid-feedback"  >
               <div *ngIf="f.direction.errors.required">El telefono es Requerido</div>
               <div *ngIf="f.direction.errors.maxlength">Solo puede ingresar 20 caracteres</div>
-            </div><br> -->
+            </div><br>
 
-            <!-- <p>Optativo</p>
-            <p style="cursor: pointer;" (click)="insertCompany()">Ingresar Empresa ></p><br>
+            <p style="cursor: pointer; color: crimson; font-weight: 600;" (click)="insertCompany()"> Optativo -> Ingresar Empresa ></p><br>
             <div style="margin-bottom: 60px;" *ngIf="company">
               <label for="companyName" class="form-label">Nombre de la Empresa</label>
               <input type="text" formControlName="companyName" class="form-control" id="companyName">
@@ -63,14 +61,13 @@
               <input type="text" formControlName="companyDirection" class="form-control" id="companyDirection">
               <label for="companyPhone" class="form-label">Telefono</label>
               <input type="text" formControlName="companyPhone" class="form-control" id="companyPhone">
-            </div> -->
-            <div style="text-align: center;">
-              <button type="submit" class="btn getIn boton"  [disabled]="formEditUser.invalid">Guardar</button><br>
             </div>
+            <br>
+            <div>
+              <button type="submit" class="btn btn-primary" style="margin-right:5px" [disabled]="formEditUser.invalid">Guardar</button>
+              <button class="btn btn-secondary" (click)="cancel()" >Cancelar</button>
+            </div><br><br>
           </form>
-          <div style="text-align: center;">
-            <button class="btn getOut boton" (click)="cancel()" >Cancelar</button>
-          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
+import { StorageService } from '../service/storage.service';
 
 @Component({
   selector: 'app-data-user',
@@ -7,11 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataUserComponent implements OnInit {
 
-  public editUser:boolean=true;
+  public editUser:boolean=false;
+  public user:User;
 
-  constructor() { }
+  constructor(private _storageService:StorageService) { 
+    this.user=this._storageService.getCurrentUser();
+    console.log(this.user.name)
+  }
 
   ngOnInit(): void {
+  }
+
+  public onClose(e){
+    if(this.editUser){
+      this.editUser=false;
+    }else{
+      this.editUser=true;
+    }
   }
 
 }

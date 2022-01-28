@@ -17,14 +17,15 @@
              }
              form{
                 .getIn{
-                    margin: 4%;
+                    margin: auto;
                     background-color: $verde_gou;
                 }
+                .getOut{
+                    margin: auto;
+                    background-color: gainsboro;
+                }
              }
-             .getOut{
-                margin: 4%;
-                background-color: gainsboro;
-            }
+             
             
         }
     }

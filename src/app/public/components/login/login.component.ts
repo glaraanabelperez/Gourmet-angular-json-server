@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       this._storageService.permissions$.subscribe(
         result => {
           this.sessionUser=result?result.isUser:false;
-          this.name=this._storageService.getCurrentUser().name
+          this.name=this._storageService.getCurrentUser()!=null?this._storageService.getCurrentUser().name:"Login"
         })
    }
   
