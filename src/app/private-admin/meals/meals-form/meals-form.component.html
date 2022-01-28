@@ -1,4 +1,4 @@
-<div class="base_form">
+<div *ngIf="elementToEdit!=null" class="base_form">
   <h5>Ingrese los datos</h5><br>
   <form class="col-sm" [formGroup]="formMeals" #form>
     <div class=" form-group mb-3">
@@ -30,5 +30,10 @@
     <button type="submit" class="btn btn-primary" [disabled]="this.formMeals.invalid" (click)="onSubmit()" style="margin-right: 3%;">Guardar</button>
     <button type="button" class="btn btn-warning" (click)="cleanForm()">Cancelar</button>
   </form>
+</div>
+<div *ngIf="elementToEdit==null" class="base_form">
+  <center>
+    <img style="width: 70%;" src="assets/fondo4.jpg" alt="">
+  </center>
 </div>
 

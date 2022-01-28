@@ -46,9 +46,11 @@ h5{
     width: 95% !important;
     margin: auto;
     h4{
+        text-align: center;
         color: black;
     }
     h5{
+        text-align: center;
         color: gray;
     }
 }
@@ -61,10 +63,6 @@ h5{
     h3{
         color: black;
         font-weight: 600;
-        text-align: center;
-    }
-    h4{
-        text-align: center;
     }
     
 }
@@ -73,9 +71,9 @@ h5{
     background-color: white;
     padding: 2% 2% 1% 2%;
     border-radius: 5px;
-    margin: 0% 2% 2% 0%;
+    margin: 0% 2% 0% 0%;
     width: 25%;
-    height: 30%;
+    height: 250px;
     h5{
         font-weight: 600;
         text-align: center;

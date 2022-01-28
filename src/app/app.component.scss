@@ -1,8 +1,26 @@
 @import './styles/general_styles.scss';
 
 .root{
-    width:79% ;
+    width:75% ;
     margin: auto;
+    display: flex;
+    flex-direction: row;
+    .tarjeta_seccion_root{
+        margin: auto;
+        margin-top: 0px;
+        background-color: white;
+        border-radius: 5px;
+        padding: 3%;
+        width: 25%;
+        height: 462px;
+        .img_right_root{
+            height: 150px;
+            width: 150px;
+            background-color: #0d6efd;
+            border-radius: 100%;
+            margin: auto;
+        }
+    }
 }
 .espacio_bottom{
     display: block;
@@ -15,6 +33,9 @@ and (max-device-width : 568px) {
     .root{
         width:100% ;
         float: none;
+        .tarjeta_seccion_root{
+            display: none;
+        }
     }
     .espacio_bottom{
         display: block;

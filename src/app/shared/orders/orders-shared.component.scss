@@ -1,20 +1,16 @@
 @import '../../styles/general_styles.scss';
-.titulo-seccion{
-  p{
-    color: $verde_gou_dark;
-  }
-}
 
-.base-menu{
-  .tarjeta_seccion{
-    margin: 0% 2% 0% 2%;
-    .target_meals{
-      .meals_tar{
-        display: flex;
-        flex-direction: row !important;
-        width: 100%;
+div .table{
+  li{
+      list-style: none;
+      p{
+        margin-bottom: 5px;
       }
-    }
+      h6{
+        font-size: 1.1rem;
+      }
+        span{
+          color: rgb(78, 78, 78);
+        }
   }
-
 }

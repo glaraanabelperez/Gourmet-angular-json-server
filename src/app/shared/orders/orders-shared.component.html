@@ -8,21 +8,37 @@
     <h5>para ver el pedido del dia</h5>
   </ng-template> 
   <br>
-  <table class="table table-striped">
-      <tbody>
-        <tr *ngFor="let or of orders">
-          <td>
-            <!-- <li *ngFor="let meal of m.meal">
-              <h5>Comida {{meal.type}}</h5>
-              <h6>{{meal.tittle}}</h6>
-              <h7>{{meal.description}}</h7>
-              <p>Estado: {{m.state}}</p>
-              <button class="btn btn-warning" *ngIf="admin" (click)="sendShoppingCart(m)">Editar</button>
-            </li>   -->
-          </td>
-        </tr>
-      </tbody>
-  </table>
+  <div *ngIf="date">
+      <table class="table table-striped">
+          <tbody>
+            <tr *ngFor="let or of orders">
+              <td>
+                <li>
+                  <p>Estado</p>
+                  <h6>{{or.state}}</h6>
+                  <p>Comida</p>
+                  <h6>{{or.menus[0].meal[0].tittle}}</h6>
+                  <p>Descripcion</p>
+                  <h6>{{or.menus[0].meal[0].description}}</h6>
+                  <p>Cliente</p>
+                  <h6>Cliente: {{or.users[0].name}}</h6>
+                  <p>Apellido</p>
+                  <h6>Apellido: {{or.users[0].secondName}}</h6>
+                  <p>Telefono</p>
+                  <h6>Telefono: {{or.users[0].telephone}}</h6>
+                  <p>Direccion Envio</p>
+                  <h6>Direccion de envio: {{or.deliveryAdress}}</h6>
+                  <p>Cantidad</p>
+                  <h6>cantidad: {{or.count}}</h6>
+                  <div style="margin-bottom: 3%;" scope="row" >
+                    <button class="btn btn-primary"><i class="bi bi-pencil-fill"></i>  Editar Estado</button>
+                  </div>
+                </li>  
+              </td>            
+            </tr>
+          </tbody>
+      </table>
+  </div>
 </div>
 
 

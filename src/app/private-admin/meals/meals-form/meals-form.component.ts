@@ -31,6 +31,7 @@ export class MealsForm implements OnInit {
   }
 
   ngOnChanges(): void {
+    console.log(this.elementToEdit)
     if(this.elementToEdit!=null){
       this.setEditElement(this.elementToEdit);
       this.enableEditing=true;
@@ -42,6 +43,7 @@ export class MealsForm implements OnInit {
   public cleanForm(){
     this.formMeals.reset();
     this.enableEditing=false;
+    this.elementToEdit=null;
   }
 
   public onSubmit(){
@@ -101,6 +103,7 @@ export class MealsForm implements OnInit {
   }
 
   setEditElement(meal:Meal) :void{
+    console.log(meal)
     this.formMeals.controls['type'].setValue(meal.type ? meal.type : '');
     this.formMeals.controls['title'].setValue(meal.tittle ? meal.tittle : '');
     this.formMeals.controls['description'].setValue(meal.description ? meal.description : '');

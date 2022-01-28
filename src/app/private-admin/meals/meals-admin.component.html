@@ -3,7 +3,7 @@
     <h4 style="font-weight: 600;">En esta seccion podra agregar, editar y eliminar comidas.</h4>
 </div>
 <div class="base_meals_admin">
-    <app-meals-form  [elementToEdit]="elementToEdit" (reload)="reload($event)"></app-meals-form><br>
+    <app-meals-form [elementToEdit]="elementToEdit" (reload)="reload($event)"></app-meals-form><br>
     <app-list-meals [_reload]="_reload" [action]="action" (meal)="editMeal($event)"></app-list-meals>
 </div>
 

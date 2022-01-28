@@ -39,7 +39,7 @@ export class OrdersSharedComponent implements OnInit {
   public get(date){
     this._service_orders.getOrders(date).subscribe(res=>{
       if(res.length>0){
-        console.log(res)
+        console.log("aca", res)
         this.orders=res.slice();
       }else{
         this.orders=null;

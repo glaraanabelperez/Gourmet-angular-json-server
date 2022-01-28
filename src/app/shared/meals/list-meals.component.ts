@@ -28,6 +28,7 @@ export class ListMealsComponent implements OnInit {
 
   ngOnChanges(): void {
     if(this._reload){
+      console.log(this._reload)
       this.get();
     }
   }

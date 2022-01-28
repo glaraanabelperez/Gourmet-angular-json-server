@@ -4,29 +4,26 @@
 </div>
 <button  class="btn btn-primary" type="button" (click)="new()">Nuevo Menu</button><br><br>
 <!--Editar Menu-->
-<div *ngIf="_editMenu!=null">
-  <table class="table table-striped">
-      <tbody>
-        <tr>
-          <td  style="padding:3%;">
-            <li style="list-style: none;" *ngFor="let meal of _editMenu.meal">
-              <h5>Id {{_editMenu.id}}</h5>
-              <h5>Comida {{meal.type}}</h5>
-              <h6>{{meal.tittle}}</h6>
-              <h7>{{meal.description}}</h7>
-              <p>Estado: {{_editMenu.state}}</p>
-              <button style="float: right;" type="button"  (click)="cancelEdit()" class="btn btn-dark">Cancelar</button>
-              <button style="float: right; margin-right: 10px;" type="button"  (click)="desactive(_editMenu)" class="btn btn-danger">Eliminar</button>
-            </li>  
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
+<div *ngIf="_editMenu!=null" style="width: 98%;margin: 0%;">
+  <div *ngFor="let meal of _editMenu.meal" class="card text-center">
+    <div class="card-header">
+      Esta eliminando el siguiente Menu:
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Comida {{meal.type}}</h5>
+      <h6 class="card-text">{{meal.tittle}}</h6>
+      <h6 class="card-text">{{meal.description}}</h6>
+    </div>
+    <div style="display: flex; flex-direction: row; margin: auto; margin-bottom: 2%;">
+      <button class="btn btn-dark" (click)="cancelEdit()" >Cancelar</button>
+      <button class="btn btn-danger" (click)="desactive(_editMenu)" >Eliminar</button>
+    </div>
+  </div>
+</div><br>
 <div class="date-menu">
   <app-date (dateSelected)="setDate($event)"></app-date>
   <!--Nuevo Menu-->
-  <div class="tarjeta_seccion" style="margin-left: 20px;" *ngIf="_newMenu; else editMenus" >
+  <div class="tarjeta_seccion" style="margin-left: 10px;" *ngIf="_newMenu; else editMenus" >
     <h5>Seleccione junto con la fecha las comidas para armar el menu del dia</h5>
     <div class="target_meals" *ngIf="meals.length>0">
       <button *ngFor="let m of meals; let i = index" class="btn btn-outline-danger" (click)="deleteIndex(i)">{{m.tittle}}</button><br>
