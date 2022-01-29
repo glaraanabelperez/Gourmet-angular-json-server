@@ -19,7 +19,9 @@ export class DateComponent implements OnInit {
     this.emitDate(this.model)
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.emitDate(new Date())
+  }
 
   public emitDate(d){
     this.dateSelected.emit(d);

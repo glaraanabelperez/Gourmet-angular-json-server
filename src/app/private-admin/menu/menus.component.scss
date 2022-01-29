@@ -1,20 +1,13 @@
 @import '../../styles/general_styles.scss';
-.btn{
-  border-radius: 20px;
-}
-.tarjeta_seccion{
+.date-menu{
   h5{
     margin-bottom: 3%;
     text-align: center;
   }
   .target_meals{
-    margin-bottom: 2%;
     text-align: center;
-    .btn-outline-danger{
-      margin-bottom: 2%;
-    }
     button{
-      margin-right: 2%;
+      margin: 2%;
     }
   }
 }

@@ -27,6 +27,10 @@ export class OrdersSharedComponent implements OnInit {
   }
 
   ngOnChanges(){
+    this.initViewOrder();
+  }
+
+  public initViewOrder(){
     if(this.date!=null){
       if(this.sessionPermissions.isAdmin){
         this.get(this.date);

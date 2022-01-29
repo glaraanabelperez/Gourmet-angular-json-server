@@ -6,26 +6,21 @@
      <img src="assets/imagenes-meals/5.jpg" alt="">
     <img src="assets/imagenes-meals/6.jpg" alt="">
 </div><br>
-<div class="tarjeta_seccion">
-    <table class="table table-striped">
-        <tbody>
-          <tr *ngFor="let m of meals">
-            <td>
-              <li>
-                 <h5>Comida {{m.type}}</h5>
-                 <h6>{{m.tittle}}</h6>
-                 <h6>{{m.description}}</h6>
-                 <p>Estado: {{m.state}}</p>
-                 <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
-                  <div *ngIf="action=='edit'">
-                    <a (click)="send(m)"><i class="bi bi-pencil-fill"></i></a>
-                    <a (click)="delete(m)"><i class="bi bi-trash-fill"></i></a>
-                  </div>
-                  <a class="btn btn-outline-primary" (click)="send(m)" *ngIf="action=='new'">Agregar comida al menu</a>
-                 </div>
-              </li>  
-            </td>            
-          </tr>
-        </tbody>
-    </table>
+  <div class="tarjeta_seccion" *ngFor="let m of meals" >
+    <div class="base_meals">
+      <div class="card-header">
+        <h6>{{m.type}}</h6>
+      </div>
+      <div class="card-body card-header">
+        <h6 style="color: red;">{{m.tittle}}</h6>
+        <h6>{{m.description}}</h6>
+        <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
+          <div *ngIf="action=='edit'">
+            <a (click)="send(m)"><i class="bi bi-pencil-fill"></i></a>
+            <a (click)="delete(m)"><i class="bi bi-trash-fill"></i></a>
+          </div>
+          <a class="btn btn-primary " (click)="send(m)" *ngIf="action=='new'">Agregar comida al menu</a>
+        </div>
+      </div>
+    </div>
 </div>

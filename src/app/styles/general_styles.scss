@@ -5,7 +5,7 @@ $font:  'Quicksand', sans-serif;
 $font_btn:12px;
 $grey_gou:#eff0f1;
 $yellow_gou:#FFDA80;
-$verde_gou:#83E8B5;
+$verde_gou:#048671;
 $verde_gou_dark:#4a8f6c;
 $carmin_ou:#FF4F44;
 $ligthBlueGreen:#78E5D8;
@@ -27,12 +27,14 @@ h5{
     font-size: 1.2rem;
 }
 
-.boton{
-    border-radius: 20px;
-    margin: auto;
-    width: 200px;
-    display: block;
-    text-align: center;
+
+.btn-primary{
+    background-color: $verde_gou;
+    border: 0px;
+}
+.btn-primary:hover{
+    background-color: $verde_gou_dark;
+    border: 0px;
 }
 
 .padding{

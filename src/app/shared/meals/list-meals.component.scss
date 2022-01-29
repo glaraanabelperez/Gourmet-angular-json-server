@@ -1,5 +1,10 @@
 @import '../../styles/general_styles.scss';
-
+.tarjeta_seccion{
+    .base_meals{
+        width: 80%;
+        margin: auto;
+    }
+}
 .image_meals{
     display: flex;
     flex-direction: row;
@@ -12,25 +17,9 @@
         border-radius: 5px;
     }
 }
-
-.table{
-    .btn-outline-primary{
-        border-radius: 20px;
-    }
-    a{
-        cursor: pointer;
-        .bi{
-            font-size: 20px;
-            margin: 1%;
-        }
-        .bi-file-plus-fill{
-            color: $blue;
-        }
-        .bi-trash-fill{
-            color: crimson;
-        }
-    }
-    li{
-        list-style: none;
+.card-body{
+    .bi{
+        margin-right: 10px;
+        font-size: 20px;
     }
 }
