@@ -9,6 +9,9 @@
     justify-content: end;
     margin: 0.5% 0% 0.5% 0%;
     padding: 0.5% 0.5% 0.5% 9%;
+    .home{
+        display: none;
+    }
     button{
         background-color: white;
         border: none;
@@ -26,7 +29,7 @@
             display: none;
         }
         img{
-            width: 40px;
+            width: 30px;
         }
         h5{
             margin: 2% 1% 1% 1%;
@@ -61,6 +64,9 @@
         justify-content: space-between;
         margin: 0.5% 0% 0.5% 0%;
         padding: 0.5% 0.5% 0.5% 0.5%;
+        .home{
+            display: block !important;
+        }
         button{
             width: 15%;
 

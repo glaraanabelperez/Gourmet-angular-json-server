@@ -1,7 +1,6 @@
 <div class="tarjeta_seccion">
   <div *ngIf="orders!=null else withoutOrders">
-    <h4>Para esta fecha</h4>
-    <h5>tenemos los siguientes pedidos</h5>
+    <h4>Cantidad de Pedidos <span style="font-size: 19px; font-weight: 600; margin-left: 15%;"> {{orders.length}}</span></h4>
   </div>
   <ng-template #withoutOrders>
     <h4>Seleccione una fecha</h4>

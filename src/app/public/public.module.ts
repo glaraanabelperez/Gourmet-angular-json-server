@@ -15,14 +15,17 @@ import { OrderFoodModule } from './components/order-food/order-food.module';
 import { MealModule } from './components/meals/meal.module';
 import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
 import { NewUserModule } from './components/new-user/new-user.module';
+import { HomeComponent } from './components/home/home.component';
 
-
+const routes: Routes = [
+  {path: 'home', component:HomeComponent},
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
+    RouterModule.forRoot(routes),
     ReactiveFormsModule,
     HttpClientModule,
     LoginModule,
@@ -35,6 +38,7 @@ import { NewUserModule } from './components/new-user/new-user.module';
     NavComponent, 
     NavAuthComponent,
     NavClientComponent,
+    HomeComponent,
   ],
   exports: [
     RouterModule,

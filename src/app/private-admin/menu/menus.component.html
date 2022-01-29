@@ -1,6 +1,6 @@
 <div class="titulo_seccion">
     <h3>Editar Menu</h3>
-    <h4 style="font-weight: 600;">En esta seccion podra armar y eliminar el menu del dia.</h4>
+    <h4 style="font-weight: 600;">En esta seccion podra armar y eliminar el menu del dia</h4>
 </div>
 <button  class="btn btn-primary " type="button" (click)="new()">Nuevo Menu</button><br><br>
 <!--Editar Menu-->
@@ -15,8 +15,8 @@
       <h6 class="card-text">{{meal.description}}</h6>
     </div>
     <div style="display: flex; flex-direction: row; margin: auto; margin-bottom: 2%;">
-      <button class="btn btn-dark" (click)="cancelEdit()" >Cancelar</button>
       <button class="btn btn-danger" (click)="desactive(_editMenu)" >Eliminar</button>
+      <button class="btn btn-dark" (click)="cancelEdit()" >Cancelar</button>
     </div>
   </div>
 </div><br>
@@ -24,7 +24,11 @@
   <app-date (dateSelected)="setDate($event)"></app-date>
   <!--Nuevo Menu-->
   <div style="margin-left: 10px;" *ngIf="_newMenu; else editMenus" >
-    <h5 style="text-align: center; margin-bottom: 4%;">Seleccione junto con la fecha las comidas para armar el menu del dia</h5>
+    <div class="titulo_seccion">
+      <h4 style="text-align: center; margin-bottom: 4%;">Nuevo Menu</h4>
+      <h5 style="text-align: center; margin-bottom: 4%;">Seleccione fecha y comidas para armar el menu del dia</h5>
+    </div>
+    
     <div class="target_meals" *ngIf="meals.length>0">
       <button *ngFor="let m of meals; let i = index" class="btn btn-danger" (click)="deleteIndex(i)">{{m.tittle}}</button><br>
       <button   class="btn btn-success " (click)="insert()">Guardar</button>

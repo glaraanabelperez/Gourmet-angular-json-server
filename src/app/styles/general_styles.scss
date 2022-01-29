@@ -11,6 +11,7 @@ $carmin_ou:#FF4F44;
 $ligthBlueGreen:#78E5D8;
 $blue:#0d6efd;
 
+
 p{
     text-align: left;
 }
@@ -89,14 +90,14 @@ h5{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 10x;
+    padding: 5px;
     position: fixed;
     bottom: 0px;
     button{
         background-color: white;
         border: none;
         width: 100%;
-        padding: 20px;     
+        padding: 5px;     
         cursor: pointer;
         img{
             width: 30px;
