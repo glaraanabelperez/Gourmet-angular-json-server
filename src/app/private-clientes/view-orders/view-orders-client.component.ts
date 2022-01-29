@@ -4,10 +4,10 @@ import { DateService } from 'src/app/shared/date/service/dateOrders.service';
 
 @Component({
   selector: 'app-orders-client',
-  templateUrl: './orders-client.component.html',
-  styleUrls: ['./orders-client.component.scss']
+  templateUrl: './view-orders-client.component.html',
+  styleUrls: ['./view-orders-client.component.scss']
 })
-export class OrdersClientComponent implements OnInit {
+export class ViewOrdersClientComponent implements OnInit {
 
   public date:Date;
 

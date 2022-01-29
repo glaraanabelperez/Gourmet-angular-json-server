@@ -42,6 +42,11 @@ h5{
     padding: 1%;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
 .tarjeta_seccion{
     background-color: white;
     border-radius: 5px;

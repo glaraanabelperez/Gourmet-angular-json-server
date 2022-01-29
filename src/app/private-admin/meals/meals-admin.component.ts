@@ -19,7 +19,7 @@ export class MealsAdminComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  public editMeal(meal:Meal){
+  public setElementToEdit(meal:Meal){
     this.elementToEdit=meal;
   }
 

@@ -1,4 +1,8 @@
 @import '../../styles/general_styles.scss';
+.row{
+  display: flex;
+  flex-direction: row;
+}
 .date-menu{
   h5{
     margin-bottom: 3%;

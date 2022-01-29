@@ -30,21 +30,21 @@ export class MenusComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public deleteIndex(i){
+  public deleteIndexMeals(i){
     this.meals.splice(i,1);
   }
 
-  public cancelEdit(){
-    this.edit(null);
+  public cancelDeleteMenu(){
+    this.editMenu(null);
   }
 
-  public cancelAssignment(){
+  public cancelAssignMenu(){
     this.meals=[];
   }
 
-  public desactive(menu){
+  public deleteMenu(menu){
     menu.state='inactivo';
-    this.edit(null);
+    this.editMenu(null);
     this._service_menu.desactive(menu).subscribe(res=>{
       if(res!=null){
         this._toastr.info("EL MENU SE EDITO CON EXITO");
@@ -52,12 +52,12 @@ export class MenusComponent implements OnInit {
     })
   }
 
-  public edit(eventMenu : Menu){
+  public editMenu(eventMenu : Menu){
     this._editMenu=eventMenu;
     window.scroll(0,0);
   }
 
-  public insert(){
+  public insertNewMenu(){
     let m=new MenuRequest();
     m.state="activo";
     m.meal=[];
@@ -79,7 +79,7 @@ export class MenusComponent implements OnInit {
     return false;
   }
 
-  public new(){
+  public btnNewMenu(){
     this._newMenu=this._newMenu==true ? false : true;
     this.action="new";
   }

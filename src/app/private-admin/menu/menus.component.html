@@ -2,7 +2,10 @@
     <h3>Editar Menu</h3>
     <h4 style="font-weight: 600;">En esta seccion podra armar y eliminar el menu del dia</h4>
 </div>
-<button  class="btn btn-primary " type="button" (click)="new()">Nuevo Menu</button><br><br>
+<div style="display: flex; flex-direction: row;">
+  <button  class="btn btn-primary " type="button" (click)="btnNewMenu()" style="margin-right: 5px;">Nuevo Menu</button>
+  <button  class="btn btn-primary " type="button" >Ver Menus Inactivos</button>
+</div>
 <!--Editar Menu-->
 <div *ngIf="_editMenu!=null" style="width: 98%;margin: 0%;">
   <div *ngFor="let meal of _editMenu.meal" class="card text-center">
@@ -15,8 +18,8 @@
       <h6 class="card-text">{{meal.description}}</h6>
     </div>
     <div style="display: flex; flex-direction: row; margin: auto; margin-bottom: 2%;">
-      <button class="btn btn-danger" (click)="desactive(_editMenu)" >Eliminar</button>
-      <button class="btn btn-dark" (click)="cancelEdit()" >Cancelar</button>
+      <button class="btn btn-danger" (click)="deleteMenu(_editMenu)" >Eliminar</button>
+      <button class="btn btn-dark" (click)="cancelDeleteMenu()" >Cancelar</button>
     </div>
   </div>
 </div><br>
@@ -30,14 +33,14 @@
     </div>
     
     <div class="target_meals" *ngIf="meals.length>0">
-      <button *ngFor="let m of meals; let i = index" class="btn btn-danger" (click)="deleteIndex(i)">{{m.tittle}}</button><br>
-      <button   class="btn btn-success " (click)="insert()">Guardar</button>
-      <button  class="btn btn-outline-dark " (click)="cancelAssignment()">Cancel</button>
+      <button *ngFor="let m of meals; let i = index" class="btn btn-danger" (click)="deleteIndexMeals(i)">{{m.tittle}}</button><br>
+      <button   class="btn btn-success " (click)="insertNewMenu()">Guardar</button>
+      <button  class="btn btn-outline-dark " (click)="cancelAssignMenu()">Cancel</button>
     </div>
     <app-list-meals [action]="action" (meal)="pushMeals($event)"></app-list-meals>
   </div>
   <!--Listar Menu-->
   <ng-template #editMenus>
-    <app-menuList  [takeOrder]="takeOrder"  [admin]="admin" [date]="date" (_editMenu)="edit($event)"></app-menuList>
+    <app-menuList  [takeOrder]="takeOrder"  [admin]="admin" [date]="date" (_editMenu)="editMenu($event)"></app-menuList>
   </ng-template>
 </div>

@@ -2,9 +2,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../login/service/auth.service';
-import { User } from '../login/models/user.model';
 import { Company } from 'src/app/private-admin/customers/models/company.model';
 import { Router } from '@angular/router';
+import { UserRequest } from './models/userRequest.model';
 
 
 @Component({
@@ -57,7 +57,7 @@ export class NewUserComponent implements OnInit {
         this.toastr.warning('EMAIL DUPLICADO')
         return;
       }else{
-        let user:User=new User();
+        let user:UserRequest=new UserRequest();
         this.authService.insertUser(this.newUser(user)).subscribe( data => {
             this.formNewUser.reset();
             this.toastr.success('Bienvenido')
@@ -74,7 +74,7 @@ export class NewUserComponent implements OnInit {
     this.company=this.company==true? false: true;
   }
 
-  public newUser(user:User):User{
+  public newUser(user:UserRequest):UserRequest{
 
     user.name=this.formNewUser.get('name').value,
     user.secondName=this.formNewUser.get('secondName').value;
