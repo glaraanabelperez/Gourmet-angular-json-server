@@ -20,8 +20,22 @@ h5 {
   font-size: 1.2rem;
 }
 
+.btn-primary {
+  border-radius: 15px;
+}
+
 .padding {
   padding: 1%;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .tarjeta_seccion {
@@ -32,17 +46,40 @@ h5 {
   margin: auto;
 }
 
+.tarjeta_seccion h4 {
+  text-align: center;
+  color: black;
+}
+
+.tarjeta_seccion h5 {
+  text-align: center;
+  color: gray;
+}
+
 .titulo_seccion {
-  width: 100%;
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin-bottom: 3%;
+  margin: 0% 2% 3% 0%;
 }
 
 .titulo_seccion h3 {
   color: black;
   font-weight: 600;
+}
+
+.titulo_seccion2 {
+  background-color: white;
+  padding: 2% 2% 1% 2%;
+  border-radius: 5px;
+  margin: 0% 2% 0% 0%;
+  width: 25%;
+  height: 250px;
+}
+
+.titulo_seccion2 h5 {
+  font-weight: 600;
+  text-align: center;
 }
 
 .nav_general_lateral {
@@ -59,7 +96,7 @@ h5 {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 10x;
+  padding: 5px;
   position: fixed;
   bottom: 0px;
 }
@@ -68,7 +105,7 @@ h5 {
   background-color: white;
   border: none;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -132,6 +169,10 @@ h5 {
   }
   .titulo_seccion {
     width: 100%;
+    height: auto !important;
+  }
+  .titulo_seccion2 {
+    display: none;
   }
   .date-menu {
     display: -webkit-box;
@@ -167,6 +208,10 @@ h5 {
   padding: 0.5% 0.5% 0.5% 9%;
 }
 
+.nav_general .home {
+  display: none;
+}
+
 .nav_general button {
   background-color: white;
   border: none;
@@ -185,10 +230,11 @@ h5 {
 
 .nav_general button .logo {
   width: 80px;
+  display: none;
 }
 
 .nav_general button img {
-  width: 40px;
+  width: 30px;
 }
 
 .nav_general button h5 {
@@ -223,11 +269,15 @@ h5 {
     margin: 0.5% 0% 0.5% 0%;
     padding: 0.5% 0.5% 0.5% 0.5%;
   }
+  .nav_general .home {
+    display: block !important;
+  }
   .nav_general button {
     width: 15%;
   }
   .nav_general button .logo {
     width: 40px;
+    display: block !important;
   }
   .nav_general button img {
     width: 30px;

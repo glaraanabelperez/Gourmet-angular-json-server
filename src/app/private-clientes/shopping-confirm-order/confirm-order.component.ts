@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
-import { User } from 'src/app/public/components/login/models/user.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { ShoppingCarService } from 'src/app/public/components/shoping-cart/service/shoppingCar.service';
 

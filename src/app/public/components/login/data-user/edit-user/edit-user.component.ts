@@ -3,9 +3,9 @@ import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Company } from 'src/app/private-admin/customers/models/company.model';
 import { AuthService } from '../../service/auth.service';
-import { User } from '../../models/user.model';
 import { StorageService } from '../../service/storage.service';
 import { Router } from '@angular/router';
+import { User } from '../../models/user.model';
 
 
 @Component({

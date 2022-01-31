@@ -1,10 +1,11 @@
 import { Meal } from "../../meals/models/meals.model";
 
-export interface Menu{
+export class Menu{
      
      id:number;
+     idMeal:number;
      date:Date;
      state:string; 
-     meal: Meal;
+     Meal: Meal;
 
 }

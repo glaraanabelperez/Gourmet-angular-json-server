@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap");
 p {
@@ -20,8 +19,22 @@ h5 {
   font-size: 1.2rem;
 }
 
+.btn-primary {
+  border-radius: 15px;
+}
+
 .padding {
   padding: 1%;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .tarjeta_seccion {
@@ -32,17 +45,40 @@ h5 {
   margin: auto;
 }
 
+.tarjeta_seccion h4 {
+  text-align: center;
+  color: black;
+}
+
+.tarjeta_seccion h5 {
+  text-align: center;
+  color: gray;
+}
+
 .titulo_seccion {
-  width: 100%;
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin-bottom: 3%;
+  margin: 0% 2% 3% 0%;
 }
 
 .titulo_seccion h3 {
   color: black;
   font-weight: 600;
+}
+
+.titulo_seccion2 {
+  background-color: white;
+  padding: 2% 2% 1% 2%;
+  border-radius: 5px;
+  margin: 0% 2% 0% 0%;
+  width: 25%;
+  height: 250px;
+}
+
+.titulo_seccion2 h5 {
+  font-weight: 600;
+  text-align: center;
 }
 
 .nav_general_lateral {
@@ -59,7 +95,7 @@ h5 {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 10x;
+  padding: 5px;
   position: fixed;
   bottom: 0px;
 }
@@ -68,7 +104,7 @@ h5 {
   background-color: white;
   border: none;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -132,6 +168,10 @@ h5 {
   }
   .titulo_seccion {
     width: 100%;
+    height: auto !important;
+  }
+  .titulo_seccion2 {
+    display: none;
   }
   .date-menu {
     display: -webkit-box;
@@ -148,7 +188,7 @@ h5 {
   }
 }
 
-.menu {
+.conteiner_pedido {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -156,49 +196,61 @@ h5 {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
-.menu .tarjeta_seccion {
   width: 100%;
-  margin: 0% 5% 0% 5%;
+  height: auto;
 }
 
-.menu .input_menus {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+.conteiner_pedido .info_pedido {
+  background-color: white;
+  width: 71%;
+  border-radius: 5px;
 }
 
-.toast-custom {
-  bottom: 0px;
+.conteiner_pedido .info_pedido .imagen-pedido {
+  height: 15%;
+  width: 15%;
+  border-radius: 40px;
+  margin: 0% 3% 3% 3%;
+}
+
+.conteiner_pedido .info_pedido .list-card {
+  width: 70%;
+  margin: auto;
+  border-radius: 5px;
+  background-color: #eff0f1;
+  padding: 3%;
+  margin-bottom: 3%;
+  text-align: center;
+}
+
+.conteiner_pedido .info_pedido .list-card .info-derecha {
+  width: 80%;
+  margin-left: 7%;
+}
+
+.conteiner_pedido .info_pedido .list-card .info-derecha .boton-eliminar {
+  background: none;
+  border: 1px solid gray;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-  .menu {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: none;
-        -ms-flex-pack: none;
-            justify-content: none;
-  }
-  .menu .tarjeta_seccion {
+  .conteiner_pedido .info_pedido {
+    background-color: white;
     width: 100%;
-    margin: 0%;
+    border-radius: 5px;
+    margin: auto;
+  }
+  .conteiner_pedido .info_pedido .list-card {
+    width: 100%;
   }
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  /* Aquí van los estilos */
+@media only screen and (min-width: 768) and (max-width: 1200px) {
+  .conteiner-pedido {
+    margin-top: 60px;
+  }
 }
 /*# sourceMappingURL=shoppingCar.component.css.map */

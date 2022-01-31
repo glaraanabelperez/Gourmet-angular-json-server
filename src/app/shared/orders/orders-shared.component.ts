@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { OrdersResponse } from './model/orders-response.model';
+import { States } from './model/states';
 import { OrdersSharedService } from './service/orders.service';
 
 
@@ -15,19 +17,45 @@ export class OrdersSharedComponent implements OnInit {
   @Input() date: Date;
   public orders: OrdersResponse[]=[];
   public sessionPermissions: PermissionModel;
+  public states:States=new States();
+  stateSelected: any=null;
 
-
-  constructor(private _service_orders:OrdersSharedService, public _storageSession:StorageService) {
+  constructor(
+    private _service_orders:OrdersSharedService, 
+    public _storageSession:StorageService,
+    private toastr: ToastrService,
+    ) {
     this._storageSession.permissions$.subscribe(result => {
       this.sessionPermissions=result;
       })
+      if(this.sessionPermissions.isAdmin){
+        this.states.setStatesToAdmin()
+      }else{
+        this.states.setStatesToClient()
+      }
   }
 
   ngOnInit(): void {
+    
   }
 
   ngOnChanges(){
     this.initViewOrder();
+  }
+
+
+  public editState(id){
+    if(this.stateSelected==null){
+      this.toastr.error('ES NECESARIO SELECCIONAR UN ESTADO');
+      return;
+    }
+    this._service_orders.editState(id, this.stateSelected).subscribe(res=>{
+      this.initViewOrder();
+      this.toastr.success('SE EDITO CON EXITO');
+      },
+      error =>{
+        this.toastr.error('NO SE PUEDE EDITAR EL ELEMENTO')
+      });
   }
 
   public initViewOrder(){
@@ -45,8 +73,10 @@ export class OrdersSharedComponent implements OnInit {
       if(res.length>0){
         console.log("aca", res)
         this.orders=res.slice();
+        console.log(this.orders)
       }else{
         this.orders=null;
+        this.toastr.info("NO HAY PEDIDOS PARA ESTA FECHA")
       }
     });
   }

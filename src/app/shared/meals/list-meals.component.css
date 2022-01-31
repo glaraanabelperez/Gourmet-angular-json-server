@@ -19,8 +19,22 @@ h5 {
   font-size: 1.2rem;
 }
 
+.btn-primary {
+  border-radius: 15px;
+}
+
 .padding {
   padding: 1%;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .tarjeta_seccion {
@@ -31,17 +45,40 @@ h5 {
   margin: auto;
 }
 
+.tarjeta_seccion h4 {
+  text-align: center;
+  color: black;
+}
+
+.tarjeta_seccion h5 {
+  text-align: center;
+  color: gray;
+}
+
 .titulo_seccion {
-  width: 100%;
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin-bottom: 3%;
+  margin: 0% 2% 3% 0%;
 }
 
 .titulo_seccion h3 {
   color: black;
   font-weight: 600;
+}
+
+.titulo_seccion2 {
+  background-color: white;
+  padding: 2% 2% 1% 2%;
+  border-radius: 5px;
+  margin: 0% 2% 0% 0%;
+  width: 25%;
+  height: 250px;
+}
+
+.titulo_seccion2 h5 {
+  font-weight: 600;
+  text-align: center;
 }
 
 .nav_general_lateral {
@@ -58,7 +95,7 @@ h5 {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 10x;
+  padding: 5px;
   position: fixed;
   bottom: 0px;
 }
@@ -67,7 +104,7 @@ h5 {
   background-color: white;
   border: none;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -131,6 +168,10 @@ h5 {
   }
   .titulo_seccion {
     width: 100%;
+    height: auto !important;
+  }
+  .titulo_seccion2 {
+    display: none;
   }
   .date-menu {
     display: -webkit-box;
@@ -147,6 +188,11 @@ h5 {
   }
 }
 
+.tarjeta_seccion .base_meals {
+  width: 80%;
+  margin: auto;
+}
+
 .image_meals {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -156,6 +202,8 @@ h5 {
       -ms-flex-direction: row;
           flex-direction: row;
   margin-bottom: 5%;
+  width: 95%;
+  margin: auto;
 }
 
 .image_meals img {
@@ -164,24 +212,8 @@ h5 {
   border-radius: 5px;
 }
 
-.table a {
-  cursor: pointer;
-}
-
-.table a .bi {
+.card-body .bi {
+  margin-right: 10px;
   font-size: 20px;
-  margin: 1%;
-}
-
-.table a .bi-file-plus-fill {
-  color: #0d6efd;
-}
-
-.table a .bi-trash-fill {
-  color: crimson;
-}
-
-.table li {
-  list-style: none;
 }
 /*# sourceMappingURL=list-meals.component.css.map */

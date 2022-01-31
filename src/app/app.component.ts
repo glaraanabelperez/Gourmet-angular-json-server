@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Session } from './public/components/login/models/session.model';
-import { User } from './public/components/login/models/user.model';
 import { StorageService } from './public/components/login/service/storage.service';
 
 @Component({

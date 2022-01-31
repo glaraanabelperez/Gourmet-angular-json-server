@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500&display=swap");
 p {
@@ -188,26 +189,53 @@ h5 {
   }
 }
 
-.row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+.contenedor_login {
+  background-color: white;
+  width: 100%;
+  margin: auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 2%;
+  border-radius: 10px;
 }
 
-.date-menu h5 {
-  margin-bottom: 3%;
+.contenedor_login .card {
+  border: 0px;
+}
+
+.contenedor_login .card .card-text {
+  width: 80%;
+  margin: auto;
+}
+
+.contenedor_login .card .card-text h2 {
   text-align: center;
 }
 
-.date-menu .target_meals {
-  text-align: center;
+.contenedor_login .card .card-text form .getIn {
+  margin: auto;
+  background-color: #047786;
 }
 
-.date-menu .target_meals button {
-  margin: 2%;
+.contenedor_login .card .card-text form .getOut {
+  margin: auto;
+  background-color: gainsboro;
 }
-/*# sourceMappingURL=menus.component.css.map */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  .contenedor_login {
+    background-color: white;
+    width: 100%;
+    margin: auto;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 4%;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Aquí van los estilos */
+}
+/*# sourceMappingURL=edit-user.component.css.map */

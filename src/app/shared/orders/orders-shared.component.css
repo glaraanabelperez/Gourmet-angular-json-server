@@ -19,8 +19,22 @@ h5 {
   font-size: 1.2rem;
 }
 
+.btn-primary {
+  border-radius: 15px;
+}
+
 .padding {
   padding: 1%;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .tarjeta_seccion {
@@ -31,17 +45,40 @@ h5 {
   margin: auto;
 }
 
+.tarjeta_seccion h4 {
+  text-align: center;
+  color: black;
+}
+
+.tarjeta_seccion h5 {
+  text-align: center;
+  color: gray;
+}
+
 .titulo_seccion {
-  width: 100%;
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin-bottom: 3%;
+  margin: 0% 2% 3% 0%;
 }
 
 .titulo_seccion h3 {
   color: black;
   font-weight: 600;
+}
+
+.titulo_seccion2 {
+  background-color: white;
+  padding: 2% 2% 1% 2%;
+  border-radius: 5px;
+  margin: 0% 2% 0% 0%;
+  width: 25%;
+  height: 250px;
+}
+
+.titulo_seccion2 h5 {
+  font-weight: 600;
+  text-align: center;
 }
 
 .nav_general_lateral {
@@ -58,7 +95,7 @@ h5 {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 10x;
+  padding: 5px;
   position: fixed;
   bottom: 0px;
 }
@@ -67,7 +104,7 @@ h5 {
   background-color: white;
   border: none;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -131,6 +168,10 @@ h5 {
   }
   .titulo_seccion {
     width: 100%;
+    height: auto !important;
+  }
+  .titulo_seccion2 {
+    display: none;
   }
   .date-menu {
     display: -webkit-box;
@@ -147,22 +188,19 @@ h5 {
   }
 }
 
-.titulo-seccion p {
-  color: #4a8f6c;
+div .table li {
+  list-style: none;
 }
 
-.base-menu .tarjeta_seccion {
-  margin: 0% 2% 0% 2%;
+div .table li p {
+  margin-bottom: 5px;
 }
 
-.base-menu .tarjeta_seccion .target_meals .meals_tar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal !important;
-  -webkit-box-direction: normal !important;
-      -ms-flex-direction: row !important;
-          flex-direction: row !important;
-  width: 100%;
+div .table li h6 {
+  font-size: 1.1rem;
 }
-/*# sourceMappingURL=menus.component.css.map */
+
+div .table li span {
+  color: #4e4e4e;
+}
+/*# sourceMappingURL=orders-shared.component.css.map */

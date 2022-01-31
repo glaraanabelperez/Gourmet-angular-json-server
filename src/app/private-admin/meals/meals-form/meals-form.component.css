@@ -1,1 +1,10 @@
-/* No CSS *//*# sourceMappingURL=meals.component.css.map */
+.base_form {
+  background-color: white;
+  border-radius: 20px;
+  padding: 3%;
+}
+
+.base_form .btn {
+  border-radius: 20px;
+}
+/*# sourceMappingURL=meals-form.component.css.map */

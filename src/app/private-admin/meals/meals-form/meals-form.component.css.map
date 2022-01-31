@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAA;EACN,gBAAgB,EAAE,KAAK;EACvB,aAAa,EAAE,IAAI;EACnB,OAAO,EAAE,EAAE;CAId;;AAPD,AAII,UAJM,CAIN,IAAI,CAAA;EACA,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "meals-form.component.scss"
+    ],
+    "names": [],
+    "file": "meals-form.component.css"
+}

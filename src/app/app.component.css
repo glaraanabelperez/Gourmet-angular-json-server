@@ -20,8 +20,22 @@ h5 {
   font-size: 1.2rem;
 }
 
+.btn-primary {
+  border-radius: 15px;
+}
+
 .padding {
   padding: 1%;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .tarjeta_seccion {
@@ -32,17 +46,40 @@ h5 {
   margin: auto;
 }
 
+.tarjeta_seccion h4 {
+  text-align: center;
+  color: black;
+}
+
+.tarjeta_seccion h5 {
+  text-align: center;
+  color: gray;
+}
+
 .titulo_seccion {
-  width: 100%;
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin-bottom: 3%;
+  margin: 0% 2% 3% 0%;
 }
 
 .titulo_seccion h3 {
   color: black;
   font-weight: 600;
+}
+
+.titulo_seccion2 {
+  background-color: white;
+  padding: 2% 2% 1% 2%;
+  border-radius: 5px;
+  margin: 0% 2% 0% 0%;
+  width: 25%;
+  height: 250px;
+}
+
+.titulo_seccion2 h5 {
+  font-weight: 600;
+  text-align: center;
 }
 
 .nav_general_lateral {
@@ -59,7 +96,7 @@ h5 {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 10x;
+  padding: 5px;
   position: fixed;
   bottom: 0px;
 }
@@ -68,7 +105,7 @@ h5 {
   background-color: white;
   border: none;
   width: 100%;
-  padding: 20px;
+  padding: 5px;
   cursor: pointer;
 }
 
@@ -132,6 +169,10 @@ h5 {
   }
   .titulo_seccion {
     width: 100%;
+    height: auto !important;
+  }
+  .titulo_seccion2 {
+    display: none;
   }
   .date-menu {
     display: -webkit-box;
@@ -149,7 +190,32 @@ h5 {
 }
 
 .root {
-  width: 87%;
+  width: 75%;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.root .tarjeta_seccion_root {
+  margin: auto;
+  margin-top: 0px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 3%;
+  width: 25%;
+  height: 462px;
+}
+
+.root .tarjeta_seccion_root .img_right_root {
+  height: 150px;
+  width: 150px;
+  background-color: #84eee5;
+  border-radius: 100%;
   margin: auto;
 }
 
@@ -162,6 +228,9 @@ h5 {
   .root {
     width: 100%;
     float: none;
+  }
+  .root .tarjeta_seccion_root {
+    display: none;
   }
   .espacio_bottom {
     display: block;

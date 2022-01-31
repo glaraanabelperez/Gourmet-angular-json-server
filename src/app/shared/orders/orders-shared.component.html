@@ -5,26 +5,35 @@
   <ng-template #withoutOrders>
     <h4>Seleccione una fecha</h4>
     <h5>para ver el pedido del dia</h5>
+    <center>
+      <img style="width: 50%;margin-top: 5%;" src="assets/fondo5.jpg" alt="">
+    </center>
   </ng-template> 
   <br>
   <div *ngIf="date">
-    <div *ngFor="let or of orders" class="card text-center" style="width: 70%;margin: auto;">
+    <div *ngFor="let or of orders" class="card text-center" style="width: 80%;margin: auto;">
       <div class="card-header">
           <p>Estado</p>
-          <h6>{{or.state}}</h6>
+          <h6>{{or.state.toUpperCase()}}</h6>
       </div>
       <div class="card-body">
-          <h5 class="card-title" style="color: black;"> Comida: {{or.menus[0].meal[0].tittle}}</h5>
-          <p class="card-title" style="color: black;">{{or.menus[0].meal[0].description}}</p>
+          <h5 class="card-title" style="color: black;"> Comida: {{or.MenusDto.Meals.title}}</h5>
+          <p class="card-title" style="color: black;">{{or.MenusDto.Meals.description}}</p>
           <p class="card-text" style="text-align: center;" >cantidad</p>
           <h5 class="card-title" style="color: black;">{{or.count}}</h5>
           <hr>
-          <h5 class="card-title" style="color: black;">Cliente: {{or.users[0].name}}</h5>
-          <h5 class="card-title" style="color: black;">Apellido: {{or.users[0].secondName}}</h5>
-          <h5 class="card-title" style="color: black;">Telefono: {{or.users[0].telephone}}</h5>
+          <h5 class="card-title" style="color: black;">Cliente: {{or.userDto.name}}</h5>
+          <h5 class="card-title" style="color: black;">Apellido: {{or.userDto.lastName}}</h5>
+          <h5 class="card-title" style="color: black;">Telefono: {{or.userDto.phone}}</h5>
           <h5 class="card-title" style="color: black;">Direccion Envio: {{or.deliveryAdress}}</h5>
           <div style="margin-bottom: 3%;" scope="row" >
-            <button class="btn btn-primary"><i class="bi bi-pencil-fill"></i>  Editar Estado</button>
+            <select [(ngModel)]="stateSelected">
+                <option [value]="s" selected >Selecciona una opción</option>
+                <option *ngFor="let s of states.statesEntregas">
+                  {{s}}
+                </option>
+            </select><br><br>
+            <button class="btn btn-primary" (click)="editState(or.id)"><i class="bi bi-pencil-fill"></i>  Editar Estado</button>
           </div>
       </div>
     </div>

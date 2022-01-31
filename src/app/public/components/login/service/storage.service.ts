@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { PermissionModel } from '../models/permissions.model';
 import { Session } from '../models/session.model';
 import { User } from '../models/user.model';
 

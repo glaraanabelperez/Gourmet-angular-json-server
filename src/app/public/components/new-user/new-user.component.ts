@@ -4,7 +4,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../login/service/auth.service';
 import { Company } from 'src/app/private-admin/customers/models/company.model';
 import { Router } from '@angular/router';
-import { UserRequest } from './models/userRequest.model';
+import { User } from '../login/models/user.model';
 
 
 @Component({
@@ -57,7 +57,7 @@ export class NewUserComponent implements OnInit {
         this.toastr.warning('EMAIL DUPLICADO')
         return;
       }else{
-        let user:UserRequest=new UserRequest();
+        let user:User=new User();
         this.authService.insertUser(this.newUser(user)).subscribe( data => {
             this.formNewUser.reset();
             this.toastr.success('Bienvenido')
@@ -74,7 +74,7 @@ export class NewUserComponent implements OnInit {
     this.company=this.company==true? false: true;
   }
 
-  public newUser(user:UserRequest):UserRequest{
+  public newUser(user:User):User{
 
     user.name=this.formNewUser.get('name').value,
     user.secondName=this.formNewUser.get('secondName').value;
