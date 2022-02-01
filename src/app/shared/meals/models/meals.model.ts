@@ -2,7 +2,7 @@ export interface Meal{
 
      id:number;
      type:string;
-     tittle:string;
+     title:string;
      description:string;
      state:string;
 }

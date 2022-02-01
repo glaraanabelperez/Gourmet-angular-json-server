@@ -13,17 +13,17 @@ export class DateComponent implements OnInit {
   @Output() dateSelected:EventEmitter<Date> = new EventEmitter();
   
   public model: NgbDateStruct;
-  
+
   constructor(private calendar: NgbCalendar, private _serviceDate:DateService) {
     this.model = this.calendar.getToday();
-    this.emitDate(this.model)
+    // this.emitDate(this.model)
   }
 
   ngOnInit(): void {
-    this.emitDate(new Date())
   }
 
   public emitDate(d){
     this.dateSelected.emit(d);
+    // this._serviceDate.dateCurrent=d;
   }
 }

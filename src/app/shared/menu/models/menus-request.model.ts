@@ -2,7 +2,7 @@
 export class MenuRequest{
     
     id:number
-    date:Date;
+    date:string;
     state:string; 
-    meal: number[];
+    idMeal: number;
 }

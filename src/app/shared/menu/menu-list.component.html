@@ -11,13 +11,13 @@
   </ng-template> 
   <br>
   <div *ngFor="let m of menus" >
-    <div *ngFor="let meal of m.meal" class="card text-center" style="width: 70%;margin: auto;">
+    <div class="card text-center" style="width: 70%;margin: auto;">
       <div class="card-header">
-        <h5>Comida {{meal.type}}</h5>
+        <h5>Comida {{m.Meals.type}}</h5>
       </div>
       <div class="card-body">
-        <h5 class="card-title" style="color: black;">{{meal.tittle}}</h5>
-        <p class="card-text" style="text-align: center;" >{{meal.description}}</p>
+        <h5 class="card-title" style="color: black;">{{m.Meals.title}}</h5>
+        <p class="card-text" style="text-align: center;" >{{m.Meals.description}}</p>
         <button class="btn btn-danger boton" *ngIf="sessionAdmin && !takeOrder" (click)="send(m)">Eliminar</button>
         <button class="btn btn-primary boton" *ngIf="takeOrder"(click)="send(m)">Agregar</button>
       </div>

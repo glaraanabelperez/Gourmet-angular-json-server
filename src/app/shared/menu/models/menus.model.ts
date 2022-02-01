@@ -1,6 +1,6 @@
 import { Meal } from "../../meals/models/meals.model";
 
-export class Menu{
+export interface Menu{
      
      id:number;
      idMeal:number;

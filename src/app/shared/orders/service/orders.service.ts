@@ -34,7 +34,6 @@ endpoint: string='orders';
   }
 
   public getOrders(dateSelected:Date): Observable<Array<OrdersResponse>> {
-    // let data:string = "?menus.date=" + "'"+this.setDateString(dateSelected)+"'";
     let data:string = "?date=" + this.setDateString(dateSelected);
     let url=environmentNet.apiUrl + this.endpoint + data;
     return this.http.get<Array<OrdersResponse>>(url);

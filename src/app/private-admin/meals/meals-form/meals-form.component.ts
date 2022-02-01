@@ -12,7 +12,6 @@ import { ListMealService } from 'src/app/shared/meals/service/meal.service';
 export class MealsForm implements OnInit {
 
   @Input() elementToEdit: Meal;
-  @Output() _reload = new EventEmitter<boolean>();
   
   public formMeals : FormGroup;
   public enableEditing: boolean=false;
@@ -69,35 +68,34 @@ export class MealsForm implements OnInit {
     let meals:Meal={
           id: null,
           type : this.formMeals.get('type').value,
-          tittle: this.formMeals.get('title').value,
+          title: this.formMeals.get('title').value,
           description: this.formMeals.get('description').value,
-          state:"activo"
+          state:"available"
         };
     this._serviceMeals.insert(meals).subscribe(
         () => {
-            this._reload.emit(true);
-            this.toastr.success('Los datos se insertaron con exito');
+            this.toastr.success('iNGRESO EXITOSO');
           },
       (err) => {
-          this.toastr.error(`Oops!! Hubo un error: Consulte: Error: ${err.status}, Mensaje: ${err.error.Message}`)
+          this.toastr.error(`Oops!! NO SE PUDO HACER EL INGRESO: ${err.status}, Mensaje: ${err.error.Message}`)
           })
   }
 
   edit(){
     let meals:Meal={
-      id: this.elementToEdit.id,
-      type : this.formMeals.get('type').value,
-      tittle: this.formMeals.get('title').value,
-      description: this.formMeals.get('description').value,
-      state:this.elementToEdit.state
+          id: this.elementToEdit.id,
+          type : this.formMeals.get('type').value,
+          title: this.formMeals.get('title').value,
+          description: this.formMeals.get('description').value,
+          state:"available"
     };    
     this._serviceMeals.editMeals(meals).subscribe(
       () => {
-        this._reload.emit(true);
-        this.toastr.success('Los datos se editaron con exito');
+          this.toastr.success('INGRESO EXITOSO');
+          this._serviceMeals.reloadMenus();
       },
       (err) => {
-        this.toastr.error(`Oops!! Hubo un error: Consulte: Error: ${err.status}, Mensaje: ${err.error.Message}`)
+          this.toastr.error(`Oops!! NO SE PUDO HACER EL INGRESO: Error: ${err.status}, Mensaje: ${err.error.Message}`)
       })     
     this.enableEditing=false;
   }
@@ -105,7 +103,7 @@ export class MealsForm implements OnInit {
   setEditElement(meal:Meal) :void{
     console.log(meal)
     this.formMeals.controls['type'].setValue(meal.type ? meal.type : '');
-    this.formMeals.controls['title'].setValue(meal.tittle ? meal.tittle : '');
+    this.formMeals.controls['title'].setValue(meal.title ? meal.title : '');
     this.formMeals.controls['description'].setValue(meal.description ? meal.description : '');
     window.scrollTo(0,0);
   }

@@ -5,6 +5,8 @@ import { Menu } from 'src/app/shared/menu/models/menus.model';
 import { MenuService } from 'src/app/shared/menu/service/menus.service';
 import { Meal } from 'src/app/shared/meals/models/meals.model';
 import { MenuRequest } from 'src/app/shared/menu/models/menus-request.model';
+import { GeneralStates } from 'src/app/modelState/statesMenus';
+import UtilsMenusMap from 'src/app/shared/menu/utils/menuUtils';
 
 @Component({
   selector: 'app-editMenu',
@@ -13,7 +15,7 @@ import { MenuRequest } from 'src/app/shared/menu/models/menus-request.model';
 })
 export class MenusComponent implements OnInit {
 
-  public date:Date;
+  public date;
   public admin:boolean=true;
   public _newMenu:boolean=false;
   public action:string=null;
@@ -25,10 +27,11 @@ export class MenusComponent implements OnInit {
     private _serviceDate:DateService,
     private _service_menu:MenuService,
     private _toastr:ToastrService,
-    ) {}
+    ) {
+     
+    }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public deleteIndexMeals(i){
     this.meals.splice(i,1);
@@ -43,11 +46,11 @@ export class MenusComponent implements OnInit {
   }
 
   public deleteMenu(menu){
-    menu.state='inactivo';
     this.editMenu(null);
     this._service_menu.desactive(menu).subscribe(res=>{
       if(res!=null){
-        this._toastr.info("EL MENU SE EDITO CON EXITO");
+        this._toastr.info("EL MENU SE ELIMINO CON EXITO");
+        this._service_menu.reloadMenus();
       }
     })
   }
@@ -58,25 +61,22 @@ export class MenusComponent implements OnInit {
   }
 
   public insertNewMenu(){
-    let m=new MenuRequest();
-    m.state="activo";
-    m.meal=[];
-    for(let i=0; i<this.meals.length; i++){
-      m.meal.push(this.meals[i].id);
-    }
-    this._service_menu.insert(m).subscribe(res=>{
-      console.log("res insert menu", res)
-    })
-  }
-
-  public menuAlreyExist(date, id_meal):boolean{
-    this._service_menu.menuAlreyExist(date, id_meal).subscribe(res=>{
-      if(res!=null){
-        console.log("res exist",res)
-        return true;
+    console.log(this.date)
+    let list=UtilsMenusMap.mapToListMenusRequest(this.date, this.meals)
+    this._service_menu.insert(list).subscribe(
+      res=>{
+      if(res){
+        this._toastr.success("MENU INGRESADO");
+        this._service_menu.reloadMenus();
+        this.cancelAssignMenu();
+        this._newMenu=false;
       }
-    })
-    return false;
+    },
+    error =>{
+      this._toastr.error('NO SE PUDO INSERTAR EL MENU')
+      }
+    );
+    
   }
 
   public btnNewMenu(){
@@ -85,13 +85,10 @@ export class MenusComponent implements OnInit {
   }
 
   public pushMeals(m:Meal){
-    if(this.verifyDuplicated(m.id) || this.menuAlreyExist(this.date, m.id) ){
+    if( this.verifyDuplicated(m.id) ){
         this._toastr.info("'MENU DUPLICADO'")
     }else{
       this._toastr.success("'OK'")
-      // let mm=new Meal();
-      // mm.id=m.id;
-      // mm.tittle=m.tittle;
       this.meals.push(m);
     }
   }

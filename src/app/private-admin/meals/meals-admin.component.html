@@ -4,6 +4,6 @@
 </div>
 <div class="base_meals_admin">
     <app-meals-form [elementToEdit]="elementToEdit" (reload)="reload($event)"></app-meals-form><br>
-    <app-list-meals [_reload]="_reload" [action]="action" (meal)="setElementToEdit($event)"></app-list-meals>
+    <app-list-meals [action]="action" (meal)="setElementToEdit($event)"></app-list-meals>
 </div>
 

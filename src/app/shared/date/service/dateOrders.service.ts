@@ -7,13 +7,16 @@ import { BehaviorSubject } from 'rxjs';
 
 export class DateService{
   
-  private date: any = new BehaviorSubject<any>(null);
-  public date$ = this.date.asObservable();
+  public dateCurrent:Date;
 
-  constructor() {}
+  constructor() {
+    this.dateCurrent=new Date()
+    console.log(this.dateCurrent)
+  }
 
   convertToDate(dateSelected:any){
     let date=new Date(dateSelected.year +"/"+ (dateSelected.month) +"/"+ dateSelected.day);
+    console.log("date seteada desde componente date", date)
     return date;
   }
 
