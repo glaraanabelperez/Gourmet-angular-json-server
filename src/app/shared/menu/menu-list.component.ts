@@ -17,7 +17,7 @@ export class MenuListComponent implements OnInit {
   @Input() takeOrder: boolean;
   @Output() _editMenu: EventEmitter<Menu> = new EventEmitter();
   
-  public menus:Menu[]=[];
+  public menus:Menu[];
   sessionAdmin:boolean;
     
   constructor( 
@@ -27,6 +27,7 @@ export class MenuListComponent implements OnInit {
     public _storageSession:StorageService
     ) {
       this.date=null;
+      this.menus=null;
       this.suscripcionAdmin();
       this.suscripcionReload();
     }
@@ -36,6 +37,7 @@ export class MenuListComponent implements OnInit {
 
   ngOnChanges(){
     if(this.date!=null){
+      console.log(this.date)
       this.getMenus(this.date);
     }
   }

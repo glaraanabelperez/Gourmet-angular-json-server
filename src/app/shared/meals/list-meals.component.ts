@@ -38,7 +38,7 @@ export class ListMealsComponent implements OnInit {
     }
   }
 
-  public deleteMeal(id_meal){
+  public deleteMeal(id_meal:number){
     this._mealsService.deleteMeals(id_meal).subscribe(
       res=>{
       if(res){
@@ -83,6 +83,7 @@ export class ListMealsComponent implements OnInit {
   public suscripcionReload(){
     this._serviceDate.reload$.subscribe(result => {
       if(result){
+        console.log(result)
         this.get();
       }
     })

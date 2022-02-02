@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { DateService } from 'src/app/shared/date/service/dateOrders.service';
 import { Meal } from 'src/app/shared/meals/models/meals.model';
 import { ListMealService } from 'src/app/shared/meals/service/meal.service';
 
@@ -21,7 +22,8 @@ export class MealsForm implements OnInit {
   constructor(
     private readonly formBuilder : FormBuilder ,  
     private toastr: ToastrService,
-    private _serviceMeals:ListMealService
+    private _serviceMeals:ListMealService,
+    private _servideDate:DateService
     ) { 
 
   }
@@ -68,22 +70,21 @@ export class MealsForm implements OnInit {
   }
 
   public insert(){
-    let meals:Meal={
-          id: null,
+    let meals={
+          id: 0,
           type : this.formMeals.get('type').value,
           title: this.formMeals.get('title').value,
           description: this.formMeals.get('description').value,
-          state:null
+          state:""
         };
     this._serviceMeals.insert(meals).subscribe(
         () => {
             this.toastr.success('iNGRESO EXITOSO');
-            this.mostrarForm=false;
             this.cleanForm();
-            this._serviceMeals.reloadMenus();
+            this._servideDate.reloadMenus();
           },
       (err) => {
-          this.toastr.error(`Oops!! NO SE PUDO HACER EL INGRESO: ${err.status}, Mensaje: ${err.error.Message}`)
+          this.toastr.error(`Oops!! NO SE PUDO HACER EL INGRESO: Mensaje: ${err}`)
           })
   }
 
@@ -98,14 +99,12 @@ export class MealsForm implements OnInit {
     this._serviceMeals.editMeals(meals).subscribe(
       () => {
           this.toastr.success('INGRESO EXITOSO');
-          this.mostrarForm=false;
           this.cleanForm();
-          this._serviceMeals.reloadMenus();
+          this._servideDate.reloadMenus();
       },
       (err) => {
           this.toastr.error(`Oops!! NO SE PUDO HACER EL INGRESO: Error: ${err.status}, Mensaje: ${err.error.Message}`)
       })     
-    this.enableEditing=false;
   }
 
   public setEditElement(meal:Meal) :void{

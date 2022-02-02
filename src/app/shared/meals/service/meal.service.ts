@@ -10,8 +10,7 @@ import { Meal } from '../models/meals.model';
 export class ListMealService {
 
   endpoint: string='meals';  
-  public reload: any = new BehaviorSubject<boolean>(false);
-  public reload$ = this.reload.asObservable();
+  
   
   constructor(private http: HttpClient) {
   }
@@ -32,11 +31,9 @@ export class ListMealService {
   }
 
   public insert(m){
+    console.log(m)
     let url=environmentNet.apiUrl + this.endpoint ;
     return this.http.post(url, m);
   }
 
-  public reloadMenus(){
-    this.reload.next(true);
-  }
 }

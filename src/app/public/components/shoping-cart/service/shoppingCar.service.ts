@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Console } from 'console';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { Menu } from '../../../../shared/menu/models/menus.model';
@@ -56,6 +57,7 @@ export class ShoppingCarService{
     if(this.checkItemInOrder(menu.id)){
       this.toastr.show('ESTE PRODUCTO YA ESTA EN EL CARRITO!');
     }else{
+      this.toastr.show('NUEVO PRODUCTO EN EL CARRITO!');
       let order:OrdersInProgress = UtilsShoppingCart.mapToOrdersInProgress(menu, new OrdersInProgress())
       console.log(order)
       order.count=1;

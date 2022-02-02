@@ -14,7 +14,7 @@
       <div class="card-body card-header">
         <h6 style="color: red;">{{m.title}}</h6>
         <h6>{{m.description}}</h6>
-        <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
+        <div class="btnsEditMeals" style="margin-bottom: 3%;" *ngIf="session" scope="row">
           <div *ngIf="action=='edit'">
             <a (click)="send(m)"><i class="bi bi-pencil-fill"></i></a>
             <a (click)="deleteMeal(m.id)"><i class="bi bi-trash-fill"></i></a>
