@@ -16,6 +16,11 @@ export class ListMealService {
   constructor(private http: HttpClient) {
   }
 
+  public deleteMeals(id:number){
+    let url=environmentNet.apiUrl + this.endpoint  +"/"+ id;
+    return this.http.delete(url);
+  }
+
   public editMeals(m: Meal){
     let url=environmentNet.apiUrl + this.endpoint  +"/"+ m.id;
     return this.http.put(url, m);

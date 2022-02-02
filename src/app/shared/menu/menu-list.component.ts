@@ -32,7 +32,6 @@ export class MenuListComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // this.getMenus(this.__serviceDate.dateCurrent)
   }
 
   ngOnChanges(){
@@ -42,7 +41,6 @@ export class MenuListComponent implements OnInit {
   }
 
   public getMenus(date:Date){
-    
     this._menusService.getMenus(date).subscribe(res=>{
       if(res.length>0){
         this.menus=res.slice();
@@ -66,10 +64,9 @@ export class MenuListComponent implements OnInit {
   }
 
   public suscripcionReload(){
-    this._menusService.reload$.subscribe(result => {
+    this.__serviceDate.reload$.subscribe(result => {
       if(result){
         this.date=this.__serviceDate.dateCurrent
-        // console.log("uauauauau", this.date)
         this.getMenus(this.date);
       }
     })

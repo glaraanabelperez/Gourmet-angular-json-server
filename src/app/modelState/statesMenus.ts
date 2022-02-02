@@ -1,7 +1,7 @@
 
 export class GeneralStates{
 
-    notAvailable="deleted";
+    pending="deleted";
     available="available";
 
 

@@ -17,6 +17,7 @@
         <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
           <div *ngIf="action=='edit'">
             <a (click)="send(m)"><i class="bi bi-pencil-fill"></i></a>
+            <a (click)="deleteMeal(m.id)"><i class="bi bi-trash-fill"></i></a>
           </div>
           <a class="btn btn-primary " (click)="send(m)" *ngIf="action=='new'">Agregar comida al menu</a>
         </div>

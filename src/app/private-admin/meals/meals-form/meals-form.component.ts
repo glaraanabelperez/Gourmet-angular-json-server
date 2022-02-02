@@ -16,6 +16,7 @@ export class MealsForm implements OnInit {
   public formMeals : FormGroup;
   public enableEditing: boolean=false;
   public submitted=false;
+  mostrarForm: boolean;
 
   constructor(
     private readonly formBuilder : FormBuilder ,  
@@ -30,10 +31,9 @@ export class MealsForm implements OnInit {
   }
 
   ngOnChanges(): void {
-    console.log(this.elementToEdit)
     if(this.elementToEdit!=null){
       this.setEditElement(this.elementToEdit);
-      this.enableEditing=true;
+      this.mostrarForm=true;
     }
   }
 
@@ -41,19 +41,22 @@ export class MealsForm implements OnInit {
 
   public cleanForm(){
     this.formMeals.reset();
-    this.enableEditing=false;
-    this.elementToEdit=null;
+    this.mostrarForm=false;
   }
 
   public onSubmit(){
     this.submitted=true;
-    if(this.enableEditing){
+    if(this.elementToEdit!=null){
          this.edit();            
      }else{
          this.insert();
      }
      this.submitted=false;
      this.cleanForm();
+  }
+
+  public btnNewMeals(){
+    this.mostrarForm=true;
   }
 
   public initForm(){
@@ -70,28 +73,33 @@ export class MealsForm implements OnInit {
           type : this.formMeals.get('type').value,
           title: this.formMeals.get('title').value,
           description: this.formMeals.get('description').value,
-          state:"available"
+          state:null
         };
     this._serviceMeals.insert(meals).subscribe(
         () => {
             this.toastr.success('iNGRESO EXITOSO');
+            this.mostrarForm=false;
+            this.cleanForm();
+            this._serviceMeals.reloadMenus();
           },
       (err) => {
           this.toastr.error(`Oops!! NO SE PUDO HACER EL INGRESO: ${err.status}, Mensaje: ${err.error.Message}`)
           })
   }
 
-  edit(){
+  public edit(){
     let meals:Meal={
           id: this.elementToEdit.id,
           type : this.formMeals.get('type').value,
           title: this.formMeals.get('title').value,
           description: this.formMeals.get('description').value,
-          state:"available"
+          state:null
     };    
     this._serviceMeals.editMeals(meals).subscribe(
       () => {
           this.toastr.success('INGRESO EXITOSO');
+          this.mostrarForm=false;
+          this.cleanForm();
           this._serviceMeals.reloadMenus();
       },
       (err) => {
@@ -100,8 +108,9 @@ export class MealsForm implements OnInit {
     this.enableEditing=false;
   }
 
-  setEditElement(meal:Meal) :void{
-    console.log(meal)
+  public setEditElement(meal:Meal) :void{
+    this.mostrarForm=true;
+
     this.formMeals.controls['type'].setValue(meal.type ? meal.type : '');
     this.formMeals.controls['title'].setValue(meal.title ? meal.title : '');
     this.formMeals.controls['description'].setValue(meal.description ? meal.description : '');

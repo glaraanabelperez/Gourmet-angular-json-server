@@ -16,14 +16,19 @@ export class DateComponent implements OnInit {
 
   constructor(private calendar: NgbCalendar, private _serviceDate:DateService) {
     this.model = this.calendar.getToday();
-    // this.emitDate(this.model)
   }
 
   ngOnInit(): void {
   }
 
   public emitDate(d){
-    this.dateSelected.emit(d);
-    // this._serviceDate.dateCurrent=d;
+    let _d=this.convertToDate(d)
+    this.dateSelected.emit(_d);
+    this._serviceDate.dateCurrent=_d;
+  }
+
+  convertToDate(dateSelected:any){
+    let date=new Date(dateSelected.year +"/"+ (dateSelected.month) +"/"+ dateSelected.day);
+    return date;
   }
 }

@@ -8,25 +8,29 @@ import { BehaviorSubject } from 'rxjs';
 export class DateService{
   
   public dateCurrent:Date;
+  public reload: any = new BehaviorSubject<boolean>(false);
+  public reload$ = this.reload.asObservable();
 
   constructor() {
-    this.dateCurrent=new Date()
-    console.log(this.dateCurrent)
+    this.dateCurrent=new Date();
+    console.log("currentDate", this.dateCurrent)
   }
 
-  convertToDate(dateSelected:any){
-    let date=new Date(dateSelected.year +"/"+ (dateSelected.month) +"/"+ dateSelected.day);
-    console.log("date seteada desde componente date", date)
-    return date;
-  }
-
-  verifyingPastDate(dateSelected:Date):boolean{
+  public verifyingPastDate(dateSelected:Date):boolean{
     if(new Date() > dateSelected){
       return true;
     }
     return false;
   }
+  
+  public reloadMenus(){
+    this.reload.next(true);
+  }
 
+  public setDateString(date:Date):string{
+    let d=date.getUTCFullYear() + "-" + ("0" + (date.getUTCMonth()+1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
+    return  d;
+  }
 
 
 }

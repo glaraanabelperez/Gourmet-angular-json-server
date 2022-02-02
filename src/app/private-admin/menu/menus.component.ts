@@ -24,14 +24,16 @@ export class MenusComponent implements OnInit {
   public meals: Meal[]=[];
 
   constructor(
-    private _serviceDate:DateService,
+    private _service_date:DateService,
     private _service_menu:MenuService,
     private _toastr:ToastrService,
     ) {
-     
     }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.date=new Date();
+    this.setDate(new Date());
+  }
 
   public deleteIndexMeals(i){
     this.meals.splice(i,1);
@@ -45,12 +47,12 @@ export class MenusComponent implements OnInit {
     this.meals=[];
   }
 
-  public deleteMenu(menu){
+  public deleteMenu(id_menu){
     this.editMenu(null);
-    this._service_menu.desactive(menu).subscribe(res=>{
+    this._service_menu.desactive(id_menu).subscribe(res=>{
       if(res!=null){
         this._toastr.info("EL MENU SE ELIMINO CON EXITO");
-        this._service_menu.reloadMenus();
+        this._service_date.reloadMenus();
       }
     })
   }
@@ -61,13 +63,12 @@ export class MenusComponent implements OnInit {
   }
 
   public insertNewMenu(){
-    console.log(this.date)
     let list=UtilsMenusMap.mapToListMenusRequest(this.date, this.meals)
     this._service_menu.insert(list).subscribe(
       res=>{
       if(res){
         this._toastr.success("MENU INGRESADO");
-        this._service_menu.reloadMenus();
+        this._service_date.reloadMenus();
         this.cancelAssignMenu();
         this._newMenu=false;
       }
@@ -94,8 +95,7 @@ export class MenusComponent implements OnInit {
   }
 
   public setDate(date){
-    let formatDate=this._serviceDate.convertToDate(date);
-      this.date=formatDate;
+    this.date=date;
   }
 
   public verifyDuplicated(m_id):boolean{

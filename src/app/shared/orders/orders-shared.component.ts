@@ -60,6 +60,7 @@ export class OrdersSharedComponent implements OnInit {
 
   public initViewOrder(){
     if(this.date!=null){
+      console.log(this.date)
       if(this.sessionPermissions.isAdmin){
         this.get(this.date);
       }else{
@@ -71,9 +72,7 @@ export class OrdersSharedComponent implements OnInit {
   public get(date){
     this._service_orders.getOrders(date).subscribe(res=>{
       if(res.length>0){
-        console.log("aca", res)
         this.orders=res.slice();
-        console.log(this.orders)
       }else{
         this.orders=null;
         this.toastr.info("NO HAY PEDIDOS PARA ESTA FECHA")

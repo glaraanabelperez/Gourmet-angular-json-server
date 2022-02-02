@@ -20,8 +20,7 @@ export class ViewOrdersAdminComponent implements OnInit {
   }
 
   public setDate(date){
-    let formatDate=this._serviceDate.convertToDate(date);
-    this.date=formatDate;
+    this.date=date;
   }
 
 }

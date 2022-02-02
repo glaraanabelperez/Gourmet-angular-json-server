@@ -22,6 +22,7 @@ export class ListMealsComponent implements OnInit {
   constructor(
     private _mealsService:ListMealService, 
     private _storageService:StorageService,
+    private _serviceDate:DateService,
     private toastr: ToastrService
     ) { 
       this.suscripcionAdmin();
@@ -35,6 +36,20 @@ export class ListMealsComponent implements OnInit {
     if(this._reload){
       this.get();
     }
+  }
+
+  public deleteMeal(id_meal){
+    this._mealsService.deleteMeals(id_meal).subscribe(
+      res=>{
+      if(res){
+        this.toastr.success("LOS DATOS SE BORRARON CON EXITO");
+        this.suscripcionReload();
+      }
+    },
+      error =>{
+        this.toastr.error('LOS DATOS NO SE PUDIERON BORRAR',error);
+      }
+    );
   }
 
   public get(){
@@ -66,7 +81,7 @@ export class ListMealsComponent implements OnInit {
   }
 
   public suscripcionReload(){
-    this._mealsService.reload$.subscribe(result => {
+    this._serviceDate.reload$.subscribe(result => {
       if(result){
         this.get();
       }

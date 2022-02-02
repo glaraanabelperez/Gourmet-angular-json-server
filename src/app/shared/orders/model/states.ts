@@ -4,10 +4,10 @@ export class States{
     statesEntregas=null;
 
     public setStatesToAdmin(){
-        this.statesEntregas=["pendiente", "entregado"]
+        this.statesEntregas=["pending", "delivered"]
     }
 
     public setStatesToClient(){
-        this.statesEntregas=["Cancelado"]
+        this.statesEntregas=["cencel"]
     }
 }

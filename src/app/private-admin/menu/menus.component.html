@@ -5,7 +5,7 @@
 <div style="display: flex; flex-direction: row;">
   <button  class="btn btn-primary " type="button" (click)="btnNewMenu()" style="margin-right: 10px;">Nuevo Menu</button>
 </div>
-<!--Editar Menu-->
+<!--Eliminar Menu-->
 <div *ngIf="_editMenu!=null" style="width: 98%;margin: 0%;">
   <div  class="card text-center">
     <div class="card-header">
@@ -17,7 +17,7 @@
       <h6 class="card-text">{{_editMenu.Meals.description}}</h6>
     </div>
     <div style="display: flex; flex-direction: row; margin: auto; margin-bottom: 2%;">
-      <button class="btn btn-danger" (click)="deleteMenu(_editMenu)" >Eliminar</button>
+      <button class="btn btn-danger" (click)="deleteMenu(_editMenu.id)" >Eliminar</button>
       <button class="btn btn-dark" (click)="cancelDeleteMenu()" >Cancelar</button>
     </div>
   </div>
