@@ -1,8 +1,7 @@
 
 export class OrdersRequest{
-    id_menu:number
-    id_user:number;
-    state:string; 
+    idMenu:number
+    idUser:number;
     deliveryAdress:string;
-    count:number;
+    amount:number;
 }

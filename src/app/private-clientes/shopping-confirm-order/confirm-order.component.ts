@@ -3,8 +3,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
+import { User } from 'src/app/public/components/login/models/user.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
+import UtilsShoppingCart from 'src/app/public/components/shoping-cart/helpers/utilsShoppingCart';
 import { ShoppingCarService } from 'src/app/public/components/shoping-cart/service/shoppingCar.service';
+import { DateService } from 'src/app/shared/date/service/dateOrders.service';
+import { OrdersSharedService } from 'src/app/shared/orders/service/orders.service';
 
 
 
@@ -15,14 +19,17 @@ import { ShoppingCarService } from 'src/app/public/components/shoping-cart/servi
 })
 export class ConfirmOrder implements OnInit {
 
-  public orderOk:boolean;
+  public sessionUser: PermissionModel;
+  public user:User;
+  // public orderOk:boolean;
   public _delivery: boolean=false;
   public direction_delivery: string;
-  public sessionUser: PermissionModel;
   public formDirection: any;
 
   constructor(
     public _service:ShoppingCarService, 
+    private _serviceOrders:OrdersSharedService,
+    private _service_date:DateService,
     private _storageSession:StorageService,
     private readonly formBuilder : FormBuilder,
     private router:Router,
@@ -37,13 +44,6 @@ export class ConfirmOrder implements OnInit {
 
   get f(){return this.formDirection.controls;}
 
-  public assembleOrder(){
-    // let orderFinaly:OrdersRequest = UtilsShoppingCart.mapToOrdersInProgress(this._service.getOrderInProgress(), new OrdersRequest())
-    // console.log(order)
-    // order.count=1;
-    // this.ordersInProgress.push(order)
-  }
-
   public back(){
     this.router.navigate(['/shopping']);
   }
@@ -57,7 +57,7 @@ export class ConfirmOrder implements OnInit {
     this._storageSession.permissions$.subscribe(result => {
       if(result){
         this.sessionUser=result.isUser;
-        console.log(this.sessionUser)
+        this.user=this._storageSession.getCurrentUser();
       }else{
         this.router.navigate(['/login']);
         this.toastr.info("SE DEBE REGISTRAR PARA HACER EL PEDIDO")
@@ -72,14 +72,24 @@ export class ConfirmOrder implements OnInit {
   }
 
   public finishOrder(){
-    // this.okPedido=true;
-    // let p :any []=[];
-    // this._service.pe.forEach(element=>
-    //   p.push(element))
-    // this.pedido=JSON.stringify(p);
-    // this.pedido=this.pedido.replace(/["{}]+/g, " ");
 
-    // this._service.pe.clear();
+    if(this.direction_delivery!=null || this.direction_delivery==""){
+      this.toastr.error("LA DIRECCION NO PUEDE ESTAR VACIA");
+    }else{
+      let listOrder=UtilsShoppingCart.mapToOrdersRequest(this.direction_delivery, this.user.id, this._service.ordersInProgress);
+      console.log(listOrder)
+      this._serviceOrders.insertOrders(listOrder).subscribe(res=>{
+        if(res){
+          this.toastr.success("GRACIAS PRO SU COMPREA, AGUARDE A SU PEDIDO");
+          this._service.ordersInProgress=null;
+          this.router.navigate(['/meals']);
+        }
+        error =>{
+          this.toastr.error('NO SE PUDO INSERTAR EL PEDIDO')
+          }
+        });
+    }
+    
   }
 
   public initForm(){

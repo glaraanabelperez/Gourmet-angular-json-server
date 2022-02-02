@@ -94,5 +94,6 @@ export class OrdersSharedComponent implements OnInit {
   public setDate(date:Date){
     this.get(date);
   }
+  
 
 }

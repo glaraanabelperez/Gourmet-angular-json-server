@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Console } from 'console';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Menu } from '../../../../shared/menu/models/menus.model';
 import UtilsShoppingCart from '../helpers/utilsShoppingCart';
 import { OrdersInProgress } from '../model/orders-in-progress.module';
@@ -42,6 +41,7 @@ export class ShoppingCarService{
     const orders = this.ordersInProgress;
     return orders;
   }
+
 
   public removeItemShoppingCart(index){
     let cant_borrar=this.ordersInProgress[index].count;

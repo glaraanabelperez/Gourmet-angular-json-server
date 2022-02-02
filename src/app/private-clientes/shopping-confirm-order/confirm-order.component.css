@@ -222,9 +222,9 @@ h5 {
   text-align: center;
 }
 
-.conteiner_pedido .shipper .imagen-order1 {
+.conteiner_pedido .shipper .icon .imagen-order1 {
   width: 15%;
-  margin-bottom: 25px;
+  margin: auto;
 }
 
 .conteiner_pedido .rigth {
@@ -237,6 +237,10 @@ h5 {
   display: block;
   margin: auto;
   width: 15%;
+}
+
+.conteiner_pedido .rigth .btnsFinishOrder .btn {
+  margin: auto;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {

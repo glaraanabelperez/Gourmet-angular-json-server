@@ -216,4 +216,8 @@ h5 {
   margin-right: 10px;
   font-size: 20px;
 }
+
+.card-body .btnsEditMeals {
+  cursor: pointer;
+}
 /*# sourceMappingURL=list-meals.component.css.map */

@@ -6,9 +6,22 @@ export default  class UtilsShoppingCart{
 
   constructor() {}
 
-  static mapToOrdersRequest(o:OrdersInProgress, order:OrdersRequest):OrdersRequest{
-    // order.id_menu 
-    return order;
+  static mapToOrdersRequest( delivery_direction:string,  id_user:number, orderInProgress:Array<OrdersInProgress>):Array <OrdersRequest>{
+    
+    let listOrder=  new Array<OrdersRequest>();
+
+    orderInProgress.forEach(element => {
+      
+      let order=new OrdersRequest();
+      order.idUser=id_user,
+      order.idMenu=element.menu.id,
+      order.amount=element.count,
+      order.deliveryAdress=delivery_direction
+
+      listOrder.push(order);
+
+    });
+    return listOrder;
   }
 
   static mapToOrdersInProgress(menus:Menu, order:OrdersInProgress):OrdersInProgress{
