@@ -18,22 +18,16 @@ export class OrdersSharedComponent implements OnInit {
   public orders: OrdersResponse[]=[];
   public sessionPermissions: PermissionModel;
   public states:States=new States();
-  stateSelected: any=null;
+
+  stateSelected: any;
 
   constructor(
     private _service_orders:OrdersSharedService, 
     public _storageSession:StorageService,
     private toastr: ToastrService,
     ) {
-    this._storageSession.permissions$.subscribe(result => {
-      this.sessionPermissions=result;
-      })
-      if(this.sessionPermissions.isAdmin){
-        this.states.setStatesToAdmin()
-      }else{
-        this.states.setStatesToClient()
+        this.setPermissionsAndStates();
       }
-  }
 
   ngOnInit(): void {
     
@@ -49,18 +43,19 @@ export class OrdersSharedComponent implements OnInit {
       this.toastr.error('ES NECESARIO SELECCIONAR UN ESTADO');
       return;
     }
-    this._service_orders.editState(id, this.stateSelected).subscribe(res=>{
+    this._service_orders.editState(id, this.stateSelected).subscribe(
+      (res)=>{
       this.initViewOrder();
+      console.log(res)
       this.toastr.success('SE EDITO CON EXITO');
       },
-      error =>{
-        this.toastr.error('NO SE PUEDE EDITAR EL ELEMENTO')
+      (error) =>{
+        this.toastr.error('NO SE PUDO EDITAR EL ESTADO, ASEGURESE DE QUE HAYAN PASADO 24 HS LUEGO DE LA ENTREGA')
       });
   }
 
   public initViewOrder(){
     if(this.date!=null){
-      console.log(this.date)
       if(this.sessionPermissions.isAdmin){
         this.get(this.date);
       }else{
@@ -73,6 +68,7 @@ export class OrdersSharedComponent implements OnInit {
     this._service_orders.getOrders(date).subscribe(res=>{
       if(res.length>0){
         this.orders=res.slice();
+        console.log(res)
       }else{
         this.orders=null;
         this.toastr.info("NO HAY PEDIDOS PARA ESTA FECHA")
@@ -93,6 +89,17 @@ export class OrdersSharedComponent implements OnInit {
 
   public setDate(date:Date){
     this.get(date);
+  }
+
+  public setPermissionsAndStates(){
+    this._storageSession.permissions$.subscribe(result => {
+      this.sessionPermissions=result;
+      })
+      if(this.sessionPermissions.isAdmin){
+        this.states.setStatesToAdmin()
+      }else{
+        this.states.setStatesToClient()
+      }
   }
   
 

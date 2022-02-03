@@ -76,7 +76,7 @@ export class ConfirmOrder implements OnInit {
     if(this.direction_delivery!=null || this.direction_delivery==""){
       this.toastr.error("LA DIRECCION NO PUEDE ESTAR VACIA");
     }else{
-      let listOrder=UtilsShoppingCart.mapToOrdersRequest(this.direction_delivery, this.user.id, this._service.ordersInProgress);
+      let listOrder=UtilsShoppingCart.mapToOrdersRequest(this.direction_delivery, 1, this._service.ordersInProgress);
       console.log(listOrder)
       this._serviceOrders.insertOrders(listOrder).subscribe(res=>{
         if(res){

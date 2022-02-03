@@ -7,7 +7,7 @@
       <input type="text" formControlName="type" class="form-control" id="type" [ngClass]="{ 'is-invalid':f.type.touched && f.type.errors }">
       <div *ngIf="f.type.touched && f.type.errors" class="invalid-feedback"  >
         <div *ngIf="f.type.errors.required">El Typo es Requerido</div>
-        <div *ngIf="f.type.errors.maxlength">Solo puede ingresar 40 caracteres</div>
+        <div *ngIf="f.type.errors.maxlength">Solo puede ingresar 20 caracteres</div>
       </div>
     </div>
     <div class=" form-group mb-3">

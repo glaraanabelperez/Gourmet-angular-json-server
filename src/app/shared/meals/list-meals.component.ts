@@ -40,13 +40,11 @@ export class ListMealsComponent implements OnInit {
 
   public deleteMeal(id_meal:number){
     this._mealsService.deleteMeals(id_meal).subscribe(
-      res=>{
-      if(res){
+      (res)=>{
         this.toastr.success("LOS DATOS SE BORRARON CON EXITO");
         this.suscripcionReload();
-      }
     },
-      error =>{
+      (error) =>{
         this.toastr.error('LOS DATOS NO SE PUDIERON BORRAR',error);
       }
     );
@@ -57,6 +55,7 @@ export class ListMealsComponent implements OnInit {
       res=>{
       if(res.length>0){
         this.meals=res.slice();
+        console.log(res)
       }else{
         this.meals=null;
       }

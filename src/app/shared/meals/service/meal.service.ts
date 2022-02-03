@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment, environmentNet } from 'src/environments/environment';
 import { Meal } from '../models/meals.model';
+import { MealsRequest } from '../models/mealsRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,11 @@ export class ListMealService {
     return this.http.delete(url);
   }
 
-  public editMeals(m: Meal){
-    let url=environmentNet.apiUrl + this.endpoint  +"/"+ m.id;
+  public editMeals(id, m: MealsRequest){
+    let url=environmentNet.apiUrl + this.endpoint  +"/"+ id;
+    console.log(id)
+    console.log(m)
+
     return this.http.put(url, m);
   }
 
@@ -30,7 +34,7 @@ export class ListMealService {
     return this.http.get<Array<Meal>>(url);
   }
 
-  public insert(m){
+  public insert(m:MealsRequest){
     console.log(m)
     let url=environmentNet.apiUrl + this.endpoint ;
     return this.http.post(url, m);

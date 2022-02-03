@@ -26,12 +26,11 @@ endpoint: string='orders';
   }
 
   public editState(id, state:string):Observable<any>{
-    let _state={
+    let url=environmentNet.apiUrl + this.endpoint  + "/" + id ;
+    let stateRequest={
       state:state
     }
-    console.log(state)
-    let url=environmentNet.apiUrl + this.endpoint  + "/" + id;
-    return this.http.post(url, JSON.stringify(state));
+    return this.http.put(url, stateRequest );
   }
 
   public getOrders(dateSelected:Date): Observable<Array<OrdersResponse>> {

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DateService } from 'src/app/shared/date/service/dateOrders.service';
 import { Meal } from 'src/app/shared/meals/models/meals.model';
+import { MealsRequest } from 'src/app/shared/meals/models/mealsRequest';
 import { ListMealService } from 'src/app/shared/meals/service/meal.service';
 
 @Component({
@@ -63,19 +64,17 @@ export class MealsForm implements OnInit {
 
   public initForm(){
     this.formMeals = this.formBuilder.group({
-      type : ["", [Validators.required, Validators.maxLength(40)]],
+      type : ["", [Validators.required, Validators.maxLength(19)]],
       title : ["", [Validators.required, Validators.maxLength(40)]],
       description : ["", [Validators.required, Validators.maxLength(120)]],
     });
   }
 
   public insert(){
-    let meals={
-          id: 0,
+    let meals:MealsRequest={
           type : this.formMeals.get('type').value,
           title: this.formMeals.get('title').value,
           description: this.formMeals.get('description').value,
-          state:""
         };
     this._serviceMeals.insert(meals).subscribe(
         () => {
@@ -89,14 +88,12 @@ export class MealsForm implements OnInit {
   }
 
   public edit(){
-    let meals:Meal={
-          id: this.elementToEdit.id,
+    let meals:MealsRequest={
           type : this.formMeals.get('type').value,
           title: this.formMeals.get('title').value,
           description: this.formMeals.get('description').value,
-          state:null
     };    
-    this._serviceMeals.editMeals(meals).subscribe(
+    this._serviceMeals.editMeals(this.elementToEdit.id, meals).subscribe(
       () => {
           this.toastr.success('INGRESO EXITOSO');
           this.cleanForm();
