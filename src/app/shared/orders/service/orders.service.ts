@@ -35,6 +35,9 @@ endpoint: string='orders';
       idUser:this._serviceStorage.getCurrentUser().id,
       state:state
     }
+    console.log(stateRequest)
+    console.log(url)
+
     return this.http.put(url, stateRequest );
   }
 

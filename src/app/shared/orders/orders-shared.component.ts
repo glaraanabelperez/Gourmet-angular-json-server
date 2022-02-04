@@ -46,10 +46,14 @@ export class OrdersSharedComponent implements OnInit {
     }
     this._service_orders.editState(id, this.stateSelected).subscribe(
       (res)=>{
+        console.log(res);
+
       this.initViewOrder();
       this.toastr.success('SE EDITO CON EXITO');
       },
       (error) =>{
+        console.log(error);
+
         this.toastr.error('NO SE PUDO EDITAR EL ESTADO, ASEGURESE DE QUE HAYAN PASADO 24 HS LUEGO DE LA ENTREGA')
       });
   }

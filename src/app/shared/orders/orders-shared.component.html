@@ -17,6 +17,7 @@
           <h6>{{or.state.toUpperCase()}}</h6>
       </div>
       <div class="card-body">
+        <p class="card-text" style="text-align: center;" >id: {{or.id}}</p>
         <h5 class="card-title" style="color: black;"> Comida: {{or.MenusDto.Meals.type}}</h5>
           <h5 class="card-title" style="color: black;"> Comida: {{or.MenusDto.Meals.title}}</h5>
           <p class="card-title" style="color: black;">{{or.MenusDto.Meals.description}}</p>
@@ -27,14 +28,14 @@
           <h5 class="card-title" style="color: black;">Apellido: {{or.userDto.lastName}}</h5>
           <h5 class="card-title" style="color: black;">Telefono: {{or.userDto.phone}}</h5>
           <h5 class="card-title" style="color: black;">Direccion Envio: {{or.deliveryAdress}}</h5>
-          <div style="margin-bottom: 3%;" scope="row" >
+          <div *ngIf="or.state!='cancel'" style="margin-bottom: 3%;" scope="row" >
             <select  [(ngModel)]="stateSelected" >
                 <!-- <option value="s" selected="true" >Seleccione una opcion</option> -->
                 <option *ngFor="let s of states.statesEntregas" [value]="s">
                   {{s}}
                 </option>
             </select><br><br>
-            <button class="btn btn-primary" (click)="editState(or.id)"><i class="bi bi-pencil-fill"></i>  Editar Estado</button>
+            <button class="btn btn-primary" (click)="editState(or.id)"><i class="bi bi-pencil-fill"></i> Editar Estado</button>
           </div>
       </div>
     </div>

@@ -8,6 +8,6 @@ export class States{
     }
 
     public setStatesToClient(){
-        this.statesEntregas=["cencel"]
+        this.statesEntregas=["cancel"]
     }
 }
