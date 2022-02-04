@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment, environmentNet } from 'src/environments/environment';
 import { LoginObject } from '../models/loginObject.model';
 import { User } from '../models/user.model';
 
@@ -11,26 +11,27 @@ import { User } from '../models/user.model';
 })
 export class AuthService{
 
-  endpoint: string='users';
+  endpoint: string='user';
 
   constructor(private http: HttpClient) {
   
   }
   
-  public login(user:LoginObject): Observable<User> {
-    let data:string="?email=" + user.getEmail();
-    let url=environment.apiUrl + this.endpoint + data;
-    return this.http.get<User>(url);
+  public login(user:LoginObject): Observable<any> {
+    let url=environmentNet.apiUrl + this.endpoint + "/login" ;
+    return this.http.post(url, user);
   }
 
   public insertUser(user:User):Observable<any>{
-    let url = environment.apiUrl + this.endpoint;
+    let url = environmentNet.apiUrl + this.endpoint;
     return this.http.post(url , user);
   }
 
-  public editUser(user:User):Observable<any>{
-    let data:string="?id=" + user.id;
-    let url=environment.apiUrl + this.endpoint + data;
+  public editUser(user:User, id:number):Observable<any>{
+    console.log(user)
+    let data:string="/" + id;
+    let url=environmentNet.apiUrl + this.endpoint + data;
+    console.log(url)
     return this.http.put(url , user);
   }
 

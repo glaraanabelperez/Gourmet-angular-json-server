@@ -20,7 +20,7 @@ export  class Session{
      }
 
     private setAuthAdmin(){
-        if(this.user.id==0){
+        if(this.user.id==1){
             this.authAdmin=true;
         }
     }

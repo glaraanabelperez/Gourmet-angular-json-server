@@ -46,13 +46,14 @@ export class LoginComponent implements OnInit {
   get f(){return this.formLogin.controls;}
 
   login() {
-    this.authService.login(new LoginObject(this.formLogin.value)).subscribe( data => {
-      if(Object.entries(data).length != 0){
-        this._storageService.setCurrentSession(new Session(data[0]));
+    let login=new LoginObject( this.formLogin.get('email').value, this.formLogin.get('password').value)
+    this.authService.login(login).subscribe( 
+      data => {
+        console.log(data)
+        this._storageService.setCurrentSession(new Session(data));
         this.toastr.info("Bienvenido");
-      }else{
-        this.toastr.warning("Login incorrecto");
-      }
+        console.log(this._storageService.getCurrentSession())
+
     },
     error => {
       this.toastr.warning("Login incorrecto");

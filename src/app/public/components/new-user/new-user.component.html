@@ -16,12 +16,12 @@
               <div *ngIf="f.name.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div>
 
-            <label for="secondName" class="form-label">Apellido</label>
-            <input type="text" formControlName="secondName" class="form-control" id="secondName" 
-            [ngClass]="{ 'is-invalid':f.secondName.touched && f.secondName.errors }">
-            <div *ngIf="f.secondName.touched && f.secondName.errors" class="invalid-feedback"  >
-              <div *ngIf="f.secondName.errors.required">El email es Requerido</div>
-              <div *ngIf="f.secondName.errors.maxlength">Solo puede ingresar 20 caracteres</div>
+            <label for="lastName" class="form-label">Apellido</label>
+            <input type="text" formControlName="lastName" class="form-control" id="lastName" 
+            [ngClass]="{ 'is-invalid':f.lastName.touched && f.lastName.errors }">
+            <div *ngIf="f.lastName.touched && f.lastName.errors" class="invalid-feedback"  >
+              <div *ngIf="f.lastName.errors.required">El email es Requerido</div>
+              <div *ngIf="f.lastName.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div>
 
             <label for="email" class="form-label">Email</label>
@@ -32,12 +32,12 @@
               <div *ngIf="f.email.errors.email">Email invalido</div>
             </div>
 
-            <label for="password" class="form-label">Password</label>
-            <input type="text" formControlName="password" class="form-control" id="password" [ngClass]="{ 'is-invalid':f.password.touched && f.password.errors }">
-            <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback"  >
-              <div *ngIf="f.password.errors.required">El password es Requerido</div>
-              <div *ngIf="f.password.errors.maxlength">Solo puede ingresar 10 caracteres</div>
-              <div *ngIf="f.password.errors.pattern">El password solo puede contener numeros</div>
+            <label for="pass" class="form-label">Password</label>
+            <input type="text" formControlName="pass" class="form-control" id="pass" [ngClass]="{ 'is-invalid':f.pass.touched && f.pass.errors }">
+            <div *ngIf="f.pass.touched && f.pass.errors" class="invalid-feedback"  >
+              <div *ngIf="f.pass.errors.required">El password es Requerido</div>
+              <div *ngIf="f.pass.errors.maxlength">Solo puede ingresar 10 caracteres</div>
+              <div *ngIf="f.pass.errors.pattern">El password solo puede contener numeros</div>
             </div>
 
             <label for="phone" class="form-label">Telefono</label>
@@ -57,15 +57,6 @@
               <div *ngIf="f.direction.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div><br>
 
-            <p style="color:crimson; font-weight: 600;cursor: pointer;" (click)="insertCompany()">Optativo, Ingresar Empresa ></p>
-            <div style="margin-bottom: 60px;" *ngIf="company">
-              <label for="companyName" class="form-label">Nombre de la Empresa</label>
-              <input type="text" formControlName="companyName" class="form-control" id="companyName">
-              <label for="companyDirection" class="form-label">Direccion</label>
-              <input type="text" formControlName="companyDirection" class="form-control" id="companyDirection">
-              <label for="companyPhone" class="form-label">Telefono</label>
-              <input type="text" formControlName="companyPhone" class="form-control" id="companyPhone">
-            </div>
             <div style="text-align: center;">
               <button type="submit" class="btn getIn boton"  [disabled]="formNewUser.invalid">Guardar</button><br>
             </div>

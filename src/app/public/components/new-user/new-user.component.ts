@@ -77,17 +77,11 @@ export class NewUserComponent implements OnInit {
   public newUser(user:User):User{
 
     user.name=this.formNewUser.get('name').value,
-    user.secondName=this.formNewUser.get('secondName').value;
+    user.lastName=this.formNewUser.get('lastName').value;
     user.email=this.formNewUser.get('email').value;
-    user.password=this.formNewUser.get('password').value;
-    user.telephone=this.formNewUser.get('phone').value;
+    user.pass=this.formNewUser.get('pass').value;
+    user.phone=this.formNewUser.get('phone').value;
     user.direction=this.formNewUser.get('direction').value;
-
-    let com=new Company();
-    com.name=this.formNewUser.get('companyName').value;
-    com.direction=this.formNewUser.get('companyDirection').value;
-    com.telephone=this.formNewUser.get('companyPhone').value;
-    user.company=com;
 
     return user;
   }

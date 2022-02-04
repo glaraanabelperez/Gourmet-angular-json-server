@@ -7,10 +7,10 @@
     <div *ngIf="user!=null">
         <ul style="list-style: none;padding-left: 0%;">
             <li><h5>Nombre: {{user.name}}</h5></li>
-            <li><h6>Apellido: {{user.secondName}}</h6></li> 
+            <li><h6>Apellido: {{user.lastName}}</h6></li> 
             <li>Email: <h7>{{user.email}}</h7></li>    
-            <li>Password: <h7>{{user.password}}</h7></li>    
-            <li>Telefono: <h7>{{user.telephone}}</h7></li>    
+            <li>Password: <h7>{{user.pass}}</h7></li>    
+            <li>Telefono: <h7>{{user.phone}}</h7></li>    
             <li>Direccion: <h7>{{user.direction}}</h7></li><br>   
             <li><button class="btn btn-outline-primary" (click)="onClose($event)"><i class="bi bi-pencil-fill"></i></button></li>                   
         </ul>

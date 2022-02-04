@@ -2,11 +2,11 @@
 export class LoginObject{
 
   private email: string;
-  private password: string;
+  private pass: number;
 
-  constructor( object:any){
-    this.email = object.email ? object.email : null;
-    this.password = object.password ? object.password : null;
+  constructor( email:string, pass:number){
+    this.email = email;
+    this.pass = pass;
   }
 
   public getEmail(){

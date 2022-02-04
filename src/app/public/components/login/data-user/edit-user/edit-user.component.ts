@@ -20,7 +20,7 @@ export class EditUserComponent implements OnInit {
   @Input() user:User;
   
   public formEditUser : FormGroup;
-  public company: boolean;
+  public userToEdit:User;
 
   constructor( 
     private authService: AuthService, 
@@ -38,14 +38,11 @@ export class EditUserComponent implements OnInit {
   initForm(){
     this.formEditUser = this.formBuilder.group({
       name : ["", [Validators.required, Validators.maxLength(20)]],
-      secondName : ["", [Validators.required, Validators.maxLength(20)]],
+      lastName : ["", [Validators.required, Validators.maxLength(20)]],
       // email : ["", [Validators.required, Validators.maxLength(50), Validators.email]],
-      // password : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
+      pass : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
       phone : ["", [Validators.required, Validators.maxLength(40),  Validators.pattern('^[0-9]+$')]],
       direction : ["", [Validators.required, Validators.maxLength(40)]],
-      companyName : [""],
-      companyPhone : [""],
-      companyDirection : [""]
      });
   }
 
@@ -56,49 +53,38 @@ export class EditUserComponent implements OnInit {
   }
 
   public editUser() {
-    let user:User=new User();
-    this.authService.editUser(this.newUser(user)).subscribe( data => {
+    this.authService.editUser(this.newUser(), this.userToEdit.id).subscribe( 
+      data => {
+        console.log(data)
         this.formEditUser.reset();
         this.toastr.success('Datos Editados')
       },
       error =>{
-        this.toastr.error('No se pudo guardar el elemento')
+        this.toastr.error('No se pudo guardar el elemento', error.message)
       });
-}
-
-
-  public insertCompany(){
-    this.company=this.company==true? false: true;
   }
 
-  public newUser(user:User):User{
+  public newUser():User{
 
+    let user:User=new User();
     user.name=this.formEditUser.get('name').value,
-    user.secondName=this.formEditUser.get('secondName').value;
-    // user.email=this.formEditUser.get('email').value;
-    // user.password=this.formEditUser.get('password').value;
-    user.telephone=this.formEditUser.get('phone').value;
+    user.lastName=this.formEditUser.get('lastName').value;
+    user.email=this.userToEdit.email;
+    user.pass=this.formEditUser.get('pass').value;
+    user.phone=this.formEditUser.get('phone').value;
     user.direction=this.formEditUser.get('direction').value;
-
-    let com=new Company();
-    com.name=this.formEditUser.get('companyName').value;
-    com.direction=this.formEditUser.get('companyDirection').value;
-    com.telephone=this.formEditUser.get('companyPhone').value;
-    user.company=com;
 
     return user;
   }
 
   public setEditElement(user:User) :void{
-    console.log(user)
+    this.userToEdit=user;
     this.formEditUser.controls['name'].setValue(user.name ? user.name : '');
-    this.formEditUser.controls['secondName'].setValue(user.secondName ? user.secondName : '');
-    this.formEditUser.controls['phone'].setValue(user.telephone ? user.telephone : '');
+    this.formEditUser.controls['lastName'].setValue(user.lastName ? user.lastName : '');
+    // this.formEditUser.controls['email'].setValue(user.lastName ? user.lastName : '');
+    this.formEditUser.controls['pass'].setValue(user.pass ? user.pass : '');
+    this.formEditUser.controls['phone'].setValue(user.phone ? user.phone : '');
     this.formEditUser.controls['direction'].setValue(user.direction ? user.direction : '');
-    this.formEditUser.controls['companyName'].setValue(user.company[0].name ? user.company[0].name : '');
-    this.formEditUser.controls['companyPhone'].setValue(user.company[0].telephone ? user.company[0].telephone : '');
-    this.formEditUser.controls['companyDirection'].setValue(user.company[0].direction ? user.company[0].direction  : '');
-
     window.scrollTo(0,0);
   }
 
