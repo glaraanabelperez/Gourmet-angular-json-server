@@ -1,8 +1,11 @@
 <div class="titulo_seccion">
     <h3>Haga su pedido</h3>
 </div>
-<div class="date-menu">
-    <app-date (dateSelected)="setDate($event)"></app-date>
-    <app-menuList  [takeOrder]="takeOrder" [date]="date" (_editMenu)="onClickMenu($event)"></app-menuList>
+<div class="base_info">
+    <div class="date-menu">
+        <app-date (dateSelected)="setDate($event)"></app-date>
+        <app-menuList  [takeOrder]="takeOrder" [date]="date" (_editMenu)="onClickMenu($event)"></app-menuList>
+    </div>
 </div>
+
 

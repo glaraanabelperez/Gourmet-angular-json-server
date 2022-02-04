@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CustomersResponse } from './models/clients-response.model';
 import { CustomersService } from './service/customers.service';
 
@@ -11,7 +12,10 @@ export class CustomersComponent implements OnInit {
 
   public customers:CustomersResponse[]=[];
 
-  constructor(private _serviceCustomers:CustomersService) { 
+  constructor(
+    private _serviceCustomers:CustomersService,
+    private toastr: ToastrService,
+    ) { 
     this.get();
   }
 
@@ -19,13 +23,13 @@ export class CustomersComponent implements OnInit {
   }
 
   public get(){
-    this._serviceCustomers.getCustomers().subscribe(res=>{
-      if(res.length>0){
-        console.log(res)
+    this._serviceCustomers.getCustomers().subscribe(
+      (res)=>{    
         this.customers=res.slice();
-      }else{
-        this.customers=null;
+      },
+      (error)=>{    
+        this.toastr.show("NO SE ECNUENTRAN LOS DATOS")
       }
-    });
+    );
   }
 }

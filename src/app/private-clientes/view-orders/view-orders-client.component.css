@@ -37,6 +37,10 @@ h5 {
           flex-direction: row;
 }
 
+.base_info {
+  width: 60vw;
+}
+
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
@@ -188,7 +192,7 @@ h5 {
   }
 }
 
-.base-order {
+.base_info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -198,7 +202,7 @@ h5 {
           flex-direction: row;
 }
 
-.base-order app-orders-shared {
+.base_info app-orders-shared {
   width: 100%;
 }
 /*# sourceMappingURL=view-orders-client.component.css.map */

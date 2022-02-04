@@ -2,7 +2,7 @@
   <h3>Su Pedido</h3>
   <h4>Confirme su pedido.</h4>
 </div>
-<div class="conteiner_pedido"  >
+<div class="conteiner_pedido" >
   <div class="titulo_seccion2">
     <h5>Estas a un paso de finalizar!</h5>
   </div>
@@ -43,16 +43,14 @@
       <div class="info">
           <h5 style="font-weight: 600; text-align: left;">Fecha de entrega: {{p.menu.date}}</h5><br>
           <p style="font-weight: 600;">Tipo: {{p.menu.Meals.type}}</p>
-          <p style="font-weight: 600;">{{p.menu.Meals.title}}</p>
+          <p style="font-weight: 600;">Titulo: {{p.menu.Meals.title}}</p>
           <p style="font-weight: 600;">{{p.menu.Meals.description}}</p>
           <h6 style="font-weight: 600; text-align: left;">CANTIDAD: {{p.count}}</h6>
           <br><hr>  
       </div>
     </div> 
-    <h5 style="text-align: center;margin: 2%;">CANTIDAD {{_service.total}} PIEZAS</h5>
-    <div class="btnsFinishOrder">
-      <button class="btn btn-primary boton" *ngIf="_service.total!=0" (click)="finishOrder()">CONTINUAR</button><br><br>
-      <a class="btn btn-outline-primary boton" *ngIf="_service.total!=0" (click)="back()">Volver</a><br>
-    </div>
+    <h5>CANTIDAD {{_service.total}} PIEZAS</h5><br>
+    <button class="btn btn-primary boton" *ngIf="_service.total!=0" (click)="finishOrder()">CONTINUAR</button><br><br>
+    <a class="btn btn-outline-primary boton" *ngIf="_service.total!=0" (click)="back()">Volver</a><br>
   </div>
 </div>

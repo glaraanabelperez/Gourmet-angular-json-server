@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { OrdersRequest } from 'src/app/public/components/shoping-cart/model/orders-request.module';
 import { environment, environmentNet } from 'src/environments/environment';
 import { DateService } from '../../date/service/dateOrders.service';
@@ -16,7 +17,10 @@ export class OrdersSharedService{
 
 endpoint: string='orders';  
 
-  constructor(private http: HttpClient, private _date_service:DateService) {
+  constructor(
+    private http: HttpClient, 
+    private _date_service:DateService,
+    private _serviceStorage: StorageService) {
   }
 
   public desactive(order){
@@ -28,6 +32,7 @@ endpoint: string='orders';
   public editState(id, state:string):Observable<any>{
     let url=environmentNet.apiUrl + this.endpoint  + "/" + id ;
     let stateRequest={
+      idUser:this._serviceStorage.getCurrentUser().id,
       state:state
     }
     return this.http.put(url, stateRequest );
@@ -40,9 +45,9 @@ endpoint: string='orders';
   }
 
   public getOrdersByIdUser(dateSelected:Date, id_user:number): Observable<Array<OrdersResponse>>{
-    let date:string = "date=" + this._date_service.setDateString(dateSelected);
-    let id:string = "?id=" + id_user;
-    let url=environment.apiUrl + this.endpoint + id + "&" + date ;
+    let date:string = "?date=" + this._date_service.setDateString(dateSelected);
+    let id:string = "/" + id_user;
+    let url=environmentNet.apiUrl + this.endpoint + id + date ;
     return this.http.get<Array<OrdersResponse>>(url);
   }
 

@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
@@ -15,6 +16,7 @@ import { OrdersSharedService } from './service/orders.service';
 export class OrdersSharedComponent implements OnInit {
   
   @Input() date: Date;
+
   public orders: OrdersResponse[]=[];
   public sessionPermissions: PermissionModel;
   public states:States=new States();
@@ -30,7 +32,6 @@ export class OrdersSharedComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    
   }
 
   ngOnChanges(){
@@ -46,7 +47,6 @@ export class OrdersSharedComponent implements OnInit {
     this._service_orders.editState(id, this.stateSelected).subscribe(
       (res)=>{
       this.initViewOrder();
-      console.log(res)
       this.toastr.success('SE EDITO CON EXITO');
       },
       (error) =>{
@@ -56,6 +56,7 @@ export class OrdersSharedComponent implements OnInit {
 
   public initViewOrder(){
     if(this.date!=null){
+      console.log(this.date)
       if(this.sessionPermissions.isAdmin){
         this.get(this.date);
       }else{
@@ -77,14 +78,15 @@ export class OrdersSharedComponent implements OnInit {
   }
 
   public getByIdUser(date, id_user){
-    this._service_orders.getOrdersByIdUser(date, id_user).subscribe(res=>{
-      if(res.length>0){
-        console.log(res)
+    console.log(date, id_user)
+    this._service_orders.getOrdersByIdUser(date, id_user).subscribe(
+      (res)=>{
         this.orders=res.slice();
-      }else{
-        this.orders=null;
+      },
+      (error)=>{
+        this.toastr.error("HUBO UN ERROR AL TRAER LOS DATOS")
       }
-    });
+    );
   }
 
   public setDate(date:Date){

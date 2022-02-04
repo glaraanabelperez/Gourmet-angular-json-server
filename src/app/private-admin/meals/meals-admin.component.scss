@@ -1,6 +1,6 @@
 @import '../../styles/general_styles.scss';
 
-.base_meals_admin{
+.base_info{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,7 +17,7 @@
 @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 768px) { 
-    .base_meals_admin{
+    .base_info{
         display: flex;
         flex-direction: column;
         justify-content: none;

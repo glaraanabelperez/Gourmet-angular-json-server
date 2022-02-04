@@ -37,6 +37,10 @@ h5 {
           flex-direction: row;
 }
 
+.base_info {
+  width: 60vw;
+}
+
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
@@ -188,11 +192,18 @@ h5 {
   }
 }
 
-.tarjeta_seccion {
+.base_info {
   margin-top: 0%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
-app-list-meals {
-  padding: 3%;
+.base_info .tarjeta_seccion {
+  margin-top: 0%;
 }
 /*# sourceMappingURL=meals.component.css.map */

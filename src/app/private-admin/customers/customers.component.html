@@ -1,27 +1,28 @@
 <div class="titulo_seccion">
     <h3>Sus Clientes</h3>
 </div>
-<div class="tarjeta_seccion">
+<div class="base_info">
+  <div class="titulo_seccion2">
+    <h5 style="color: black;">Usuarios Registrados En App Gourmet</h5>
+  </div>
+  <div class="tarjeta_seccion">
     <table class="table table-striped">
         <tbody>
           <tr *ngFor="let c of customers">
             <td>
               <li>
-                 <!-- <h5>Comida {{c.}}</h5>
-                 <h6>{{m.tittle}}</h6>
-                 <h7>{{m.description}}</h7>
-                 <p>Estado: {{m.state}}</p> -->
-                 <div style="margin-bottom: 3%;" *ngIf="session" scope="row">
-                  <div *ngIf="action=='edit'">
-                    <a (click)="send(m)"><i class="bi bi-pencil-fill"></i></a>
-                    <a (click)="delete(m)"><i class="bi bi-trash-fill"></i></a>
-                  </div>
-                 </div>
+                 <h4>{{c.name}}</h4>
+                 <h5>{{c.lastName}}</h5>
+                 <h5>{{c.phone}}</h5>
+                 <h5>{{c.email}}</h5>
+                 <h5>{{c.phone}}</h5>
               </li>  
             </td>            
           </tr>
         </tbody>
     </table>
+  </div>
 </div>
+
 
 

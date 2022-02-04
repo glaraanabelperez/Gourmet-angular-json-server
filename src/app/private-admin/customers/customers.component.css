@@ -37,6 +37,10 @@ h5 {
           flex-direction: row;
 }
 
+.base_info {
+  width: 60vw;
+}
+
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
@@ -186,5 +190,25 @@ h5 {
   .date-menu app-menuList {
     width: 100%;
   }
+}
+
+.base_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.base_info .tarjeta_seccion {
+  width: 69% !important;
+}
+
+.base_info .tarjeta_seccion .table {
+  margin: auto;
+  width: 70%;
+  list-style-type: none;
 }
 /*# sourceMappingURL=customers.component.css.map */

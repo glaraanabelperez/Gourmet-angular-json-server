@@ -2,44 +2,44 @@
     <h3>Editar Menu</h3>
     <h4 style="font-weight: 600;">En esta seccion podra armar y eliminar el menu del dia</h4>
 </div>
-<div style="display: flex; flex-direction: row;">
-  <button  class="btn btn-primary " type="button" (click)="btnNewMenu()" style="margin-right: 10px;">Nuevo Menu</button>
-</div>
-<!--Eliminar Menu-->
-<div *ngIf="_editMenu!=null" style="width: 98%;margin: 0%;">
-  <div  class="card text-center">
+<div class="base_info">
+  <button  class="btn btn-primary " type="button" (click)="btnNewMenu()" >Nuevo Menu</button>
+  <!--Eliminar Menu-->
+  <div class="card text-center" *ngIf="_editMenu!=null"  >
     <div class="card-header">
-      Esta eliminando el siguiente Menu:
+        Esta eliminando el siguiente Menu:
     </div>
     <div class="card-body">
-      <h5 class="card-title">Comida {{_editMenu.Meals.type}}</h5>
-      <h6 class="card-text">{{_editMenu.Meals.title}}</h6>
-      <h6 class="card-text">{{_editMenu.Meals.description}}</h6>
+        <h5 class="card-title">Comida {{_editMenu.Meals.type}}</h5>
+        <h6 class="card-text">{{_editMenu.Meals.title}}</h6>
+        <h6 class="card-text">{{_editMenu.Meals.description}}</h6>
     </div>
-    <div style="display: flex; flex-direction: row; margin: auto; margin-bottom: 2%;">
+    <div class="btn_delete_cancel">
       <button class="btn btn-danger" (click)="deleteMenu(_editMenu.id)" >Eliminar</button>
       <button class="btn btn-dark" (click)="cancelDeleteMenu()" >Cancelar</button>
     </div>
-  </div>
-</div><br>
-<div class="date-menu">
-  <app-date (dateSelected)="setDate($event)"></app-date>
-  <!--Nuevo Menu-->
-  <div style="margin-left: 10px;" *ngIf="_newMenu; else editMenus" >
-    <div class="titulo_seccion">
-      <h4 style="text-align: center; margin-bottom: 4%;">Nuevo Menu</h4>
-      <h5 style="text-align: center; margin-bottom: 4%;">Seleccione fecha y comidas para armar el menu del dia</h5>
+  </div><br>
+  <div class="date-menu">
+    <app-date (dateSelected)="setDate($event)"></app-date>
+    <!--Nuevo Menu-->
+    <div class="new_menu" *ngIf="_newMenu; else editMenus" >
+      <div class="tarjeta_seccion" *ngIf="meals.length==0">
+        <h4>Nuevo Menu</h4>
+        <h5>Seleccione fecha y comidas para armar el menu del dia</h5>
+      </div>
+      <div class="tarjeta_seccion" *ngIf="meals.length>0">
+        <h5>Comidas Seleccionadas</h5>
+        <button *ngFor="let m of meals; let i = index" class="btn btn-danger" (click)="deleteIndexMeals(i)">{{m.title}}    <i class="fa fa-trash-o" aria-hidden="true"></i></button><br>
+        <hr>
+        <button class="btn btn-success " (click)="insertNewMenu()">Guardar</button>
+        <button class="btn btn-outline-dark " (click)="cancelAssignMenu()">Cancel</button>
+      </div>
+      <app-list-meals [action]="action" (meal)="pushMeals($event)"></app-list-meals>
     </div>
-    <!--Asignar Meals to Menu-->
-    <div class="target_meals" *ngIf="meals.length>0">
-      <button *ngFor="let m of meals; let i = index" class="btn btn-danger" (click)="deleteIndexMeals(i)">{{m.title}}</button><br>
-      <button   class="btn btn-success " (click)="insertNewMenu()">Guardar</button>
-      <button  class="btn btn-outline-dark " (click)="cancelAssignMenu()">Cancel</button>
-    </div>
-    <app-list-meals [action]="action" (meal)="pushMeals($event)"></app-list-meals>
+    <!--Listar Menu-->
+    <ng-template #editMenus>
+      <app-menuList  [takeOrder]="takeOrder"  [admin]="admin" [date]="date" (_editMenu)="editMenu($event)"></app-menuList>
+    </ng-template>
   </div>
-  <!--Listar Menu-->
-  <ng-template #editMenus>
-    <app-menuList  [takeOrder]="takeOrder"  [admin]="admin" [date]="date" (_editMenu)="editMenu($event)"></app-menuList>
-  </ng-template>
 </div>
+

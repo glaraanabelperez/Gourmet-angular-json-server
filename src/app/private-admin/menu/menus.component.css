@@ -37,6 +37,10 @@ h5 {
           flex-direction: row;
 }
 
+.base_info {
+  width: 60vw;
+}
+
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
@@ -198,16 +202,47 @@ h5 {
           flex-direction: row;
 }
 
-.date-menu h5 {
+.base_info .btn {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.base_info .card {
+  width: 98%;
+}
+
+.base_info .btn_delete_cancel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: auto;
+  margin-bottom: 2%;
+}
+
+.base_info .date-menu .new_menu {
+  width: 95%;
+}
+
+.base_info .date-menu .new_menu .tarjeta_seccion {
+  margin-bottom: 3%;
+}
+
+.base_info .date-menu .new_menu .tarjeta_seccion h5 {
   margin-bottom: 3%;
   text-align: center;
 }
 
-.date-menu .target_meals {
+.base_info .date-menu .new_menu .tarjeta_seccion {
   text-align: center;
+  margin-bottom: 3%;
+  background-color: white;
 }
 
-.date-menu .target_meals button {
+.base_info .date-menu .new_menu .tarjeta_seccion button {
   margin: 2%;
 }
 /*# sourceMappingURL=menus.component.css.map */

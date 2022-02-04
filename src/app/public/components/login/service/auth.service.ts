@@ -28,10 +28,8 @@ export class AuthService{
   }
 
   public editUser(user:User, id:number):Observable<any>{
-    console.log(user)
     let data:string="/" + id;
     let url=environmentNet.apiUrl + this.endpoint + data;
-    console.log(url)
     return this.http.put(url , user);
   }
 

@@ -3,11 +3,9 @@ import { Company } from "./company.model";
 export class CustomersResponse{
 
     id:number;
-    userName:string;
-    secondName:string;
+    name:string;
+    lastName:string;
     email:string;
-    telephone:number;
+    phone:number;
     direction:string;
-    estado: string;
-    company:Company;
 }

@@ -14,7 +14,6 @@ export class DataUserComponent implements OnInit {
 
   constructor(private _storageService:StorageService) { 
     this.user=this._storageService.getCurrentUser();
-    console.log(this.user.name)
   }
 
   ngOnInit(): void {

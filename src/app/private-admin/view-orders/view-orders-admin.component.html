@@ -2,7 +2,7 @@
   <h3>Pedidos</h3>
   <h4>Seleccione la fecha para visulaizar los pedidos del dia</h4>
 </div>
-<div class="base-order">
+<div class="base_info">
   <app-date (dateSelected)="setDate($event)"></app-date>
   <app-orders-shared  [date]="date" ></app-orders-shared>
 </div>

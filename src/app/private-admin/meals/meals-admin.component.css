@@ -37,6 +37,10 @@ h5 {
           flex-direction: row;
 }
 
+.base_info {
+  width: 60vw;
+}
+
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
@@ -188,7 +192,7 @@ h5 {
   }
 }
 
-.base_meals_admin {
+.base_info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -201,18 +205,18 @@ h5 {
           justify-content: space-between;
 }
 
-.base_meals_admin app-list-meals {
+.base_info app-list-meals {
   width: 55%;
   margin: auto;
   margin-top: 0% !important;
 }
 
-.base_meals_admin app-meals-form {
+.base_info app-meals-form {
   width: 40%;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
-  .base_meals_admin {
+  .base_info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -224,11 +228,11 @@ h5 {
         -ms-flex-pack: none;
             justify-content: none;
   }
-  .base_meals_admin app-list-meals {
+  .base_info app-list-meals {
     width: 90%;
     margin: auto;
   }
-  .base_meals_admin app-meals-form {
+  .base_info app-meals-form {
     width: 90%;
     margin-bottom: 5%;
     margin: auto;

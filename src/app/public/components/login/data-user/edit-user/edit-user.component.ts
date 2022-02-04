@@ -27,6 +27,8 @@ export class EditUserComponent implements OnInit {
     private toastr: ToastrService, 
     private readonly formBuilder : FormBuilder,
     private _storageService:StorageService,
+    private router: Router
+
     ) {
       this.initForm();
       this.setEditElement(this._storageService.getCurrentUser())
@@ -54,11 +56,14 @@ export class EditUserComponent implements OnInit {
 
   public editUser() {
     this.authService.editUser(this.newUser(), this.userToEdit.id).subscribe( 
+
       data => {
         console.log(data)
         this.formEditUser.reset();
         this.toastr.success('Datos Editados')
-      },
+        // this._storageService.setCurrentSession(new Session(data));
+        this.close.emit(true);
+       },
       error =>{
         this.toastr.error('No se pudo guardar el elemento', error.message)
       });

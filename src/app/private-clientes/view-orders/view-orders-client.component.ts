@@ -11,11 +11,15 @@ export class ViewOrdersClientComponent implements OnInit {
 
   public date:Date;
 
-  constructor(private _serviceDate:DateService) {}
+  constructor(private _serviceDate:DateService) 
+  {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.setDate(new Date())
+  }
 
   public setDate(date){
+    console.log(date)
     this.date=date;
   }
 

@@ -1,4 +1,16 @@
 @import '../../styles/general_styles.scss';
+.base_info{
+    display: flex;
+    flex-direction: row;
+    .tarjeta_seccion{
+      width: 69% !important;
+      .table{
+        margin: auto;
+        width: 70%;
+        list-style-type: none;
+      }
+    }
+}
 
 @media only screen
   and (min-device-width : 320px)

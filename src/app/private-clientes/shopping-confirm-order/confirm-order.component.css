@@ -37,6 +37,10 @@ h5 {
           flex-direction: row;
 }
 
+.base_info {
+  width: 60vw;
+}
+
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
@@ -231,16 +235,13 @@ h5 {
   background-color: white;
   border-radius: 5px;
   padding: 4%;
+  text-align: center;
 }
 
 .conteiner_pedido .rigth .imagen-order2 {
   display: block;
   margin: auto;
   width: 15%;
-}
-
-.conteiner_pedido .rigth .btnsFinishOrder .btn {
-  margin: auto;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {

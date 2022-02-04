@@ -49,17 +49,12 @@ export class LoginComponent implements OnInit {
     let login=new LoginObject( this.formLogin.get('email').value, this.formLogin.get('password').value)
     this.authService.login(login).subscribe( 
       data => {
-        console.log(data)
         this._storageService.setCurrentSession(new Session(data));
         this.toastr.info("Bienvenido");
-        console.log(this._storageService.getCurrentSession())
-
     },
     error => {
       this.toastr.warning("Login incorrecto");
     });
-    
-
   }
 
   logOut(){

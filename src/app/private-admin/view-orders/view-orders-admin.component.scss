@@ -3,7 +3,10 @@
 .titulo_seccion{
   background-color: white;
 }
-.base-order{
+.base_info{
   display: flex;
   flex-direction: row;
+  app-orders-shared {
+    width: 100%;
+  }
 }
