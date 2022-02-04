@@ -2,6 +2,6 @@
 export class OrdersRequest{
     idMenu:number
     idUser:number;
-    deliveryAdress:string;
+    deliveryAddress:string;
     amount:number;
 }

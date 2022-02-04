@@ -51,6 +51,7 @@ export class ConfirmOrder implements OnInit {
   public delivery(){
     this._delivery=true;
     this.formDirection.controls['direction'].setValue(this._storageSession.getCurrentUser().direction);
+    this.direction_delivery=this.formDirection.get('direction').value;
   }
 
   public confirmUser(){
@@ -73,21 +74,22 @@ export class ConfirmOrder implements OnInit {
 
   public finishOrder(){
 
-    if(this.direction_delivery!=null || this.direction_delivery==""){
+    if(this.direction_delivery==null || this.direction_delivery==""){
       this.toastr.error("LA DIRECCION NO PUEDE ESTAR VACIA");
     }else{
       let listOrder=UtilsShoppingCart.mapToOrdersRequest(this.direction_delivery, 1, this._service.ordersInProgress);
       console.log(listOrder)
-      this._serviceOrders.insertOrders(listOrder).subscribe(res=>{
-        if(res){
+      this._serviceOrders.insertOrders(listOrder).subscribe(
+        res=>{
           this.toastr.success("GRACIAS PRO SU COMPREA, AGUARDE A SU PEDIDO");
-          this._service.ordersInProgress=null;
+          this._service.ordersInProgress=[];
+          this._service.total=0;
           this.router.navigate(['/meals']);
-        }
+        },
         error =>{
-          this.toastr.error('NO SE PUDO INSERTAR EL PEDIDO')
+          this.toastr.error('NO SE PUDO INSERTAR EL PEDIDO, ASEGURESE QUE NO TENGA UN PEDIDO CON ESTE PRODUCTO EN LA SECCION DE SUS PEDIDOS')
           }
-        });
+        );
     }
     
   }
@@ -98,16 +100,13 @@ export class ConfirmOrder implements OnInit {
     });
   }
 
-  public onSubmit(){
-     this.direction_delivery=this.formDirection.get('direction').value;
-  }
-
   public pickUp(){
     this.direction_delivery="Retiro en Local"
   }
 
   public onItemChange(value){
     this.formDirection.controls['direction'].setValue(value);
+    this.direction_delivery=this.formDirection.get('direction').value;
   }
 
 }

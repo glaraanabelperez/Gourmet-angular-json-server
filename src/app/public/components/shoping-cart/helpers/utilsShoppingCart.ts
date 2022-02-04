@@ -16,7 +16,7 @@ export default  class UtilsShoppingCart{
       order.idUser=id_user,
       order.idMenu=element.menu.id,
       order.amount=element.count,
-      order.deliveryAdress=delivery_direction
+      order.deliveryAddress=delivery_direction
 
       listOrder.push(order);
 
