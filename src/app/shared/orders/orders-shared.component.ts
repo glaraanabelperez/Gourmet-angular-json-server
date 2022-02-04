@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
+import { ShoppingCarService } from 'src/app/public/components/shoping-cart/service/shoppingCar.service';
 import { OrdersResponse } from './model/orders-response.model';
 import { States } from './model/states';
 import { OrdersSharedService } from './service/orders.service';
@@ -27,6 +28,7 @@ export class OrdersSharedComponent implements OnInit {
     private _service_orders:OrdersSharedService, 
     public _storageSession:StorageService,
     private toastr: ToastrService,
+    private _serviceShopping:ShoppingCarService
     ) {
         this.setPermissionsAndStates();
       }

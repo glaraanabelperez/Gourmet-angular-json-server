@@ -82,7 +82,7 @@ export class ConfirmOrder implements OnInit {
         res=>{
           this.toastr.success("GRACIAS PRO SU COMPREA, AGUARDE A SU PEDIDO");
           this._service.ordersInProgress=[];
-          this._service.total=0;
+          this._service.reloadTotal(0);
           this.router.navigate(['/meals']);
         },
         error =>{

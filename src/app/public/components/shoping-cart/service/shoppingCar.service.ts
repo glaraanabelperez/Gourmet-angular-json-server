@@ -20,7 +20,11 @@ export class ShoppingCarService{
 
   public contador(n:number){
     this.total+=n;
-    this.totalSubject.next(this.total);
+    this.reloadTotal(this.total);
+  }
+
+  public reloadTotal(n:number){
+    this.totalSubject.next(n);
   }
   
   public checkItemInOrder(id):boolean{
@@ -70,6 +74,8 @@ export class ShoppingCarService{
     this.ordersInProgress[index].count+=1;
     this.contador(+1);  
   }
+
+ 
 
   
 
