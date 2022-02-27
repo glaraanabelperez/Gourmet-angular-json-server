@@ -12,8 +12,7 @@ export class DateService{
   public reload$ = this.reload.asObservable();
 
   constructor() {
-    this.dateCurrent=new Date();
-    console.log("currentDate", this.dateCurrent)
+    // this.dateCurrent=new Date();
   }
 
   public verifyingPastDate(dateSelected:Date):boolean{

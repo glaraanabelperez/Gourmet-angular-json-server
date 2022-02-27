@@ -29,15 +29,21 @@ endpoint: string='orders';
     return this.http.put(url, order);
   }
 
+  public aditAmount(id:number, amount:number):Observable<any>{
+    let url=environmentNet.apiUrl + this.endpoint + "/updateCount";
+    let amountRequest={
+      id:id,
+      count:amount,
+    }
+    return this.http.put(url, amountRequest );
+  }
+
   public editState(id, state:string):Observable<any>{
     let url=environmentNet.apiUrl + this.endpoint  + "/" + id ;
     let stateRequest={
       idUser:this._serviceStorage.getCurrentUser().id,
       state:state
     }
-    console.log(stateRequest)
-    console.log(url)
-
     return this.http.put(url, stateRequest );
   }
 
@@ -55,7 +61,6 @@ endpoint: string='orders';
   }
 
   public insertOrders( listOrder:Array<OrdersRequest>){
-    console.log(listOrder)
     let url=environmentNet.apiUrl + this.endpoint ;
     return this.http.post(url, listOrder);
   }

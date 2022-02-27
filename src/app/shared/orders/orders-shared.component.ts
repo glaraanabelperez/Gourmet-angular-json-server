@@ -3,10 +3,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
-import { ShoppingCarService } from 'src/app/public/components/shoping-cart/service/shoppingCar.service';
 import { OrdersResponse } from './model/orders-response.model';
 import { States } from './model/states';
 import { OrdersSharedService } from './service/orders.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -21,61 +21,74 @@ export class OrdersSharedComponent implements OnInit {
   public orders: OrdersResponse[]=[];
   public sessionPermissions: PermissionModel;
   public states:States=new States();
-
-  stateSelected: any;
+  public amount : number;
+  public stateSelected: any;
 
   constructor(
     private _service_orders:OrdersSharedService, 
     public _storageSession:StorageService,
     private toastr: ToastrService,
-    private _serviceShopping:ShoppingCarService
+    private spinner: NgxSpinnerService
     ) {
         this.setPermissionsAndStates();
       }
 
   ngOnInit(): void {
+    this.spinnerFunction()
   }
 
   ngOnChanges(){
-    this.initViewOrder();
+    this.initViewOrderbyUser();
   }
 
+  public editAmount(id, n){
+    this.spinnerFunction();
+    var num=n.amount;
+    this._service_orders.aditAmount(id, num).subscribe(
+      (res)=>{
+      this.initViewOrderbyUser();
+      this.toastr.success('SE EDITO CON EXITO');
+      },
+      (error) =>{
+        this.toastr.error('NO SE PUDO EDITAR LA CANTIDAD')
+      });
+   
+  }
 
   public editState(id){
+    this.spinnerFunction();
     if(this.stateSelected==null){
       this.toastr.error('ES NECESARIO SELECCIONAR UN ESTADO');
       return;
     }
     this._service_orders.editState(id, this.stateSelected).subscribe(
       (res)=>{
-        console.log(res);
-
-      this.initViewOrder();
+      this.initViewOrderbyUser();
       this.toastr.success('SE EDITO CON EXITO');
       },
       (error) =>{
-        console.log(error);
-
         this.toastr.error('NO SE PUDO EDITAR EL ESTADO, ASEGURESE DE QUE HAYAN PASADO 24 HS LUEGO DE LA ENTREGA')
       });
   }
 
-  public initViewOrder(){
+  public initViewOrderbyUser(){
+    this.spinner.show();
     if(this.date!=null){
-      console.log(this.date)
       if(this.sessionPermissions.isAdmin){
         this.get(this.date);
       }else{
         this.getByIdUser(this.date, this._storageSession.getCurrentUser().id)
       }
     }
+    this.spinner.hide()
   }
 
   public get(date){
     this._service_orders.getOrders(date).subscribe(res=>{
+      console.log("okok")
       if(res.length>0){
         this.orders=res.slice();
-        console.log(res)
+        console.log("ok", this.orders)
       }else{
         this.orders=null;
         this.toastr.info("NO HAY PEDIDOS PARA ESTA FECHA")
@@ -84,7 +97,6 @@ export class OrdersSharedComponent implements OnInit {
   }
 
   public getByIdUser(date, id_user){
-    console.log(date, id_user)
     this._service_orders.getOrdersByIdUser(date, id_user).subscribe(
       (res)=>{
         this.orders=res.slice();
@@ -108,6 +120,13 @@ export class OrdersSharedComponent implements OnInit {
       }else{
         this.states.setStatesToClient()
       }
+  }
+
+  spinnerFunction(){
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2000);
   }
   
 

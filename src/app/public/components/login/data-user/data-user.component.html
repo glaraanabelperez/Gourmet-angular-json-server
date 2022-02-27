@@ -6,8 +6,7 @@
 <div *ngIf="!editUser" class="tarjeta_seccion">
     <div *ngIf="user!=null">
         <ul style="list-style: none;padding-left: 0%;">
-            <li><h5>Nombre: {{user.name}}</h5></li>
-            <li><h6>Apellido: {{user.lastName}}</h6></li> 
+            <li><h5>{{user.name}} {{user.lastName}}</h5></li>
             <li>Email: <h7>{{user.email}}</h7></li>    
             <li>Password: <h7>{{user.pass}}</h7></li>    
             <li>Telefono: <h7>{{user.phone}}</h7></li>    

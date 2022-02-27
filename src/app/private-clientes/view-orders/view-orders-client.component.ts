@@ -10,16 +10,15 @@ import { DateService } from 'src/app/shared/date/service/dateOrders.service';
 export class ViewOrdersClientComponent implements OnInit {
 
   public date:Date;
-
+  
   constructor(private _serviceDate:DateService) 
   {}
 
-  ngOnInit(): void {
-    this.setDate(new Date())
+  ngOnInit(): void {    
+    this.setDate(this._serviceDate.dateCurrent)
   }
 
   public setDate(date){
-    console.log(date)
     this.date=date;
   }
 

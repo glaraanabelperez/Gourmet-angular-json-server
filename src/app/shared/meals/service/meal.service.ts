@@ -23,8 +23,6 @@ export class ListMealService {
 
   public editMeals(id, m: MealsRequest){
     let url=environmentNet.apiUrl + this.endpoint  +"/"+ id;
-    console.log(id)
-    console.log(m)
 
     return this.http.put(url, m);
   }

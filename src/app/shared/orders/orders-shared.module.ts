@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrdersSharedComponent } from './orders-shared.component';
 import { OrdersSharedService } from './service/orders.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -16,6 +17,7 @@ import { OrdersSharedService } from './service/orders.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule
   ],
   declarations: [
     OrdersSharedComponent
@@ -24,6 +26,8 @@ import { OrdersSharedService } from './service/orders.service';
     OrdersSharedComponent
   ],
   providers: [OrdersSharedService],
+
+
 
 })
 export class OrdersSharedModule { }

@@ -59,11 +59,10 @@ export class ShoppingCarService{
 
   public setItemShoppingCart(menu:Menu){
     if(this.checkItemInOrder(menu.id)){
-      this.toastr.show('ESTE PRODUCTO YA ESTA EN EL CARRITO!');
+      this.toastr.error('ESTE PRODUCTO YA ESTA EN EL CARRITO!');
     }else{
-      this.toastr.show('NUEVO PRODUCTO EN EL CARRITO!');
+      this.toastr.info('NUEVO PRODUCTO EN EL CARRITO!');
       let order:OrdersInProgress = UtilsShoppingCart.mapToOrdersInProgress(menu, new OrdersInProgress())
-      console.log(order)
       order.count=1;
       this.ordersInProgress.push(order)
       this.contador(+1);  
@@ -73,6 +72,12 @@ export class ShoppingCarService{
   public sumarCantidad(index){
     this.ordersInProgress[index].count+=1;
     this.contador(+1);  
+  }
+
+  public vaciarCarrito(){
+    this.ordersInProgress=[];
+    this.total=0
+    this.reloadTotal(0);
   }
 
  

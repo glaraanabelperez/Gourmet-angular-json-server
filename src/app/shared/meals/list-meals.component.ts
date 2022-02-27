@@ -4,11 +4,12 @@ import { StorageService } from 'src/app/public/components/login/service/storage.
 import { DateService } from '../date/service/dateOrders.service';
 import { Meal } from './models/meals.model';
 import { ListMealService } from './service/meal.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-list-meals',
   templateUrl: './list-meals.component.html',
-  styleUrls: ['./list-meals.component.scss']
+  styleUrls: ['./list-meals.component.scss'],
 })
 export class ListMealsComponent implements OnInit {
   
@@ -23,14 +24,21 @@ export class ListMealsComponent implements OnInit {
     private _mealsService:ListMealService, 
     private _storageService:StorageService,
     private _serviceDate:DateService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
     ) { 
       this.suscripcionAdmin();
       this.suscripcionReload();
       this.get();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 3000);
+
+  }
 
   ngOnChanges(): void {
     if(this._reload){
@@ -39,10 +47,12 @@ export class ListMealsComponent implements OnInit {
   }
 
   public deleteMeal(id_meal:number){
+    this.spinner.show()
+
     this._mealsService.deleteMeals(id_meal).subscribe(
       (res)=>{
         this.toastr.success("LOS DATOS SE BORRARON CON EXITO");
-        this.suscripcionReload();
+        this.get();
     },
       (error) =>{
         this.toastr.error('LOS DATOS NO SE PUDIERON BORRAR',error);
@@ -51,18 +61,18 @@ export class ListMealsComponent implements OnInit {
   }
 
   public get(){
+    this.spinner.show()
     this._mealsService.getMelas().subscribe(
       res=>{
       if(res.length>0){
         this.meals=res.slice();
-        console.log(res)
+        this.spinner.hide()
       }else{
         this.meals=null;
       }
     },
       error =>{
         this.toastr.error('NO SE INGRESARON LOS DATOS',error)
-
       }
     );
   }
@@ -82,7 +92,6 @@ export class ListMealsComponent implements OnInit {
   public suscripcionReload(){
     this._serviceDate.reload$.subscribe(result => {
       if(result){
-        console.log(result)
         this.get();
       }
     })

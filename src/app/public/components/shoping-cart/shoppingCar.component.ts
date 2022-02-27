@@ -11,11 +11,16 @@ export class ShoppingCar implements OnInit {
 
   pedido:string;
   okPedido=false;
+  // total: any;
   
   constructor(public _service:ShoppingCarService) {
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this._service.totalSubject.subscribe(result =>{
+    //   this.total=result;
+    // })
+  }
 
   disertCount(c){
     this._service.disertCount(c);

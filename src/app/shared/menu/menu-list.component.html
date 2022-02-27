@@ -1,5 +1,6 @@
 <div class="tarjeta_seccion">
   <div *ngIf="menus!=null else withoutMenus">
+    <h3>{{menus[0].date.slice(0,10)}}</h3>
     <h5>Para esta fecha tenemos los siguientes platos</h5>
   </div>
   <ng-template #withoutMenus>

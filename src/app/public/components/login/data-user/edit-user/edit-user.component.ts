@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Company } from 'src/app/private-admin/customers/models/company.model';
 import { AuthService } from '../../service/auth.service';
 import { StorageService } from '../../service/storage.service';
-import { Router } from '@angular/router';
 import { User } from '../../models/user.model';
+import { Session } from '../../models/session.model';
 
 
 @Component({
@@ -27,7 +26,6 @@ export class EditUserComponent implements OnInit {
     private toastr: ToastrService, 
     private readonly formBuilder : FormBuilder,
     private _storageService:StorageService,
-    private router: Router
 
     ) {
       this.initForm();
@@ -41,7 +39,7 @@ export class EditUserComponent implements OnInit {
     this.formEditUser = this.formBuilder.group({
       name : ["", [Validators.required, Validators.maxLength(20)]],
       lastName : ["", [Validators.required, Validators.maxLength(20)]],
-      // email : ["", [Validators.required, Validators.maxLength(50), Validators.email]],
+      email : ["", [Validators.required, Validators.maxLength(50), Validators.email]],
       pass : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
       phone : ["", [Validators.required, Validators.maxLength(40),  Validators.pattern('^[0-9]+$')]],
       direction : ["", [Validators.required, Validators.maxLength(40)]],
@@ -58,10 +56,9 @@ export class EditUserComponent implements OnInit {
     this.authService.editUser(this.newUser(), this.userToEdit.id).subscribe( 
 
       data => {
-        console.log(data)
         this.formEditUser.reset();
         this.toastr.success('Datos Editados')
-        // this._storageService.setCurrentSession(new Session(data));
+        this._storageService.setCurrentSession(new Session(data));
         this.close.emit(true);
        },
       error =>{
@@ -74,7 +71,7 @@ export class EditUserComponent implements OnInit {
     let user:User=new User();
     user.name=this.formEditUser.get('name').value,
     user.lastName=this.formEditUser.get('lastName').value;
-    user.email=this.userToEdit.email;
+    user.email=this.formEditUser.get('email').value;
     user.pass=this.formEditUser.get('pass').value;
     user.phone=this.formEditUser.get('phone').value;
     user.direction=this.formEditUser.get('direction').value;
@@ -86,7 +83,7 @@ export class EditUserComponent implements OnInit {
     this.userToEdit=user;
     this.formEditUser.controls['name'].setValue(user.name ? user.name : '');
     this.formEditUser.controls['lastName'].setValue(user.lastName ? user.lastName : '');
-    // this.formEditUser.controls['email'].setValue(user.lastName ? user.lastName : '');
+    this.formEditUser.controls['email'].setValue(user.email ? user.email : '');
     this.formEditUser.controls['pass'].setValue(user.pass ? user.pass : '');
     this.formEditUser.controls['phone'].setValue(user.phone ? user.phone : '');
     this.formEditUser.controls['direction'].setValue(user.direction ? user.direction : '');

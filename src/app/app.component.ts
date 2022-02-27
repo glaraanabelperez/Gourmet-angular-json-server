@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Session } from './public/components/login/models/session.model';
 import { StorageService } from './public/components/login/service/storage.service';
 
 @Component({

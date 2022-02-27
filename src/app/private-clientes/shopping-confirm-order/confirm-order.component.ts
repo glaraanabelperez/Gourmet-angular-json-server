@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { User } from 'src/app/public/components/login/models/user.model';
@@ -29,9 +30,9 @@ export class ConfirmOrder implements OnInit {
   constructor(
     public _service:ShoppingCarService, 
     private _serviceOrders:OrdersSharedService,
-    private _service_date:DateService,
     private _storageSession:StorageService,
     private readonly formBuilder : FormBuilder,
+    private spinner: NgxSpinnerService,
     private router:Router,
     private toastr: ToastrService,
     ) {
@@ -73,20 +74,23 @@ export class ConfirmOrder implements OnInit {
   }
 
   public finishOrder(){
-
     if(this.direction_delivery==null || this.direction_delivery==""){
       this.toastr.error("LA DIRECCION NO PUEDE ESTAR VACIA");
     }else{
+      this.spinner.show();
       let listOrder=UtilsShoppingCart.mapToOrdersRequest(this.direction_delivery, this._storageSession.getCurrentUser().id, this._service.ordersInProgress);
       this._serviceOrders.insertOrders(listOrder).subscribe(
-        res=>{
+        (res)=>{
+          this.spinner.hide();
           this.toastr.success("GRACIAS PRO SU COMPREA, AGUARDE A SU PEDIDO");
-          this._service.ordersInProgress=[];
-          this._service.reloadTotal(0);
-          this.router.navigate(['/meals']);
+          this._service.vaciarCarrito();
+          this.router.navigate(['/orders-client']);
         },
         error =>{
-          this.toastr.error('NO SE PUDO INSERTAR EL PEDIDO, ASEGURESE QUE NO TENGA UN PEDIDO CON ESTE PRODUCTO EN LA SECCION DE SUS PEDIDOS')
+          this.spinner.hide();
+          this._service.vaciarCarrito();
+          this.router.navigate(['/orders']);
+          this.toastr.error('PARECE QUE TIENE UN PEDIDO CON ESTE PRODUCTO EN LA SECCION DE SUS PEDIDOS')
           }
         );
     }
@@ -109,3 +113,4 @@ export class ConfirmOrder implements OnInit {
   }
 
 }
+

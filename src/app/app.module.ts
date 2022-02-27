@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule,  } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
 ];
@@ -27,14 +28,17 @@ const routes: Routes = [
     NgbModule,
     PublicModule,
     PrivateAdminModul,
-    PrivateClientModul
+    PrivateClientModul,
+    NgxSpinnerModule
   ],
   declarations: [
     AppComponent,
   ],
- 
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 
 export class AppModule { }

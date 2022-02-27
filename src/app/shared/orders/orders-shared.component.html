@@ -1,3 +1,5 @@
+<ngx-spinner type="ball-scale-multiple">.</ngx-spinner>
+
 <div class="tarjeta_seccion">
   <div *ngIf="orders!=null else withoutOrders">
     <h4>Cantidad de Pedidos <span style="font-size: 19px; font-weight: 600; margin-left: 15%;"> {{orders.length}}</span></h4>
@@ -13,25 +15,33 @@
   <div *ngIf="date">
     <div *ngFor="let or of orders" class="card text-center" style="width: 80%;margin: auto;">
       <div class="card-header">
-          <p>Estado</p>
-          <h6>{{or.state.toUpperCase()}}</h6>
+        <p>Estado</p>
+        <h6 style="color: brown; font-weight: 600;">{{or.state.toUpperCase()}}</h6>
       </div>
       <div class="card-body">
-        <p class="card-text" style="text-align: center;" >id: {{or.id}}</p>
-        <h5 class="card-title" style="color: black;"> Comida: {{or.MenusDto.Meals.type}}</h5>
-          <h5 class="card-title" style="color: black;"> Comida: {{or.MenusDto.Meals.title}}</h5>
-          <p class="card-title" style="color: black;">{{or.MenusDto.Meals.description}}</p>
-          <p class="card-text" style="text-align: center;" >cantidad</p>
-          <h5 class="card-title" style="color: black;">{{or.count}}</h5>
+        <h5 class="card-title" style="color: black;"> Tipo: {{or.MenusDto.Meals.type}}</h5>
+          <h5 class="card-title" style="color: black;">{{or.MenusDto.Meals.title}}</h5>
+          <p class="card-title" style="color: black;text-align: center;">{{or.MenusDto.Meals.description}}</p>
+          <p class="card-text" style="text-align: center;" >cantidad del menu</p>
+          <h5 class="card-title" style="color: black;">{{or.amount}}</h5><br>
+          <div *ngIf="or.state=='pending'">
+            <label for="amount" class="form-label">Ingrese nueva cantidad</label>
+            <input style="text-align: center;" type="number" [(ngModel)]="or.amount " [value]="or.amount" name="amount" class="form-control" id="amount"  min="1" max="100" >
+            <br>
+            <div style="text-align: center;margin-top: 20px;">
+              <button (click)="editAmount(or.id, or)" class="btn btn-success">Editar Cantidad</button><br><br>
+            </div>
+          </div>   
           <hr>
           <h5 class="card-title" style="color: black;">Cliente: {{or.userDto.name}}</h5>
           <h5 class="card-title" style="color: black;">Apellido: {{or.userDto.lastName}}</h5>
           <h5 class="card-title" style="color: black;">Telefono: {{or.userDto.phone}}</h5>
-          <h5 class="card-title" style="color: black;">Direccion Envio: {{or.deliveryAdress}}</h5>
+          <h5 class="card-title" style="color: black;">Telefono: {{or.userDto.direction}}</h5>
+
+          <h5 class="card-title" style="color: black;">Direccion Envio: {{or.deliveryAddress}}</h5>
           <div *ngIf="or.state!='cancel'" style="margin-bottom: 3%;" scope="row" >
             <select  [(ngModel)]="stateSelected" >
-                <!-- <option value="s" selected="true" >Seleccione una opcion</option> -->
-                <option *ngFor="let s of states.statesEntregas" [value]="s">
+                <option *ngFor="let s of states.statesEntregas">
                   {{s}}
                 </option>
             </select><br><br>

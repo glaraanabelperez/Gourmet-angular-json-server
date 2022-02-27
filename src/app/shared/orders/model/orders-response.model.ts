@@ -6,5 +6,5 @@ export class OrdersResponse{
     User:User;
     stateOrder:string;
     deliveryAdress:string;
-    count:number;
+    amount:number;
 }

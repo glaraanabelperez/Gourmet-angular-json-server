@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.2.4",
+    "@angular/cdk": "^10.2.7",
     "@angular/common": "~10.2.4",
     "@angular/compiler": "~10.2.4",
     "@angular/core": "~10.2.4",
@@ -30,9 +31,11 @@
     "jquery": "^3.6.0",
     "json-server": "^0.17.0",
     "ngx-cookie-service": "^13.1.0-rc.1",
+    "ngx-spinner": "^10.0.1",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "server": "^1.0.37",
+    "toastr": "^2.1.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

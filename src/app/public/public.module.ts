@@ -1,7 +1,8 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +17,7 @@ import { MealModule } from './components/meals/meal.module';
 import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
 import { NewUserModule } from './components/new-user/new-user.module';
 import { HomeComponent } from './components/home/home.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
   {path: 'home', component:HomeComponent},
@@ -24,6 +26,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
@@ -32,7 +35,8 @@ const routes: Routes = [
     NewUserModule,
     OrderFoodModule,
     MealModule,
-    ShoppingCarModule
+    ShoppingCarModule,
+
   ],
   declarations: [
     NavComponent, 
@@ -47,6 +51,7 @@ const routes: Routes = [
     NavClientComponent,
   ],
   providers: [],
+
 
 })
 export class PublicModule { }

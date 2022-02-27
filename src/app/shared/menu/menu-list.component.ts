@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { DateService } from '../date/service/dateOrders.service';
@@ -37,7 +36,6 @@ export class MenuListComponent implements OnInit {
 
   ngOnChanges(){
     if(this.date!=null){
-      console.log(this.date)
       this.getMenus(this.date);
     }
   }
@@ -45,7 +43,7 @@ export class MenuListComponent implements OnInit {
   public getMenus(date:Date){
     this._menusService.getMenus(date).subscribe(res=>{
       if(res.length>0){
-        this.menus=res.slice();
+        this.menus=res.slice();     
       }else{
         this.menus=null;
         this.toastr.warning('NO HAY MENUS DISPONIBLES', 'SELECCIONE OTRA FECHA!');

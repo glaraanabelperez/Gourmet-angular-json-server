@@ -14,7 +14,6 @@ export default  class UtilsMenusMap{
 
     let state=new GeneralStates().available;
     let _date=this.setDateString(date);
-
     for(let i=0; i<meals.length; i++){
       let m=new MenuRequest();
       m.date=_date;

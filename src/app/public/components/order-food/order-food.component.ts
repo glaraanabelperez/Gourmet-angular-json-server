@@ -16,7 +16,8 @@ export class OrderFoodComponent implements OnInit {
   constructor( 
     private _servicioShopingCar:ShoppingCarService, 
     private _serviceDate:DateService, 
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    
     ) {}
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class OrderFoodComponent implements OnInit {
       this.toastr.info('LOS PEDIDOS SON CON 24 HS DE ANTICIPACION')
     }else{
       this.date=date;
+      this._serviceDate.dateCurrent=date
     }
   }
 
