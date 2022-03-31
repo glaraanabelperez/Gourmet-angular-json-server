@@ -13,7 +13,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
 ];
@@ -29,12 +28,10 @@ const routes: Routes = [
     PublicModule,
     PrivateAdminModul,
     PrivateClientModul,
-    NgxSpinnerModule
   ],
   declarations: [
     AppComponent,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
   providers: [],
   bootstrap: [AppComponent],

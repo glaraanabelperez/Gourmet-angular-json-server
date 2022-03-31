@@ -77,11 +77,10 @@ h5 {
   border-radius: 5px;
   margin: 0% 2% 0% 0%;
   width: 25%;
-  height: 250px;
+  height: 350px;
 }
 
 .titulo_seccion2 h5 {
-  font-weight: 600;
   text-align: center;
 }
 
@@ -193,27 +192,8 @@ h5 {
 }
 
 .tarjeta_seccion .base_meals {
-  width: 80%;
+  width: 100%;
   margin: auto;
-}
-
-.image_meals {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-bottom: 5%;
-  width: 95%;
-  margin: auto;
-}
-
-.image_meals img {
-  width: 15%;
-  margin-right: 2%;
-  border-radius: 5px;
 }
 
 .card-body .bi {
@@ -223,5 +203,15 @@ h5 {
 
 .card-body .btnsEditMeals {
   cursor: pointer;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  .tarjeta_seccion {
+    width: 100%;
+  }
+  .tarjeta_seccion .base_meals {
+    width: 100%;
+    margin: auto;
+  }
 }
 /*# sourceMappingURL=list-meals.component.css.map */

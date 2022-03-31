@@ -1,5 +1,18 @@
 @import './styles/general_styles.scss';
-
+.image_meals{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5%;
+    width: 79%;
+    margin: auto;
+    justify-content: center;
+    padding-left: 5%;
+    img{
+        width: 13%;
+        margin-right: 2%;
+        border-radius: 5px;
+    }
+}
 .root{
     width:75% ;
     margin: auto;
@@ -12,10 +25,10 @@
         border-radius: 5px;
         padding: 3%;
         width: 25%;
-        height: 480px;
+        height: 335px;
         .img_right_root{
-            height: 150px;
-            width: 150px;
+            height: 120px;
+            width: 120px;
             background-color: #84eee5;
             border-radius: 100%;
             margin: auto;
@@ -30,9 +43,23 @@
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 568px) { 
+    .image_meals{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5%;
+        width: 100%;
+        margin: auto;
+        img{
+            width: 15%;
+            margin-right: 2%;
+            border-radius: 5px;
+        }
+    }
     .root{
-        width:100% ;
+        width:100%  !important;
         float: none;
+        flex-direction: column;
+
         .tarjeta_seccion_root{
             display: none;
         }

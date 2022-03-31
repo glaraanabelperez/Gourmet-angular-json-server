@@ -1,19 +1,16 @@
-<ngx-spinner type="ball-scale-multiple">.</ngx-spinner>
-
+<div *ngIf="isLoadingResults" class="spinner-grow" role="status"></div>
 <div class="tarjeta_seccion">
-  <div *ngIf="orders!=null else withoutOrders">
-    <h4>Cantidad de Pedidos <span style="font-size: 19px; font-weight: 600; margin-left: 15%;"> {{orders.length}}</span></h4>
+  <div *ngIf="orders!=null else withoutMenus">
+    <h5>Para esta fecha tenemos los siguientes pedidos</h5>
   </div>
-  <ng-template #withoutOrders>
+  <ng-template #withoutMenus>
     <h4>Seleccione una fecha</h4>
-    <h5>para ver el pedido del dia</h5>
+    <h5>Para ver la orden del dia</h5>
     <center>
-      <img style="width: 50%;margin-top: auto;" src="assets/fondo5.jpg" alt="">
+      <img style="width: 50%;margin-top: 5%;" src="assets/fondo2.jpg" alt="">
     </center>
   </ng-template> 
-  <br>
-  <div *ngIf="date">
-    <div *ngFor="let or of orders" class="card text-center" style="width: 80%;margin: auto;">
+  <div *ngFor="let or of orders" class="card text-center" style="width: 80%;margin: auto;">
       <div class="card-header">
         <p>Estado</p>
         <h6 style="color: brown; font-weight: 600;">{{or.state.toUpperCase()}}</h6>
@@ -48,6 +45,5 @@
             <button class="btn btn-primary" (click)="editState(or.id)"><i class="bi bi-pencil-fill"></i> Editar Estado</button>
           </div>
       </div>
-    </div>
   </div>
 </div>

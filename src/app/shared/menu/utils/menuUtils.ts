@@ -21,7 +21,6 @@ export default  class UtilsMenusMap{
       m.idMeal=meals[i].id;
       listMenus.push(m)
     }
-    console.log(_date)
     return listMenus;
   }
 

@@ -12,7 +12,7 @@ export class DateService{
   public reload$ = this.reload.asObservable();
 
   constructor() {
-    // this.dateCurrent=new Date();
+    this.dateCurrent=new Date();
   }
 
   public verifyingPastDate(dateSelected:Date):boolean{
@@ -27,7 +27,7 @@ export class DateService{
   }
 
   public setDateString(date:Date):string{
-    let d=date.getUTCFullYear() + "-" + ("0" + (date.getUTCMonth()+1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
+    let d=date.getFullYear() + "-" + ("0" + (date.getUTCMonth()+1)).slice(-2) + "-" + ("0" + date.getDate()).slice(-2);
     return  d;
   }
 

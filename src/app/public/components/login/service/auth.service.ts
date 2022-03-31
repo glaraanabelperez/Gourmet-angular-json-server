@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment, environmentNet } from 'src/environments/environment';
+import { environmentNet } from 'src/environments/environment';
 import { LoginObject } from '../models/loginObject.model';
 import { User } from '../models/user.model';
 
@@ -23,7 +23,7 @@ export class AuthService{
   }
 
   public insertUser(user:User):Observable<any>{
-    let url = environmentNet.apiUrl + this.endpoint;
+    let url = environmentNet.apiUrl + this.endpoint + "/insert";
     return this.http.post(url , user);
   }
 
@@ -31,12 +31,6 @@ export class AuthService{
     let data:string="/" + id;
     let url=environmentNet.apiUrl + this.endpoint + data;
     return this.http.put(url , user);
-  }
-
-  public veryifyEmail(email:string):Observable<any>{
-    let data:string="?email=" + email;
-    let url=environment.apiUrl + this.endpoint + data;
-    return this.http.get<any>(url);
   }
  
 

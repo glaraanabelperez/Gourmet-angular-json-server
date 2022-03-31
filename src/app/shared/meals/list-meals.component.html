@@ -1,14 +1,6 @@
-<ngx-spinner type="ball-scale-multiple">.</ngx-spinner>
 
-<div class="image_meals">
-    <img src="assets/imagenes-meals/1.jpg" alt="">
-     <img src="assets/imagenes-meals/2.jpg" alt="">
-      <img src="assets/imagenes-meals/3.jpg" alt="">
-      <img src="assets/imagenes-meals/4.jpg" alt="">
-     <img src="assets/imagenes-meals/5.jpg" alt="">
-    <img style="margin-right: 0%;" src="assets/imagenes-meals/6.jpg" alt="">
-</div><br>
-  <div class="tarjeta_seccion" *ngFor="let m of meals" >
+<div *ngIf="isLoadingResults" class="spinner-grow" role="status"></div>
+<div class="tarjeta_seccion" *ngFor="let m of meals" >
     <div class="base_meals">
       <div class="card-header">
         <h6>{{m.type}}</h6>

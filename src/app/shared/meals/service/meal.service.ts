@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment, environmentNet } from 'src/environments/environment';
+import {  environmentNet } from 'src/environments/environment';
 import { Meal } from '../models/meals.model';
 import { MealsRequest } from '../models/mealsRequest';
 

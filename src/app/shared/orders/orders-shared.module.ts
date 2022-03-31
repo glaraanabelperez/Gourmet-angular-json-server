@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -12,12 +13,13 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
+
   imports: [
     CommonModule,
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
   ],
   declarations: [
     OrdersSharedComponent

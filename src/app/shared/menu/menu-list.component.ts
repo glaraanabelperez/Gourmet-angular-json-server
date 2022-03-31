@@ -18,6 +18,7 @@ export class MenuListComponent implements OnInit {
   
   public menus:Menu[];
   sessionAdmin:boolean;
+  isLoadingResults: boolean;
     
   constructor( 
     private _menusService:MenuService, 
@@ -26,7 +27,7 @@ export class MenuListComponent implements OnInit {
     public _storageSession:StorageService
     ) {
       this.date=null;
-      this.menus=null;
+      this.menus=[];
       this.suscripcionAdmin();
       this.suscripcionReload();
     }
@@ -41,14 +42,18 @@ export class MenuListComponent implements OnInit {
   }
 
   public getMenus(date:Date){
-    this._menusService.getMenus(date).subscribe(res=>{
-      if(res.length>0){
+    this.isLoadingResults=true;
+    this._menusService.getMenus(date).subscribe(
+      res=>{
+        this.isLoadingResults=false;
         this.menus=res.slice();     
-      }else{
-        this.menus=null;
-        this.toastr.warning('NO HAY MENUS DISPONIBLES', 'SELECCIONE OTRA FECHA!');
+      },
+      error=>{
+        this.menus=[];
+        this.isLoadingResults=false;
+        this.toastr.warning('NO HAY MENUS DISPONIBLES');
       }
-    });
+    );
   }
 
   public send(menu :Menu){
@@ -64,11 +69,10 @@ export class MenuListComponent implements OnInit {
   }
 
   public suscripcionReload(){
-    this.__serviceDate.reload$.subscribe(result => {
-      if(result){
+    this.__serviceDate.reload$.subscribe(
+      result => {
         this.date=this.__serviceDate.dateCurrent
-        this.getMenus(this.date);
-      }
+        this.getMenus(this.date);   
     })
   }
 

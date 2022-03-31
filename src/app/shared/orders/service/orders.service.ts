@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import { OrdersRequest } from 'src/app/public/components/shoping-cart/model/orders-request.module';
-import { environment, environmentNet } from 'src/environments/environment';
+import { environmentNet } from 'src/environments/environment';
 import { DateService } from '../../date/service/dateOrders.service';
 import { OrdersResponse } from '../model/orders-response.model';
 
@@ -25,7 +25,7 @@ endpoint: string='orders';
 
   public desactive(order){
     let id:string = "/" + (order.id).toString();
-    let url=environment.apiUrl + this.endpoint + id;
+    let url=environmentNet.apiUrl + this.endpoint + id;
     return this.http.put(url, order);
   }
 

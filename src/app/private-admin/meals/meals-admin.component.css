@@ -77,7 +77,7 @@ h5 {
   border-radius: 5px;
   margin: 0% 2% 0% 0%;
   width: 25%;
-  height: 250px;
+  height: 350px;
 }
 
 .titulo_seccion2 h5 {
@@ -229,11 +229,11 @@ h5 {
             justify-content: none;
   }
   .base_info app-list-meals {
-    width: 90%;
+    width: 90% !important;
     margin: auto;
   }
   .base_info app-meals-form {
-    width: 90%;
+    width: 90% !important;
     margin-bottom: 5%;
     margin: auto;
   }

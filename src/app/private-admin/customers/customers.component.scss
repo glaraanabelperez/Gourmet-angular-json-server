@@ -2,6 +2,9 @@
 .base_info{
     display: flex;
     flex-direction: row;
+    .titulo_seccion2{
+      height: 150px;
+    }
     .tarjeta_seccion{
       width: 69% !important;
       .table{

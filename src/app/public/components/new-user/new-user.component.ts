@@ -33,14 +33,11 @@ export class NewUserComponent implements OnInit {
   initForm(){
     this.formNewUser = this.formBuilder.group({
       name : ["", [Validators.required, Validators.maxLength(20)]],
-      secondName : ["", [Validators.required, Validators.maxLength(20)]],
+      lastName : ["", [Validators.required, Validators.maxLength(20)]],
       email : ["", [Validators.required, Validators.maxLength(50), Validators.email]],
-      password : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
+      pass : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
       phone : ["", [Validators.required, Validators.maxLength(40),  Validators.pattern('^[0-9]+$')]],
-      direction : ["", [Validators.required, Validators.maxLength(40)]],
-      companyName : [""],
-      companyPhone : [""],
-      companyDirection : [""]
+      direction : ["", [Validators.required, Validators.maxLength(40)]],  
      });
   }
 
@@ -52,21 +49,16 @@ export class NewUserComponent implements OnInit {
   }
 
   public insertUser() {
-    this.authService.veryifyEmail(this.formNewUser.get('email').value).subscribe( data => {
-      if(Object.entries(data).length != 0){
-        this.toastr.warning('EMAIL DUPLICADO')
-        return;
-      }else{
-        let user:User=new User();
-        this.authService.insertUser(this.newUser(user)).subscribe( data => {
-            this.formNewUser.reset();
-            this.toastr.success('Bienvenido')
-          },
-          error =>{
-            this.toastr.error('No se pudo guardar el elemento')
-          });
-      }
-    })
+    let user:User=new User();
+    console.log(this.newUser(user))
+    this.authService.insertUser(this.newUser(user)).subscribe( 
+      data => {
+        this.formNewUser.reset();
+        this.toastr.success('Bienvenido')
+      },
+      error =>{
+        this.toastr.error('No se pudo guardar el elemento, pruebe con otro email')
+      });
 }
 
 

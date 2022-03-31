@@ -1,4 +1,5 @@
-export const environment = {
+
+export const environmentNet = {
   production: true,
-  // apiUrl: 'http://localhost:3000/'
+  apiUrl: 'https://localhost:44335/api/'
 };

@@ -4,16 +4,16 @@ import { ListMealService } from '../meals/service/meal.service';
 import { ListMealsComponent } from './list-meals.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,  
-    NgxSpinnerModule,
 
   ],
   declarations: [

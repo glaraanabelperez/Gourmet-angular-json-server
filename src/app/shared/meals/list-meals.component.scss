@@ -1,20 +1,8 @@
 @import '../../styles/general_styles.scss';
 .tarjeta_seccion{
     .base_meals{
-        width: 80%;
+        width: 100%;
         margin: auto;
-    }
-}
-.image_meals{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 5%;
-    width: 95%;
-    margin: auto;
-    img{
-        width: 15%;
-        margin-right: 2%;
-        border-radius: 5px;
     }
 }
 .card-body{
@@ -24,5 +12,17 @@
     }
     .btnsEditMeals{
         cursor: pointer;
+    }
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) { 
+    .tarjeta_seccion{
+        width: 100%;
+        .base_meals{
+            width: 100%;
+            margin: auto;
+        }
     }
 }

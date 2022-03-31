@@ -11,6 +11,7 @@ import { CustomersService } from './service/customers.service';
 export class CustomersComponent implements OnInit {
 
   public customers:CustomersResponse[]=[];
+  isLoadingResults: boolean;
 
   constructor(
     private _serviceCustomers:CustomersService,
@@ -23,11 +24,17 @@ export class CustomersComponent implements OnInit {
   }
 
   public get(){
+    this.isLoadingResults=true;
+
     this._serviceCustomers.getCustomers().subscribe(
       (res)=>{    
+        this.isLoadingResults=false;
+
         this.customers=res.slice();
       },
       (error)=>{    
+        this.isLoadingResults=false;
+
         this.toastr.show("NO SE ECNUENTRAN LOS DATOS")
       }
     );

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { GeneralStates } from 'src/app/modelState/statesMenus';
-import { environment, environmentNet } from 'src/environments/environment';
+import {  environmentNet } from 'src/environments/environment';
 import { DateService } from '../../date/service/dateOrders.service';
 import { MenuRequest } from '../models/menus-request.model';
 import { Menu } from '../models/menus.model';

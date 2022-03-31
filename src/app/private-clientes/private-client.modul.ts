@@ -10,7 +10,6 @@ import { ConfirmOrder } from './shopping-confirm-order/confirm-order.component';
 import { GuardsClient } from '../guards/guards-client.guard';
 import { DateModule } from '../shared/date/date.module';
 import { OrdersSharedModule } from '../shared/orders/orders-shared.module';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 const routes: Routes = [
@@ -27,7 +26,6 @@ const routes: Routes = [
     HttpClientModule,
     DateModule,
     OrdersSharedModule,
-    NgxSpinnerModule,
 
   ],
 

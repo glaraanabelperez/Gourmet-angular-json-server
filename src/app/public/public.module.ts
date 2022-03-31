@@ -17,7 +17,6 @@ import { MealModule } from './components/meals/meal.module';
 import { ShoppingCarModule } from './components/shoping-cart/shoppingCar.module';
 import { NewUserModule } from './components/new-user/new-user.module';
 import { HomeComponent } from './components/home/home.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
   {path: 'home', component:HomeComponent},
@@ -36,7 +35,6 @@ const routes: Routes = [
     OrderFoodModule,
     MealModule,
     ShoppingCarModule,
-
   ],
   declarations: [
     NavComponent, 

@@ -68,7 +68,6 @@ h5 {
 
 .titulo_seccion h3 {
   color: black;
-  font-weight: 600;
 }
 
 .titulo_seccion2 {
@@ -77,11 +76,10 @@ h5 {
   border-radius: 5px;
   margin: 0% 2% 0% 0%;
   width: 25%;
-  height: 250px;
+  height: 350px;
 }
 
 .titulo_seccion2 h5 {
-  font-weight: 600;
   text-align: center;
 }
 
@@ -200,6 +198,10 @@ h5 {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+.base_info .titulo_seccion2 {
+  height: 150px;
 }
 
 .base_info .tarjeta_seccion {

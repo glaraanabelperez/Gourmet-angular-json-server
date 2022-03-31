@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { User } from 'src/app/public/components/login/models/user.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
 import UtilsShoppingCart from 'src/app/public/components/shoping-cart/helpers/utilsShoppingCart';
 import { ShoppingCarService } from 'src/app/public/components/shoping-cart/service/shoppingCar.service';
-import { DateService } from 'src/app/shared/date/service/dateOrders.service';
 import { OrdersSharedService } from 'src/app/shared/orders/service/orders.service';
 
 
@@ -26,13 +24,13 @@ export class ConfirmOrder implements OnInit {
   public _delivery: boolean=false;
   public direction_delivery: string;
   public formDirection: any;
+  isLoadingResults: boolean;
 
   constructor(
     public _service:ShoppingCarService, 
     private _serviceOrders:OrdersSharedService,
     private _storageSession:StorageService,
     private readonly formBuilder : FormBuilder,
-    private spinner: NgxSpinnerService,
     private router:Router,
     private toastr: ToastrService,
     ) {
@@ -77,17 +75,17 @@ export class ConfirmOrder implements OnInit {
     if(this.direction_delivery==null || this.direction_delivery==""){
       this.toastr.error("LA DIRECCION NO PUEDE ESTAR VACIA");
     }else{
-      this.spinner.show();
+      this.isLoadingResults=true;
       let listOrder=UtilsShoppingCart.mapToOrdersRequest(this.direction_delivery, this._storageSession.getCurrentUser().id, this._service.ordersInProgress);
       this._serviceOrders.insertOrders(listOrder).subscribe(
         (res)=>{
-          this.spinner.hide();
+          this.isLoadingResults=false;
           this.toastr.success("GRACIAS PRO SU COMPREA, AGUARDE A SU PEDIDO");
           this._service.vaciarCarrito();
           this.router.navigate(['/orders-client']);
         },
         error =>{
-          this.spinner.hide();
+          this.isLoadingResults=false;
           this._service.vaciarCarrito();
           this.router.navigate(['/orders']);
           this.toastr.error('PARECE QUE TIENE UN PEDIDO CON ESTE PRODUCTO EN LA SECCION DE SUS PEDIDOS')

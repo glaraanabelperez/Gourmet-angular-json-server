@@ -31,7 +31,7 @@
     "jquery": "^3.6.0",
     "json-server": "^0.17.0",
     "ngx-cookie-service": "^13.1.0-rc.1",
-    "ngx-spinner": "^10.0.1",
+    "ngx-spinner": "^10.0.0",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "server": "^1.0.37",

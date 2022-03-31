@@ -78,7 +78,7 @@ h5 {
   border-radius: 5px;
   margin: 0% 2% 0% 0%;
   width: 25%;
-  height: 250px;
+  height: 350px;
 }
 
 .titulo_seccion2 h5 {
@@ -215,7 +215,7 @@ h5 {
             justify-content: none;
   }
   .menu .tarjeta_seccion {
-    width: 100%;
+    width: 100% !important;
     margin: 0%;
   }
   .menu .tarjeta_seccion .titulo_fecha_menu h4 {

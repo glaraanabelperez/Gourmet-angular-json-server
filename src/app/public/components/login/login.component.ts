@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   public formLogin : FormGroup;
   public sessionUser: boolean;
   public name: string;
+  isLoadingResults: boolean;
 
   constructor( 
     private authService: AuthService, 
@@ -46,13 +47,16 @@ export class LoginComponent implements OnInit {
   get f(){return this.formLogin.controls;}
 
   login() {
+    this.isLoadingResults=true;
     let login=new LoginObject( this.formLogin.get('email').value, this.formLogin.get('password').value)
     this.authService.login(login).subscribe( 
       data => {
+        this.isLoadingResults=false;
         this._storageService.setCurrentSession(new Session(data));
         this.toastr.info("Bienvenido");
     },
     error => {
+      this.isLoadingResults=false;
       this.toastr.warning("Login incorrecto");
     });
   }

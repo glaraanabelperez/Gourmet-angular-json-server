@@ -6,7 +6,6 @@ import { StorageService } from 'src/app/public/components/login/service/storage.
 import { OrdersResponse } from './model/orders-response.model';
 import { States } from './model/states';
 import { OrdersSharedService } from './service/orders.service';
-import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -23,18 +22,17 @@ export class OrdersSharedComponent implements OnInit {
   public states:States=new States();
   public amount : number;
   public stateSelected: any;
+  isLoadingResults: boolean;
 
   constructor(
     private _service_orders:OrdersSharedService, 
     public _storageSession:StorageService,
     private toastr: ToastrService,
-    private spinner: NgxSpinnerService
     ) {
         this.setPermissionsAndStates();
       }
 
   ngOnInit(): void {
-    this.spinnerFunction()
   }
 
   ngOnChanges(){
@@ -42,21 +40,24 @@ export class OrdersSharedComponent implements OnInit {
   }
 
   public editAmount(id, n){
-    this.spinnerFunction();
+    this.isLoadingResults=true;
     var num=n.amount;
     this._service_orders.aditAmount(id, num).subscribe(
       (res)=>{
+        this.isLoadingResults=false;
       this.initViewOrderbyUser();
       this.toastr.success('SE EDITO CON EXITO');
+    
       },
       (error) =>{
+        this.isLoadingResults=false;
         this.toastr.error('NO SE PUDO EDITAR LA CANTIDAD')
       });
    
   }
 
   public editState(id){
-    this.spinnerFunction();
+    this.isLoadingResults=true;
     if(this.stateSelected==null){
       this.toastr.error('ES NECESARIO SELECCIONAR UN ESTADO');
       return;
@@ -65,14 +66,15 @@ export class OrdersSharedComponent implements OnInit {
       (res)=>{
       this.initViewOrderbyUser();
       this.toastr.success('SE EDITO CON EXITO');
+      this.isLoadingResults=false;
       },
       (error) =>{
-        this.toastr.error('NO SE PUDO EDITAR EL ESTADO, ASEGURESE DE QUE HAYAN PASADO 24 HS LUEGO DE LA ENTREGA')
+        this.toastr.error('ERROR, ASEGURESE DE QUE HAYAN PASADO 24 HS LUEGO DE LA ENTREGA')
+        this.isLoadingResults=false;
       });
   }
 
   public initViewOrderbyUser(){
-    this.spinner.show();
     if(this.date!=null){
       if(this.sessionPermissions.isAdmin){
         this.get(this.date);
@@ -80,31 +82,30 @@ export class OrdersSharedComponent implements OnInit {
         this.getByIdUser(this.date, this._storageSession.getCurrentUser().id)
       }
     }
-    this.spinner.hide()
   }
 
   public get(date){
+    this.isLoadingResults=true;
     this._service_orders.getOrders(date).subscribe(res=>{
-      console.log("okok")
-      if(res.length>0){
-        this.orders=res.slice();
-        console.log("ok", this.orders)
-      }else{
-        this.orders=null;
-        this.toastr.info("NO HAY PEDIDOS PARA ESTA FECHA")
-      }
+          if(res.length>0){
+            this.orders=res.slice(); 
+            this.isLoadingResults=false;
+    
+          }else{
+            this.orders=null;
+            this.toastr.warning('NO HAY PEDIDOS');
+            this.isLoadingResults=false;
+          }    
     });
   }
 
   public getByIdUser(date, id_user){
-    this._service_orders.getOrdersByIdUser(date, id_user).subscribe(
-      (res)=>{
-        this.orders=res.slice();
-      },
-      (error)=>{
-        this.toastr.error("HUBO UN ERROR AL TRAER LOS DATOS")
-      }
-    );
+    this.isLoadingResults=true;
+    this._service_orders.getOrdersByIdUser(date, id_user).subscribe( res=>{
+      (res)=>this.orders=res.slice();
+      (error)=>this.toastr.error("ERROR EN EL SERVIDOR");
+      this.isLoadingResults=false;
+    });
   }
 
   public setDate(date:Date){
@@ -122,12 +123,6 @@ export class OrdersSharedComponent implements OnInit {
       }
   }
 
-  spinnerFunction(){
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 2000);
-  }
   
 
 }

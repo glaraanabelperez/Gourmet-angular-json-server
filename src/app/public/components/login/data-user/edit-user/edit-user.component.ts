@@ -20,6 +20,7 @@ export class EditUserComponent implements OnInit {
   
   public formEditUser : FormGroup;
   public userToEdit:User;
+  isLoadingResults: boolean;
 
   constructor( 
     private authService: AuthService, 
@@ -53,15 +54,18 @@ export class EditUserComponent implements OnInit {
   }
 
   public editUser() {
+    this.isLoadingResults=true;
     this.authService.editUser(this.newUser(), this.userToEdit.id).subscribe( 
 
       data => {
+        this.isLoadingResults=false;
         this.formEditUser.reset();
         this.toastr.success('Datos Editados')
         this._storageService.setCurrentSession(new Session(data));
         this.close.emit(true);
        },
       error =>{
+        this.isLoadingResults=false;
         this.toastr.error('No se pudo guardar el elemento', error.message)
       });
   }

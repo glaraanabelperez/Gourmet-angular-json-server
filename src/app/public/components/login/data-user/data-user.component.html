@@ -1,8 +1,4 @@
-<!-- <div style="margin: auto;">
-    <button class="btn btn-primary boton" (click)="onClose($event)" >{{accion}}</button><br>
-</div> -->
 <app-editUser *ngIf="editUser" (close)="onClose($event)"></app-editUser>
-
 <div *ngIf="!editUser" class="tarjeta_seccion">
     <div *ngIf="user!=null">
         <ul style="list-style: none;padding-left: 0%;">
