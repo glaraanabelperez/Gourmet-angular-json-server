@@ -13,6 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
 ];
@@ -22,7 +23,7 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     ToastrModule.forRoot(),
     NgbModule,
     PublicModule,
@@ -33,7 +34,8 @@ const routes: Routes = [
     AppComponent,
   ],
 
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent],
 
 })

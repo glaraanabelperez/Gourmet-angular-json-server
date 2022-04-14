@@ -11,4 +11,5 @@ export class User{
     direction:string;
     state:string;
     idCompany: number;
+    companyName:string;
 }

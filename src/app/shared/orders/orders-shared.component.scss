@@ -1,22 +1,14 @@
 @import '../../styles/general_styles.scss';
-
-div .table{
-  li{
-      list-style: none;
-      p{
-        margin-bottom: 5px;
-      }
-      h6{
-        font-size: 1.1rem;
-      }
-        span{
-          color: rgb(78, 78, 78);
-        }
-  }
+li{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-
 @media only screen
   and (min-device-width : 320px)
-  and (max-device-width : 568px) { 
-    // 
+  and (max-device-width : 700px) { 
+    .tarjeta_seccion{
+      width: 100vw;
+
+    }
   }

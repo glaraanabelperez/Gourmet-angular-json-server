@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
+import { isJSDocReadonlyTag } from 'typescript';
 import { Menu } from '../../../../shared/menu/models/menus.model';
 import UtilsShoppingCart from '../helpers/utilsShoppingCart';
 import { OrdersInProgress } from '../model/orders-in-progress.module';
@@ -13,10 +14,11 @@ export class ShoppingCarService{
 
   total=0;
   totalSubject:Subject <any> = new  Subject <any>();
-  public ordersInProgress:Array<any>=[];
+  public ordersInProgress:Array<OrdersInProgress>=[];
 
 
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService) {
+  }
 
   public contador(n:number){
     this.total+=n;
@@ -33,31 +35,30 @@ export class ShoppingCarService{
           return true;
         }
     }
-    return false;
   }
 
-  public disertCount(index){
+    disertCount(index){
     this.ordersInProgress[index].count-=1;
     this.contador(-1);  
   }
 
-  public getOrderInProgress(){
+   getOrderInProgress(){
     const orders = this.ordersInProgress;
     return orders;
   }
 
-
-  public removeItemShoppingCart(index){
+   removeItemShoppingCart(index){
     let cant_borrar=this.ordersInProgress[index].count;
     this.ordersInProgress.splice(index,1);
     this.contador(-cant_borrar);  
   }
 
-  public showTotal(){
+   showTotal(){
     return this.total;
   }
 
-  public setItemShoppingCart(menu:Menu){
+
+ setItemShoppingCart(menu:Menu){
     if(this.checkItemInOrder(menu.id)){
       this.toastr.error('ESTE PRODUCTO YA ESTA EN EL CARRITO!');
     }else{
@@ -69,12 +70,12 @@ export class ShoppingCarService{
     }
   }
 
-  public sumarCantidad(index){
+   sumarCantidad(index){
     this.ordersInProgress[index].count+=1;
     this.contador(+1);  
   }
 
-  public vaciarCarrito(){
+   vaciarCarrito(){
     this.ordersInProgress=[];
     this.total=0
     this.reloadTotal(0);

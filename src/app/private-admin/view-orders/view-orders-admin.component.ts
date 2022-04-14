@@ -16,7 +16,7 @@ export class ViewOrdersAdminComponent implements OnInit {
   {}
 
   ngOnInit(): void {
-    this.setDate(new Date())
+    this.setDate(this._serviceDate.dateCurrent)
   }
 
   public setDate(date){

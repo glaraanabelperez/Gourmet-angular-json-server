@@ -231,10 +231,10 @@ h5 {
   text-align: center;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
   .contenedor_login {
     background-color: white;
-    width: 100%;
+    width: 100vw;
     margin: auto;
     -ms-flex-pack: distribute;
         justify-content: space-around;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
@@ -23,8 +23,8 @@ export class ConfirmOrder implements OnInit {
   // public orderOk:boolean;
   public _delivery: boolean=false;
   public direction_delivery: string;
-  public formDirection: any;
   isLoadingResults: boolean;
+  public formOrder : FormGroup;
 
   constructor(
     public _service:ShoppingCarService, 
@@ -33,15 +33,20 @@ export class ConfirmOrder implements OnInit {
     private readonly formBuilder : FormBuilder,
     private router:Router,
     private toastr: ToastrService,
+
     ) {
       this.confirmUser();
+      this.formOrder = this.formBuilder.group({
+        direction : ["", [Validators.required, Validators.maxLength(100), Validators.minLength(2)]],
+         observation : ["", [Validators.required, Validators.maxLength(100)]],
+       });
     }
 
   ngOnInit(): void {
-    this.initForm();
+
   }
 
-  get f(){return this.formDirection.controls;}
+  get f(){return this.formOrder.controls;}
 
   public back(){
     this.router.navigate(['/shopping']);
@@ -49,8 +54,8 @@ export class ConfirmOrder implements OnInit {
 
   public delivery(){
     this._delivery=true;
-    this.formDirection.controls['direction'].setValue(this._storageSession.getCurrentUser().direction);
-    this.direction_delivery=this.formDirection.get('direction').value;
+    this.formOrder.controls['direction'].setValue(this._storageSession.getCurrentUser().direction);
+    this.direction_delivery=this.formOrder.get('direction').value;
   }
 
   public confirmUser(){
@@ -67,7 +72,7 @@ export class ConfirmOrder implements OnInit {
 
   public cleanForm(){
     this._delivery=false;
-    this.formDirection.reset();
+    this.formOrder.reset();
     this.direction_delivery=null;
   }
 
@@ -76,7 +81,12 @@ export class ConfirmOrder implements OnInit {
       this.toastr.error("LA DIRECCION NO PUEDE ESTAR VACIA");
     }else{
       this.isLoadingResults=true;
-      let listOrder=UtilsShoppingCart.mapToOrdersRequest(this.direction_delivery, this._storageSession.getCurrentUser().id, this._service.ordersInProgress);
+      let listOrder=UtilsShoppingCart.mapToOrdersRequest(
+        this.direction_delivery, 
+        this._storageSession.getCurrentUser().id, 
+        this._service.ordersInProgress,
+        this.formOrder.get('direction').value
+        );
       this._serviceOrders.insertOrders(listOrder).subscribe(
         (res)=>{
           this.isLoadingResults=false;
@@ -84,21 +94,15 @@ export class ConfirmOrder implements OnInit {
           this._service.vaciarCarrito();
           this.router.navigate(['/orders-client']);
         },
-        error =>{
+        (error) =>{
           this.isLoadingResults=false;
           this._service.vaciarCarrito();
           this.router.navigate(['/orders']);
-          this.toastr.error('PARECE QUE TIENE UN PEDIDO CON ESTE PRODUCTO EN LA SECCION DE SUS PEDIDOS')
+          this.toastr.error('PEDIDO EXISTENTE O FECHA INCORRECTA')
           }
         );
     }
     
-  }
-
-  public initForm(){
-    this.formDirection = this.formBuilder.group({
-      direction : ["", [Validators.required, Validators.maxLength(100), Validators.minLength(10)]],
-    });
   }
 
   public pickUp(){
@@ -106,8 +110,8 @@ export class ConfirmOrder implements OnInit {
   }
 
   public onItemChange(value){
-    this.formDirection.controls['direction'].setValue(value);
-    this.direction_delivery=this.formDirection.get('direction').value;
+    this.formOrder.controls['direction'].setValue(value);
+    this.direction_delivery=this.formOrder.get('direction').value;
   }
 
 }

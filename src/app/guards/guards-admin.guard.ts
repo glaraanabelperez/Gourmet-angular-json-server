@@ -16,10 +16,6 @@ export class GuardsAdmin implements CanActivate {
     if(this._serviceStorage.getCurrentSession()!=null){
       if(this._serviceStorage.getCurrentSession().authAdmin){
         return true;
-      }else{
-        console.log("aca")
-        this.toastr.error('DEBE TENER PERMISOS PARA ACCEDER A ESTA SECCION')
-        return false;
       }
     }else{
       this.toastr.error('ES NECESARIO REGISTRSE PARA ACCEDER')

@@ -7,12 +7,12 @@ import { BehaviorSubject } from 'rxjs';
 
 export class DateService{
   
-  public dateCurrent:Date;
+  public dateCurrent:Date=new Date();
   public reload: any = new BehaviorSubject<boolean>(false);
   public reload$ = this.reload.asObservable();
 
   constructor() {
-    this.dateCurrent=new Date();
+    // this.dateCurrent=new Date();
   }
 
   public verifyingPastDate(dateSelected:Date):boolean{

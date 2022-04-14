@@ -52,8 +52,7 @@ h5{
     background-color: white;
     border-radius: 5px;
     padding: 3%;
-    width: 95% !important;
-    margin: auto;
+    width: 98% !important;
     h4{
         text-align: center;
         color: black;
@@ -173,6 +172,10 @@ h5{
         app-menuList{
             width: 100%;
         }
+    }
+
+    .tarjeta_seccion{
+        width: 98vW !important;    
     }
 
   }

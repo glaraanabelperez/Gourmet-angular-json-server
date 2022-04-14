@@ -28,13 +28,10 @@ export class OrderFoodComponent implements OnInit {
   }
 
   public setDate(date){
-    // let formatDate=this._serviceDate.convertToDate(date)
-    if(this._serviceDate.verifyingPastDate(date)){
-      this.toastr.info('LOS PEDIDOS SON CON 24 HS DE ANTICIPACION')
-    }else{
+
       this.date=date;
       this._serviceDate.dateCurrent=date
-    }
+    
   }
 
 }

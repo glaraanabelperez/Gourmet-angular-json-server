@@ -23,11 +23,11 @@ endpoint: string='orders';
     private _serviceStorage: StorageService) {
   }
 
-  public desactive(order){
-    let id:string = "/" + (order.id).toString();
-    let url=environmentNet.apiUrl + this.endpoint + id;
-    return this.http.put(url, order);
-  }
+  // public desactive(order){
+  //   let id:string = "/" + (order.id).toString();
+  //   let url=environmentNet.apiUrl + this.endpoint + id;
+  //   return this.http.put(url, order);
+  // }
 
   public aditAmount(id:number, amount:number):Observable<any>{
     let url=environmentNet.apiUrl + this.endpoint + "/updateCount";
@@ -38,6 +38,11 @@ endpoint: string='orders';
     return this.http.put(url, amountRequest );
   }
 
+  public delete(id:number){
+    let url=environmentNet.apiUrl + this.endpoint  + "/" + id ;
+
+    return this.http.delete(url);
+  }
   public editState(id, state:string):Observable<any>{
     let url=environmentNet.apiUrl + this.endpoint  + "/" + id ;
     let stateRequest={

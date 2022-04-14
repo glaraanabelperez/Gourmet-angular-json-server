@@ -7,4 +7,6 @@ export class OrdersResponse{
     stateOrder:string;
     deliveryAdress:string;
     amount:number;
+    observation:string;
+
 }

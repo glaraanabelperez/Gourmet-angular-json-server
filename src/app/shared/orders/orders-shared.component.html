@@ -1,49 +1,64 @@
 <div *ngIf="isLoadingResults" class="spinner-grow" role="status"></div>
 <div class="tarjeta_seccion">
-  <div *ngIf="orders!=null else withoutMenus">
+  <div *ngIf="orders.length>0; else withoutMenus">
     <h5>Para esta fecha tenemos los siguientes pedidos</h5>
   </div>
   <ng-template #withoutMenus>
-    <h4>Seleccione una fecha</h4>
-    <h5>Para ver la orden del dia</h5>
+    <h5>Por el momento no tiene pedidos</h5>
+    <h4>Seleccione otra fecha</h4>
     <center>
       <img style="width: 50%;margin-top: 5%;" src="assets/fondo2.jpg" alt="">
     </center>
   </ng-template> 
-  <div *ngFor="let or of orders" class="card text-center" style="width: 80%;margin: auto;">
-      <div class="card-header">
-        <p>Estado</p>
-        <h6 style="color: brown; font-weight: 600;">{{or.state.toUpperCase()}}</h6>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title" style="color: black;"> Tipo: {{or.MenusDto.Meals.type}}</h5>
-          <h5 class="card-title" style="color: black;">{{or.MenusDto.Meals.title}}</h5>
-          <p class="card-title" style="color: black;text-align: center;">{{or.MenusDto.Meals.description}}</p>
-          <p class="card-text" style="text-align: center;" >cantidad del menu</p>
-          <h5 class="card-title" style="color: black;">{{or.amount}}</h5><br>
-          <div *ngIf="or.state=='pending'">
-            <label for="amount" class="form-label">Ingrese nueva cantidad</label>
-            <input style="text-align: center;" type="number" [(ngModel)]="or.amount " [value]="or.amount" name="amount" class="form-control" id="amount"  min="1" max="100" >
-            <br>
-            <div style="text-align: center;margin-top: 20px;">
-              <button (click)="editAmount(or.id, or)" class="btn btn-success">Editar Cantidad</button><br><br>
-            </div>
-          </div>   
-          <hr>
-          <h5 class="card-title" style="color: black;">Cliente: {{or.userDto.name}}</h5>
-          <h5 class="card-title" style="color: black;">Apellido: {{or.userDto.lastName}}</h5>
-          <h5 class="card-title" style="color: black;">Telefono: {{or.userDto.phone}}</h5>
-          <h5 class="card-title" style="color: black;">Telefono: {{or.userDto.direction}}</h5>
-
-          <h5 class="card-title" style="color: black;">Direccion Envio: {{or.deliveryAddress}}</h5>
-          <div *ngIf="or.state!='cancel'" style="margin-bottom: 3%;" scope="row" >
-            <select  [(ngModel)]="stateSelected" >
-                <option *ngFor="let s of states.statesEntregas">
-                  {{s}}
-                </option>
-            </select><br><br>
-            <button class="btn btn-primary" (click)="editState(or.id)"><i class="bi bi-pencil-fill"></i> Editar Estado</button>
-          </div>
-      </div>
+  <br>
+  <div class="card" *ngFor="let or of orders" style="margin-bottom: 2%;" >
+    <div class="card-header">
+      <p style="text-align: center;">{{or.state.toUpperCase()}}</p>    
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngIf="or.observation!=null">
+        <p>Observacion</p>
+        <p style="color: brown;">{{or.observation}}</p>
+      </li>
+      <li class="list-group-item">
+        <p>Tipo</p>
+        <p>{{or.MenusDto.Meals.type}}</p>
+      </li>
+      <li class="list-group-item">
+        <p>Titulo</p>
+        <p>{{or.MenusDto.Meals.title}}</p>
+      </li>
+      <li class="list-group-item">
+        <p>Cant</p>
+        <p>{{or.amount}}</p>
+      </li>
+      <li class="list-group-item" *ngIf="isAdmin">
+        <p>Cliente</p>
+        <p>{{or.userDto.name}}{{or.userDto.lastName}}</p>
+      </li>
+      <li class="list-group-item" *ngIf="isAdmin">
+        <p>Tel.</p>
+        <p>{{or.userDto.phone}}</p>
+      </li>
+      <li class="list-group-item">
+        <p>Entrega</p>
+        <p>{{or.deliveryAddress}}</p>
+      </li>
+      <li class="list-group-item" *ngIf="isAdmin">
+        <p>Empresa</p>
+        <p>{{or.userDto.companyName}}</p>
+      </li>
+      <li class="list-group-item" *ngIf="isAdmin && or.state=='pending'">
+        <button class="btn btn-primary" (click)="editState(or.id, or.state)">
+          Finalizar
+        </button>
+        <button class="btn btn-primary" *ngIf="!isAdmin && or.state=='pending'" 
+        (click)="delete(or.id) ">
+          Cancelar
+        </button>
+      </li>
+    </ul>
   </div>
+  <br><br>
+  
 </div>

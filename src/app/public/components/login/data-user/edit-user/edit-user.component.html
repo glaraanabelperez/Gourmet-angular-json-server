@@ -45,6 +45,15 @@
               <div *ngIf="f.phone.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div><br>
 
+            <label for="companyName" class="form-label">Empresa</label>
+            <input type="text" formControlName="companyName" class="form-control" id="companyName" 
+            [ngClass]="{ 'is-invalid':f.companyName.touched && f.companyName.errors }">
+            <div *ngIf="f.companyName.touched && f.phone.errors" class="invalid-feedback"  >
+              <div *ngIf="f.companyName.errors.required">La empresa es Requerida</div>
+              <div *ngIf="f.companyName.errors.maxlength">Solo puede ingresar 20 caracteres</div>
+              <div *ngIf="f.companyName.errors.pattern">Solo letras</div>
+            </div>
+            
             <label for="direction" class="form-label">Direccion</label>
             <input type="text" formControlName="direction" class="form-control" id="direction" 
             [ngClass]="{ 'is-invalid':f.direction.touched && f.direction.errors }">
@@ -53,6 +62,7 @@
               <div *ngIf="f.direction.errors.maxlength">Solo puede ingresar 20 caracteres</div>
             </div><br>
 
+            
             <div>
               <button type="submit" class="btn btn-primary" style="margin-right:5px" [disabled]="formEditUser.invalid">Guardar</button>
               <button class="btn btn-secondary" (click)="cancel()" >Cancelar</button>

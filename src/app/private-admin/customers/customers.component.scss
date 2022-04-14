@@ -19,5 +19,18 @@
   and (min-device-width : 320px)
   and (max-device-width : 768px) { 
     
-
+    .base_info{  
+      .titulo_seccion2{
+        height: 150px;
+      }
+      .tarjeta_seccion{
+        width: 100vw !important;
+        margin-left: 30%;
+        .table{
+          margin: auto;
+          width: 100vw;
+          list-style-type: none;
+        }
+      }
+  }
   }

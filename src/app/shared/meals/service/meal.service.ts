@@ -33,7 +33,6 @@ export class ListMealService {
   }
 
   public insert(m:MealsRequest){
-    console.log(m)
     let url=environmentNet.apiUrl + this.endpoint ;
     return this.http.post(url, m);
   }

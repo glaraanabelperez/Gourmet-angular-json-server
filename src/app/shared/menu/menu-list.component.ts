@@ -25,8 +25,7 @@ export class MenuListComponent implements OnInit {
     private __serviceDate: DateService,
     private toastr: ToastrService,
     public _storageSession:StorageService
-    ) {
-      this.date=null;
+    ) {       
       this.menus=[];
       this.suscripcionAdmin();
       this.suscripcionReload();
@@ -37,9 +36,14 @@ export class MenuListComponent implements OnInit {
 
   ngOnChanges(){
     if(this.date!=null){
+      if(this.__serviceDate.verifyingPastDate(this.date)){
+        this.toastr.info('LOS PEDIDOS SON CON 24 HS DE ANTICIPACION')
+        this.menus=[];
+      }else{
       this.getMenus(this.date);
     }
   }
+}
 
   public getMenus(date:Date){
     this.isLoadingResults=true;
@@ -60,7 +64,7 @@ export class MenuListComponent implements OnInit {
     this._editMenu.emit(menu);
   }
 
-  public suscripcionAdmin(){
+   suscripcionAdmin(){
     this._storageSession.permissions$.subscribe(result => {
       if(result){
         this.sessionAdmin=result.isAdmin;

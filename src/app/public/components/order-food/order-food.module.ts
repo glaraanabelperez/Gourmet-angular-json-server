@@ -14,6 +14,7 @@ import { DateModule } from 'src/app/shared/date/date.module';
 
 const routes: Routes = [
    {path: 'order-food', component:OrderFoodComponent},
+
 ];
 
 @NgModule({

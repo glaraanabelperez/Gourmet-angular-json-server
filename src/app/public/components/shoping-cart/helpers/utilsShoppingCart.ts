@@ -6,7 +6,12 @@ export default  class UtilsShoppingCart{
 
   constructor() {}
 
-  static mapToOrdersRequest( delivery_direction:string,  id_user:number, orderInProgress:Array<OrdersInProgress>):Array <OrdersRequest>{
+  static mapToOrdersRequest( 
+    delivery_direction:string,  
+    id_user:number, 
+    orderInProgress:Array<OrdersInProgress>,
+    observation:string
+    ):Array <OrdersRequest>{
     
     let listOrder=  new Array<OrdersRequest>();
 
@@ -17,6 +22,8 @@ export default  class UtilsShoppingCart{
       order.idMenu=element.menu.id,
       order.amount=element.count,
       order.deliveryAddress=delivery_direction
+      order.observation=observation
+
 
       listOrder.push(order);
 

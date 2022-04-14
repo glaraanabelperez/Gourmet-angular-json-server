@@ -17,18 +17,20 @@ export class OrdersSharedComponent implements OnInit {
   
   @Input() date: Date;
 
-  public orders: OrdersResponse[]=[];
+  public orders: OrdersResponse[];
   public sessionPermissions: PermissionModel;
   public states:States=new States();
   public amount : number;
   public stateSelected: any;
   isLoadingResults: boolean;
+  isAdmin: boolean=false;
 
   constructor(
     private _service_orders:OrdersSharedService, 
     public _storageSession:StorageService,
     private toastr: ToastrService,
     ) {
+        this.orders=[];
         this.setPermissionsAndStates();
       }
 
@@ -47,20 +49,33 @@ export class OrdersSharedComponent implements OnInit {
         this.isLoadingResults=false;
       this.initViewOrderbyUser();
       this.toastr.success('SE EDITO CON EXITO');
-    
       },
       (error) =>{
         this.isLoadingResults=false;
-        this.toastr.error('NO SE PUDO EDITAR LA CANTIDAD')
+        this.toastr.error('ERROR DE SERVIDOR')
       });
    
   }
+  
+  public delete(id:number){
+    this._service_orders.delete(id).subscribe(
+      (res)=>{     
+      this.toastr.success('SE ELIMINNO CON EXITO');
+      this.isLoadingResults=false;
+      },
+      (error) =>{
+        this.toastr.info('AGUARDE A LA FECHA PARA EDITAR EL ESTADO', error.messagge)
+        this.isLoadingResults=false;
+      });
+  }
 
-  public editState(id){
+  public editState(id :number, state:string){
     this.isLoadingResults=true;
-    if(this.stateSelected==null){
-      this.toastr.error('ES NECESARIO SELECCIONAR UN ESTADO');
-      return;
+    
+    if(state.toLowerCase()=="pending"){
+      if(this.sessionPermissions.isAdmin){
+        this.stateSelected="delivered"
+      }
     }
     this._service_orders.editState(id, this.stateSelected).subscribe(
       (res)=>{
@@ -69,7 +84,9 @@ export class OrdersSharedComponent implements OnInit {
       this.isLoadingResults=false;
       },
       (error) =>{
-        this.toastr.error('ERROR, ASEGURESE DE QUE HAYAN PASADO 24 HS LUEGO DE LA ENTREGA')
+        if(this.sessionPermissions.isAdmin){
+          this.toastr.info('AGUARDE A LA FECHA PARA EDITAR EL ESTADO')
+        }
         this.isLoadingResults=false;
       });
   }
@@ -92,8 +109,8 @@ export class OrdersSharedComponent implements OnInit {
             this.isLoadingResults=false;
     
           }else{
-            this.orders=null;
-            this.toastr.warning('NO HAY PEDIDOS');
+            this.orders=[];
+            this.toastr.info('SIN PEDIDOS');
             this.isLoadingResults=false;
           }    
     });
@@ -102,9 +119,15 @@ export class OrdersSharedComponent implements OnInit {
   public getByIdUser(date, id_user){
     this.isLoadingResults=true;
     this._service_orders.getOrdersByIdUser(date, id_user).subscribe( res=>{
-      (res)=>this.orders=res.slice();
-      (error)=>this.toastr.error("ERROR EN EL SERVIDOR");
-      this.isLoadingResults=false;
+      if(res.length>0){
+        this.orders=res.slice(); 
+        this.isLoadingResults=false;
+
+      }else{
+        this.orders=[];
+        this.toastr.info('SIN PEDIDOS');
+        this.isLoadingResults=false;
+      }    
     });
   }
 
@@ -117,9 +140,7 @@ export class OrdersSharedComponent implements OnInit {
       this.sessionPermissions=result;
       })
       if(this.sessionPermissions.isAdmin){
-        this.states.setStatesToAdmin()
-      }else{
-        this.states.setStatesToClient()
+        this.isAdmin=true;
       }
   }
 

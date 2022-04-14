@@ -4,4 +4,5 @@ export class OrdersRequest{
     idUser:number;
     deliveryAddress:string;
     amount:number;
+    observation: string;
 }

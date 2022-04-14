@@ -44,6 +44,7 @@ export class EditUserComponent implements OnInit {
       pass : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
       phone : ["", [Validators.required, Validators.maxLength(40),  Validators.pattern('^[0-9]+$')]],
       direction : ["", [Validators.required, Validators.maxLength(40)]],
+      companyName : ["", [Validators.required, Validators.maxLength(40),Validators.pattern('^[a-zA-Z]+$')]],
      });
   }
 
@@ -79,7 +80,7 @@ export class EditUserComponent implements OnInit {
     user.pass=this.formEditUser.get('pass').value;
     user.phone=this.formEditUser.get('phone').value;
     user.direction=this.formEditUser.get('direction').value;
-
+    user.companyName=this.formEditUser.get('companyName').value;
     return user;
   }
 
@@ -91,6 +92,8 @@ export class EditUserComponent implements OnInit {
     this.formEditUser.controls['pass'].setValue(user.pass ? user.pass : '');
     this.formEditUser.controls['phone'].setValue(user.phone ? user.phone : '');
     this.formEditUser.controls['direction'].setValue(user.direction ? user.direction : '');
+    this.formEditUser.controls['companyName'].setValue(user.companyName ? user.companyName : '');
+
     window.scrollTo(0,0);
   }
 

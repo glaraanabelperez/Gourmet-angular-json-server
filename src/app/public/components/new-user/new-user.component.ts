@@ -18,6 +18,7 @@ export class NewUserComponent implements OnInit {
   public formNewUser : FormGroup;
   public sessionUser: boolean;
   company: boolean;
+  isLoadingResults: boolean;
 
   constructor( 
     private authService: AuthService, 
@@ -32,12 +33,13 @@ export class NewUserComponent implements OnInit {
 
   initForm(){
     this.formNewUser = this.formBuilder.group({
-      name : ["", [Validators.required, Validators.maxLength(20)]],
-      lastName : ["", [Validators.required, Validators.maxLength(20)]],
+      name : ["", [Validators.required, Validators.maxLength(20), Validators.pattern('^[a-zA-Z]+$')]],
+      lastName : ["", [Validators.required, Validators.maxLength(20), Validators.pattern('^[a-zA-Z]+$')]],
       email : ["", [Validators.required, Validators.maxLength(50), Validators.email]],
       pass : ["", [Validators.required, Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
       phone : ["", [Validators.required, Validators.maxLength(40),  Validators.pattern('^[0-9]+$')]],
-      direction : ["", [Validators.required, Validators.maxLength(40)]],  
+      direction : ["", [Validators.required, Validators.maxLength(40)]], 
+      companyName : ["", [Validators.required, Validators.maxLength(40),Validators.pattern('^[a-zA-Z]+$')]],
      });
   }
 
@@ -49,14 +51,16 @@ export class NewUserComponent implements OnInit {
   }
 
   public insertUser() {
+    this.isLoadingResults=true;
     let user:User=new User();
-    console.log(this.newUser(user))
     this.authService.insertUser(this.newUser(user)).subscribe( 
       data => {
+        this.isLoadingResults=false;
         this.formNewUser.reset();
         this.toastr.success('Bienvenido')
       },
       error =>{
+        this.isLoadingResults=false;
         this.toastr.error('No se pudo guardar el elemento, pruebe con otro email')
       });
 }
@@ -74,7 +78,7 @@ export class NewUserComponent implements OnInit {
     user.pass=this.formNewUser.get('pass').value;
     user.phone=this.formNewUser.get('phone').value;
     user.direction=this.formNewUser.get('direction').value;
-
+    user.companyName=this.formNewUser.get('companyName').value;
     return user;
   }
 

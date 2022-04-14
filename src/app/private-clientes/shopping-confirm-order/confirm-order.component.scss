@@ -3,15 +3,24 @@
  .conteiner_pedido{
   display: flex;
   flex-direction: row;
-	width: 98%;
+	width: 99%;
   height: auto;
   .shipper{
     background-color: white;
     border-radius: 5px;
     margin: 0% 1% 0% 0%;
     padding: 4%;
-    width: 40%;
+    width: 99%;
     text-align: center;
+    input{
+      width: 50%;
+      margin: auto;
+    }
+    textarea{
+      width: 50%;
+      margin: auto;
+
+    }
     h4{
       margin-bottom: 3%;
     }
@@ -26,38 +35,31 @@
       }
     }
   }
-  .rigth{
-    background-color: white;
-    border-radius: 5px;
-    padding: 4%;
-    text-align: center;
-    .imagen-order2{
-      display: block;
-      margin: auto;
-      width: 15%;
-    }
-  }
+  
 
 }
 
  @media only screen
   and (min-device-width : 320px)
-  and (max-device-width : 568px) { 
+  and (max-device-width : 700px) { 
     .conteiner_pedido{
       flex-direction: column !important;
       .titulo_seccion2{
         display: none;
       }
       .shipper{
-        width: 100%;
+        width: 100vw;
       }
-    }
   }
+}
 
 @media only screen  
 and (min-width : 768)  
 and (max-width : 1200px) { 
   .conteiner-pedido{
     margin-top:60px;
+    .shipper{
+      width: 99%;
+    }
   }
 }

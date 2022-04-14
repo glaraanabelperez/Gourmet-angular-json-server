@@ -18,7 +18,6 @@ export class AppComponent {
         if(result){
           this.sessionUser=result.isUser && !result.isAdmin ? true : false;
           this.sessionAdmin=result.isAdmin;
-          console.log(this.sessionAdmin)
         }
       })
   }
