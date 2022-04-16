@@ -38,7 +38,7 @@ export class ConfirmOrder implements OnInit {
       this.confirmUser();
       this.formOrder = this.formBuilder.group({
         direction : ["", [Validators.required, Validators.maxLength(100), Validators.minLength(2)]],
-         observation : ["", [Validators.required, Validators.maxLength(100)]],
+         observation : ["",[ Validators.maxLength(100)]],
        });
     }
 
@@ -78,14 +78,14 @@ export class ConfirmOrder implements OnInit {
 
   public finishOrder(){
     if(this.direction_delivery==null || this.direction_delivery==""){
-      this.toastr.error("LA DIRECCION NO PUEDE ESTAR VACIA");
+      this.toastr.info("LA DIRECCION NO PUEDE ESTAR VACIA");
     }else{
       this.isLoadingResults=true;
       let listOrder=UtilsShoppingCart.mapToOrdersRequest(
         this.direction_delivery, 
         this._storageSession.getCurrentUser().id, 
         this._service.ordersInProgress,
-        this.formOrder.get('direction').value
+        this.formOrder.get('observation').value
         );
       this._serviceOrders.insertOrders(listOrder).subscribe(
         (res)=>{
@@ -98,7 +98,7 @@ export class ConfirmOrder implements OnInit {
           this.isLoadingResults=false;
           this._service.vaciarCarrito();
           this.router.navigate(['/orders']);
-          this.toastr.error('PEDIDO EXISTENTE O FECHA INCORRECTA')
+          this.toastr.info('LOS PEDIDOS SON CON 24 HS DE ANTICIPACION')
           }
         );
     }
@@ -114,5 +114,6 @@ export class ConfirmOrder implements OnInit {
     this.direction_delivery=this.formOrder.get('direction').value;
   }
 
+ 
 }
 

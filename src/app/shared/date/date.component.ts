@@ -16,6 +16,7 @@ export class DateComponent implements OnInit {
 
   constructor(private calendar: NgbCalendar, private _serviceDate:DateService) {
     this.model = this.calendar.getToday();
+    this._serviceDate.dateCurrent=new Date();
   }
 
   ngOnInit(): void {

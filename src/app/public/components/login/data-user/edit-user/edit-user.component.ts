@@ -67,7 +67,7 @@ export class EditUserComponent implements OnInit {
        },
       error =>{
         this.isLoadingResults=false;
-        this.toastr.error('No se pudo guardar el elemento', error.message)
+        this.toastr.info('No se pudo guardar el elemento', error.message)
       });
   }
 

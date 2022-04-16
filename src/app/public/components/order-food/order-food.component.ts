@@ -28,10 +28,8 @@ export class OrderFoodComponent implements OnInit {
   }
 
   public setDate(date){
-
       this.date=date;
       this._serviceDate.dateCurrent=date
-    
   }
 
 }

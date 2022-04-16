@@ -7,13 +7,13 @@
   <div class="conteiner_pedido" >
     <div class="shipper">
       <h4 class="card-title">Seleccione la Direccion</h4>
-      <div [formGroup]="formOrder" style="margin: auto;" >
-        <div class="card" style="width: 70%" >
+      <div [formGroup]="formOrder" >
+        <div class="card" style="width: 70%;margin: auto;" >
           <div class="card-body">
             <div>
-              <input type="radio" id="casa" name="casa" value="Retiro en local" checked (change)="onItemChange($event.target.value)" ><br>
+              <input type="radio" id="casa" name="casa" value="Retiro en local" (change)="onItemChange($event.target.value)" ><br>
               <label for="casa"> <p>Retitiro en local</p> </label><br><br>
-              <input type="radio" id="casa" name="casa" [value]="user.direction" checked (change)="onItemChange($event.target.value)" ><br>
+              <input type="radio" id="casa" name="casa" [value]="user.direction" (change)="onItemChange($event.target.value)" ><br>
               <label for="casa"><p>{{user.direction}}</p></label><br><br>
               <input type="radio" id="casa" name="casa" [value]='null'  (change)="onItemChange($event.target.value)"><br>
               <label for="casa"><p>Nueva Direccion</p></label><br>
@@ -29,29 +29,33 @@
             </div>
           </div>
         </div><br><br>
-        <div class="card" style="width: 70%">
+        <div class="card" style="width: 70%;margin: auto;" >
           <div class="card-body">
             <h5 class="card-title">Observaciones </h5>
             <h6 class="card-subtitle mb-2 text-muted">*optativo</h6>
             <textarea name="observation" id="observation" cols="30" rows="10"
-            class="form-control" id="observation"></textarea>
+            class="form-control"  [value]='null' 
+            formControlName="observation"></textarea>
+            <div *ngIf="f.observation.touched && f.observation.errors" class="invalid-feedback">
+              <div *ngIf="f.observation.errors.maxlength">Solo puede ingresar 90 caracteres</div>
+            </div>
           </div>
         </div><br><br>
       </div>
-      <div  *ngIf="direction_delivery" class="card" style="width: 70%">
-        <div class="card-body" *ngFor="let p of _service.getOrderInProgress()" >
+      <div *ngFor="let p of _service.getOrderInProgress()"  class="card" style="width: 70%;margin: auto;" >
+        <div class="card-body" >
           <h5 class="card-title">Direccion de entrega: <br>{{direction_delivery}}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Fecha de entrega: {{p.menu.date.slice(0,10)}}</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           <p class="card-link">Tipo: {{p.menu.Meals.type}}</p>
           <p class="card-link">Titulo: {{p.menu.Meals.title}}</p>
-          <p class="card-link" >{{p.menu.Meals.description}}</p>
-          <p style="font-weight: 600; text-align: left;">CANTIDAD: {{p.count}}</p>
-          <h5>Total {{ _service.getOrderInProgress().length}} PIEZAS</h5><br>
+          <p class="card-link" >Descripcion: {{p.menu.Meals.description}}</p>
+          <p style="font-weight: 600; text-align: left;">CANTIDAD: {{p.count}}</p>         
         </div>
-        <button class="btn btn-primary boton" *ngIf="_service.total!=0" (click)="finishOrder()">CONTINUAR</button><br><br>
-        <a class="btn btn-outline-primary boton" *ngIf="_service.total!=0" (click)="back()">Volver</a><br>
       </div>
+      <hr>
+      <h5>Total {{ _service.getOrderInProgress().length}} PIEZAS</h5><br>
+      <button class="btn btn-primary boton" *ngIf="_service.total!=0" (click)="finishOrder()">CONTINUAR</button><br><br>
+      <a class="btn btn-outline-primary boton" *ngIf="_service.total!=0" (click)="back()">Volver</a><br>
     </div>
   </div>
 </div>

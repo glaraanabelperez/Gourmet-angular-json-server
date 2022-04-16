@@ -11,45 +11,45 @@
     </center>
   </ng-template> 
   <br>
+  <div class=" form-group mb-3" [formGroup]="formOrder"  *ngIf="isAdmin && orders.length>0" >
+    <label for="search">Filtrar por empresa</label>
+    <input type="text" name="search" formControlName="search"   (change)="search($event.target.value)" 
+    class="form-control" id="direction">
+    <button class="btn btn-light" (click)="search(null)">Limpiar</button>
+  </div>
   <div class="card" *ngFor="let or of orders" style="margin-bottom: 2%;" >
     <div class="card-header">
       <p style="text-align: center;">{{or.state.toUpperCase()}}</p>    
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngIf="or.observation!=null">
-        <p>Observacion</p>
-        <p style="color: brown;">{{or.observation}}</p>
+      <li class="list-group-item" *ngIf="or.observation!=null" style="color: brown;">
+        {{or.observation}}
       </li>
       <li class="list-group-item">
-        <p>Tipo</p>
-        <p>{{or.MenusDto.Meals.type}}</p>
+        Tipo: {{or.MenusDto.Meals.type}}
       </li>
       <li class="list-group-item">
-        <p>Titulo</p>
-        <p>{{or.MenusDto.Meals.title}}</p>
+        Titulo: {{or.MenusDto.Meals.title}}
       </li>
       <li class="list-group-item">
         <p>Cant</p>
         <p>{{or.amount}}</p>
       </li>
       <li class="list-group-item" *ngIf="isAdmin">
-        <p>Cliente</p>
-        <p>{{or.userDto.name}}{{or.userDto.lastName}}</p>
+        Cliente: {{or.userDto.name}}{{or.userDto.lastName}}
       </li>
       <li class="list-group-item" *ngIf="isAdmin">
-        <p>Tel.</p>
-        <p>{{or.userDto.phone}}</p>
+        Tel: {{or.userDto.phone}}
       </li>
       <li class="list-group-item">
-        <p>Entrega</p>
-        <p>{{or.deliveryAddress}}</p>
+        Entrega :{{or.deliveryAddress}}
       </li>
       <li class="list-group-item" *ngIf="isAdmin">
-        <p>Empresa</p>
-        <p>{{or.userDto.companyName}}</p>
+        Empresa :{{or.userDto.companyName}}
       </li>
-      <li class="list-group-item" *ngIf="isAdmin && or.state=='pending'">
-        <button class="btn btn-primary" (click)="editState(or.id, or.state)">
+      <li class="list-group-item" >
+        <button class="btn btn-primary" *ngIf="isAdmin && or.state=='pending'" 
+        (click)="editState(or.id, or.state)">
           Finalizar
         </button>
         <button class="btn btn-primary" *ngIf="!isAdmin && or.state=='pending'" 

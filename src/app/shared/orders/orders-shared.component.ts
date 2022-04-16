@@ -1,8 +1,10 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PermissionModel } from 'src/app/public/components/login/models/permissions.model';
 import { StorageService } from 'src/app/public/components/login/service/storage.service';
+import { DateService } from '../date/service/dateOrders.service';
 import { OrdersResponse } from './model/orders-response.model';
 import { States } from './model/states';
 import { OrdersSharedService } from './service/orders.service';
@@ -24,48 +26,58 @@ export class OrdersSharedComponent implements OnInit {
   public stateSelected: any;
   isLoadingResults: boolean;
   isAdmin: boolean=false;
-
+  formOrder: any;
+  filtrar:boolean=false;
+  filter: boolean;
+  filterString: any;
   constructor(
     private _service_orders:OrdersSharedService, 
     public _storageSession:StorageService,
     private toastr: ToastrService,
+    private __serviceDate: DateService,
+    private readonly formBuilder : FormBuilder,
+
     ) {
         this.orders=[];
         this.setPermissionsAndStates();
       }
 
   ngOnInit(): void {
+    this.formOrder = this.formBuilder.group({
+       search : [""],
+     });
   }
 
   ngOnChanges(){
     this.initViewOrderbyUser();
   }
 
-  public editAmount(id, n){
-    this.isLoadingResults=true;
-    var num=n.amount;
-    this._service_orders.aditAmount(id, num).subscribe(
-      (res)=>{
-        this.isLoadingResults=false;
-      this.initViewOrderbyUser();
-      this.toastr.success('SE EDITO CON EXITO');
-      },
-      (error) =>{
-        this.isLoadingResults=false;
-        this.toastr.error('ERROR DE SERVIDOR')
-      });
+  // public editAmount(id, n){
+  //   this.isLoadingResults=true;
+  //   var num=n.amount;
+  //   this._service_orders.aditAmount(id, num).subscribe(
+  //     (res)=>{
+  //       this.isLoadingResults=false;
+  //     this.initViewOrderbyUser();
+  //     this.toastr.success('SE EDITO CON EXITO');
+  //     },
+  //     (error) =>{
+  //       this.isLoadingResults=false;
+  //       this.toastr.error('ERROR DE SERVIDOR')
+  //     });
    
-  }
+  // }
   
   public delete(id:number){
+    alert('Seguro desea eliminar la orden?')
     this._service_orders.delete(id).subscribe(
       (res)=>{     
+        this.initViewOrderbyUser()
       this.toastr.success('SE ELIMINNO CON EXITO');
-      this.isLoadingResults=false;
       },
       (error) =>{
+        this.initViewOrderbyUser()
         this.toastr.info('AGUARDE A LA FECHA PARA EDITAR EL ESTADO', error.messagge)
-        this.isLoadingResults=false;
       });
   }
 
@@ -105,9 +117,12 @@ export class OrdersSharedComponent implements OnInit {
     this.isLoadingResults=true;
     this._service_orders.getOrders(date).subscribe(res=>{
           if(res.length>0){
-            this.orders=res.slice(); 
+            if(this.filter){
+              this.orders = res.filter((val) => val.userDto.companyName.toLowerCase().includes(this.filterString.toLowerCase()));
+            }else{
+              this.orders=res.slice(); 
+            }
             this.isLoadingResults=false;
-    
           }else{
             this.orders=[];
             this.toastr.info('SIN PEDIDOS');
@@ -144,6 +159,27 @@ export class OrdersSharedComponent implements OnInit {
       }
   }
 
-  
+  public suscripcionReload(){
+    this.__serviceDate.reload$.subscribe(
+      result => {
+        this.date=this.__serviceDate.dateCurrent
+        this.initViewOrderbyUser();   
+    })
+  }
+
+  search(value: string): void {
+    if(value!=null){
+      this.filter=true;
+      this.filterString=value
+      this.initViewOrderbyUser()
+    }else if(this.filter && value==null){
+      this.filter=false;
+      this.initViewOrderbyUser()
+      this.formOrder.controls['search'].setValue('');
+    }else{
+      this.formOrder.controls['search'].setValue('');
+    }
+  }
+
 
 }

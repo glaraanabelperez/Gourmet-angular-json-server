@@ -22,6 +22,7 @@ export class DataUserComponent implements OnInit {
   public onClose(e){
     if(this.editUser){
       this.editUser=false;
+      this.user=this._storageService.getCurrentUser();
     }else{
       this.editUser=true;
     }

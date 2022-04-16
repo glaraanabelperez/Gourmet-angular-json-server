@@ -28,7 +28,7 @@ export class MenuListComponent implements OnInit {
     ) {       
       this.menus=[];
       this.suscripcionAdmin();
-      this.suscripcionReload();
+      // this.suscripcionReload()
     }
 
   ngOnInit(): void {

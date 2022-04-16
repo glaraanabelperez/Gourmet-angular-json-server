@@ -10,25 +10,20 @@ export default  class UtilsShoppingCart{
     delivery_direction:string,  
     id_user:number, 
     orderInProgress:Array<OrdersInProgress>,
-    observation:string
+    observation:string 
     ):Array <OrdersRequest>{
-    
-    let listOrder=  new Array<OrdersRequest>();
 
-    orderInProgress.forEach(element => {
-      
-      let order=new OrdersRequest();
-      order.idUser=id_user,
-      order.idMenu=element.menu.id,
-      order.amount=element.count,
-      order.deliveryAddress=delivery_direction
-      order.observation=observation
-
-
-      listOrder.push(order);
-
-    });
-    return listOrder;
+        let listOrder=  new Array<OrdersRequest>();
+        orderInProgress.forEach(element => {   
+          let order=new OrdersRequest();
+          order.idUser=id_user,
+          order.idMenu=element.menu.id,
+          order.amount=element.count,
+          order.deliveryAddress=delivery_direction
+          order.observation=observation
+          listOrder.push(order);
+        });
+        return listOrder;
   }
 
   static mapToOrdersInProgress(menus:Menu, order:OrdersInProgress):OrdersInProgress{

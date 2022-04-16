@@ -25,7 +25,7 @@
               <button class="boton-eliminar" (click)="sumarCantidad(i)">
                 <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
               </button>
-              <button class="boton-eliminar" (click)="disertCount(i)">
+              <button *ngIf="p.count>1" class="boton-eliminar" (click)="disertCount(i)">
                 <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
               </button>
             </div>   
