@@ -19,6 +19,10 @@ h5 {
   font-size: 1.2rem;
 }
 
+h5 {
+  font-size: 1rem;
+}
+
 .btn {
   border-radius: 15px;
 }
@@ -38,15 +42,15 @@ h5 {
 }
 
 .base_info {
-  width: 60vw;
+  width: 100%;
 }
 
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
   padding: 3%;
-  width: 95% !important;
-  margin: auto;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 .tarjeta_seccion h4 {
@@ -63,12 +67,17 @@ h5 {
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin: 0% 2% 3% 0%;
+  margin-bottom: 2%;
 }
 
 .titulo_seccion h3 {
-  color: black;
-  font-weight: 600;
+  color: gray;
+  text-align: right;
+}
+
+.titulo_seccion h4 {
+  font-size: 16px;
+  text-align: right;
 }
 
 .titulo_seccion2 {
@@ -77,11 +86,9 @@ h5 {
   border-radius: 5px;
   margin: 0% 2% 0% 0%;
   width: 25%;
-  height: 350px;
 }
 
 .titulo_seccion2 h5 {
-  font-weight: 600;
   text-align: center;
 }
 
@@ -141,7 +148,20 @@ h5 {
   width: 100%;
 }
 
+.scroll {
+  scroll-behavior: auto;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  height: 80vh;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .scroll {
+    scroll-behavior: auto;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 90vh;
+  }
   p {
     text-align: center;
   }
@@ -152,7 +172,7 @@ h5 {
     text-align: center;
   }
   .nav_general_lateral {
-    width: 100%;
+    width: 100vw !important;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -171,7 +191,7 @@ h5 {
     display: none;
   }
   .titulo_seccion {
-    width: 100%;
+    width: 100vw;
     height: auto !important;
   }
   .titulo_seccion2 {
@@ -192,19 +212,26 @@ h5 {
   }
 }
 
-div .table li {
-  list-style: none;
+.spinner-grow {
+  margin: auto;
 }
 
-div .table li p {
-  margin-bottom: 5px;
+li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-div .table li h6 {
-  font-size: 1.1rem;
-}
-
-div .table li span {
-  color: #4e4e4e;
+@media only screen and (min-device-width: 320px) and (max-device-width: 700px) {
+  div .tarjeta_seccion {
+    width: 100vw;
+  }
 }
 /*# sourceMappingURL=orders-shared.component.css.map */

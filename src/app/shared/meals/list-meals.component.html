@@ -1,6 +1,12 @@
 
 <div *ngIf="isLoadingResults" class="spinner-grow" role="status"></div>
-<div class="tarjeta_seccion" *ngFor="let m of meals" >
+<div class=" form-group mb-3"  *ngIf="session" >
+  <input type="text" name="search"  placeholder="Buscar por tipo de comida"  (change)="search($event.target.value)" 
+  class="form-control"  [(ngModel)]="filterString"><br>
+  <button class="btn btn-light" (click)="search(null)">Limpiar</button>
+</div>
+<div class="scroll" id="scroll" >
+  <div class="tarjeta_seccion" *ngFor="let m of meals" >
     <div class="base_meals">
       <div class="card-header">
         <h6>{{m.type}}</h6>
@@ -18,3 +24,5 @@
       </div>
     </div>
 </div>
+</div>
+<button class="boton-eliminar subir fa fa-long-arrow-up"  (click)="subir()" ></button>

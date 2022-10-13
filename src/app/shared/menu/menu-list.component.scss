@@ -12,11 +12,7 @@
 
 @media only screen
   and (min-device-width : 320px)
-  and (max-device-width : 568px) { 
-    .menu{
-      display: flex;
-      flex-direction: column;
-      justify-content: none;
+  and (max-device-width : 768) { 
       .tarjeta_seccion{
         width: 100% !important;
         margin: 0%;
@@ -30,7 +26,6 @@
           }
         }
       }
-    }
   }
 
   // Para iPad

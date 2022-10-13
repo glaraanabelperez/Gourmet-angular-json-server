@@ -56,8 +56,8 @@ export class NewUserComponent implements OnInit {
     this.authService.insertUser(this.newUser(user)).subscribe( 
       data => {
         this.isLoadingResults=false;
-        this.formNewUser.reset();
         this.toastr.success('Bienvenido')
+        this.router.navigateByUrl('/login');
       },
       error =>{
         this.isLoadingResults=false;

@@ -1,28 +1,37 @@
 <div *ngIf="isLoadingResults" class="spinner-grow" role="status"></div>
 
 <div class="titulo_seccion">
-    <h3>Sus Clientes</h3>
+    <h3>Clientes</h3>
 </div>
 <div class="base_info">
-  <div class="titulo_seccion2">
-    <h5 style="color: black;">Usuarios Registrados En App Gourmet</h5>
-  </div>
-  <div class="tarjeta_seccion">
-    <table class="table table-striped" style="width: 100%;">
-        <tbody>
-          <tr *ngFor="let c of customers">
-            <td>
-              <li>
-                 <h4>{{c.name}}</h4>
-                 <h5>{{c.lastName}}</h5>
-                 <h5>{{c.phone}}</h5>
-                 <h5>{{c.email}}</h5>
-                 <h5>{{c.phone}}</h5>
-              </li>  
-            </td>            
-          </tr>
-        </tbody>
+  <div class="tarjeta_seccion" style="scroll-behavior: auto; overflow-x:auto; scroll-behavior: smooth;margin:auto">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+           <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Email</th>
+            <th scope="col"></th>
+            <th scope="col">Empresa</th>
+            <th scope="col">Direccion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of customers">    
+          <th scope="row">{{c.name}}</th>
+          <td>{{c.lastName}}</td>
+          <td>{{c.phone}}</td>
+          <td>{{c.email}}<td>
+          <td>{{c.companyName}}</td>
+          <td>{{c.direction}}</td>
+          
+        </tr>
+      </tbody>
     </table>
+
+
+   
   </div>
 </div>
 

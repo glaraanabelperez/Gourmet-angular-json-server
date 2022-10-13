@@ -1,25 +1,18 @@
+<div class="logo">
+    <img class="logoImg" src="assets/logo.jpg" alt="">
+</div>
 <app-nav></app-nav>
-<div class="image_meals">
-    <img src="assets/imagenes-meals/1.jpg" alt="">
-     <img src="assets/imagenes-meals/2.jpg" alt="">
-      <img src="assets/imagenes-meals/3.jpg" alt="">
-      <img class="img-celular" src="assets/imagenes-meals/4.jpg" alt="">
-     <img src="assets/imagenes-meals/5.jpg" alt="">
-    <img src="assets/imagenes-meals/6.jpg" alt="">
-    <img  src="assets/imagenes-meals/7.jpg" alt="">
-
-</div><br>
-<div class="root padding">
-    <router-outlet></router-outlet>
-    <div class="tarjeta_seccion_root">
-        <div class="img_right_root"></div>
-        <div style="text-align: center; margin-top: 20px;">
-            <h4 style="text-align: center;">ESTILO GOURMET</h4>
-            <h6>ALLENDE 456</h6>
-            <h6>DEVOTO</h6>
-            <h6>BS AS, ARGENTINA</h6>
-        </div>
+<div class="root" style="width: 100vw; ">
+    <div class="image_meals">
+        <img src="assets/imagenes-meals/1.jpg" alt="">
+         <img src="assets/imagenes-meals/2.jpg" alt="">
+          <img src="assets/imagenes-meals/3.jpg" alt="">
+          <img  src="assets/imagenes-meals/4.jpg" alt="">
+         <img src="assets/imagenes-meals/5.jpg" alt="">
+        <img class="img2" src="assets/imagenes-meals/6.jpg" alt="">
+        <img class="img2" src="assets/imagenes-meals/7.jpg" alt="">
     </div>
+    <router-outlet ></router-outlet>
 </div>
 <div class="espacio_bottom"></div>
 <app-navAuth *ngIf="sessionAdmin"></app-navAuth>

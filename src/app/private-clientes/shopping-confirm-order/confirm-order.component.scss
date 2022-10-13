@@ -6,18 +6,19 @@
 	width: 99%;
   height: auto;
   .shipper{
+    div.card{
+        width: 60%;
+        margin: auto;
+    }
     background-color: white;
     border-radius: 5px;
     margin: 0% 1% 0% 0%;
     padding: 4%;
     width: 99%;
-    text-align: center;
     input{
-      width: 50%;
       margin: auto;
     }
     textarea{
-      width: 50%;
       margin: auto;
 
     }
@@ -42,6 +43,15 @@
  @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 700px) { 
+
+    div.card {
+      width: 100% !important;
+    }
+    textarea{
+      width: 90% !important;
+      margin: auto;
+
+    }
     .conteiner_pedido{
       flex-direction: column !important;
       .titulo_seccion2{
@@ -56,10 +66,8 @@
 @media only screen  
 and (min-width : 768)  
 and (max-width : 1200px) { 
-  .conteiner-pedido{
-    margin-top:60px;
-    .shipper{
+  .shipper{
+    margin-bottom:60px;
       width: 99%;
-    }
   }
 }

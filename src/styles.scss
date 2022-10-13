@@ -1,14 +1,42 @@
 
 *{
     font-size: 15px;
+    box-sizing: border-box;
+
 }
+html, body { height: 100%; }
 body{
     background-color: #eff0f1;
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
+app-date {
+    background-color: white;
+    margin-right: 2%;
+    padding: 2%;
+    border-radius: 5px;
+}
+app-menuList {
+    background-color: white;
+    border-radius: 5px;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+}
+app-list-meals{
+    border-radius: 5px;
+    margin:0px;
+    width: 50%;
+}
+app-meals-form{
+    width: 50%;
+    margin-right: 2%;
+    border-radius: 5px;
+    background-color: white;
+}
+app-orders-shared{
+    width: 50%;
+    border-radius: 5px;
+    background-color: white;
+}
 .spinner-grow{   
     width:200px;
     height: 200px;
@@ -16,4 +44,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     position: fixed;
     top: 30%;
     right: 45%;
+}
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 768px) { 
+   html{
+    width: 100%!important;
+   }
+   app-date {
+    margin-right: 0%;
+    }
+    
+app-menuList {
+    height: 100%;
+}
+
+app-meals-form{
+    height: 100px;
+}
+app-orders-shared{
+    height: 100%;
+}
+
+
 }

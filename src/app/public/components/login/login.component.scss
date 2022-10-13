@@ -1,11 +1,12 @@
 @import '../../../styles/general_styles.scss';
-.date-menu{
-    .contenedor_login{
+
+.contenedor_login{
         background-color: white;
-        width: 98%;
+        width: 100%;
         justify-content: space-around;
         padding: 2%;
         border-radius: 10px;
+        margin:0px;
         .card{
             border: 0px;
             .card-text{
@@ -22,7 +23,7 @@
                     }
                  }
                  form{
-                     width: 50%;
+                     width: 30%;
                      margin: auto;
                      text-align: center;
     
@@ -30,8 +31,8 @@
                 
             }
         }
-    }
 }
+
 
 
   // Para iPad

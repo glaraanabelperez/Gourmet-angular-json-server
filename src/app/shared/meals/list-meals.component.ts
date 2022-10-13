@@ -19,6 +19,10 @@ export class ListMealsComponent implements OnInit {
   public meals:Meal[]=[];
   public session: any=null;
   isLoadingResults=false;
+  filter: boolean;
+  filterString: string;
+  formBuilder: any;
+  form: any;
 
   constructor(
     private _mealsService:ListMealService, 
@@ -32,6 +36,7 @@ export class ListMealsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
   }
 
   ngOnChanges(): void {
@@ -61,7 +66,13 @@ export class ListMealsComponent implements OnInit {
       res=>{
       if(res.length>0){
         this.isLoadingResults=false;
-        this.meals=res.slice();
+        if(this.filter){
+          this.meals = res.filter((val) => val.type.toLowerCase().includes(this.filterString.toLowerCase()));
+        }else{
+          this.meals=res.slice();
+        }
+      
+        
       }else{
         this.isLoadingResults=false;
         this.meals=null;
@@ -72,6 +83,11 @@ export class ListMealsComponent implements OnInit {
         this.toastr.error('ERROR EN EL SERVIDOR',error)
       }
     );
+  }
+
+  subir(){
+    document.getElementById('scroll').scrollTo(0,0)
+ 
   }
 
   public send(m){
@@ -92,6 +108,20 @@ export class ListMealsComponent implements OnInit {
         this.get();
       }
     })
+  }
+
+  search(value: string): void {
+    if(value!=null){
+      this.filter=true;
+      this.filterString=value
+      this.get()
+    }else if(this.filter && value==null){
+      this.filter=false;
+      this.get()
+      this.filterString="";
+    }else{
+      this.filterString="";
+    }
   }
 
 }

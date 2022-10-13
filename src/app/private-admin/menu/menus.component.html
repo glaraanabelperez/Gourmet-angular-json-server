@@ -4,7 +4,7 @@
     <h4 >En esta seccion podra armar y eliminar el menu del dia</h4>
 </div>
 <div class="base_info">
-  <button  class="btn btn-primary " type="button" (click)="btnNewMenu()" >Nuevo Menu</button>
+  <button  class="btn btn-primary " type="button" (click)="btnNewMenu()" > +  Comida</button>
   <!--Eliminar Menu-->
   <div class="card text-center" *ngIf="_editMenu!=null"  >
     <div class="card-header">
@@ -32,7 +32,7 @@
         <h5>Comidas Seleccionadas</h5>
         <button *ngFor="let m of meals; let i = index" class="btn btn-danger" (click)="deleteIndexMeals(i)">{{m.title}}    <i class="fa fa-trash-o" aria-hidden="true"></i></button><br>
         <hr>
-        <button class="btn btn-success " (click)="insertNewMenu()">Guardar</button>
+        <button class="btn btn-success " (click)="insertNewMenu()">Grabar</button>
         <button class="btn btn-outline-dark " (click)="cancelAssignMenu()">Cancel</button>
       </div>
       <app-list-meals [action]="action" (meal)="pushMeals($event)"></app-list-meals>

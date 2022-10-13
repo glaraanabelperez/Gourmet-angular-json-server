@@ -4,14 +4,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    app-list-meals{
-        width: 55%;
-        margin: auto;
-        margin-top: 0% !important;
-    }
-    app-meals-form{
-        width: 40%;
-    }
 }
 
 @media only screen
@@ -23,11 +15,11 @@
         justify-content: none;
         width: 100vw;
         app-list-meals{
-            width: 90vw !important;
+            width: 100vw !important;
             margin: auto;
         }
         app-meals-form{
-            width: 90vw !important;
+            width: 100vw !important;
             margin-bottom: 5%;
             margin: auto;
         }

@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AACA,GADG,CACH,EAAE,CAAC,EAAE,CAAC;EACN,UAAU,EAAE,MAAM;CACjB",
     "sources": [
         "data-user.component.scss"
     ],

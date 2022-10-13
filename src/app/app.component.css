@@ -20,6 +20,10 @@ h5 {
   font-size: 1.2rem;
 }
 
+h5 {
+  font-size: 1rem;
+}
+
 .btn {
   border-radius: 15px;
 }
@@ -39,15 +43,15 @@ h5 {
 }
 
 .base_info {
-  width: 60vw;
+  width: 100%;
 }
 
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
   padding: 3%;
-  width: 95% !important;
-  margin: auto;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 .tarjeta_seccion h4 {
@@ -64,12 +68,17 @@ h5 {
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin: 0% 2% 3% 0%;
+  margin-bottom: 2%;
 }
 
 .titulo_seccion h3 {
-  color: black;
-  font-weight: 600;
+  color: gray;
+  text-align: right;
+}
+
+.titulo_seccion h4 {
+  font-size: 16px;
+  text-align: right;
 }
 
 .titulo_seccion2 {
@@ -78,11 +87,9 @@ h5 {
   border-radius: 5px;
   margin: 0% 2% 0% 0%;
   width: 25%;
-  height: 350px;
 }
 
 .titulo_seccion2 h5 {
-  font-weight: 600;
   text-align: center;
 }
 
@@ -142,7 +149,20 @@ h5 {
   width: 100%;
 }
 
+.scroll {
+  scroll-behavior: auto;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  height: 70vh;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .scroll {
+    scroll-behavior: auto;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    height: 90vh;
+  }
   p {
     text-align: center;
   }
@@ -153,7 +173,7 @@ h5 {
     text-align: center;
   }
   .nav_general_lateral {
-    width: 100%;
+    width: 100vw !important;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -172,7 +192,7 @@ h5 {
     display: none;
   }
   .titulo_seccion {
-    width: 100%;
+    width: 100vw;
     height: auto !important;
   }
   .titulo_seccion2 {
@@ -193,32 +213,18 @@ h5 {
   }
 }
 
-.image_meals {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  margin-bottom: 5%;
-  width: 79%;
-  margin: auto;
+.root {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 80vw !important;
+  margin: auto !important;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-left: 5%;
+  box-sizing: border-box;
 }
 
-.image_meals img {
-  width: 13%;
-  margin-right: 2%;
-  border-radius: 5px;
-}
-
-.root {
-  width: 75%;
-  margin: auto;
+.root .image_meals {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -226,24 +232,18 @@ h5 {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  margin-bottom: 1%;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.root .tarjeta_seccion_root {
-  margin: auto;
-  margin-top: 0px;
-  background-color: white;
+.root .image_meals img {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 9%;
   border-radius: 5px;
-  padding: 3%;
-  width: 25%;
-  height: 335px;
-}
-
-.root .tarjeta_seccion_root .img_right_root {
-  height: 150px;
-  width: 150px;
-  background-color: #84eee5;
-  border-radius: 100%;
-  margin: auto;
 }
 
 .espacio_bottom {
@@ -251,7 +251,7 @@ h5 {
   height: 120px;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   .image_meals {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -261,7 +261,7 @@ h5 {
         -ms-flex-direction: row;
             flex-direction: row;
     margin-bottom: 5%;
-    width: 100%;
+    width: 90%;
     margin: auto;
   }
   .image_meals img {
@@ -269,7 +269,7 @@ h5 {
     margin-right: 2%;
     border-radius: 5px;
   }
-  .root {
+  div.root {
     width: 100%  !important;
     float: none;
     -webkit-box-orient: vertical;
@@ -277,16 +277,17 @@ h5 {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .root .tarjeta_seccion_root {
-    display: none;
-  }
   .espacio_bottom {
     display: block;
-    height: 120px;
+    height: 50px;
   }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Aquí van los estilos */
+  .espacio_bottom {
+    display: block;
+    height: 30px;
+  }
 }
 /*# sourceMappingURL=app.component.css.map */

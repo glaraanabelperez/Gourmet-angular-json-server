@@ -31,8 +31,13 @@ h5{
     font-size: 1rem;
 }
 
-.btn{
+button.btn{
     border-radius: 15px;
+    margin-inline-start:auto !important;
+}
+.btn-primary{
+    margin-inline-start:auto !important;
+
 }
 
 .padding{
@@ -45,14 +50,15 @@ h5{
 }
 
 .base_info{
-    width: 60vw;
+    width: 100%;
 }
 
 .tarjeta_seccion{
     background-color: white;
     border-radius: 5px;
     padding: 3%;
-    width: 98% !important;
+    box-sizing: content-box;
+  
     h4{
         text-align: center;
         color: black;
@@ -67,10 +73,15 @@ h5{
     background-color: white;
     padding: 2% 2% 1% 2%;
     border-radius: 5px;
-    margin: 0% 2% 3% 0%;
+    margin-bottom: 2%;
     h3{
-        color: black;
-        // font-weight: 600;
+        color: gray;
+        text-align: right;
+
+    }
+    h4{
+        font-size: 16px;
+        text-align: right;
     }
     
 }
@@ -128,10 +139,28 @@ h5{
     }
 }
 
+.scroll{
+    scroll-behavior: auto; overflow-y:auto; scroll-behavior: smooth;height: 55vh;
+}
 
+.subir{
+    float: right; 
+    bottom: 10%; 
+    right: 5%; 
+    background-color: #0d6efd; 
+    border: none;  
+    color: white; 
+    font-weight: 600; 
+    border-radius: 5px;
+    padding: 10px; 
+    position: fixed;
+}
 @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 768px) { 
+    .scroll{
+        scroll-behavior: auto; overflow-y:auto; scroll-behavior: smooth;height: 90vh;
+    }
     p{
         text-align: center;
     }
@@ -141,8 +170,9 @@ h5{
     h4{
         text-align: center;
     }
+
     .nav_general_lateral{
-        width: 100%;
+        width: 100vw !important;
         display: flex;
         flex-direction: row;
         margin: 0.5% 0% 0.5% 0%;
@@ -159,7 +189,7 @@ h5{
        
     }
     .titulo_seccion{
-        width: 100%;
+        width: 100vw;
         height: auto !important;
     }
     .titulo_seccion2{
@@ -173,10 +203,10 @@ h5{
             width: 100%;
         }
     }
+    // .scroll{
+    //     scroll-behavior: auto; overflow-y:auto; scroll-behavior: smooth;height: 90vh;
+    // }
 
-    .tarjeta_seccion{
-        width: 98vW !important;    
-    }
 
   }
 

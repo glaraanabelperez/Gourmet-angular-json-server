@@ -19,6 +19,10 @@ h5 {
   font-size: 1.2rem;
 }
 
+h5 {
+  font-size: 1rem;
+}
+
 .btn {
   border-radius: 15px;
 }
@@ -38,15 +42,15 @@ h5 {
 }
 
 .base_info {
-  width: 60vw;
+  width: 100%;
 }
 
 .tarjeta_seccion {
   background-color: white;
   border-radius: 5px;
   padding: 3%;
-  width: 95% !important;
-  margin: auto;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
 }
 
 .tarjeta_seccion h4 {
@@ -63,11 +67,17 @@ h5 {
   background-color: white;
   padding: 2% 2% 1% 2%;
   border-radius: 5px;
-  margin: 0% 2% 3% 0%;
+  margin-bottom: 2%;
 }
 
 .titulo_seccion h3 {
-  color: black;
+  color: gray;
+  text-align: right;
+}
+
+.titulo_seccion h4 {
+  font-size: 16px;
+  text-align: right;
 }
 
 .titulo_seccion2 {
@@ -76,7 +86,6 @@ h5 {
   border-radius: 5px;
   margin: 0% 2% 0% 0%;
   width: 25%;
-  height: 350px;
 }
 
 .titulo_seccion2 h5 {
@@ -139,6 +148,13 @@ h5 {
   width: 100%;
 }
 
+.scroll {
+  scroll-behavior: auto;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  height: 90vh;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
   p {
     text-align: center;
@@ -150,7 +166,7 @@ h5 {
     text-align: center;
   }
   .nav_general_lateral {
-    width: 100%;
+    width: 100vw !important;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -169,7 +185,7 @@ h5 {
     display: none;
   }
   .titulo_seccion {
-    width: 100%;
+    width: 100vw;
     height: auto !important;
   }
   .titulo_seccion2 {
@@ -190,27 +206,18 @@ h5 {
   }
 }
 
-.base_info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+.base_info .tarjeta_seccion {
+  width: 94%;
 }
 
 .base_info .titulo_seccion2 {
   height: 150px;
 }
 
-.base_info .tarjeta_seccion {
-  width: 69% !important;
-}
-
-.base_info .tarjeta_seccion .table {
-  margin: auto;
-  width: 70%;
-  list-style-type: none;
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .tarjeta_seccion {
+    width: 350px;
+    height: 600px;
+  }
 }
 /*# sourceMappingURL=customers.component.css.map */

@@ -1,9 +1,9 @@
 @import '../../../styles/general_styles.scss';
 
-.btn-primary{
-    margin-bottom:5%
+center img{
+    margin: auto;
 }
-.base_form{
+div.base_form{
     background-color: white;
     border-radius: 20px;
     padding: 3%;
@@ -11,3 +11,37 @@
         border-radius: 20px;
     }
 }
+.row {
+    div{
+        width: 50% !important;
+    }
+    display: flex;
+    flex-direction: row !important;
+}
+
+@media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 768px) { 
+    .row{
+        display: flex;
+        flex-direction: column;
+        div{
+            width: 90% !important;
+        }
+    }
+    center{
+        display: none;
+    }
+    div.base_form{
+        width: 100%;
+        background-color: white;
+        border-radius: 20px;
+        padding: 3%;
+        position: absolute;
+        top: 30%;
+        .btn{
+            border-radius: 20px;
+        }
+    }
+
+  }

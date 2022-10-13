@@ -4,61 +4,61 @@
     <h5>Para esta fecha tenemos los siguientes pedidos</h5>
   </div>
   <ng-template #withoutMenus>
-    <h5>Por el momento no tiene pedidos</h5>
+    <h5>No se encontraron resultados</h5>
     <h4>Seleccione otra fecha</h4>
     <center>
-      <img style="width: 50%;margin-top: 5%;" src="assets/fondo2.jpg" alt="">
+      <img src="assets/fondo2.jpg" alt="" style="width: 50%;margin-top: 5%;" >
     </center>
   </ng-template> 
   <br>
-  <div class=" form-group mb-3" [formGroup]="formOrder"  *ngIf="isAdmin && orders.length>0" >
-    <label for="search">Filtrar por empresa</label>
-    <input type="text" name="search" formControlName="search"   (change)="search($event.target.value)" 
-    class="form-control" id="direction">
+  <div class=" form-group mb-3" *ngIf="isAdmin" >
+    <input type="text" name="search" [(ngModel)]="filterString" placeholder="Buscar por empresa"   (change)="search($event.target.value)" 
+    class="form-control" ><br>
     <button class="btn btn-light" (click)="search(null)">Limpiar</button>
   </div>
-  <div class="card" *ngFor="let or of orders" style="margin-bottom: 2%;" >
-    <div class="card-header">
-      <p style="text-align: center;">{{or.state.toUpperCase()}}</p>    
+  <div class=" scroll" id="scroll" *ngIf="orders.length>0;" >
+    <div class="card " *ngFor="let or of orders"  >
+      <div class="card-header">
+        <p style="text-align: center;">{{or.state.toUpperCase()}}</p>    
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngIf="or.observation!=null" style="color: brown;">
+          {{or.observation}}
+        </li>
+        <li class="list-group-item">
+          Tipo: {{or.menusDto.Meals.type}}
+        </li>
+        <li class="list-group-item">
+          Titulo: {{or.menusDto.Meals.title}}
+        </li>
+        <li class="list-group-item">
+          <p>Cant</p>
+          <p>{{or.amount}}</p>
+        </li>
+        <li class="list-group-item" *ngIf="isAdmin">
+          Cliente: {{or.userDto.name}}{{or.userDto.lastName}}
+        </li>
+        <li class="list-group-item" *ngIf="isAdmin">
+          Tel: {{or.userDto.phone}}
+        </li>
+        <li class="list-group-item">
+          Entrega :{{or.deliveryAddress}}
+        </li>
+        <li class="list-group-item" *ngIf="isAdmin">
+          Empresa :{{or.userDto.companyName}}
+        </li>
+        <li class="list-group-item" >
+          <button class="btn btn-primary" *ngIf="isAdmin && or.state=='pending'" 
+          (click)="editState(or.id, or.state)">
+            Marcar como Entregado
+          </button>
+          <button class="btn btn-primary" *ngIf="!isAdmin && or.state=='pending'" 
+          (click)="delete(or.id) ">
+            Cancelar
+          </button>
+        </li>
+      </ul>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngIf="or.observation!=null" style="color: brown;">
-        {{or.observation}}
-      </li>
-      <li class="list-group-item">
-        Tipo: {{or.MenusDto.Meals.type}}
-      </li>
-      <li class="list-group-item">
-        Titulo: {{or.MenusDto.Meals.title}}
-      </li>
-      <li class="list-group-item">
-        <p>Cant</p>
-        <p>{{or.amount}}</p>
-      </li>
-      <li class="list-group-item" *ngIf="isAdmin">
-        Cliente: {{or.userDto.name}}{{or.userDto.lastName}}
-      </li>
-      <li class="list-group-item" *ngIf="isAdmin">
-        Tel: {{or.userDto.phone}}
-      </li>
-      <li class="list-group-item">
-        Entrega :{{or.deliveryAddress}}
-      </li>
-      <li class="list-group-item" *ngIf="isAdmin">
-        Empresa :{{or.userDto.companyName}}
-      </li>
-      <li class="list-group-item" >
-        <button class="btn btn-primary" *ngIf="isAdmin && or.state=='pending'" 
-        (click)="editState(or.id, or.state)">
-          Finalizar
-        </button>
-        <button class="btn btn-primary" *ngIf="!isAdmin && or.state=='pending'" 
-        (click)="delete(or.id) ">
-          Cancelar
-        </button>
-      </li>
-    </ul>
   </div>
-  <br><br>
-  
+
 </div>

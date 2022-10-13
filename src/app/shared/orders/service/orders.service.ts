@@ -61,7 +61,7 @@ endpoint: string='orders';
   public getOrdersByIdUser(dateSelected:Date, id_user:number): Observable<Array<OrdersResponse>>{
     let date:string = "?date=" + this._date_service.setDateString(dateSelected);
     let id:string = "/" + id_user;
-    let url=environmentNet.apiUrl + this.endpoint + id + date ;
+    let url=environmentNet.apiUrl + this.endpoint + '/by' + id + date ;
     return this.http.get<Array<OrdersResponse>>(url);
   }
 

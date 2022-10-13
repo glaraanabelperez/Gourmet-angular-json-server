@@ -28,7 +28,7 @@ export class MenuListComponent implements OnInit {
     ) {       
       this.menus=[];
       this.suscripcionAdmin();
-      // this.suscripcionReload()
+       this.suscripcionReload()
     }
 
   ngOnInit(): void {
@@ -78,6 +78,11 @@ export class MenuListComponent implements OnInit {
         this.date=this.__serviceDate.dateCurrent
         this.getMenus(this.date);   
     })
+  }
+
+  subir(){
+    document.getElementById('scroll').scrollTo(0,0)
+ 
   }
 
 }

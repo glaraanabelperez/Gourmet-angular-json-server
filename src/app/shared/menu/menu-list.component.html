@@ -3,26 +3,31 @@
   <div *ngIf="menus.length>0; else withoutMenus">
     <h5>Para esta fecha tenemos los siguientes platos</h5>
   </div>
-  <ng-template #withoutMenus>
-    <h5>No hay menus disponibles para esta fecha</h5>
+  <ng-template #withoutMenus style="height: 200px">
+    <h5>No hay comidas disponibles para esta fecha</h5>
     <h4>Seleccione otra fecha</h4>
     <center>
       <img style="width: 50%;margin-top: 5%;" src="assets/fondo2.jpg" alt="">
     </center>
   </ng-template> 
   <br>
-  <div *ngFor="let m of menus" >
-    <div class="card text-center" style="width: 70%;margin: auto;">
-      <div class="card-header">
-        <h5>Comida {{m.Meals.type}}</h5>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title" style="color: black;">{{m.Meals.title}}</h5>
-        <p class="card-text" style="text-align: center;" >{{m.Meals.description}}</p>
-        <button class="btn btn-danger boton" *ngIf="sessionAdmin && !takeOrder" (click)="send(m)">Eliminar</button>
-        <button class="btn btn-primary boton" *ngIf="takeOrder"(click)="send(m)">Agregar</button>
+  <div *ngIf="menus.length>0;" class="scroll" id="scroll">
+    <div *ngFor="let m of menus" >
+      <div class="card text-center" style="width: 70%;margin: auto;">
+        <div class="card-header">
+          <h5>Comida {{m.Meals.type}}</h5>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title" style="color: black;">{{m.Meals.title}}</h5>
+          <p class="card-text" style="text-align: center;" >{{m.Meals.description}}</p>
+          <button class="btn btn-danger boton" *ngIf="sessionAdmin && !takeOrder" (click)="send(m)">Eliminar</button>
+          <button class="btn btn-primary boton" *ngIf="takeOrder"(click)="send(m)">Agregar</button>
+        </div>
       </div>
     </div>
   </div>
+
 </div>
+<button class="boton-eliminar subir fa fa-long-arrow-up"  (click)="subir()" ></button>
+
 

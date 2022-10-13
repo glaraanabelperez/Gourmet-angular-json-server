@@ -65,7 +65,7 @@ export class MenusComponent implements OnInit {
 
   public editMenu(eventMenu : Menu){
     this._editMenu=eventMenu;
-    window.scroll(0,0);
+    window.scroll(0,120);
   }
 
   public insertNewMenu(){

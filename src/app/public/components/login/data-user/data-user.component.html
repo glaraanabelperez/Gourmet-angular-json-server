@@ -1,13 +1,13 @@
 <app-editUser *ngIf="editUser" (close)="onClose($event)"></app-editUser>
 <div *ngIf="!editUser" class="tarjeta_seccion">
-    <div *ngIf="user!=null">
+    <div *ngIf="user!=null" >
         <ul style="list-style: none;padding-left: 0%;">
-            <li><h5>{{user.name}} {{user.lastName}}</h5></li>
-            <li>Email: <h7>{{user.email}}</h7></li>    
-            <li>Password: <h7>{{user.pass}}</h7></li>    
-            <li>Telefono: <h7>{{user.phone}}</h7></li>    
-            <li>Direccion: <h7>{{user.direction}}</h7></li><br>   
-            <li>Empresa: <h7>{{user.companyName}}</h7></li><br> 
+            <li><h5>{{user.name.toUpperCase()}} {{user.lastName.toUpperCase()}}</h5></li>
+            <li>User: {{user.email}}</li>    
+            <li>Password: {{user.pass}}</li>    
+            <li>Telefono: {{user.phone}}</li>    
+            <li>Direccion: {{user.direction}}</li><br>   
+            <li>Empresa: {{user.companyName}}</li><br> 
             <li><button class="btn btn-outline-primary" (click)="onClose($event)"><i class="bi bi-pencil-fill"></i></button></li>                   
         </ul>
     </div>

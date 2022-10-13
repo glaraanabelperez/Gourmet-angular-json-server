@@ -1,4 +1,7 @@
 @import '../../styles/general_styles.scss';
+.spinner-grow{
+  margin: auto;
+}
 li{
   display: flex;
   flex-direction: row;
@@ -7,8 +10,8 @@ li{
 @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 700px) { 
-    .tarjeta_seccion{
-      width: 100vw;
 
+    div .tarjeta_seccion{
+      width: 100vw;
     }
   }

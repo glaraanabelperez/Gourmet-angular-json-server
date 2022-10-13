@@ -26,10 +26,10 @@ export class OrdersSharedComponent implements OnInit {
   public stateSelected: any;
   isLoadingResults: boolean;
   isAdmin: boolean=false;
-  formOrder: any;
   filtrar:boolean=false;
   filter: boolean;
   filterString: any;
+
   constructor(
     private _service_orders:OrdersSharedService, 
     public _storageSession:StorageService,
@@ -43,30 +43,13 @@ export class OrdersSharedComponent implements OnInit {
       }
 
   ngOnInit(): void {
-    this.formOrder = this.formBuilder.group({
-       search : [""],
-     });
+ 
   }
 
   ngOnChanges(){
     this.initViewOrderbyUser();
   }
 
-  // public editAmount(id, n){
-  //   this.isLoadingResults=true;
-  //   var num=n.amount;
-  //   this._service_orders.aditAmount(id, num).subscribe(
-  //     (res)=>{
-  //       this.isLoadingResults=false;
-  //     this.initViewOrderbyUser();
-  //     this.toastr.success('SE EDITO CON EXITO');
-  //     },
-  //     (error) =>{
-  //       this.isLoadingResults=false;
-  //       this.toastr.error('ERROR DE SERVIDOR')
-  //     });
-   
-  // }
   
   public delete(id:number){
     alert('Seguro desea eliminar la orden?')
@@ -77,7 +60,7 @@ export class OrdersSharedComponent implements OnInit {
       },
       (error) =>{
         this.initViewOrderbyUser()
-        this.toastr.info('AGUARDE A LA FECHA PARA EDITAR EL ESTADO', error.messagge)
+        this.toastr.info('PARA ELIMINAR EL PEDIDO DEBE HABER 24HS DE ANTICIPACION', error.messagge)
       });
   }
 
@@ -97,13 +80,14 @@ export class OrdersSharedComponent implements OnInit {
       },
       (error) =>{
         if(this.sessionPermissions.isAdmin){
-          this.toastr.info('AGUARDE A LA FECHA PARA EDITAR EL ESTADO')
+          this.toastr.info('PARA EDITAR EL ESTADO DEBEN PASAR 24HS A PARTIR DE LA FECHA')
         }
         this.isLoadingResults=false;
       });
   }
 
   public initViewOrderbyUser(){
+
     if(this.date!=null){
       if(this.sessionPermissions.isAdmin){
         this.get(this.date);
@@ -175,9 +159,9 @@ export class OrdersSharedComponent implements OnInit {
     }else if(this.filter && value==null){
       this.filter=false;
       this.initViewOrderbyUser()
-      this.formOrder.controls['search'].setValue('');
+      this.filterString="";
     }else{
-      this.formOrder.controls['search'].setValue('');
+      this.filterString="";
     }
   }
 

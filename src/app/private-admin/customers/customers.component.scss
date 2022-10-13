@@ -1,36 +1,18 @@
 @import '../../styles/general_styles.scss';
 .base_info{
-    display: flex;
-    flex-direction: row;
+  .tarjeta_seccion{
+    width: 94%; 
+  }
     .titulo_seccion2{
       height: 150px;
-    }
-    .tarjeta_seccion{
-      width: 69% !important;
-      .table{
-        margin: auto;
-        width: 70%;
-        list-style-type: none;
-      }
     }
 }
 
 @media only screen
   and (min-device-width : 320px)
   and (max-device-width : 768px) { 
-    
-    .base_info{  
-      .titulo_seccion2{
-        height: 150px;
-      }
-      .tarjeta_seccion{
-        width: 100vw !important;
-        margin-left: 30%;
-        .table{
-          margin: auto;
-          width: 100vw;
-          list-style-type: none;
-        }
-      }
-  }
+    .tarjeta_seccion{
+      width: 350px; 
+      height: 600px;
+    }
   }
